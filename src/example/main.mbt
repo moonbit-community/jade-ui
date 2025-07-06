@@ -2,8 +2,6 @@
 enum Msg {
   Increment
   Decrement
-  SliderUpdate(Int)
-  ReadMore
 }
 
 ///|
@@ -16,8 +14,6 @@ fn update(msg : Msg, model : Model) -> (Cmd[Msg], Model) {
   match msg {
     Increment => (none(), { ..model, count: model.count + 1 })
     Decrement => (none(), { ..model, count: @math.maximum(0, model.count - 1) })
-    SliderUpdate(value) => (none(), { ..model, count: value })
-    ReadMore => (none(), model)
   }
 }
 

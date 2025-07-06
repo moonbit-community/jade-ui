@@ -25,11 +25,11 @@
 /// Example:
 ///
 /// ```moonbit
-/// let my_button = @components.button(
-///   [@html.text("Click Me")],
+/// let my_button = @jade.button(
+///   [text("Click Me")],
 ///   MyClickMessage,
-///   variant=@theme.Outlined,
-///   size=@theme.Lg,
+///   variant=Outlined,
+///   size=Lg,
 ///   fullWidth=true
 /// )
 /// ```
