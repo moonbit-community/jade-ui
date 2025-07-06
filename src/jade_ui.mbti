@@ -5,7 +5,7 @@ import(
 )
 
 // Values
-fn[M] button(String, click? : M) -> @html.Html[M]
+fn[M] button(children : Array[Html[Msg]], click : Msg, click? : M, variant~ : ButtonVariant = @theme.Solid, size~ : ButtonSize = @theme.Md, fullWidth~ : Bool = false, ripple~ : Bool = true, className~ : String? = None) -> @html.Html[M]
 
 // Types and methods
 
