@@ -12,6 +12,8 @@
 ///   Defaults to `@theme.Solid`.
 /// * `size` : @theme.ButtonSize - The size of the button. Defaults to
 ///   `@theme.Md`.
+/// * `color` : @theme.ButtonColor - The color theme of the button. Defaults to
+///   `@theme.Primary`.
 /// * `fullWidth` : Bool - Whether the button should take the full width of its
 ///   container. Defaults to `false`.
 /// * `ripple` : Bool - Whether to enable ripple effect on button interactions.
@@ -30,6 +32,7 @@
 ///   MyClickMessage,
 ///   variant=Outlined,
 ///   size=Lg,
+///   color=Success,
 ///   fullWidth=true
 /// )
 /// ```
@@ -39,6 +42,7 @@ pub fn[M] button(
   click : M,
   variant~ : @theme.ButtonVariant = @theme.Solid,
   size~ : @theme.ButtonSize = @theme.Md,
+  color~ : @theme.ButtonColor = @theme.Primary,
   fullWidth~ : Bool = false,
   ripple~ : Bool = true,
   className~ : String? = None
@@ -46,6 +50,7 @@ pub fn[M] button(
   let klass = @theme.get_button_style(
     variant~,
     size~,
+    color~,
     fullWidth~,
     ripple~,
     className~,
