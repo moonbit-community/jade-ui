@@ -1,4 +1,32 @@
 ///|
+/// Creates a card component with customizable styling and content.
+///
+/// Parameters:
+///
+/// * `children` : Array\[@html.Html\[M]] - The HTML content to be displayed
+///   inside the card.
+/// * `variant` : @theme.CardVariant - The visual variant of the card (defaults
+///   to `Solid`).
+/// * `color` : @theme.CardColor - The color scheme of the card (defaults to
+///   `Default`).
+/// * `className` : String? - Optional additional CSS classes to apply to the
+///   card.
+///
+/// Returns an HTML div element styled as a card containing the specified
+/// children.
+///
+/// Example:
+///
+/// ```moonbit
+/// let card_content = [@html.text("Hello, World!")]
+/// let my_card = @components.card(
+///   card_content,
+///   variant=@theme.Outlined,
+///   color=@theme.Primary,
+///   className=Some("my-custom-class")
+/// )
+/// ```
+///
 pub fn[M] card(
   children : Array[@html.Html[M]],
   variant~ : @theme.CardVariant = Solid,
@@ -11,6 +39,28 @@ pub fn[M] card(
 }
 
 ///|
+/// Creates a header section for a card component with customizable styling.
+///
+/// Parameters:
+///
+/// * `children` : Array\[@html.Html\[M]] - The HTML content to be displayed
+///   inside the card header.
+/// * `className` : String? - Optional additional CSS classes to apply to the
+///   card header (defaults to `None`).
+///
+/// Returns an HTML div element styled as a card header containing the specified
+/// children.
+///
+/// Example:
+///
+/// ```moonbit
+/// let header_content = [@html.text("Card Title")]
+/// let my_card_header = @components.card_header(
+///   header_content,
+///   className=Some("custom-header-style")
+/// )
+/// ```
+///
 pub fn[M] card_header(
   children : Array[@html.Html[M]],
   className~ : String? = None
@@ -21,6 +71,29 @@ pub fn[M] card_header(
 }
 
 ///|
+/// Creates a card body component that wraps content in the main content area of
+/// a card.
+///
+/// Parameters:
+///
+/// * `children` : Array\[@html.Html\[M]] - The HTML content to be displayed
+///   inside the card body.
+/// * `className` : String? - Optional additional CSS classes to apply to the
+///   card body (defaults to `None`).
+///
+/// Returns an HTML div element styled as a card body containing the specified
+/// children.
+///
+/// Example:
+///
+/// ```moonbit
+/// let body_content = [@html.text("This is the main content of the card.")]
+/// let my_card_body = @components.card_body(
+///   body_content,
+///   className=Some("custom-body-style")
+/// )
+/// ```
+///
 pub fn[M] card_body(
   children : Array[@html.Html[M]],
   className~ : String? = None
@@ -30,6 +103,28 @@ pub fn[M] card_body(
 }
 
 ///|
+/// Creates a footer section for a card component with customizable styling.
+///
+/// Parameters:
+///
+/// * `children` : Array\[@html.Html\[M]] - The HTML content to be displayed
+///   inside the card footer.
+/// * `className` : String? - Optional additional CSS classes to apply to the
+///   footer (defaults to `None`).
+///
+/// Returns an HTML div element styled as a card footer containing the specified
+/// children.
+///
+/// Example:
+///
+/// ```moonbit
+/// let footer_content = [@html.text("© 2024 My Company")]
+/// let my_footer = @components.card_footer(
+///   footer_content,
+///   className=Some("text-center")
+/// )
+/// ```
+///
 pub fn[M] card_footer(
   children : Array[@html.Html[M]],
   className~ : String? = None
