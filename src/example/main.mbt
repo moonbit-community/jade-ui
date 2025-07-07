@@ -2,11 +2,23 @@
 enum Msg {
   Increment
   Decrement
+  ToggleCheckbox1
+  ToggleCheckbox2
+  ToggleCheckbox3
+  ToggleCheckbox4
+  ToggleCheckbox5
+  ToggleCheckbox6
 }
 
 ///|
 struct Model {
   count : Int
+  checkbox1 : Bool
+  checkbox2 : Bool
+  checkbox3 : Bool
+  checkbox4 : Bool
+  checkbox5 : Bool
+  checkbox6 : Bool
 }
 
 ///|
@@ -23,6 +35,36 @@ fn update(msg : Msg, model : Model) -> (Cmd[Msg], Model) {
   match msg {
     Increment => (none(), { ..model, count: model.count + 1 })
     Decrement => (none(), { ..model, count: max(0, model.count - 1) })
+    ToggleCheckbox1 =>
+      (
+        none(),
+        { ..model, checkbox1: if model.checkbox1 { false } else { true } },
+      )
+    ToggleCheckbox2 =>
+      (
+        none(),
+        { ..model, checkbox2: if model.checkbox2 { false } else { true } },
+      )
+    ToggleCheckbox3 =>
+      (
+        none(),
+        { ..model, checkbox3: if model.checkbox3 { false } else { true } },
+      )
+    ToggleCheckbox4 =>
+      (
+        none(),
+        { ..model, checkbox4: if model.checkbox4 { false } else { true } },
+      )
+    ToggleCheckbox5 =>
+      (
+        none(),
+        { ..model, checkbox5: if model.checkbox5 { false } else { true } },
+      )
+    ToggleCheckbox6 =>
+      (
+        none(),
+        { ..model, checkbox6: if model.checkbox6 { false } else { true } },
+      )
   }
 }
 
@@ -50,8 +92,127 @@ fn view(model : Model) -> Html[Msg] {
       ]),
     ]),
 
+    // Checkbox style showcase
+    div(class="max-w-6xl mx-auto mb-12", [
+      h2(class="text-2xl font-bold mb-6 text-gray-800", [
+        text("Checkbox Component Styles"),
+      ]),
+
+      // Checkbox colors
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Checkbox Colors"),
+        ]),
+        div(class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6", [
+          @jade.checkbox(
+            model.checkbox1,
+            ToggleCheckbox1,
+            id="primary-checkbox",
+            label=Some("Primary color checkbox"),
+            color=Primary,
+          ),
+          @jade.checkbox(
+            model.checkbox2,
+            ToggleCheckbox2,
+            id="secondary-checkbox",
+            label=Some("Secondary color checkbox"),
+            color=Secondary,
+          ),
+          @jade.checkbox(
+            model.checkbox3,
+            ToggleCheckbox3,
+            id="info-checkbox",
+            label=Some("Info color checkbox"),
+            color=Info,
+          ),
+          @jade.checkbox(
+            model.checkbox4,
+            ToggleCheckbox4,
+            id="success-checkbox",
+            label=Some("Success color checkbox"),
+            color=Success,
+          ),
+          @jade.checkbox(
+            model.checkbox5,
+            ToggleCheckbox5,
+            id="warning-checkbox",
+            label=Some("Warning color checkbox"),
+            color=Warning,
+          ),
+          @jade.checkbox(
+            model.checkbox6,
+            ToggleCheckbox6,
+            id="error-checkbox",
+            label=Some("Error color checkbox"),
+            color=Error,
+          ),
+        ]),
+      ]),
+
+      // Checkbox sizes
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Checkbox Sizes"),
+        ]),
+        div(class="flex items-center gap-6 flex-wrap", [
+          @jade.checkbox(
+            model.checkbox1,
+            ToggleCheckbox1,
+            id="small-checkbox",
+            label=Some("Small checkbox"),
+            size=Sm,
+            color=Primary,
+          ),
+          @jade.checkbox(
+            model.checkbox2,
+            ToggleCheckbox2,
+            id="medium-checkbox",
+            label=Some("Medium checkbox"),
+            size=Md,
+            color=Primary,
+          ),
+          @jade.checkbox(
+            model.checkbox3,
+            ToggleCheckbox3,
+            id="large-checkbox",
+            label=Some("Large checkbox"),
+            size=Lg,
+            color=Primary,
+          ),
+        ]),
+      ]),
+
+      // Checkbox states
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Checkbox States"),
+        ]),
+        div(class="grid grid-cols-1 md:grid-cols-2 gap-6", [
+          div(class="space-y-4", [
+            h4(class="text-md font-medium text-gray-600", [
+              text("Disabled Checkboxes"),
+            ]),
+            @jade.checkbox(
+              true,
+              ToggleCheckbox1,
+              label=Some("Disabled checked"),
+              color=Primary,
+              disabled=true,
+            ),
+            @jade.checkbox(
+              false,
+              ToggleCheckbox2,
+              label=Some("Disabled unchecked"),
+              color=Success,
+              disabled=true,
+            ),
+          ]),
+        ]),
+      ]),
+    ]),
+
     // Button style showcase
-    div(class="max-w-7xl mx-auto mb-12", [
+    div(class="max-w-6xl mx-auto mb-12", [
       h2(class="text-2xl font-bold mb-6 text-gray-800", [
         text("Button Component Styles"),
       ]),
@@ -740,15 +901,14 @@ fn view(model : Model) -> Html[Msg] {
 /// see README.md to getting started.
 fn main {
   @theme.light().apply()
-  let model = { count: 0 }
-  @tea.startup(model~, update~, view~)
-}
-
-///|
-test {
-  fn flip(arr : Array[(Int, Int)]) {
-    arr.map(x => (x.1, x.0))
+  let model = {
+    count: 0,
+    checkbox1: true,
+    checkbox2: true,
+    checkbox3: true,
+    checkbox4: true,
+    checkbox5: true,
+    checkbox6: true,
   }
-
-  inspect(flip([(1, 2), (3, 4)]), content="[(2, 1), (4, 3)]")
+  @tea.startup(model~, update~, view~)
 }
