@@ -34,13 +34,13 @@ const server = http.createServer((req, res) => {
     } else {
         // Serve index.html for all other routes
         const filePath = path.join(__dirname, 'index.html');
-        fs.readFile(filePath, (err, data) => {
+        fs.readFile(filePath, 'utf8', (err, data) => {
             if (err) {
-                res.writeHead(404, { 'Content-Type': 'text/plain' });
+                res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
                 res.end('File not found');
                 return;
             }
-            res.writeHead(200, { 'Content-Type': 'text/html' });
+            res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
             res.end(data);
             console.log('GET /');
         });
