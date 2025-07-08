@@ -1,0 +1,104 @@
+package "Yoorkin/jade_ui/theme"
+
+import(
+  "Yoorkin/rabbit-tea/html"
+  "moonbitlang/core/json"
+)
+
+// Values
+fn clsx(Array[String]) -> String
+
+fn get_button_style(variant~ : ButtonVariant, size~ : ButtonSize, color~ : ButtonColor, fullWidth~ : Bool, ripple~ : Bool, className~ : String?) -> String
+
+fn get_card_body_style(className~ : String?) -> String
+
+fn get_card_footer_style(className~ : String?) -> String
+
+fn get_card_header_style(className~ : String?) -> String
+
+fn get_card_style(variant~ : CardVariant, color~ : CardColor, className~ : String?) -> String
+
+fn light() -> JadeTheme
+
+// Types and methods
+pub(all) enum ButtonColor {
+  Primary
+  Secondary
+  Info
+  Success
+  Warning
+  Error
+}
+
+pub(all) enum ButtonSize {
+  Xs
+  Sm
+  Md
+  Lg
+  Xl
+}
+
+pub(all) enum ButtonVariant {
+  Ghost
+  Outlined
+  Solid
+  Gradient
+}
+
+pub(all) enum CardColor {
+  Default
+  Primary
+  Secondary
+  Success
+  Info
+  Warning
+  Error
+}
+
+pub(all) enum CardVariant {
+  Ghost
+  Solid
+  Outline
+  Gradient
+}
+
+pub(all) struct JadeTheme {
+  primary : String
+  primaryContent : String
+  secondary : String
+  secondaryContent : String
+  accent : String
+  accentContent : String
+  neutral : String
+  neutralContent : String
+  base100 : String
+  base200 : String
+  base300 : String
+  baseContent : String
+  info : String
+  infoContent : String
+  success : String
+  successContent : String
+  warning : String
+  warningContent : String
+  error : String
+  errorContent : String
+  radiusSelector : String
+  radiusField : String
+  radiusBox : String
+  sizeSelector : String
+  sizeField : String
+  border : String
+}
+fn JadeTheme::apply(Self) -> Unit
+fn[M] JadeTheme::to_attributes(Self) -> Array[@html.Attribute[M]]
+fn JadeTheme::to_styles(Self) -> Map[String, String]
+impl Eq for JadeTheme
+impl Show for JadeTheme
+impl ToJson for JadeTheme
+impl @json.FromJson for JadeTheme
+
+// Type aliases
+
+// Traits
+
