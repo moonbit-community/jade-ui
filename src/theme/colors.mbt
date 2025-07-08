@@ -26,6 +26,6 @@ pub fn light() -> JadeTheme {
     radiusBox: "0.5rem",
     sizeSelector: "0.25rem",
     sizeField: "0.25rem",
-    border: "1px"
+    border: "1px",
   }
 }

@@ -1,0 +1,13 @@
+package "Yoorkin/jade_ui/example"
+
+// Values
+
+// Types and methods
+type Model
+
+type Msg
+
+// Type aliases
+
+// Traits
+
