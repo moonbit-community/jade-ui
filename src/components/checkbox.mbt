@@ -13,7 +13,7 @@
 /// * `color` : @theme.CheckboxColor - The color theme of the checkbox. Defaults to
 ///   `@theme.Primary`.
 /// * `disabled` : Bool - Whether the checkbox is disabled. Defaults to `false`.
-/// * `className` : String? - Additional CSS class name to apply to the checkbox.
+/// * `class` : String? - Additional CSS class name to apply to the checkbox.
 ///   Defaults to `None`.
 ///
 /// Returns an HTML checkbox element configured with the specified properties and
@@ -40,13 +40,13 @@ pub fn[M] checkbox(
   size~ : @theme.CheckboxSize = @theme.Md,
   color~ : @theme.CheckboxColor = @theme.Primary,
   disabled~ : Bool = false,
-  className~ : String? = None
+  class~ : String? = None
 ) -> @html.Html[M] {
   let container_style = @theme.get_checkbox_container_style(
     size~,
     color~,
     disabled~,
-    className~,
+    class~,
   )
   let indicator_style = @theme.get_checkbox_indicator_style()
   let checkbox_input = @html.input(
@@ -117,7 +117,7 @@ pub fn[M] checkbox(
   let label_attributes = [
     @html.attribute(
       "class",
-      @theme.get_checkbox_label_style(size~, disabled~, className~),
+      @theme.get_checkbox_label_style(size~, disabled~, class~),
     ),
   ]
   if disabled {

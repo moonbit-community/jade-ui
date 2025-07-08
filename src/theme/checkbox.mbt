@@ -20,7 +20,7 @@ pub fn get_checkbox_container_style(
   size~ : CheckboxSize,
   color~ : CheckboxColor,
   disabled~ : Bool,
-  className~ : String?
+  class~ : String?
 ) -> String {
   clsx([
     "group shadow-sm shadow-black/5 inline-block relative cursor-pointer rounded bg-transparent border border-[var(--color-base-300)] transition-all duration-200 ease-in",
@@ -52,7 +52,7 @@ pub fn get_checkbox_container_style(
       "hover:shadow-md"
     },
     // Optional custom class name
-    match className {
+    match class {
       Some(cls) => cls
       None => ""
     },
@@ -63,7 +63,7 @@ pub fn get_checkbox_container_style(
 pub fn get_checkbox_input_style(
   size~ : CheckboxSize,
   disabled~ : Bool,
-  className~ : String?
+  class~ : String?
 ) -> String {
   clsx([
     "peer relative appearance-none cursor-pointer transition-all",
@@ -80,7 +80,7 @@ pub fn get_checkbox_input_style(
       "cursor-pointer"
     },
     // Optional custom class name
-    match className {
+    match class {
       Some(cls) => cls
       None => ""
     },
@@ -91,7 +91,7 @@ pub fn get_checkbox_input_style(
 pub fn get_checkbox_label_style(
   size~ : CheckboxSize,
   disabled~ : Bool,
-  className~ : String?
+  class~ : String?
 ) -> String {
   clsx([
     "ml-2 select-none text-[var(--color-base-content)] font-light cursor-pointer mt-px",
@@ -108,7 +108,7 @@ pub fn get_checkbox_label_style(
       "cursor-pointer"
     },
     // Optional custom class name
-    match className {
+    match class {
       Some(cls) => cls
       None => ""
     },
@@ -116,11 +116,11 @@ pub fn get_checkbox_label_style(
 }
 
 ///|
-pub fn get_checkbox_root_style(className~ : String?) -> String {
+pub fn get_checkbox_root_style(class~ : String?) -> String {
   clsx([
     "inline-flex items-center",
     // Optional custom class name
-    match className {
+    match class {
       Some(cls) => cls
       None => ""
     },
