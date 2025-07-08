@@ -13,9 +13,6 @@
       "path": "Yoorkin/jade_ui/components",
       "alias": "jade"
     },
-    {
-      "path": "Yoorkin/jade_ui/theme",
-      "alias": "theme"
-    }
+    "Yoorkin/jade_ui/theme"
   ]
 }

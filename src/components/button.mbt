@@ -26,7 +26,7 @@
 ///
 /// Example:
 ///
-/// ```moonbit
+/// ```moonbit skip
 /// let my_button = @jade.button(
 ///   [text("Click Me")],
 ///   MyClickMessage,

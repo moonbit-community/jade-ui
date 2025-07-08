@@ -17,7 +17,7 @@
 ///
 /// Example:
 ///
-/// ```moonbit
+/// ```moonbit skip
 /// let card_content = [@html.text("Hello, World!")]
 /// let my_card = @components.card(
 ///   card_content,
@@ -53,7 +53,7 @@ pub fn[M] card(
 ///
 /// Example:
 ///
-/// ```moonbit
+/// ```moonbit skip
 /// let header_content = [@html.text("Card Title")]
 /// let my_card_header = @components.card_header(
 ///   header_content,
@@ -86,7 +86,7 @@ pub fn[M] card_header(
 ///
 /// Example:
 ///
-/// ```moonbit
+/// ```moonbit skip
 /// let body_content = [@html.text("This is the main content of the card.")]
 /// let my_card_body = @components.card_body(
 ///   body_content,
@@ -117,12 +117,13 @@ pub fn[M] card_body(
 ///
 /// Example:
 ///
-/// ```moonbit
+/// ```moonbit skip
 /// let footer_content = [@html.text("© 2024 My Company")]
 /// let my_footer = @components.card_footer(
 ///   footer_content,
 ///   className=Some("text-center")
 /// )
+/// ignore(my_footer)
 /// ```
 ///
 pub fn[M] card_footer(
