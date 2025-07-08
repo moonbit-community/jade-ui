@@ -734,12 +734,3 @@ fn main {
   let model = { count: 0 }
   @tea.startup(model~, update~, view~)
 }
-
-///|
-test {
-  fn flip(arr : Array[(Int, Int)]) {
-    arr.map(x => (x.1, x.0))
-  }
-
-  inspect(flip([(1, 2), (3, 4)]), content="[(2, 1), (4, 3)]")
-}
