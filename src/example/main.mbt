@@ -13,7 +13,7 @@ struct Model {
 fn update(msg : Msg, model : Model) -> (Cmd[Msg], Model) {
   match msg {
     Increment => (none(), { ..model, count: model.count + 1 })
-    Decrement => (none(), { ..model, count: @math.maximum(0, model.count - 1) })
+    Decrement => (none(), { ..model, count: @cmp.maximum(0, model.count - 1) })
   }
 }
 
@@ -720,6 +720,207 @@ fn view(model : Model) -> Html[Msg] {
             ],
             variant=Gradient,
             color=Secondary,
+          ),
+        ]),
+      ]),
+    ]),
+
+    // Typography style showcase
+    div(class="max-w-6xl mx-auto", [
+      h2(class="text-2xl font-bold mb-6 text-gray-800", [
+        text("Typography Component Styles"),
+      ]),
+
+      // Typography headings
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Heading Styles"),
+        ]),
+        div(class="bg-white rounded-lg p-6 shadow-sm space-y-4", [
+          @jade.typography(tag=H1, [text("Heading 1 - The largest heading")]),
+          @jade.typography(tag=H2, [text("Heading 2 - Secondary heading")]),
+          @jade.typography(tag=H3, [text("Heading 3 - Tertiary heading")]),
+          @jade.typography(tag=H4, [text("Heading 4 - Quaternary heading")]),
+          @jade.typography(tag=H5, [text("Heading 5 - Quinary heading")]),
+          @jade.typography(tag=H6, [text("Heading 6 - The smallest heading")]),
+        ]),
+      ]),
+
+      // Typography colors
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Typography Colors"),
+        ]),
+        div(class="bg-white rounded-lg p-6 shadow-sm space-y-4", [
+          @jade.typography(tag=P, color=Inherit, [
+            text(
+              "Inherit color - This text inherits the color from its parent element.",
+            ),
+          ]),
+          @jade.typography(tag=P, color=Default, [
+            text(
+              "Default color - This is the default text color for the theme.",
+            ),
+          ]),
+          @jade.typography(tag=P, color=Primary, [
+            text("Primary color - This text uses the primary theme color."),
+          ]),
+          @jade.typography(tag=P, color=Secondary, [
+            text("Secondary color - This text uses the secondary theme color."),
+          ]),
+          @jade.typography(tag=P, color=Success, [
+            text("Success color - This text indicates successful operations."),
+          ]),
+          @jade.typography(tag=P, color=Info, [
+            text("Info color - This text provides informational content."),
+          ]),
+          @jade.typography(tag=P, color=Warning, [
+            text("Warning color - This text indicates caution or warnings."),
+          ]),
+          @jade.typography(tag=P, color=Error, [
+            text("Error color - This text indicates errors or problems."),
+          ]),
+        ]),
+      ]),
+
+      // Typography content types
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Content Types"),
+        ]),
+        div(class="bg-white rounded-lg p-6 shadow-sm space-y-4", [
+          @jade.typography(tag=Lead, [
+            text(
+              "This is a lead paragraph that introduces the main content. Lead text is typically larger and more prominent to draw attention.",
+            ),
+          ]),
+          @jade.typography(tag=P, [
+            text(
+              "This is a regular paragraph. It contains the main body text and should be easy to read with appropriate line height and spacing. Regular paragraphs form the bulk of most content.",
+            ),
+          ]),
+          @jade.typography(tag=Small, [
+            text(
+              "This is small text, typically used for disclaimers, captions, or secondary information that should be less prominent.",
+            ),
+          ]),
+        ]),
+      ]),
+
+      // Typography in combination
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Typography Combinations"),
+        ]),
+        div(class="grid grid-cols-1 md:grid-cols-2 gap-6", [
+          @jade.card(
+            [
+              @jade.card_header([
+                @jade.typography(tag=H4, color=Primary, [text("Article Header")]),
+              ]),
+              @jade.card_body([
+                div(class="space-y-3", [
+                  @jade.typography(tag=Lead, color=Default, [
+                    text(
+                      "This is an introductory paragraph that captures the reader's attention and provides an overview of what's to come.",
+                    ),
+                  ]),
+                  @jade.typography(tag=P, color=Default, [
+                    text(
+                      "This is the main content paragraph with detailed information. It demonstrates how typography components work together to create a cohesive reading experience.",
+                    ),
+                  ]),
+                  @jade.typography(tag=Small, color=Secondary, [
+                    text(
+                      "Published on March 15, 2024 | Reading time: 3 minutes",
+                    ),
+                  ]),
+                ]),
+              ]),
+              @jade.card_footer([
+                @jade.button(
+                  [text("Read More")],
+                  Increment,
+                  variant=Solid,
+                  color=Primary,
+                  size=Sm,
+                ),
+              ]),
+            ],
+            variant=Outline,
+            color=Default,
+          ),
+          @jade.card(
+            [
+              @jade.card_header([
+                @jade.typography(tag=H4, color=Error, [text("Alert Message")]),
+              ]),
+              @jade.card_body([
+                div(class="space-y-3", [
+                  @jade.typography(tag=P, color=Error, [
+                    text(
+                      "This is an important alert message that requires immediate attention. The typography color helps convey the urgency.",
+                    ),
+                  ]),
+                  @jade.typography(tag=Small, color=Warning, [
+                    text(
+                      "Please review this information carefully before proceeding.",
+                    ),
+                  ]),
+                ]),
+              ]),
+              @jade.card_footer([
+                div(class="flex gap-2", [
+                  @jade.button(
+                    [text("Acknowledge")],
+                    Increment,
+                    variant=Solid,
+                    color=Error,
+                    size=Sm,
+                  ),
+                  @jade.button(
+                    [text("Dismiss")],
+                    Decrement,
+                    variant=Ghost,
+                    color=Error,
+                    size=Sm,
+                  ),
+                ]),
+              ]),
+            ],
+            variant=Outline,
+            color=Error,
+          ),
+        ]),
+      ]),
+
+      // Typography with custom classes
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Typography with Custom Styling"),
+        ]),
+        div(class="bg-white rounded-lg p-6 shadow-sm space-y-4", [
+          @jade.typography(
+            tag=H2,
+            color=Primary,
+            class="text-center border-b border-gray-200 pb-4",
+            [text("Centered Heading with Border")],
+          ),
+          @jade.typography(
+            tag=P,
+            color=Default,
+            class="text-justify leading-relaxed",
+            [
+              text(
+                "This paragraph demonstrates how you can combine the typography component with custom classes to achieve specific styling effects. The component provides the base typography styles while allowing you to add your own customizations.",
+              ),
+            ],
+          ),
+          @jade.typography(
+            tag=Small,
+            color=Secondary,
+            class="italic text-right",
+            [text("— Styled with custom classes")],
           ),
         ]),
       ]),
