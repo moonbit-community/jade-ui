@@ -19,10 +19,10 @@ pub fn[M] slider(
   }
 
   // calculate progress percentage
-  let progress_percent = if max - min == 0 {
-    0
+  let progress_percent = if max == min {
+    0.0
   } else {
-    (clamped_value - min) * 100 / (max - min)
+    (clamped_value - min).to_double() * 100.0 / (max - min).to_double()
   }
 
   // get styling values from theme

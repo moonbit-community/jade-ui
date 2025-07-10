@@ -60,7 +60,7 @@ pub fn get_slider_classes(class : String) -> String {
 pub fn get_slider_styles(
   thumb_height : Int,
   color_value : String,
-  progress_percent : Int
+  progress_percent : Double
 ) -> Array[String] {
   [
     "--range-bg: color-mix(in oklab,currentColor 10%, transparent)",
