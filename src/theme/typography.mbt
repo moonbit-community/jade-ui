@@ -51,5 +51,11 @@ pub fn get_typography_style(
     Warning => "text-[var(--color-warning)]"
     Error => "text-[var(--color-error)]"
   }
-  [base_style, type_style, color_style, class].join(" ")
+  // Optimize string concatenation performance, avoid creating temporary arrays
+  let result = base_style + " " + type_style + " " + color_style
+  if class.is_empty() {
+    result
+  } else {
+    result + " " + class
+  }
 }
