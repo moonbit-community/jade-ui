@@ -51,8 +51,7 @@ pub fn get_slider_classes(class : String) -> String {
     "[&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-current [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:cursor-pointer",
     "[&::-moz-range-thumb]:h-[var(--range-thumb-size)] [&::-moz-range-thumb]:w-[var(--range-thumb-size)]",
     "[&::-moz-range-thumb]:shadow-[0_0_0_8px_var(--ring-color)] [&::-moz-range-thumb]:transition-shadow [&::-moz-range-thumb]:duration-300",
-    "focus:[&::-moz-range-thumb]:shadow-[0_0_0_8px_var(--ring-color-focus)]",
-    class,
+    "focus:[&::-moz-range-thumb]:shadow-[0_0_0_8px_var(--ring-color-focus)]", class,
   ].join(" ")
 }
 
@@ -66,7 +65,9 @@ pub fn get_slider_styles(
     "--range-bg: color-mix(in oklab,currentColor 10%, transparent)",
     "--range-thumb-size: calc(var(--size-selector, .25rem) * \{thumb_height})",
     "--ring-color: transparent",
-    "--ring-color-focus: color-mix(in oklab, " + color_value + " 20%, transparent)",
+    "--ring-color-focus: color-mix(in oklab, " +
+    color_value +
+    " 20%, transparent)",
     "height: calc(var(--range-thumb-size) / 2)",
     "color: " + color_value,
     "background: linear-gradient(to right, currentColor 0%, currentColor \{progress_percent}%, var(--range-bg) \{progress_percent}%, var(--range-bg) 100%)",
