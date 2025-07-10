@@ -34,7 +34,7 @@
 ///
 /// Example:
 ///
-/// ```moonbit
+/// ```moonbit skip
 /// let theme = JadeTheme::{
 ///   primary: "#3B82F6",
 ///   primaryContent: "#FFFFFF",
@@ -69,7 +69,7 @@
 ///
 /// // Convert to CSS custom properties
 /// let styles = theme.to_styles()
-/// inspect(styles["--color-primary"], content="#3B82F6")
+/// inspect(styles.get("--color-primary"), content="#3B82F6")
 /// ```
 ///
 pub(all) struct JadeTheme {

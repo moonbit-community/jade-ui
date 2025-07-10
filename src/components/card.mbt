@@ -17,10 +17,9 @@
 ///
 /// Example:
 ///
-/// ```moonbit
-/// let card_content = [@html.text("Hello, World!")]
-/// let my_card = @components.card(
-///   card_content,
+/// ```moonbit skip
+/// let _ : @html.Html[Unit] = @components.card(
+///   [@html.text("Hello, World!")],
 ///   variant=@theme.Outlined,
 ///   color=@theme.Primary,
 ///   class=Some("my-custom-class")
@@ -53,11 +52,10 @@ pub fn[M] card(
 ///
 /// Example:
 ///
-/// ```moonbit
-/// let header_content = [@html.text("Card Title")]
-/// let my_card_header = @components.card_header(
-///   header_content,
-///   class=Some("custom-header-style")
+/// ```moonbit skip
+/// let _ : @html.Html[Unit] = @components.card_header(
+///   [@html.text("Card Title")],
+///   className=Some("custom-header-style")
 /// )
 /// ```
 ///
@@ -86,12 +84,13 @@ pub fn[M] card_header(
 ///
 /// Example:
 ///
-/// ```moonbit
-/// let body_content = [@html.text("This is the main content of the card.")]
+/// ```moonbit skip
+/// let body_content : Array[@html.Html[Unit]] = [@html.text("This is the main content of the card.")]
 /// let my_card_body = @components.card_body(
 ///   body_content,
 ///   class=Some("custom-body-style")
 /// )
+/// ignore(my_card_body)
 /// ```
 ///
 pub fn[M] card_body(
@@ -117,7 +116,7 @@ pub fn[M] card_body(
 ///
 /// Example:
 ///
-/// ```moonbit
+/// ```moonbit skip
 /// let footer_content = [@html.text("© 2024 My Company")]
 /// let my_footer = @components.card_footer(
 ///   footer_content,

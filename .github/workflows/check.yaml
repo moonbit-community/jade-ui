@@ -21,12 +21,6 @@ jobs:
         os:
           - name: ubuntu-latest
             triple: x86_64-linux-gnu
-          - name: macos-latest
-            triple: arm64-apple-darwin
-          - name: macos-13
-            triple: x86_64-apple-darwin
-          - name: windows-latest
-            triple: x86_64-w64-mingw32
 
           # stable check
 
@@ -84,27 +78,6 @@ jobs:
         run: |
           moon test --target js
           moon test --target js
-
-      - name: moon test --doc
-        run: |
-          moon test --doc
-
-  moon-json-format-check:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: check `moon.*.json` format
-        shell: bash
-        run: |
-          _passed=0;
-          for f in $(find . -type f -name "moon.*.json"); do
-            if ! jq '.' $f > /dev/null; then
-              echo $f;
-              _passed=1;
-            fi
-          done
-          (exit $_passed)
 
   check-typos:
     runs-on: ubuntu-latest

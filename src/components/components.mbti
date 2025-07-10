@@ -1,0 +1,24 @@
+package "Yoorkin/jade_ui/components"
+
+import(
+  "Yoorkin/jade_ui/theme"
+  "Yoorkin/rabbit-tea/html"
+)
+
+// Values
+fn[M] button(Array[@html.Html[M]], M, variant~ : @theme.ButtonVariant = .., size~ : @theme.ButtonSize = .., color~ : @theme.ButtonColor = .., fullWidth~ : Bool = .., ripple~ : Bool = .., className~ : String? = ..) -> @html.Html[M]
+
+fn[M] card(Array[@html.Html[M]], variant~ : @theme.CardVariant = .., color~ : @theme.CardColor = .., className~ : String? = ..) -> @html.Html[M]
+
+fn[M] card_body(Array[@html.Html[M]], className~ : String? = ..) -> @html.Html[M]
+
+fn[M] card_footer(Array[@html.Html[M]], className~ : String? = ..) -> @html.Html[M]
+
+fn[M] card_header(Array[@html.Html[M]], className~ : String? = ..) -> @html.Html[M]
+
+// Types and methods
+
+// Type aliases
+
+// Traits
+

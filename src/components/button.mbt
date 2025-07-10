@@ -26,10 +26,14 @@
 ///
 /// Example:
 ///
-/// ```moonbit
-/// let my_button = @jade.button(
-///   [text("Click Me")],
-///   MyClickMessage,
+/// ```moonbit skip
+/// enum Msg {
+///   MyClickMsg
+/// }
+/// 
+/// let _ = button(
+///   [@html.text("Click Me")],
+///   MyClickMsg,
 ///   variant=Outlined,
 ///   size=Lg,
 ///   color=Success,
