@@ -53,18 +53,3 @@ pub fn get_typography_style(
   }
   [base_style, type_style, color_style, class].join(" ")
 }
-
-///|
-pub fn get_typography_tag(typography_type : TypographyType) -> String {
-  match typography_type {
-    H1 => "h1"
-    H2 => "h2"
-    H3 => "h3"
-    H4 => "h4"
-    H5 => "h5"
-    H6 => "h6"
-    Lead => "p"
-    P => "p"
-    Small => "small"
-  }
-}
