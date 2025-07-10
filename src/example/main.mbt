@@ -13,7 +13,7 @@ struct Model {
 fn update(msg : Msg, model : Model) -> (Cmd[Msg], Model) {
   match msg {
     Increment => (none(), { ..model, count: model.count + 1 })
-    Decrement => (none(), { ..model, count: @math.maximum(0, model.count - 1) })
+    Decrement => (none(), { ..model, count: @cmp.maximum(0, model.count - 1) })
   }
 }
 
@@ -466,7 +466,7 @@ fn view(model : Model) -> Html[Msg] {
     ]),
 
     // Card style showcase
-    div(class="max-w-6xl mx-auto", [
+    div(class="max-w-6xl mx-auto mb-12", [
       h2(class="text-2xl font-bold mb-6 text-gray-800", [
         text("Card Component Styles"),
       ]),
@@ -713,6 +713,242 @@ fn view(model : Model) -> Html[Msg] {
                     Decrement,
                     variant=Ghost,
                     color=Primary,
+                    size=Sm,
+                  ),
+                ]),
+              ]),
+            ],
+            variant=Gradient,
+            color=Secondary,
+          ),
+        ]),
+      ]),
+    ]),
+
+    // Progress style showcase
+    div(class="max-w-6xl mx-auto", [
+      h2(class="text-2xl font-bold mb-6 text-gray-800", [
+        text("Progress Component Styles"),
+      ]),
+
+      // Progress variants
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Progress Variants"),
+        ]),
+        div(class="space-y-6", [
+          div(class="", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [
+              text("Filled Variant"),
+            ]),
+            div(class="space-y-3", [
+              @jade.progress(value=75, variant=Filled, color=Primary, size=Md),
+              @jade.progress(value=60, variant=Filled, color=Secondary, size=Md),
+              @jade.progress(value=45, variant=Filled, color=Success, size=Md),
+              @jade.progress(value=30, variant=Filled, color=Info, size=Md),
+              @jade.progress(value=85, variant=Filled, color=Warning, size=Md),
+              @jade.progress(value=25, variant=Filled, color=Error, size=Md),
+            ]),
+          ]),
+          div(class="", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [
+              text("Gradient Variant"),
+            ]),
+            div(class="space-y-3", [
+              @jade.progress(value=75, variant=Gradient, color=Primary, size=Md),
+              @jade.progress(
+                value=60,
+                variant=Gradient,
+                color=Secondary,
+                size=Md,
+              ),
+              @jade.progress(value=45, variant=Gradient, color=Success, size=Md),
+              @jade.progress(value=30, variant=Gradient, color=Info, size=Md),
+              @jade.progress(value=85, variant=Gradient, color=Warning, size=Md),
+              @jade.progress(value=25, variant=Gradient, color=Error, size=Md),
+            ]),
+          ]),
+        ]),
+      ]),
+
+      // Progress sizes
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Progress Sizes"),
+        ]),
+        div(class="space-y-6", [
+          div(class="", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [
+              text("Small Size"),
+            ]),
+            @jade.progress(value=70, variant=Filled, color=Primary, size=Sm),
+          ]),
+          div(class="", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [
+              text("Medium Size"),
+            ]),
+            @jade.progress(value=70, variant=Filled, color=Primary, size=Md),
+          ]),
+          div(class="", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [
+              text("Large Size"),
+            ]),
+            @jade.progress(value=70, variant=Filled, color=Primary, size=Lg),
+          ]),
+        ]),
+      ]),
+
+      // Progress without labels
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Progress Without Labels"),
+        ]),
+        div(class="space-y-3", [
+          @jade.progress(value=25, variant=Filled, color=Primary, size=Md),
+          @jade.progress(value=50, variant=Gradient, color=Success, size=Md),
+          @jade.progress(value=75, variant=Filled, color=Warning, size=Md),
+          @jade.progress(value=100, variant=Gradient, color=Error, size=Md),
+        ]),
+      ]),
+
+      // Progress with dynamic values
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Progress with Dynamic Values"),
+        ]),
+        div(class="space-y-4", [
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [
+              text("Counter-based Progress"),
+            ]),
+            @jade.progress(
+              value=@cmp.minimum(100, model.count * 5),
+              variant=Gradient,
+              color=Primary,
+              size=Lg,
+            ),
+            @html.p(class="text-sm text-gray-500 mt-2", [
+              @html.text(
+                "Progress value: \{@cmp.minimum(100, model.count * 5)}% (based on counter × 5)",
+              ),
+            ]),
+          ]),
+        ]),
+      ]),
+
+      // Progress showcase in cards
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Progress in Cards"),
+        ]),
+        div(class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6", [
+          @jade.card(
+            [
+              @jade.card_header([
+                h4(class="font-semibold", [text("Task Progress")]),
+              ]),
+              @jade.card_body([
+                div(class="space-y-3", [
+                  @jade.progress(
+                    value=80,
+                    variant=Filled,
+                    color=Success,
+                    size=Md,
+                  ),
+                  @jade.progress(
+                    value=60,
+                    variant=Filled,
+                    color=Warning,
+                    size=Md,
+                  ),
+                  @jade.progress(value=20, variant=Filled, color=Error, size=Md),
+                ]),
+              ]),
+              @jade.card_footer([
+                @jade.button(
+                  [text("View Details")],
+                  Increment,
+                  variant=Solid,
+                  color=Primary,
+                  size=Sm,
+                ),
+              ]),
+            ],
+            variant=Solid,
+            color=Default,
+          ),
+          @jade.card(
+            [
+              @jade.card_header([
+                h4(class="font-semibold", [text("System Status")]),
+              ]),
+              @jade.card_body([
+                div(class="space-y-3", [
+                  @jade.progress(
+                    value=95,
+                    variant=Gradient,
+                    color=Success,
+                    size=Md,
+                  ),
+                  @jade.progress(
+                    value=75,
+                    variant=Gradient,
+                    color=Warning,
+                    size=Md,
+                  ),
+                  @jade.progress(
+                    value=40,
+                    variant=Gradient,
+                    color=Info,
+                    size=Md,
+                  ),
+                ]),
+              ]),
+              @jade.card_footer([
+                @jade.button(
+                  [text("Monitor")],
+                  Increment,
+                  variant=Solid,
+                  color=Primary,
+                  size=Sm,
+                ),
+              ]),
+            ],
+            variant=Outline,
+            color=Info,
+          ),
+          @jade.card(
+            [
+              @jade.card_header([
+                h4(class="font-semibold", [text("Download Progress")]),
+              ]),
+              @jade.card_body([
+                div(class="space-y-3", [
+                  @jade.progress(
+                    value=35,
+                    variant=Gradient,
+                    color=Primary,
+                    size=Lg,
+                  ),
+                  @html.p(class="text-sm text-gray-500", [
+                    @html.text("Downloading... 35% complete"),
+                  ]),
+                ]),
+              ]),
+              @jade.card_footer([
+                div(class="flex gap-2", [
+                  @jade.button(
+                    [text("Pause")],
+                    Decrement,
+                    variant=Outlined,
+                    color=Warning,
+                    size=Sm,
+                  ),
+                  @jade.button(
+                    [text("Cancel")],
+                    Decrement,
+                    variant=Ghost,
+                    color=Error,
                     size=Sm,
                   ),
                 ]),
