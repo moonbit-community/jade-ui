@@ -18,6 +18,8 @@ fn get_card_header_style(className~ : String?) -> String
 
 fn get_card_style(variant~ : CardVariant, color~ : CardColor, className~ : String?) -> String
 
+fn get_typography_style(TypographyType, TypographyColor, String) -> String
+
 fn light() -> JadeTheme
 
 // Types and methods
@@ -97,6 +99,29 @@ impl Eq for JadeTheme
 impl Show for JadeTheme
 impl ToJson for JadeTheme
 impl @json.FromJson for JadeTheme
+
+pub(all) enum TypographyColor {
+  Inherit
+  Default
+  Primary
+  Secondary
+  Success
+  Info
+  Warning
+  Error
+}
+
+pub(all) enum TypographyType {
+  H1
+  H2
+  H3
+  H4
+  H5
+  H6
+  Lead
+  P
+  Small
+}
 
 // Type aliases
 
