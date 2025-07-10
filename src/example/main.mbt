@@ -13,7 +13,7 @@ struct Model {
 fn update(msg : Msg, model : Model) -> (Cmd[Msg], Model) {
   match msg {
     Increment => (none(), { ..model, count: model.count + 1 })
-    Decrement => (none(), { ..model, count: @math.maximum(0, model.count - 1) })
+    Decrement => (none(), { ..model, count: @cmp.maximum(0, model.count - 1) })
   }
 }
 
