@@ -16,6 +16,8 @@ fn[M] card_footer(Array[@html.Html[M]], className~ : String? = ..) -> @html.Html
 
 fn[M] card_header(Array[@html.Html[M]], className~ : String? = ..) -> @html.Html[M]
 
+fn[M] slider(value~ : Int = .., min~ : Int = .., max~ : Int = .., on_input~ : (Int) -> M, color~ : @theme.SliderColor = .., size~ : @theme.SliderSize = .., class~ : String = .., childrens? : Array[@html.Html[M]]) -> @html.Html[M]
+
 // Types and methods
 
 // Type aliases
