@@ -727,7 +727,6 @@ fn view(model : Model) -> Html[Msg] {
       ]),
     ]),
 
-
     // Typography style showcase
     div(class="max-w-6xl mx-auto", [
       h2(class="text-2xl font-bold mb-6 text-gray-800", [
@@ -809,45 +808,7 @@ fn view(model : Model) -> Html[Msg] {
           ]),
         ]),
       ]),
-
-      // Typography in combination
-      div(class="mb-8", [
-        h3(class="text-lg font-semibold mb-4 text-gray-700", [
-          text("Typography Combinations"),
-        ]),
-        div(class="grid grid-cols-1 md:grid-cols-2 gap-6", [
-          @jade.card(
-            [
-              @jade.card_header([
-                @jade.typography(tag=H4, color=Primary, [text("Article Header")]),
-              ]),
-              @jade.card_body([
-                div(class="space-y-3", [
-                  @jade.typography(tag=Lead, color=Default, [
-                    text(
-                      "This is an introductory paragraph that captures the reader's attention and provides an overview of what's to come.",
-                    ),
-                  ]),
-                  @jade.typography(tag=P, color=Default, [
-                    text(
-                      "This is the main content paragraph with detailed information. It demonstrates how typography components work together to create a cohesive reading experience.",
-                    ),
-                  ]),
-                  @jade.typography(tag=Small, color=Secondary, [
-                    text(
-                      "Published on March 15, 2024 | Reading time: 3 minutes",
-                    ),
-                  ]),
-                ]),
-              ]),
-            ],
-            variant=Solid,
-            color=Primary,
-          ),
-        ]),
-      ]),
     ]),
-
     // Slider style showcase
     div(class="max-w-6xl mx-auto", [
       h2(class="text-2xl font-bold mb-6 text-gray-800", [
@@ -1112,240 +1073,57 @@ fn view(model : Model) -> Html[Msg] {
           text("Slider in Cards"),
         ]),
         div(class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6", [
-          @jade.card(
-            [
-              @jade.card_header([
-                h4(class="font-semibold", [text("Volume Control")]),
-              ]),
-              @jade.card_body([
-                div(class="space-y-4", [
-                  @html.label(class="text-sm font-medium text-gray-700", [
-                    @html.text("Master Volume"),
-                  ]),
-                  @jade.slider(
-                    value=model.count,
-                    min=0,
-                    max=100,
-                    color=Primary,
-                    size=Md,
-                    on_input=SliderUpdate(_),
-                  ),
-                  @html.label(class="text-sm font-medium text-gray-700", [
-                    @html.text("Bass"),
-                  ]),
-                  @jade.slider(
-                    value=model.count,
-                    min=0,
-                    max=100,
-                    color=Success,
-                    size=Sm,
-                    on_input=SliderUpdate(_),
-                  ),
-                  @html.label(class="text-sm font-medium text-gray-700", [
-                    @html.text("Treble"),
-                  ]),
-                  @jade.slider(
-                    value=model.count,
-                    min=0,
-                    max=100,
-                    color=Warning,
-                    size=Sm,
-                    on_input=SliderUpdate(_),
-                  ),
-
+          @jade.card([
+            @jade.card_header([
+              h4(class="font-semibold", [text("Volume Control")]),
+            ]),
+            @jade.card_body([
+              div(class="space-y-4", [
+                @html.label(class="text-sm font-medium text-gray-700", [
+                  @html.text("Master Volume"),
                 ]),
-              ]),
-              @jade.card_footer([
-                @jade.button(
-                  [text("Read More")],
-                  Increment,
-                  variant=Solid,
+                @jade.slider(
+                  value=model.count,
+                  min=0,
+                  max=100,
                   color=Primary,
+                  size=Md,
+                  on_input=SliderUpdate(_),
+                ),
+                @html.label(class="text-sm font-medium text-gray-700", [
+                  @html.text("Bass"),
+                ]),
+                @jade.slider(
+                  value=model.count,
+                  min=0,
+                  max=100,
+                  color=Success,
                   size=Sm,
+                  on_input=SliderUpdate(_),
+                ),
+                @html.label(class="text-sm font-medium text-gray-700", [
+                  @html.text("Treble"),
+                ]),
+                @jade.slider(
+                  value=model.count,
+                  min=0,
+                  max=100,
+                  color=Warning,
+                  size=Sm,
+                  on_input=SliderUpdate(_),
                 ),
               ]),
-            ],
-          ),
-          @jade.card(
-            [
-              @jade.card_header([
-                @jade.typography(tag=H4, color=Error, [text("Alert Message")]),
-              ]),
-              @jade.card_body([
-                div(class="space-y-3", [
-                  @jade.typography(tag=P, color=Error, [
-                    text(
-                      "This is an important alert message that requires immediate attention. The typography color helps convey the urgency.",
-                    ),
-                  ]),
-                  @jade.typography(tag=Small, color=Warning, [
-                    text(
-                      "Please review this information carefully before proceeding.",
-                    ),
-                  ]),
-                ]),
-              ]),
-              @jade.card_header([h4(class="font-semibold", [text("Settings")])]),
-              @jade.card_body([
-                div(class="space-y-4", [
-
-                  @html.label(class="text-sm font-medium text-gray-700", [
-                    @html.text("Brightness"),
-                  ]),
-                  @jade.slider(
-                    value=model.count,
-                    min=0,
-                    max=100,
-                    color=Warning,
-                    size=Md,
-                    on_input=SliderUpdate(_),
-                  ),
-                  @html.label(class="text-sm font-medium text-gray-700", [
-                    @html.text("Contrast"),
-                  ]),
-                  @jade.slider(
-                    value=model.count,
-                    min=0,
-                    max=100,
-                    color=Info,
-                    size=Md,
-                    on_input=SliderUpdate(_),
-                  ),
-                  @html.label(class="text-sm font-medium text-gray-700", [
-                    @html.text("Saturation"),
-                  ]),
-                  @jade.slider(
-                    value=model.count,
-                    min=0,
-                    max=100,
-                    color=Success,
-                    size=Md,
-                    on_input=SliderUpdate(_),
-                  ),
-                ]),
-              ]),
-              @jade.card_footer([
-                div(class="flex gap-2", [
-                  @jade.button(
-                    [text("Acknowledge")],
-                    Increment,
-                    variant=Solid,
-                    color=Error,
-                    size=Sm,
-                  ),
-                  @jade.button(
-                    [text("Dismiss")],
-                    Decrement,
-                    variant=Ghost,
-                    color=Error,
-                    size=Sm,
-                  ),
-                  @jade.button(
-                    [text("Apply")],
-                    Increment,
-                    variant=Solid,
-                    color=Primary,
-                  ),
-                  @jade.button(
-                    [text("Reset")],
-                    SliderUpdate(0),
-                    variant=Ghost,
-                    color=Primary,
-                    size=Sm,
-                  ),
-                ]),
-              ]),
-            ],
-            variant=Outline,
-            color=Error,
-          ),
-        ]),
-      ]),
-
-      // Typography with custom classes
-      div(class="mb-8", [
-        h3(class="text-lg font-semibold mb-4 text-gray-700", [
-          text("Typography with Custom Styling"),
-        ]),
-        div(class="bg-white rounded-lg p-6 shadow-sm space-y-4", [
-          @jade.typography(
-            tag=H2,
-            color=Primary,
-            class="text-center border-b border-gray-200 pb-4",
-            [text("Centered Heading with Border")],
-          ),
-          @jade.typography(
-            tag=P,
-            color=Default,
-            class="text-justify leading-relaxed",
-            [
-              text(
-                "This paragraph demonstrates how you can combine the typography component with custom classes to achieve specific styling effects. The component provides the base typography styles while allowing you to add your own customizations.",
+            ]),
+            @jade.card_footer([
+              @jade.button(
+                [text("Read More")],
+                Increment,
+                variant=Solid,
+                color=Primary,
+                size=Sm,
               ),
-            ],
-          ),
-          @jade.typography(
-            tag=Small,
-            color=Secondary,
-            class="italic text-right",
-            [text("— Styled with custom classes")],
-            color=Info,
-          ),
-          @jade.card(
-            [
-              @jade.card_header([
-                h4(class="font-semibold", [text("Performance")]),
-              ]),
-              @jade.card_body([
-                div(class="space-y-4", [
-                  @html.label(class="text-sm font-medium text-gray-700", [
-                    @html.text("CPU Usage"),
-                  ]),
-                  @jade.slider(
-                    value=45,
-                    min=0,
-                    max=100,
-                    color=Success,
-                    size=Md,
-                    on_input=SliderUpdate(_),
-                  ),
-                  @html.label(class="text-sm font-medium text-gray-700", [
-                    @html.text("Memory Usage"),
-                  ]),
-                  @jade.slider(
-                    value=model.count,
-                    min=0,
-                    max=100,
-                    color=Warning,
-                    size=Md,
-                    on_input=SliderUpdate(_),
-                  ),
-                  @html.label(class="text-sm font-medium text-gray-700", [
-                    @html.text("Disk Usage"),
-                  ]),
-                  @jade.slider(
-                    value=model.count,
-                    min=0,
-                    max=100,
-                    color=Error,
-                    size=Md,
-                    on_input=SliderUpdate(_),
-                  ),
-                ]),
-              ]),
-              @jade.card_footer([
-                @jade.button(
-                  [text("Optimize")],
-                  Increment,
-                  variant=Solid,
-                  color=Primary,
-                  size=Sm,
-                ),
-              ]),
-            ],
-            variant=Gradient,
-            color=Secondary,
-          ),
+            ]),
+          ]),
         ]),
       ]),
     ]),
