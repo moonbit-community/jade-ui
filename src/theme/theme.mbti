@@ -18,6 +18,14 @@ fn get_card_header_style(className~ : String?) -> String
 
 fn get_card_style(variant~ : CardVariant, color~ : CardColor, className~ : String?) -> String
 
+fn get_input_color_class(InputColor) -> String
+
+fn get_input_size_class(InputSize) -> String
+
+fn get_input_style(variant~ : InputVariant, size~ : InputSize, color~ : InputColor, is_error~ : Bool, is_success~ : Bool, is_pill~ : Bool, disabled~ : Bool, class~ : String?) -> String
+
+fn get_input_variant_class(InputVariant) -> String
+
 fn get_slider_classes(String) -> String
 
 fn get_slider_color_value(SliderColor) -> String
@@ -71,6 +79,37 @@ pub(all) enum CardVariant {
   Outline
   Gradient
 }
+
+pub(all) enum InputColor {
+  Default
+  Primary
+  Secondary
+  Info
+  Success
+  Warning
+  Error
+}
+impl Eq for InputColor
+impl Show for InputColor
+
+pub(all) enum InputSize {
+  Xs
+  Sm
+  Md
+  Lg
+  Xl
+}
+impl Eq for InputSize
+impl Show for InputSize
+
+pub(all) enum InputVariant {
+  Ghost
+  Outlined
+  Solid
+  Gradient
+}
+impl Eq for InputVariant
+impl Show for InputVariant
 
 pub(all) struct JadeTheme {
   primary : String

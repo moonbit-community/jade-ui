@@ -16,6 +16,8 @@ fn[M] card_footer(Array[@html.Html[M]], className~ : String? = ..) -> @html.Html
 
 fn[M] card_header(Array[@html.Html[M]], className~ : String? = ..) -> @html.Html[M]
 
+fn[M] input(String, (String) -> M, placeholder? : String, read_only~ : Bool = .., variant~ : @theme.InputVariant = .., size~ : @theme.InputSize = .., color~ : @theme.InputColor = .., is_error~ : Bool = .., is_success~ : Bool = .., is_pill~ : Bool = .., disabled~ : Bool = .., class? : String) -> @html.Html[M]
+
 fn[M] slider(value~ : Int = .., min~ : Int = .., max~ : Int = .., on_input~ : (Int) -> M, color~ : @theme.SliderColor = .., size~ : @theme.SliderSize = .., class~ : String = .., childrens? : Array[@html.Html[M]]) -> @html.Html[M]
 
 fn[M] typography(tag~ : @theme.TypographyType = .., color~ : @theme.TypographyColor = .., class~ : String = .., Array[@html.Html[M]]) -> @html.Html[M]

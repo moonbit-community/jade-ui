@@ -3,11 +3,13 @@ enum Msg {
   Increment
   Decrement
   SliderUpdate(Int)
+  InputUpdate(String)
 }
 
 ///|
 struct Model {
   count : Int
+  inputValue : String
 }
 
 ///|
@@ -16,6 +18,7 @@ fn update(msg : Msg, model : Model) -> (Cmd[Msg], Model) {
     Increment => (none(), { ..model, count: model.count + 1 })
     Decrement => (none(), { ..model, count: @cmp.maximum(0, model.count - 1) })
     SliderUpdate(value) => (none(), { ..model, count: value })
+    InputUpdate(value) => (none(), { ..model, inputValue: value })
   }
 }
 
@@ -1127,6 +1130,286 @@ fn view(model : Model) -> Html[Msg] {
         ]),
       ]),
     ]),
+
+    // Input style showcase
+    div(class="max-w-6xl mx-auto", [
+      h2(class="text-2xl font-bold mb-6 text-gray-800", [
+        text("Input Component Styles"),
+      ]),
+
+      // Input variants
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Input Variants"),
+        ]),
+        div(class="space-y-4", [
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [
+              text("Ghost Variant"),
+            ]),
+            @jade.input(
+              model.inputValue,
+              InputUpdate(_),
+              placeholder="Enter text...",
+              variant=Ghost,
+              color=Primary,
+            ),
+          ]),
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [
+              text("Outlined Variant"),
+            ]),
+            @jade.input(
+              model.inputValue,
+              InputUpdate(_),
+              placeholder="Enter text...",
+              variant=Outlined,
+              color=Primary,
+            ),
+          ]),
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [
+              text("Solid Variant"),
+            ]),
+            @jade.input(
+              model.inputValue,
+              InputUpdate(_),
+              placeholder="Enter text...",
+              variant=Solid,
+              color=Primary,
+            ),
+          ]),
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [
+              text("Gradient Variant"),
+            ]),
+            @jade.input(
+              model.inputValue,
+              InputUpdate(_),
+              placeholder="Enter text...",
+              variant=Gradient,
+              color=Primary,
+            ),
+          ]),
+        ]),
+      ]),
+
+      // Input colors
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Input Colors"),
+        ]),
+        div(class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4", [
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [text("Primary")]),
+            @jade.input(
+              model.inputValue,
+              InputUpdate(_),
+              placeholder="Primary color",
+              color=Primary,
+            ),
+          ]),
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [
+              text("Secondary"),
+            ]),
+            @jade.input(
+              model.inputValue,
+              InputUpdate(_),
+              placeholder="Secondary color",
+              color=Secondary,
+            ),
+          ]),
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [text("Success")]),
+            @jade.input(
+              model.inputValue,
+              InputUpdate(_),
+              placeholder="Success color",
+              color=Success,
+            ),
+          ]),
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [text("Info")]),
+            @jade.input(
+              model.inputValue,
+              InputUpdate(_),
+              placeholder="Info color",
+              color=Info,
+            ),
+          ]),
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [text("Warning")]),
+            @jade.input(
+              model.inputValue,
+              InputUpdate(_),
+              placeholder="Warning color",
+              color=Warning,
+            ),
+          ]),
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [text("Error")]),
+            @jade.input(
+              model.inputValue,
+              InputUpdate(_),
+              placeholder="Error color",
+              color=Error,
+            ),
+          ]),
+        ]),
+      ]),
+
+      // Input sizes
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Input Sizes"),
+        ]),
+        div(class="space-y-4", [
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [
+              text("Extra Small (Xs)"),
+            ]),
+            @jade.input(
+              model.inputValue,
+              InputUpdate(_),
+              placeholder="Extra small input",
+              size=Xs,
+              color=Primary,
+            ),
+          ]),
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [
+              text("Small (Sm)"),
+            ]),
+            @jade.input(
+              model.inputValue,
+              InputUpdate(_),
+              placeholder="Small input",
+              size=Sm,
+              color=Primary,
+            ),
+          ]),
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [
+              text("Medium (Md)"),
+            ]),
+            @jade.input(
+              model.inputValue,
+              InputUpdate(_),
+              placeholder="Medium input",
+              size=Md,
+              color=Primary,
+            ),
+          ]),
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [
+              text("Large (Lg)"),
+            ]),
+            @jade.input(
+              model.inputValue,
+              InputUpdate(_),
+              placeholder="Large input",
+              size=Lg,
+              color=Primary,
+            ),
+          ]),
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [
+              text("Extra Large (Xl)"),
+            ]),
+            @jade.input(
+              model.inputValue,
+              InputUpdate(_),
+              placeholder="Extra large input",
+              size=Xl,
+              color=Primary,
+            ),
+          ]),
+        ]),
+      ]),
+
+      // Input states
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Input States"),
+        ]),
+        div(class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4", [
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [
+              text("Normal State"),
+            ]),
+            @jade.input(
+              model.inputValue,
+              InputUpdate(_),
+              placeholder="Normal input",
+              color=Primary,
+            ),
+          ]),
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [
+              text("Error State"),
+            ]),
+            @jade.input(
+              model.inputValue,
+              InputUpdate(_),
+              placeholder="Error input",
+              is_error=true,
+              color=Primary,
+            ),
+          ]),
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [
+              text("Success State"),
+            ]),
+            @jade.input(
+              model.inputValue,
+              InputUpdate(_),
+              placeholder="Success input",
+              is_success=true,
+              color=Primary,
+            ),
+          ]),
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [
+              text("Disabled State"),
+            ]),
+            @jade.input(
+              model.inputValue,
+              InputUpdate(_),
+              placeholder="Disabled input",
+              disabled=true,
+              color=Primary,
+            ),
+          ]),
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [
+              text("Pill Shape"),
+            ]),
+            @jade.input(
+              model.inputValue,
+              InputUpdate(_),
+              placeholder="Pill shaped input",
+              is_pill=true,
+              color=Primary,
+            ),
+          ]),
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [
+              text("Current Value"),
+            ]),
+            @html.p(class="text-sm text-gray-500 mb-2", [
+              text("Input value: \"{model.inputValue}\""),
+            ]),
+            @jade.input(
+              model.inputValue,
+              InputUpdate(_),
+              placeholder="Type something...",
+              color=Primary,
+            ),
+          ]),
+        ]),
+      ]),
+    ]),
   ])
 }
 
@@ -1134,6 +1417,6 @@ fn view(model : Model) -> Html[Msg] {
 /// see README.md to getting started.
 fn main {
   @theme.light().apply()
-  let model = { count: 0 }
+  let model = { count: 0, inputValue: "" }
   @tea.startup(model~, update~, view~)
 }
