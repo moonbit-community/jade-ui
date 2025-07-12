@@ -1,6 +1,16 @@
 {
   "import": [
-    "Yoorkin/rabbit-tea/html",
-    "Yoorkin/jade_ui/theme"
+    {
+      "path": "Yoorkin/rabbit-tea/html",
+      "alias": "html"
+    },
+    {
+      "path": "Yoorkin/rabbit-tea/experimental/html",
+      "alias": "experimental_html"
+    },
+    {
+      "path": "Yoorkin/jade_ui/theme",
+      "alias": "theme"
+    }
   ]
 }

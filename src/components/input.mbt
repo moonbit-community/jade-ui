@@ -32,7 +32,7 @@ pub fn[M] input(
   value : String,
   on_input : (String) -> M,
   placeholder? : String,
-  read_only~ : Bool = false,
+  readonly_~ : Bool = false,
   variant~ : @theme.InputVariant = Solid,
   size~ : @theme.InputSize = Md,
   color~ : @theme.InputColor = Primary,
@@ -52,12 +52,14 @@ pub fn[M] input(
     disabled~,
     class~,
   )
-  @html.input(
-    input_type=Text,
+  @experimental_html.input(
+    type_="text",
     class=klass,
-    input=fn(ev) { on_input(ev) },
+    on_input=fn(ev) { on_input(ev) },
     value~,
     placeholder?,
-    read_only~,
+    readonly_~,
+    disabled~,
+    [],
   )
 }
