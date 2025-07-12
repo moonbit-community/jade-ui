@@ -67,14 +67,26 @@ pub(all) enum InputVariant {
 ///
 /// Returns a string containing the CSS classes for the specified size.
 ///
-pub fn get_input_size_class(size : InputSize) -> String {
-  match size {
-    Xs => "h-6 px-2 text-xs rounded"
-    Sm => "h-8 px-3 text-sm rounded"
-    Md => "h-10 px-4 text-sm rounded-md"
-    Lg => "h-12 px-4 text-base rounded-lg"
-    Xl => "h-14 px-6 text-lg rounded-lg"
+pub fn get_input_size_class(is_pill : Bool, size : InputSize) -> String {
+  let rounded = if is_pill {
+    "rounded-full"
+  } else {
+    match size {
+      Xs => "rounded"
+      Sm => "rounded"
+      Md => "rounded-md"
+      Lg => "rounded-lg"
+      Xl => "rounded-xl"
+    }
   }
+  let size_class = match size {
+    Xs => "h-6 px-2 text-xs"
+    Sm => "h-8 px-3 text-sm"
+    Md => "h-10 px-4 text-sm"
+    Lg => "h-12 px-4 text-base"
+    Xl => "h-14 px-6 text-lg"
+  }
+  size_class + " " + rounded
 }
 
 ///|
@@ -152,7 +164,7 @@ pub fn get_input_style(
   class~ : String?
 ) -> String {
   let base_classes = "w-full transition-all duration-200 ease-in-out outline-none focus:ring-2 focus:ring-offset-0"
-  let size_class = get_input_size_class(size)
+  let size_class = get_input_size_class(is_pill, size)
   let color_class = if is_error {
     "border-[var(--color-error)] focus:border-[var(--color-error)] focus:ring-[var(--color-error)]/20"
   } else if is_success {
@@ -161,7 +173,6 @@ pub fn get_input_style(
     get_input_color_class(color)
   }
   let variant_class = get_input_variant_class(variant)
-  let shape_class = if is_pill { "rounded-full" } else { "" }
   let disabled_class = if disabled {
     "opacity-50 cursor-not-allowed"
   } else {
@@ -173,7 +184,6 @@ pub fn get_input_style(
     size_class,
     color_class,
     variant_class,
-    shape_class,
     disabled_class,
     placeholder_class,
     class.unwrap_or(""),

@@ -1386,7 +1386,7 @@ fn view(model : Model) -> Html[Msg] {
               text("Current Value"),
             ]),
             @html.p(class="text-sm text-gray-500 mb-2", [
-              text("Input value: \"{model.inputValue}\""),
+              text("Input value: \"\{model.inputValue}\""),
             ]),
             @jade.input(
               model.inputValue,
