@@ -2,6 +2,7 @@
 enum Msg {
   Increment
   Decrement
+  SliderUpdate(Int)
 }
 
 ///|
@@ -14,6 +15,7 @@ fn update(msg : Msg, model : Model) -> (Cmd[Msg], Model) {
   match msg {
     Increment => (none(), { ..model, count: model.count + 1 })
     Decrement => (none(), { ..model, count: @cmp.maximum(0, model.count - 1) })
+    SliderUpdate(value) => (none(), { ..model, count: value })
   }
 }
 
@@ -466,7 +468,7 @@ fn view(model : Model) -> Html[Msg] {
     ]),
 
     // Card style showcase
-    div(class="max-w-6xl mx-auto", [
+    div(class="max-w-6xl mx-auto mb-12", [
       h2(class="text-2xl font-bold mb-6 text-gray-800", [
         text("Card Component Styles"),
       ]),
@@ -725,6 +727,7 @@ fn view(model : Model) -> Html[Msg] {
       ]),
     ]),
 
+
     // Typography style showcase
     div(class="max-w-6xl mx-auto", [
       h2(class="text-2xl font-bold mb-6 text-gray-800", [
@@ -837,6 +840,321 @@ fn view(model : Model) -> Html[Msg] {
                   ]),
                 ]),
               ]),
+            ],
+            variant=Solid,
+            color=Primary,
+          ),
+        ]),
+      ]),
+    ]),
+
+    // Slider style showcase
+    div(class="max-w-6xl mx-auto", [
+      h2(class="text-2xl font-bold mb-6 text-gray-800", [
+        text("Slider Component Styles"),
+      ]),
+
+      // Slider colors
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Slider Colors"),
+        ]),
+        div(class="space-y-6", [
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [
+              text("Primary Color"),
+            ]),
+            @jade.slider(
+              value=model.count,
+              min=0,
+              max=100,
+              color=Primary,
+              size=Md,
+              on_input=SliderUpdate(_),
+            ),
+            @html.p(class="text-sm text-gray-500 mt-2", [
+              @html.text("Value: \{model.count}"),
+            ]),
+          ]),
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [
+              text("Secondary Color"),
+            ]),
+            @jade.slider(
+              value=model.count,
+              min=0,
+              max=100,
+              color=Secondary,
+              size=Md,
+              on_input=SliderUpdate(_),
+            ),
+            @html.p(class="text-sm text-gray-500 mt-2", [
+              @html.text("Value: \{model.count}"),
+            ]),
+          ]),
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [
+              text("Success Color"),
+            ]),
+            @jade.slider(
+              value=model.count,
+              min=0,
+              max=100,
+              color=Success,
+              size=Md,
+              on_input=SliderUpdate(_),
+            ),
+            @html.p(class="text-sm text-gray-500 mt-2", [
+              @html.text("Value: \{model.count}"),
+            ]),
+          ]),
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [
+              text("Info Color"),
+            ]),
+            @jade.slider(
+              value=model.count,
+              min=0,
+              max=100,
+              color=Info,
+              size=Md,
+              on_input=SliderUpdate(_),
+            ),
+            @html.p(class="text-sm text-gray-500 mt-2", [
+              @html.text("Value: \{model.count}"),
+            ]),
+          ]),
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [
+              text("Warning Color"),
+            ]),
+            @jade.slider(
+              value=model.count,
+              min=0,
+              max=100,
+              color=Warning,
+              size=Md,
+              on_input=SliderUpdate(_),
+            ),
+            @html.p(class="text-sm text-gray-500 mt-2", [
+              @html.text("Value: \{model.count}"),
+            ]),
+          ]),
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [
+              text("Error Color"),
+            ]),
+            @jade.slider(
+              value=model.count,
+              min=0,
+              max=100,
+              color=Error,
+              size=Md,
+              on_input=SliderUpdate(_),
+            ),
+            @html.p(class="text-sm text-gray-500 mt-2", [
+              @html.text("Value: \{model.count}"),
+            ]),
+          ]),
+        ]),
+      ]),
+
+      // Slider sizes
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Slider Sizes"),
+        ]),
+        div(class="space-y-6", [
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [
+              text("Extra Small (Xs)"),
+            ]),
+            @jade.slider(
+              value=model.count,
+              min=0,
+              max=100,
+              color=Primary,
+              size=Xs,
+              on_input=SliderUpdate(_),
+            ),
+          ]),
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [
+              text("Small (Sm)"),
+            ]),
+            @jade.slider(
+              value=model.count,
+              min=0,
+              max=100,
+              color=Primary,
+              size=Sm,
+              on_input=SliderUpdate(_),
+            ),
+          ]),
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [
+              text("Medium (Md)"),
+            ]),
+            @jade.slider(
+              value=model.count,
+              min=0,
+              max=100,
+              color=Primary,
+              size=Md,
+              on_input=SliderUpdate(_),
+            ),
+          ]),
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [
+              text("Large (Lg)"),
+            ]),
+            @jade.slider(
+              value=model.count,
+              min=0,
+              max=100,
+              color=Primary,
+              size=Lg,
+              on_input=SliderUpdate(_),
+            ),
+          ]),
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [
+              text("Extra Large (Xl)"),
+            ]),
+            @jade.slider(
+              value=model.count,
+              min=0,
+              max=100,
+              color=Primary,
+              size=Xl,
+              on_input=SliderUpdate(_),
+            ),
+          ]),
+        ]),
+      ]),
+
+      // Slider with different ranges
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Slider with Different Ranges"),
+        ]),
+        div(class="space-y-6", [
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [
+              text("Range 0-100 (Default)"),
+            ]),
+            @jade.slider(
+              value=model.count,
+              min=0,
+              max=100,
+              color=Primary,
+              size=Md,
+              on_input=SliderUpdate(_),
+            ),
+            @html.p(class="text-sm text-gray-500 mt-2", [
+              @html.text("Min: 0, Max: 100, Value: \{model.count}"),
+            ]),
+          ]),
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [
+              text("Range 0-50"),
+            ]),
+            @jade.slider(
+              value=model.count,
+              min=0,
+              max=50,
+              color=Success,
+              size=Md,
+              on_input=SliderUpdate(_),
+            ),
+            @html.p(class="text-sm text-gray-500 mt-2", [
+              @html.text("Min: 0, Max: 50, Value: \{model.count}"),
+            ]),
+          ]),
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [
+              text("Range 10-90"),
+            ]),
+            @jade.slider(
+              value=model.count,
+              min=10,
+              max=90,
+              color=Warning,
+              size=Md,
+              on_input=SliderUpdate(_),
+            ),
+            @html.p(class="text-sm text-gray-500 mt-2", [
+              @html.text("Min: 10, Max: 90, Value: \{model.count}"),
+            ]),
+          ]),
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [
+              text("Range 0-200"),
+            ]),
+            @jade.slider(
+              value=model.count,
+              min=0,
+              max=200,
+              color=Info,
+              size=Md,
+              on_input=SliderUpdate(_),
+            ),
+            @html.p(class="text-sm text-gray-500 mt-2", [
+              @html.text("Min: 0, Max: 200, Value: \{model.count}"),
+            ]),
+          ]),
+        ]),
+      ]),
+
+      // Slider in cards
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Slider in Cards"),
+        ]),
+        div(class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6", [
+          @jade.card(
+            [
+              @jade.card_header([
+                h4(class="font-semibold", [text("Volume Control")]),
+              ]),
+              @jade.card_body([
+                div(class="space-y-4", [
+                  @html.label(class="text-sm font-medium text-gray-700", [
+                    @html.text("Master Volume"),
+                  ]),
+                  @jade.slider(
+                    value=model.count,
+                    min=0,
+                    max=100,
+                    color=Primary,
+                    size=Md,
+                    on_input=SliderUpdate(_),
+                  ),
+                  @html.label(class="text-sm font-medium text-gray-700", [
+                    @html.text("Bass"),
+                  ]),
+                  @jade.slider(
+                    value=model.count,
+                    min=0,
+                    max=100,
+                    color=Success,
+                    size=Sm,
+                    on_input=SliderUpdate(_),
+                  ),
+                  @html.label(class="text-sm font-medium text-gray-700", [
+                    @html.text("Treble"),
+                  ]),
+                  @jade.slider(
+                    value=model.count,
+                    min=0,
+                    max=100,
+                    color=Warning,
+                    size=Sm,
+                    on_input=SliderUpdate(_),
+                  ),
+
+                ]),
+              ]),
               @jade.card_footer([
                 @jade.button(
                   [text("Read More")],
@@ -847,8 +1165,6 @@ fn view(model : Model) -> Html[Msg] {
                 ),
               ]),
             ],
-            variant=Outline,
-            color=Default,
           ),
           @jade.card(
             [
@@ -869,6 +1185,45 @@ fn view(model : Model) -> Html[Msg] {
                   ]),
                 ]),
               ]),
+              @jade.card_header([h4(class="font-semibold", [text("Settings")])]),
+              @jade.card_body([
+                div(class="space-y-4", [
+
+                  @html.label(class="text-sm font-medium text-gray-700", [
+                    @html.text("Brightness"),
+                  ]),
+                  @jade.slider(
+                    value=model.count,
+                    min=0,
+                    max=100,
+                    color=Warning,
+                    size=Md,
+                    on_input=SliderUpdate(_),
+                  ),
+                  @html.label(class="text-sm font-medium text-gray-700", [
+                    @html.text("Contrast"),
+                  ]),
+                  @jade.slider(
+                    value=model.count,
+                    min=0,
+                    max=100,
+                    color=Info,
+                    size=Md,
+                    on_input=SliderUpdate(_),
+                  ),
+                  @html.label(class="text-sm font-medium text-gray-700", [
+                    @html.text("Saturation"),
+                  ]),
+                  @jade.slider(
+                    value=model.count,
+                    min=0,
+                    max=100,
+                    color=Success,
+                    size=Md,
+                    on_input=SliderUpdate(_),
+                  ),
+                ]),
+              ]),
               @jade.card_footer([
                 div(class="flex gap-2", [
                   @jade.button(
@@ -883,6 +1238,19 @@ fn view(model : Model) -> Html[Msg] {
                     Decrement,
                     variant=Ghost,
                     color=Error,
+                    size=Sm,
+                  ),
+                  @jade.button(
+                    [text("Apply")],
+                    Increment,
+                    variant=Solid,
+                    color=Primary,
+                  ),
+                  @jade.button(
+                    [text("Reset")],
+                    SliderUpdate(0),
+                    variant=Ghost,
+                    color=Primary,
                     size=Sm,
                   ),
                 ]),
@@ -921,6 +1289,62 @@ fn view(model : Model) -> Html[Msg] {
             color=Secondary,
             class="italic text-right",
             [text("— Styled with custom classes")],
+            color=Info,
+          ),
+          @jade.card(
+            [
+              @jade.card_header([
+                h4(class="font-semibold", [text("Performance")]),
+              ]),
+              @jade.card_body([
+                div(class="space-y-4", [
+                  @html.label(class="text-sm font-medium text-gray-700", [
+                    @html.text("CPU Usage"),
+                  ]),
+                  @jade.slider(
+                    value=45,
+                    min=0,
+                    max=100,
+                    color=Success,
+                    size=Md,
+                    on_input=SliderUpdate(_),
+                  ),
+                  @html.label(class="text-sm font-medium text-gray-700", [
+                    @html.text("Memory Usage"),
+                  ]),
+                  @jade.slider(
+                    value=model.count,
+                    min=0,
+                    max=100,
+                    color=Warning,
+                    size=Md,
+                    on_input=SliderUpdate(_),
+                  ),
+                  @html.label(class="text-sm font-medium text-gray-700", [
+                    @html.text("Disk Usage"),
+                  ]),
+                  @jade.slider(
+                    value=model.count,
+                    min=0,
+                    max=100,
+                    color=Error,
+                    size=Md,
+                    on_input=SliderUpdate(_),
+                  ),
+                ]),
+              ]),
+              @jade.card_footer([
+                @jade.button(
+                  [text("Optimize")],
+                  Increment,
+                  variant=Solid,
+                  color=Primary,
+                  size=Sm,
+                ),
+              ]),
+            ],
+            variant=Gradient,
+            color=Secondary,
           ),
         ]),
       ]),

@@ -20,6 +20,14 @@ fn get_card_style(variant~ : CardVariant, color~ : CardColor, className~ : Strin
 
 fn get_typography_style(TypographyType, TypographyColor, String) -> String
 
+fn get_slider_classes(String) -> String
+
+fn get_slider_color_value(SliderColor) -> String
+
+fn get_slider_styles(Int, String, Double) -> Array[String]
+
+fn get_slider_thumb_height(SliderSize) -> Int
+
 fn light() -> JadeTheme
 
 // Types and methods
@@ -107,6 +115,13 @@ pub(all) enum TypographyColor {
   Secondary
   Success
   Info
+}
+
+pub(all) enum SliderColor {
+  Primary
+  Secondary
+  Info
+  Success
   Warning
   Error
 }
@@ -121,6 +136,14 @@ pub(all) enum TypographyType {
   Lead
   P
   Small
+}
+
+pub(all) enum SliderSize {
+  Xs
+  Sm
+  Md
+  Lg
+  Xl
 }
 
 // Type aliases
