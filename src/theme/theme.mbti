@@ -18,8 +18,6 @@ fn get_card_header_style(className~ : String?) -> String
 
 fn get_card_style(variant~ : CardVariant, color~ : CardColor, className~ : String?) -> String
 
-fn get_typography_style(TypographyType, TypographyColor, String) -> String
-
 fn get_slider_classes(String) -> String
 
 fn get_slider_color_value(SliderColor) -> String
@@ -27,6 +25,8 @@ fn get_slider_color_value(SliderColor) -> String
 fn get_slider_styles(Int, String, Double) -> Array[String]
 
 fn get_slider_thumb_height(SliderSize) -> Int
+
+fn get_typography_style(TypographyType, TypographyColor, String) -> String
 
 fn light() -> JadeTheme
 
@@ -108,6 +108,23 @@ impl Show for JadeTheme
 impl ToJson for JadeTheme
 impl @json.FromJson for JadeTheme
 
+pub(all) enum SliderColor {
+  Primary
+  Secondary
+  Info
+  Success
+  Warning
+  Error
+}
+
+pub(all) enum SliderSize {
+  Xs
+  Sm
+  Md
+  Lg
+  Xl
+}
+
 pub(all) enum TypographyColor {
   Inherit
   Default
@@ -115,13 +132,6 @@ pub(all) enum TypographyColor {
   Secondary
   Success
   Info
-}
-
-pub(all) enum SliderColor {
-  Primary
-  Secondary
-  Info
-  Success
   Warning
   Error
 }
@@ -136,14 +146,6 @@ pub(all) enum TypographyType {
   Lead
   P
   Small
-}
-
-pub(all) enum SliderSize {
-  Xs
-  Sm
-  Md
-  Lg
-  Xl
 }
 
 // Type aliases
