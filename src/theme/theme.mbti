@@ -26,6 +26,8 @@ fn get_slider_styles(Int, String, Double) -> Array[String]
 
 fn get_slider_thumb_height(SliderSize) -> Int
 
+fn get_typography_style(TypographyType, TypographyColor, String) -> String
+
 fn light() -> JadeTheme
 
 // Types and methods
@@ -121,6 +123,29 @@ pub(all) enum SliderSize {
   Md
   Lg
   Xl
+}
+
+pub(all) enum TypographyColor {
+  Inherit
+  Default
+  Primary
+  Secondary
+  Success
+  Info
+  Warning
+  Error
+}
+
+pub(all) enum TypographyType {
+  H1
+  H2
+  H3
+  H4
+  H5
+  H6
+  Lead
+  P
+  Small
 }
 
 // Type aliases
