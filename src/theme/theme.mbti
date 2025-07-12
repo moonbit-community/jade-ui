@@ -20,7 +20,7 @@ fn get_card_style(variant~ : CardVariant, color~ : CardColor, className~ : Strin
 
 fn get_input_color_class(InputColor) -> String
 
-fn get_input_size_class(InputSize) -> String
+fn get_input_size_class(Bool, InputSize) -> String
 
 fn get_input_style(variant~ : InputVariant, size~ : InputSize, color~ : InputColor, is_error~ : Bool, is_success~ : Bool, is_pill~ : Bool, disabled~ : Bool, class~ : String?) -> String
 
