@@ -56,7 +56,6 @@ pub(all) enum InputVariant {
   Ghost
   Outlined
   Solid
-  Gradient
 } derive(Show, Eq)
 
 ///|
@@ -89,15 +88,20 @@ pub fn get_input_size_class(size : InputSize) -> String {
 ///
 pub fn get_input_color_class(color : InputColor) -> String {
   match color {
-    Default => "border-gray-300 focus:border-gray-500 focus:ring-gray-500/20"
-    Primary => "border-gray-300 focus:border-blue-500 focus:ring-blue-500/20"
+    Default =>
+      "focus:border-gray-500 focus:ring-gray-500/20 hover:border-gray-500 hover:ring-gray-500/20"
+    Primary =>
+      "focus:border-[var(--color-primary)] focus:ring-[var(--color-primary)]/20 hover:border-[var(--color-primary)] hover:ring-[var(--color-primary)]/20"
     Secondary =>
-      "border-gray-300 focus:border-purple-500 focus:ring-purple-500/20"
-    Info => "border-gray-300 focus:border-cyan-500 focus:ring-cyan-500/20"
-    Success => "border-gray-300 focus:border-green-500 focus:ring-green-500/20"
+      "focus:border-[var(--color-secondary)] focus:ring-[var(--color-secondary)]/20 hover:border-[var(--color-secondary)] hover:ring-[var(--color-secondary)]/20"
+    Info =>
+      "focus:border-[var(--color-info)] focus:ring-[var(--color-info)]/20 hover:border-[var(--color-info)] hover:ring-[var(--color-info)]/20"
+    Success =>
+      "focus:border-[var(--color-success)] focus:ring-[var(--color-success)]/20 hover:border-[var(--color-success)] hover:ring-[var(--color-success)]/20"
     Warning =>
-      "border-gray-300 focus:border-yellow-500 focus:ring-yellow-500/20"
-    Error => "border-red-500 focus:border-red-500 focus:ring-red-500/20"
+      "focus:border-[var(--color-warning)] focus:ring-[var(--color-warning)]/20 hover:border-[var(--color-warning)] hover:ring-[var(--color-warning)]/20"
+    Error =>
+      "focus:border-[var(--color-error)] focus:ring-[var(--color-error)]/20 hover:border-[var(--color-error)] hover:ring-[var(--color-error)]/20"
   }
 }
 
@@ -113,13 +117,11 @@ pub fn get_input_color_class(color : InputColor) -> String {
 pub fn get_input_variant_class(variant : InputVariant) -> String {
   match variant {
     Ghost =>
-      "bg-transparent border-transparent hover:bg-gray-50 focus:bg-white focus:border-gray-300"
+      "bg-transparent border-transparent hover:bg-[var(--color-base-100)] focus:bg-[var(--color-base-100)] focus:border-gray-300"
     Outlined =>
-      "bg-white border border-gray-300 hover:border-gray-400 focus:border-blue-500"
+      "bg-[var(--color-base-100)] border border-gray-300 hover:border-gray-400"
     Solid =>
-      "bg-gray-50 border border-gray-300 hover:bg-white focus:bg-white focus:border-blue-500"
-    Gradient =>
-      "bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 hover:from-blue-100 hover:to-purple-100 focus:from-white focus:to-white focus:border-blue-500"
+      "bg-[var(--color-base-200)] border border-gray-300 hover:bg-[var(--color-base-100)] focus:bg-[var(--color-base-100)]"
   }
 }
 
@@ -131,9 +133,9 @@ pub fn get_input_variant_class(variant : InputVariant) -> String {
 /// * `variant` : InputVariant - The visual style variant
 /// * `size` : InputSize - The size of the input
 /// * `color` : InputColor - The color theme
-/// * `isError` : Bool - Whether the input is in error state
-/// * `isSuccess` : Bool - Whether the input is in success state
-/// * `isPill` : Bool - Whether to use pill shape
+/// * `is_error` : Bool - Whether the input is in error state
+/// * `is_success` : Bool - Whether the input is in success state
+/// * `is_pill` : Bool - Whether to use pill shape
 /// * `disabled` : Bool - Whether the input is disabled
 /// * `className` : String? - Additional CSS classes
 ///
@@ -152,9 +154,9 @@ pub fn get_input_style(
   let base_classes = "w-full transition-all duration-200 ease-in-out outline-none focus:ring-2 focus:ring-offset-0"
   let size_class = get_input_size_class(size)
   let color_class = if is_error {
-    "border-red-500 focus:border-red-500 focus:ring-red-500/20"
+    "border-[var(--color-error)] focus:border-[var(--color-error)] focus:ring-[var(--color-error)]/20"
   } else if is_success {
-    "border-green-500 focus:border-green-500 focus:ring-green-500/20"
+    "border-[var(--color-success)] focus:border-[var(--color-success)] focus:ring-[var(--color-success)]/20"
   } else {
     get_input_color_class(color)
   }
@@ -166,13 +168,14 @@ pub fn get_input_style(
     ""
   }
   let placeholder_class = "placeholder:text-gray-400"
-  let all_classes = [
-    base_classes, size_class, color_class, variant_class, shape_class, disabled_class,
+  clsx([
+    base_classes,
+    size_class,
+    color_class,
+    variant_class,
+    shape_class,
+    disabled_class,
     placeholder_class,
-  ]
-  let combined = all_classes.join(" ")
-  match class {
-    Some(custom_class) => "\{combined} \{custom_class}"
-    None => combined
-  }
+    class.unwrap_or(""),
+  ])
 }

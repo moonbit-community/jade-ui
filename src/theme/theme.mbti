@@ -106,7 +106,6 @@ pub(all) enum InputVariant {
   Ghost
   Outlined
   Solid
-  Gradient
 }
 impl Eq for InputVariant
 impl Show for InputVariant

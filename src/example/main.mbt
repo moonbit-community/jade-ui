@@ -1179,18 +1179,6 @@ fn view(model : Model) -> Html[Msg] {
               color=Primary,
             ),
           ]),
-          div(class="bg-white rounded-lg p-6 shadow-sm", [
-            h4(class="text-md font-medium mb-3 text-gray-600", [
-              text("Gradient Variant"),
-            ]),
-            @jade.input(
-              model.inputValue,
-              InputUpdate(_),
-              placeholder="Enter text...",
-              variant=Gradient,
-              color=Primary,
-            ),
-          ]),
         ]),
       ]),
 
