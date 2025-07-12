@@ -29,6 +29,7 @@
 ///
 ///
 pub fn[M] input(
+  id? : String,
   value : String,
   on_input : (String) -> M,
   placeholder? : String,
@@ -53,6 +54,7 @@ pub fn[M] input(
     class~,
   )
   @experimental_html.input(
+    id?,
     type_="text",
     class=klass,
     on_input=fn(ev) { on_input(ev) },
