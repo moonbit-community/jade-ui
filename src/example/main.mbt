@@ -727,6 +727,88 @@ fn view(model : Model) -> Html[Msg] {
       ]),
     ]),
 
+    // Typography style showcase
+    div(class="max-w-6xl mx-auto", [
+      h2(class="text-2xl font-bold mb-6 text-gray-800", [
+        text("Typography Component Styles"),
+      ]),
+
+      // Typography headings
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Heading Styles"),
+        ]),
+        div(class="bg-white rounded-lg p-6 shadow-sm space-y-4", [
+          @jade.typography(tag=H1, [text("Heading 1 - The largest heading")]),
+          @jade.typography(tag=H2, [text("Heading 2 - Secondary heading")]),
+          @jade.typography(tag=H3, [text("Heading 3 - Tertiary heading")]),
+          @jade.typography(tag=H4, [text("Heading 4 - Quaternary heading")]),
+          @jade.typography(tag=H5, [text("Heading 5 - Quinary heading")]),
+          @jade.typography(tag=H6, [text("Heading 6 - The smallest heading")]),
+        ]),
+      ]),
+
+      // Typography colors
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Typography Colors"),
+        ]),
+        div(class="bg-white rounded-lg p-6 shadow-sm space-y-4", [
+          @jade.typography(tag=P, color=Inherit, [
+            text(
+              "Inherit color - This text inherits the color from its parent element.",
+            ),
+          ]),
+          @jade.typography(tag=P, color=Default, [
+            text(
+              "Default color - This is the default text color for the theme.",
+            ),
+          ]),
+          @jade.typography(tag=P, color=Primary, [
+            text("Primary color - This text uses the primary theme color."),
+          ]),
+          @jade.typography(tag=P, color=Secondary, [
+            text("Secondary color - This text uses the secondary theme color."),
+          ]),
+          @jade.typography(tag=P, color=Success, [
+            text("Success color - This text indicates successful operations."),
+          ]),
+          @jade.typography(tag=P, color=Info, [
+            text("Info color - This text provides informational content."),
+          ]),
+          @jade.typography(tag=P, color=Warning, [
+            text("Warning color - This text indicates caution or warnings."),
+          ]),
+          @jade.typography(tag=P, color=Error, [
+            text("Error color - This text indicates errors or problems."),
+          ]),
+        ]),
+      ]),
+
+      // Typography content types
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Content Types"),
+        ]),
+        div(class="bg-white rounded-lg p-6 shadow-sm space-y-4", [
+          @jade.typography(tag=Lead, [
+            text(
+              "This is a lead paragraph that introduces the main content. Lead text is typically larger and more prominent to draw attention.",
+            ),
+          ]),
+          @jade.typography(tag=P, [
+            text(
+              "This is a regular paragraph. It contains the main body text and should be easy to read with appropriate line height and spacing. Regular paragraphs form the bulk of most content.",
+            ),
+          ]),
+          @jade.typography(tag=Small, [
+            text(
+              "This is small text, typically used for disclaimers, captions, or secondary information that should be less prominent.",
+            ),
+          ]),
+        ]),
+      ]),
+    ]),
     // Slider style showcase
     div(class="max-w-6xl mx-auto", [
       h2(class="text-2xl font-bold mb-6 text-gray-800", [
@@ -991,178 +1073,57 @@ fn view(model : Model) -> Html[Msg] {
           text("Slider in Cards"),
         ]),
         div(class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6", [
-          @jade.card(
-            [
-              @jade.card_header([
-                h4(class="font-semibold", [text("Volume Control")]),
-              ]),
-              @jade.card_body([
-                div(class="space-y-4", [
-                  @html.label(class="text-sm font-medium text-gray-700", [
-                    @html.text("Master Volume"),
-                  ]),
-                  @jade.slider(
-                    value=model.count,
-                    min=0,
-                    max=100,
-                    color=Primary,
-                    size=Md,
-                    on_input=SliderUpdate(_),
-                  ),
-                  @html.label(class="text-sm font-medium text-gray-700", [
-                    @html.text("Bass"),
-                  ]),
-                  @jade.slider(
-                    value=model.count,
-                    min=0,
-                    max=100,
-                    color=Success,
-                    size=Sm,
-                    on_input=SliderUpdate(_),
-                  ),
-                  @html.label(class="text-sm font-medium text-gray-700", [
-                    @html.text("Treble"),
-                  ]),
-                  @jade.slider(
-                    value=model.count,
-                    min=0,
-                    max=100,
-                    color=Warning,
-                    size=Sm,
-                    on_input=SliderUpdate(_),
-                  ),
+          @jade.card([
+            @jade.card_header([
+              h4(class="font-semibold", [text("Volume Control")]),
+            ]),
+            @jade.card_body([
+              div(class="space-y-4", [
+                @html.label(class="text-sm font-medium text-gray-700", [
+                  @html.text("Master Volume"),
                 ]),
-              ]),
-              @jade.card_footer([
-                @jade.button(
-                  [text("Reset")],
-                  Decrement,
-                  variant=Outlined,
+                @jade.slider(
+                  value=model.count,
+                  min=0,
+                  max=100,
                   color=Primary,
+                  size=Md,
+                  on_input=SliderUpdate(_),
+                ),
+                @html.label(class="text-sm font-medium text-gray-700", [
+                  @html.text("Bass"),
+                ]),
+                @jade.slider(
+                  value=model.count,
+                  min=0,
+                  max=100,
+                  color=Success,
                   size=Sm,
+                  on_input=SliderUpdate(_),
+                ),
+                @html.label(class="text-sm font-medium text-gray-700", [
+                  @html.text("Treble"),
+                ]),
+                @jade.slider(
+                  value=model.count,
+                  min=0,
+                  max=100,
+                  color=Warning,
+                  size=Sm,
+                  on_input=SliderUpdate(_),
                 ),
               ]),
-            ],
-            variant=Solid,
-            color=Default,
-          ),
-          @jade.card(
-            [
-              @jade.card_header([h4(class="font-semibold", [text("Settings")])]),
-              @jade.card_body([
-                div(class="space-y-4", [
-                  @html.label(class="text-sm font-medium text-gray-700", [
-                    @html.text("Brightness"),
-                  ]),
-                  @jade.slider(
-                    value=model.count,
-                    min=0,
-                    max=100,
-                    color=Warning,
-                    size=Md,
-                    on_input=SliderUpdate(_),
-                  ),
-                  @html.label(class="text-sm font-medium text-gray-700", [
-                    @html.text("Contrast"),
-                  ]),
-                  @jade.slider(
-                    value=model.count,
-                    min=0,
-                    max=100,
-                    color=Info,
-                    size=Md,
-                    on_input=SliderUpdate(_),
-                  ),
-                  @html.label(class="text-sm font-medium text-gray-700", [
-                    @html.text("Saturation"),
-                  ]),
-                  @jade.slider(
-                    value=model.count,
-                    min=0,
-                    max=100,
-                    color=Success,
-                    size=Md,
-                    on_input=SliderUpdate(_),
-                  ),
-                ]),
-              ]),
-              @jade.card_footer([
-                div(class="flex gap-2", [
-                  @jade.button(
-                    [text("Apply")],
-                    Increment,
-                    variant=Solid,
-                    color=Primary,
-                    size=Sm,
-                  ),
-                  @jade.button(
-                    [text("Reset")],
-                    SliderUpdate(0),
-                    variant=Ghost,
-                    color=Primary,
-                    size=Sm,
-                  ),
-                ]),
-              ]),
-            ],
-            variant=Outline,
-            color=Info,
-          ),
-          @jade.card(
-            [
-              @jade.card_header([
-                h4(class="font-semibold", [text("Performance")]),
-              ]),
-              @jade.card_body([
-                div(class="space-y-4", [
-                  @html.label(class="text-sm font-medium text-gray-700", [
-                    @html.text("CPU Usage"),
-                  ]),
-                  @jade.slider(
-                    value=45,
-                    min=0,
-                    max=100,
-                    color=Success,
-                    size=Md,
-                    on_input=SliderUpdate(_),
-                  ),
-                  @html.label(class="text-sm font-medium text-gray-700", [
-                    @html.text("Memory Usage"),
-                  ]),
-                  @jade.slider(
-                    value=model.count,
-                    min=0,
-                    max=100,
-                    color=Warning,
-                    size=Md,
-                    on_input=SliderUpdate(_),
-                  ),
-                  @html.label(class="text-sm font-medium text-gray-700", [
-                    @html.text("Disk Usage"),
-                  ]),
-                  @jade.slider(
-                    value=model.count,
-                    min=0,
-                    max=100,
-                    color=Error,
-                    size=Md,
-                    on_input=SliderUpdate(_),
-                  ),
-                ]),
-              ]),
-              @jade.card_footer([
-                @jade.button(
-                  [text("Optimize")],
-                  Increment,
-                  variant=Solid,
-                  color=Primary,
-                  size=Sm,
-                ),
-              ]),
-            ],
-            variant=Gradient,
-            color=Secondary,
-          ),
+            ]),
+            @jade.card_footer([
+              @jade.button(
+                [text("Read More")],
+                Increment,
+                variant=Solid,
+                color=Primary,
+                size=Sm,
+              ),
+            ]),
+          ]),
         ]),
       ]),
     ]),
