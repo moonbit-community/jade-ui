@@ -24,7 +24,7 @@ fn get_input_size_class(Bool, InputSize) -> String
 
 fn get_input_style(variant~ : InputVariant, size~ : InputSize, color~ : InputColor, is_error~ : Bool, is_success~ : Bool, is_pill~ : Bool, disabled~ : Bool, class~ : String?) -> String
 
-fn get_input_variant_class(InputVariant) -> String
+fn get_input_variant_class(InputVariant, Bool, Bool) -> String
 
 fn get_slider_classes(String) -> String
 

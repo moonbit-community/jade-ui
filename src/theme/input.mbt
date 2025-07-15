@@ -99,22 +99,16 @@ pub fn get_input_size_class(is_pill : Bool, size : InputSize) -> String {
 /// Returns a string containing the CSS classes for the specified color.
 ///
 pub fn get_input_color_class(color : InputColor) -> String {
-  match color {
-    Default =>
-      "focus:border-gray-500 focus:ring-gray-500/20 hover:border-gray-500 hover:ring-gray-500/20"
-    Primary =>
-      "focus:border-[var(--color-primary)] focus:ring-[var(--color-primary)]/20 hover:border-[var(--color-primary)] hover:ring-[var(--color-primary)]/20"
-    Secondary =>
-      "focus:border-[var(--color-secondary)] focus:ring-[var(--color-secondary)]/20 hover:border-[var(--color-secondary)] hover:ring-[var(--color-secondary)]/20"
-    Info =>
-      "focus:border-[var(--color-info)] focus:ring-[var(--color-info)]/20 hover:border-[var(--color-info)] hover:ring-[var(--color-info)]/20"
-    Success =>
-      "focus:border-[var(--color-success)] focus:ring-[var(--color-success)]/20 hover:border-[var(--color-success)] hover:ring-[var(--color-success)]/20"
-    Warning =>
-      "focus:border-[var(--color-warning)] focus:ring-[var(--color-warning)]/20 hover:border-[var(--color-warning)] hover:ring-[var(--color-warning)]/20"
-    Error =>
-      "focus:border-[var(--color-error)] focus:ring-[var(--color-error)]/20 hover:border-[var(--color-error)] hover:ring-[var(--color-error)]/20"
+  let color = match color {
+    Default => "gray-500"
+    Primary => "var(--color-primary)"
+    Secondary => "var(--color-secondary)"
+    Info => "var(--color-info)"
+    Success => "var(--color-success)"
+    Warning => "var(--color-warning)"
+    Error => "var(--color-error)"
   }
+  "focus:border-[\{color}] focus:ring-[\{color}]/20 hover:border-[\{color}] hover:ring-[\{color}]/20"
 }
 
 ///|
@@ -126,15 +120,29 @@ pub fn get_input_color_class(color : InputColor) -> String {
 ///
 /// Returns a string containing the CSS classes for the specified variant.
 ///
-pub fn get_input_variant_class(variant : InputVariant) -> String {
-  match variant {
-    Ghost =>
-      "bg-transparent border-transparent hover:bg-[var(--color-base-100)] focus:bg-[var(--color-base-100)] focus:border-gray-300"
-    Outlined =>
-      "bg-[var(--color-base-100)] border border-gray-300 hover:border-gray-400"
-    Solid =>
-      "bg-[var(--color-base-200)] border border-gray-300 hover:bg-[var(--color-base-100)] focus:bg-[var(--color-base-100)]"
+/// 优化后的输入框 variant 样式获取函数
+pub fn get_input_variant_class(
+  variant : InputVariant,
+  is_error : Bool,
+  is_success : Bool
+) -> String {
+  let border_class = if is_error {
+    "border-[var(--color-error)]"
+  } else if is_success {
+    "border-[var(--color-success)] focus:border-[var(--color-success)] focus:ring-[var(--color-success)]/20"
+  } else if variant == Outlined || variant == Solid {
+    "border-gray-300 hover:border-gray-400"
+  } else {
+    ""
   }
+  let variant_class = match variant {
+    Ghost =>
+      "bg-transparent border-transparent hover:bg-[var(--color-base-100)] focus:bg-[var(--color-base-100)]"
+    Outlined => "bg-[var(--color-base-100)] border \{border_class}"
+    Solid =>
+      "bg-[var(--color-base-200)] border \{border_class} hover:bg-[var(--color-base-100)]"
+  }
+  clsx([border_class, variant_class])
 }
 
 ///|
@@ -172,7 +180,7 @@ pub fn get_input_style(
   } else {
     get_input_color_class(color)
   }
-  let variant_class = get_input_variant_class(variant)
+  let variant_class = get_input_variant_class(variant, is_error, is_success)
   let disabled_class = if disabled {
     "opacity-50 cursor-not-allowed"
   } else {
