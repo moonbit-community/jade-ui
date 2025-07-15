@@ -129,9 +129,9 @@ pub fn get_input_variant_class(
   let border_class = if is_error {
     "border-[var(--color-error)]"
   } else if is_success {
-    "border-[var(--color-success)] focus:border-[var(--color-success)] focus:ring-[var(--color-success)]/20"
+    "border-[var(--color-success)] hover:border-[var(--color-success)] focus:border-[var(--color-success)] focus:ring-[var(--color-success)]/20"
   } else if variant == Outlined || variant == Solid {
-    "border-gray-300 hover:border-gray-400"
+    "border-gray-300"
   } else {
     ""
   }
@@ -173,13 +173,7 @@ pub fn get_input_style(
 ) -> String {
   let base_classes = "w-full transition-all duration-200 ease-in-out outline-none focus:ring-2 focus:ring-offset-0"
   let size_class = get_input_size_class(is_pill, size)
-  let color_class = if is_error {
-    "border-[var(--color-error)] focus:border-[var(--color-error)] focus:ring-[var(--color-error)]/20"
-  } else if is_success {
-    "border-[var(--color-success)] focus:border-[var(--color-success)] focus:ring-[var(--color-success)]/20"
-  } else {
-    get_input_color_class(color)
-  }
+  let color_class = get_input_color_class(color)
   let variant_class = get_input_variant_class(variant, is_error, is_success)
   let disabled_class = if disabled {
     "opacity-50 cursor-not-allowed"
