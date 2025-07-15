@@ -57,7 +57,7 @@ pub fn[M] input(
     id?,
     type_="text",
     class=klass,
-    on_input=fn(ev) { on_input(ev) },
+    on_input~,
     value~,
     placeholder?,
     readonly_~,
