@@ -3,11 +3,13 @@ enum Msg {
   Increment
   Decrement
   SliderUpdate(Int)
+  TextareaUpdate(String)
 }
 
 ///|
 struct Model {
   count : Int
+  textareaValue : String
 }
 
 ///|
@@ -16,6 +18,7 @@ fn update(msg : Msg, model : Model) -> (Cmd[Msg], Model) {
     Increment => (none(), { ..model, count: model.count + 1 })
     Decrement => (none(), { ..model, count: @cmp.maximum(0, model.count - 1) })
     SliderUpdate(value) => (none(), { ..model, count: value })
+    TextareaUpdate(value) => (none(), { ..model, textareaValue: value })
   }
 }
 
@@ -44,7 +47,7 @@ fn view(model : Model) -> Html[Msg] {
     ]),
 
     // Button style showcase
-    div(class="max-w-7xl mx-auto mb-12", [
+    div(class="max-w-6xl mx-auto mb-12", [
       h2(class="text-2xl font-bold mb-6 text-gray-800", [
         text("Button Component Styles"),
       ]),
@@ -1127,6 +1130,206 @@ fn view(model : Model) -> Html[Msg] {
         ]),
       ]),
     ]),
+
+    // Textarea component showcase
+    div(class="max-w-6xl mx-auto mb-12", [
+      h2(class="text-2xl font-bold mb-6 text-gray-800", [
+        text("Textarea Component Styles"),
+      ]),
+
+      // Textarea sizes
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Textarea Sizes"),
+        ]),
+        div(class="grid grid-cols-1 md:grid-cols-3 gap-6", [
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [
+              text("Small (Sm)"),
+            ]),
+            @jade.textarea(
+              model.textareaValue,
+              TextareaUpdate(_),
+              placeholder=Some("Enter your message..."),
+              rows=4,
+              size=Sm,
+              color=Primary,
+            ),
+          ]),
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [
+              text("Medium (Md)"),
+            ]),
+            @jade.textarea(
+              model.textareaValue,
+              TextareaUpdate(_),
+              placeholder=Some("Enter your message..."),
+              rows=4,
+              size=Md,
+              color=Primary,
+            ),
+          ]),
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [
+              text("Large (Lg)"),
+            ]),
+            @jade.textarea(
+              model.textareaValue,
+              TextareaUpdate(_),
+              placeholder=Some("Enter your message..."),
+              rows=4,
+              size=Lg,
+              color=Primary,
+            ),
+          ]),
+        ]),
+      ]),
+
+      // Textarea colors
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Textarea Colors"),
+        ]),
+        div(class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6", [
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [text("Primary")]),
+            @jade.textarea(
+              model.textareaValue,
+              TextareaUpdate(_),
+              placeholder=Some("Primary color..."),
+              rows=3,
+              color=Primary,
+            ),
+          ]),
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [text("Success")]),
+            @jade.textarea(
+              model.textareaValue,
+              TextareaUpdate(_),
+              placeholder=Some("Success color..."),
+              rows=3,
+              color=Success,
+            ),
+          ]),
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [text("Warning")]),
+            @jade.textarea(
+              model.textareaValue,
+              TextareaUpdate(_),
+              placeholder=Some("Warning color..."),
+              rows=3,
+              color=Warning,
+            ),
+          ]),
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [text("Error")]),
+            @jade.textarea(
+              model.textareaValue,
+              TextareaUpdate(_),
+              placeholder=Some("Error color..."),
+              rows=3,
+              color=Error,
+            ),
+          ]),
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [text("Info")]),
+            @jade.textarea(
+              model.textareaValue,
+              TextareaUpdate(_),
+              placeholder=Some("Info color..."),
+              rows=3,
+              color=Info,
+            ),
+          ]),
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [
+              text("Secondary"),
+            ]),
+            @jade.textarea(
+              model.textareaValue,
+              TextareaUpdate(_),
+              placeholder=Some("Secondary color..."),
+              rows=3,
+              color=Secondary,
+            ),
+          ]),
+        ]),
+      ]),
+
+      // Textarea states
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Textarea States"),
+        ]),
+        div(class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6", [
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [text("Default")]),
+            @jade.textarea(
+              model.textareaValue,
+              TextareaUpdate(_),
+              placeholder=Some("Default state..."),
+              rows=3,
+            ),
+          ]),
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [
+              text("Error State"),
+            ]),
+            @jade.textarea(
+              model.textareaValue,
+              TextareaUpdate(_),
+              placeholder=Some("Error state..."),
+              rows=3,
+              isError=true,
+            ),
+          ]),
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [
+              text("Success State"),
+            ]),
+            @jade.textarea(
+              model.textareaValue,
+              TextareaUpdate(_),
+              placeholder=Some("Success state..."),
+              rows=3,
+              isSuccess=true,
+            ),
+          ]),
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [
+              text("Disabled"),
+            ]),
+            @jade.textarea(
+              "Disabled textarea",
+              TextareaUpdate(_),
+              placeholder=Some("Disabled..."),
+              rows=3,
+              disabled=true,
+            ),
+          ]),
+        ]),
+      ]),
+
+      // Textarea with resize
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Resizable Textarea"),
+        ]),
+        div(class="bg-white rounded-lg p-6 shadow-sm max-w-md", [
+          h4(class="text-md font-medium mb-3 text-gray-600", [
+            text("Resizable (Vertical)"),
+          ]),
+          @jade.textarea(
+            model.textareaValue,
+            TextareaUpdate(_),
+            placeholder=Some("This textarea can be resized vertically..."),
+            rows=5,
+            resize=true,
+            color=Primary,
+          ),
+        ]),
+      ]),
+    ]),
   ])
 }
 
@@ -1134,6 +1337,6 @@ fn view(model : Model) -> Html[Msg] {
 /// see README.md to getting started.
 fn main {
   @theme.light().apply()
-  let model = { count: 0 }
+  let model = { count: 0, textareaValue: "" }
   @tea.startup(model~, update~, view~)
 }
