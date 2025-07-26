@@ -32,7 +32,7 @@ pub fn get_button_style(
   color~ : ButtonColor,
   fullWidth~ : Bool,
   ripple~ : Bool,
-  className~ : String?
+  class~ : String?
 ) -> String {
   clsx([
     "cursor-pointer inline-flex items-center justify-center border align-middle select-none font-sans font-medium text-center transition-all duration-300 ease-in disabled:opacity-50 disabled:shadow-none disabled:cursor-not-allowed data-[shape=pill]:rounded-full data-[width=full]:w-full focus:shadow-none",
@@ -120,7 +120,7 @@ pub fn get_button_style(
       ""
     },
     // Optional custom class name
-    match className {
+    match class {
       Some(cls) => cls
       None => ""
     },
