@@ -161,7 +161,7 @@ pub fn JadeTheme::to_styles(self : JadeTheme) -> Map[String, String] {
 
 ///|
 pub fn[M] JadeTheme::to_attributes(
-  self : JadeTheme
+  self : JadeTheme,
 ) -> Array[@html.Attribute[M]] {
   self.to_styles().iter().map(x => @html.style(x.0, x.1)).to_array()
 }

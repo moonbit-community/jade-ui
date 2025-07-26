@@ -1,3 +1,4 @@
+// Generated using `moon info`, DON'T EDIT IT
 package "Yoorkin/jade_ui/components"
 
 import(
@@ -6,6 +7,14 @@ import(
 )
 
 // Values
+fn[M] accordion(Array[@html.Html[M]], variant~ : @theme.AccordionVariant = .., color~ : @theme.AccordionColor = .., className~ : String? = ..) -> @html.Html[M]
+
+fn[M] accordion_content(Array[@html.Html[M]], isOpen~ : Bool = .., class~ : String? = ..) -> @html.Html[M]
+
+fn[M] accordion_item(String, @html.Html[M], @html.Html[M], variant~ : @theme.AccordionVariant = .., disabled~ : Bool = .., class~ : String? = ..) -> @html.Html[M]
+
+fn[M] accordion_trigger(Array[@html.Html[M]], M, isOpen~ : Bool = .., color~ : @theme.AccordionColor = .., showIcon~ : Bool = .., class~ : String? = ..) -> @html.Html[M]
+
 fn[M] button(Array[@html.Html[M]], M, variant~ : @theme.ButtonVariant = .., size~ : @theme.ButtonSize = .., color~ : @theme.ButtonColor = .., fullWidth~ : Bool = .., ripple~ : Bool = .., className~ : String? = ..) -> @html.Html[M]
 
 fn[M] card(Array[@html.Html[M]], variant~ : @theme.CardVariant = .., color~ : @theme.CardColor = .., className~ : String? = ..) -> @html.Html[M]
