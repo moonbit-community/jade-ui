@@ -29,6 +29,16 @@ fn get_card_header_style(className~ : String?) -> String
 
 fn get_card_style(variant~ : CardVariant, color~ : CardColor, className~ : String?) -> String
 
+fn get_menu_content_style(variant~ : MenuVariant, placement~ : MenuPlacement, className~ : String?) -> String
+
+fn get_menu_item_style(disabled~ : Bool, selected~ : Bool, ripple~ : Bool, class~ : String?) -> String
+
+fn get_menu_separator_style(class~ : String?) -> String
+
+fn get_menu_style(variant~ : MenuVariant, color~ : MenuColor, class~ : String?) -> String
+
+fn get_menu_trigger_style(color~ : MenuColor, isOpen~ : Bool, className~ : String?) -> String
+
 fn get_slider_classes(String) -> String
 
 fn get_slider_color_value(SliderColor) -> String
@@ -135,6 +145,37 @@ impl Eq for JadeTheme
 impl Show for JadeTheme
 impl ToJson for JadeTheme
 impl @json.FromJson for JadeTheme
+
+pub(all) enum MenuColor {
+  Default
+  Primary
+  Secondary
+  Success
+  Info
+  Warning
+  Error
+}
+
+pub(all) enum MenuPlacement {
+  Top
+  TopStart
+  TopEnd
+  Right
+  RightStart
+  RightEnd
+  Bottom
+  BottomStart
+  BottomEnd
+  Left
+  LeftStart
+  LeftEnd
+}
+
+pub(all) enum MenuVariant {
+  Default
+  Bordered
+  Shadow
+}
 
 pub(all) enum SliderColor {
   Primary

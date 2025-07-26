@@ -25,6 +25,16 @@ fn[M] card_footer(Array[@html.Html[M]], className~ : String? = ..) -> @html.Html
 
 fn[M] card_header(Array[@html.Html[M]], className~ : String? = ..) -> @html.Html[M]
 
+fn[M] menu(Array[@html.Html[M]], variant~ : @theme.MenuVariant = .., color~ : @theme.MenuColor = .., className~ : String? = ..) -> @html.Html[M]
+
+fn[M] menu_content(Array[@html.Html[M]], isOpen~ : Bool = .., variant~ : @theme.MenuVariant = .., placement~ : @theme.MenuPlacement = .., className~ : String? = ..) -> @html.Html[M]
+
+fn[M] menu_item(Array[@html.Html[M]], M, disabled~ : Bool = .., selected~ : Bool = .., ripple~ : Bool = .., closeOnClick~ : Bool = .., className~ : String? = ..) -> @html.Html[M]
+
+fn[M] menu_separator(className~ : String? = ..) -> @html.Html[M]
+
+fn[M] menu_trigger(Array[@html.Html[M]], M, isOpen~ : Bool = .., color~ : @theme.MenuColor = .., showIcon~ : Bool = .., className~ : String? = ..) -> @html.Html[M]
+
 fn[M] slider(value~ : Int = .., min~ : Int = .., max~ : Int = .., on_input~ : (Int) -> M, color~ : @theme.SliderColor = .., size~ : @theme.SliderSize = .., class~ : String = .., childrens? : Array[@html.Html[M]]) -> @html.Html[M]
 
 fn[M] typography(tag~ : @theme.TypographyType = .., color~ : @theme.TypographyColor = .., class~ : String = .., Array[@html.Html[M]]) -> @html.Html[M]

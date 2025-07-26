@@ -4,12 +4,16 @@ enum Msg {
   Decrement
   SliderUpdate(Int)
   ToggleAccordion(String)
+  ToggleMenu(String)
+  MenuAction(String)
+  MenuItemClick(String, String) // (action, menuId) - performs action and closes menu
 }
 
 ///|
 struct Model {
   count : Int
   openAccordions : Array[String]
+  openMenus : Array[String]
 }
 
 ///|
@@ -30,6 +34,28 @@ fn update(msg : Msg, model : Model) -> (Cmd[Msg], Model) {
         newArray
       }
       (none(), { ..model, openAccordions: newOpenAccordions })
+    }
+    ToggleMenu(id) => {
+      let newOpenMenus = if model.openMenus.contains(id) {
+        model.openMenus.filter(fn(item) { item != id })
+      } else {
+        let newArray = Array::new()
+        for item in model.openMenus {
+          newArray.push(item)
+        }
+        newArray.push(id)
+        newArray
+      }
+      (none(), { ..model, openMenus: newOpenMenus })
+    }
+    MenuAction(action) => {
+      // Handle menu item actions here
+      (none(), model)
+    }
+    MenuItemClick(action, menuId) => {
+      // Handle menu item action and close the menu
+      let newOpenMenus = model.openMenus.filter(fn(item) { item != menuId })
+      (none(), { ..model, openMenus: newOpenMenus })
     }
   }
 }
@@ -1308,6 +1334,122 @@ fn view(model : Model) -> Html[Msg] {
         ]),
       ]),
     ]),
+
+    // Menu style showcase
+    div(class="max-w-6xl mx-auto mb-12", [
+      h2(class="text-2xl font-bold mb-6 text-gray-800", [
+        text("Menu Component Styles"),
+      ]),
+
+      // Default menu
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Default Menu"),
+        ]),
+        div(class="bg-white rounded-lg p-6 shadow-sm", [
+          div(class="flex gap-4 flex-wrap", [
+            @jade.menu([
+              @jade.menu_trigger(
+                [text("Options")],
+                ToggleMenu("menu1"),
+                isOpen=model.openMenus.contains("menu1"),
+              ),
+              @jade.menu_content(
+                [
+                  @jade.menu_item([text("Edit")], MenuItemClick("edit", "menu1")),
+                  @jade.menu_item([text("Copy")], MenuItemClick("copy", "menu1")),
+                  @jade.menu_separator(),
+                  @jade.menu_item([text("Delete")], MenuItemClick("delete", "menu1")),
+                ],
+                isOpen=model.openMenus.contains("menu1"),
+              ),
+            ]),
+            @jade.menu([
+              @jade.menu_trigger(
+                [text("Actions")],
+                ToggleMenu("menu2"),
+                isOpen=model.openMenus.contains("menu2"),
+                color=Primary,
+              ),
+              @jade.menu_content(
+                [
+                  @jade.menu_item([text("Save")], MenuItemClick("save", "menu2")),
+                  @jade.menu_item([text("Export")], MenuItemClick("export", "menu2")),
+                  @jade.menu_separator(),
+                  @jade.menu_item([text("Settings")], MenuItemClick("settings", "menu2")),
+                ],
+                isOpen=model.openMenus.contains("menu2"),
+              ),
+            ]),
+          ]),
+        ]),
+      ]),
+
+      // Bordered menu
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Bordered Menu"),
+        ]),
+        div(class="bg-white rounded-lg p-6 shadow-sm", [
+          div(class="flex gap-4 flex-wrap", [
+            @jade.menu(
+              [
+                @jade.menu_trigger(
+                  [text("File")],
+                  ToggleMenu("menu3"),
+                  isOpen=model.openMenus.contains("menu3"),
+                  color=Success,
+                ),
+                @jade.menu_content(
+                  [
+                    @jade.menu_item([text("New File")], MenuItemClick("new", "menu3")),
+                    @jade.menu_item([text("Open")], MenuItemClick("open", "menu3")),
+                    @jade.menu_separator(),
+                    @jade.menu_item([text("Save")], MenuItemClick("save", "menu3")),
+                    @jade.menu_item([text("Save As...")], MenuItemClick("saveas", "menu3")),
+                  ],
+                  isOpen=model.openMenus.contains("menu3"),
+                  variant=Bordered,
+                ),
+              ],
+              variant=Bordered,
+            ),
+          ]),
+        ]),
+      ]),
+
+      // Shadow menu
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Shadow Menu"),
+        ]),
+        div(class="bg-white rounded-lg p-6 shadow-sm", [
+          div(class="flex gap-4 flex-wrap", [
+            @jade.menu(
+              [
+                @jade.menu_trigger(
+                  [text("View")],
+                  ToggleMenu("menu4"),
+                  isOpen=model.openMenus.contains("menu4"),
+                  color=Info,
+                ),
+                @jade.menu_content(
+                  [
+                    @jade.menu_item([text("Zoom In")], MenuItemClick("zoomin", "menu4")),
+                    @jade.menu_item([text("Zoom Out")], MenuItemClick("zoomout", "menu4")),
+                    @jade.menu_separator(),
+                    @jade.menu_item([text("Full Screen")], MenuItemClick("fullscreen", "menu4")),
+                  ],
+                  isOpen=model.openMenus.contains("menu4"),
+                  variant=Shadow,
+                ),
+              ],
+              variant=Shadow,
+            ),
+          ]),
+        ]),
+      ]),
+    ]),
   ])
 }
 
@@ -1315,6 +1457,6 @@ fn view(model : Model) -> Html[Msg] {
 /// see README.md to getting started.
 fn main {
   @theme.light().apply()
-  let model = { count: 0, openAccordions: [] }
+  let model = { count: 0, openAccordions: [], openMenus: [] }
   @tea.startup(model~, update~, view~)
 }
