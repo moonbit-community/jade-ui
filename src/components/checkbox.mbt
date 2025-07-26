@@ -40,7 +40,7 @@ pub fn[M] checkbox(
   size~ : @theme.CheckboxSize = @theme.Md,
   color~ : @theme.CheckboxColor = @theme.Primary,
   disabled~ : Bool = false,
-  class~ : String? = None
+  class~ : String? = None,
 ) -> @html.Html[M] {
   let container_style = @theme.get_checkbox_container_style(
     size~,
@@ -134,7 +134,7 @@ pub fn[M] checkbox(
     Some(label_text) =>
       @html.div(class="inline-flex items-center gap-2", [
         checkbox_label,
-        @html.node("label", label_attributes, [@html.text(label_text)]),
+        @html.label(class="text-sm font-medium", [@html.text(label_text)]),
       ])
     None => checkbox_label
   }

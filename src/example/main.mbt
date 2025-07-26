@@ -23,15 +23,6 @@ struct Model {
 }
 
 ///|
-fn max(a : Int, b : Int) -> Int {
-  if a > b {
-    a
-  } else {
-    b
-  }
-}
-
-///|
 fn update(msg : Msg, model : Model) -> (Cmd[Msg], Model) {
   match msg {
     Increment => (none(), { ..model, count: model.count + 1 })
