@@ -1,3 +1,4 @@
+// Generated using `moon info`, DON'T EDIT IT
 package "Yoorkin/jade_ui/components"
 
 import(
@@ -7,6 +8,8 @@ import(
 
 // Values
 fn[M] button(Array[@html.Html[M]], M, variant~ : @theme.ButtonVariant = .., size~ : @theme.ButtonSize = .., color~ : @theme.ButtonColor = .., fullWidth~ : Bool = .., ripple~ : Bool = .., className~ : String? = ..) -> @html.Html[M]
+
+fn[M] button_group(Array[@html.Html[M]], orientation~ : @theme.ButtonGroupOrientation = .., fullWidth~ : Bool = .., class~ : String? = ..) -> @html.Html[M]
 
 fn[M] card(Array[@html.Html[M]], variant~ : @theme.CardVariant = .., color~ : @theme.CardColor = .., className~ : String? = ..) -> @html.Html[M]
 
