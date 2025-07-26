@@ -3,11 +3,13 @@ enum Msg {
   Increment
   Decrement
   SliderUpdate(Int)
+  ToggleAccordion(String)
 }
 
 ///|
 struct Model {
   count : Int
+  openAccordions : Array[String]
 }
 
 ///|
@@ -16,6 +18,19 @@ fn update(msg : Msg, model : Model) -> (Cmd[Msg], Model) {
     Increment => (none(), { ..model, count: model.count + 1 })
     Decrement => (none(), { ..model, count: @cmp.maximum(0, model.count - 1) })
     SliderUpdate(value) => (none(), { ..model, count: value })
+    ToggleAccordion(id) => {
+      let newOpenAccordions = if model.openAccordions.contains(id) {
+        model.openAccordions.filter(fn(item) { item != id })
+      } else {
+        let newArray = Array::new()
+        for item in model.openAccordions {
+          newArray.push(item)
+        }
+        newArray.push(id)
+        newArray
+      }
+      (none(), { ..model, openAccordions: newOpenAccordions })
+    }
   }
 }
 
@@ -44,7 +59,7 @@ fn view(model : Model) -> Html[Msg] {
     ]),
 
     // Button style showcase
-    div(class="max-w-7xl mx-auto mb-12", [
+    div(class="max-w-6xl mx-auto mb-12", [
       h2(class="text-2xl font-bold mb-6 text-gray-800", [
         text("Button Component Styles"),
       ]),
@@ -1127,6 +1142,172 @@ fn view(model : Model) -> Html[Msg] {
         ]),
       ]),
     ]),
+
+    // Accordion style showcase
+    div(class="max-w-6xl mx-auto mb-12", [
+      h2(class="text-2xl font-bold mb-6 text-gray-800", [
+        text("Accordion Component Styles"),
+      ]),
+
+      // Default accordion
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Default Accordion"),
+        ]),
+        div(class="bg-white rounded-lg p-6 shadow-sm", [
+          @jade.accordion([
+            @jade.accordion_item(
+              "faq1",
+              @jade.accordion_trigger(
+                [text("What is Jade UI?")],
+                ToggleAccordion("faq1"),
+                isOpen=model.openAccordions.contains("faq1"),
+              ),
+              @jade.accordion_content(
+                [
+                  text(
+                    "Jade UI is a modern, customizable UI component library built with MoonBit. It provides a comprehensive set of components for building beautiful web applications.",
+                  ),
+                ],
+                isOpen=model.openAccordions.contains("faq1"),
+              ),
+            ),
+            @jade.accordion_item(
+              "faq2",
+              @jade.accordion_trigger(
+                [text("How do I get started?")],
+                ToggleAccordion("faq2"),
+                isOpen=model.openAccordions.contains("faq2"),
+              ),
+              @jade.accordion_content(
+                [
+                  text(
+                    "Getting started is easy! Simply install the package, import the components you need, and start building. Check out our documentation for detailed examples and API references.",
+                  ),
+                ],
+                isOpen=model.openAccordions.contains("faq2"),
+              ),
+            ),
+            @jade.accordion_item(
+              "faq3",
+              @jade.accordion_trigger(
+                [text("Is it customizable?")],
+                ToggleAccordion("faq3"),
+                isOpen=model.openAccordions.contains("faq3"),
+              ),
+              @jade.accordion_content(
+                [
+                  text(
+                    "Yes! Jade UI is highly customizable. You can customize colors, sizes, variants, and even add your own CSS classes to match your design system.",
+                  ),
+                ],
+                isOpen=model.openAccordions.contains("faq3"),
+              ),
+            ),
+          ]),
+        ]),
+      ]),
+
+      // Bordered accordion
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Bordered Accordion"),
+        ]),
+        div(class="bg-white rounded-lg p-6 shadow-sm", [
+          @jade.accordion(
+            [
+              @jade.accordion_item(
+                "bordered1",
+                @jade.accordion_trigger(
+                  [text("Features")],
+                  ToggleAccordion("bordered1"),
+                  isOpen=model.openAccordions.contains("bordered1"),
+                  color=Primary,
+                ),
+                @jade.accordion_content(
+                  [
+                    text(
+                      "Jade UI includes buttons, cards, sliders, typography, accordions, and many more components. All components are fully responsive and accessible.",
+                    ),
+                  ],
+                  isOpen=model.openAccordions.contains("bordered1"),
+                ),
+                variant=Bordered,
+              ),
+              @jade.accordion_item(
+                "bordered2",
+                @jade.accordion_trigger(
+                  [text("Performance")],
+                  ToggleAccordion("bordered2"),
+                  isOpen=model.openAccordions.contains("bordered2"),
+                  color=Success,
+                ),
+                @jade.accordion_content(
+                  [
+                    text(
+                      "Built with performance in mind, Jade UI components are lightweight and optimized for fast rendering. The library uses modern CSS techniques for smooth animations.",
+                    ),
+                  ],
+                  isOpen=model.openAccordions.contains("bordered2"),
+                ),
+                variant=Bordered,
+              ),
+            ],
+            variant=Bordered,
+          ),
+        ]),
+      ]),
+
+      // Splitted accordion
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Splitted Accordion"),
+        ]),
+        div(class="bg-white rounded-lg p-6 shadow-sm", [
+          @jade.accordion(
+            [
+              @jade.accordion_item(
+                "split1",
+                @jade.accordion_trigger(
+                  [text("Documentation")],
+                  ToggleAccordion("split1"),
+                  isOpen=model.openAccordions.contains("split1"),
+                  color=Info,
+                ),
+                @jade.accordion_content(
+                  [
+                    text(
+                      "Comprehensive documentation with examples, API references, and best practices. Learn how to integrate Jade UI into your projects effectively.",
+                    ),
+                  ],
+                  isOpen=model.openAccordions.contains("split1"),
+                ),
+                variant=Splitted,
+              ),
+              @jade.accordion_item(
+                "split2",
+                @jade.accordion_trigger(
+                  [text("Community")],
+                  ToggleAccordion("split2"),
+                  isOpen=model.openAccordions.contains("split2"),
+                  color=Warning,
+                ),
+                @jade.accordion_content(
+                  [
+                    text(
+                      "Join our growing community of developers. Share your projects, get help, and contribute to making Jade UI even better.",
+                    ),
+                  ],
+                  isOpen=model.openAccordions.contains("split2"),
+                ),
+                variant=Splitted,
+              ),
+            ],
+            variant=Splitted,
+          ),
+        ]),
+      ]),
+    ]),
   ])
 }
 
@@ -1134,6 +1315,6 @@ fn view(model : Model) -> Html[Msg] {
 /// see README.md to getting started.
 fn main {
   @theme.light().apply()
-  let model = { count: 0 }
+  let model = { count: 0, openAccordions: [] }
   @tea.startup(model~, update~, view~)
 }

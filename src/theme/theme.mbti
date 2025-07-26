@@ -1,3 +1,4 @@
+// Generated using `moon info`, DON'T EDIT IT
 package "Yoorkin/jade_ui/theme"
 
 import(
@@ -7,6 +8,16 @@ import(
 
 // Values
 fn clsx(Array[String]) -> String
+
+fn get_accordion_content_style(className~ : String?) -> String
+
+fn get_accordion_icon_style(isOpen~ : Bool, className~ : String?) -> String
+
+fn get_accordion_item_style(variant~ : AccordionVariant, disabled~ : Bool, className~ : String?) -> String
+
+fn get_accordion_style(variant~ : AccordionVariant, color~ : AccordionColor, className~ : String?) -> String
+
+fn get_accordion_trigger_style(color~ : AccordionColor, isOpen~ : Bool, className~ : String?) -> String
 
 fn get_button_style(variant~ : ButtonVariant, size~ : ButtonSize, color~ : ButtonColor, fullWidth~ : Bool, ripple~ : Bool, className~ : String?) -> String
 
@@ -31,6 +42,23 @@ fn get_typography_style(TypographyType, TypographyColor, String) -> String
 fn light() -> JadeTheme
 
 // Types and methods
+pub(all) enum AccordionColor {
+  Default
+  Primary
+  Secondary
+  Success
+  Info
+  Warning
+  Error
+}
+
+pub(all) enum AccordionVariant {
+  Default
+  Bordered
+  Shadow
+  Splitted
+}
+
 pub(all) enum ButtonColor {
   Primary
   Secondary
