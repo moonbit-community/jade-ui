@@ -44,7 +44,7 @@ fn view(model : Model) -> Html[Msg] {
     ]),
 
     // Button style showcase
-    div(class="max-w-7xl mx-auto mb-12", [
+    div(class="max-w-6xl mx-auto mb-12", [
       h2(class="text-2xl font-bold mb-6 text-gray-800", [
         text("Button Component Styles"),
       ]),

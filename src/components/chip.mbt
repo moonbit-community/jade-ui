@@ -140,35 +140,33 @@ pub fn[M] chip_dismiss_trigger(
   click : M,
   size~ : @theme.ChipSize = @theme.Md,
   class~ : String? = None,
-  children~ : Array[@svg.Svg[M]]? = None,
+  children~ : Array[@html.Html[M]]? = None,
 ) -> @html.Html[M] {
   let klass = @theme.get_chip_dismiss_trigger_style(size~, className=class)
-  let default_icon = [
-    @svg.node(
-      "svg",
-      [
-        @svg.attribute("viewBox", "0 0 24 24"),
-        @svg.attribute("fill", "none"),
-        @svg.attribute("xmlns", "http://www.w3.org/2000/svg"),
-        @svg.attribute("color", "currentColor"),
-        @svg.attribute("class", "h-full w-full"),
-      ],
-      [
-        @svg.node(
-          "path",
-          [
-            @svg.attribute(
-              "d", "M6.75827 17.2426L12.0009 12M17.2435 6.75736L12.0009 12M12.0009 12L6.75827 6.75736M12.0009 12L17.2435 17.2426",
-            ),
-            @svg.attribute("stroke", "currentColor"),
-            @svg.attribute("stroke-linecap", "round"),
-            @svg.attribute("stroke-linejoin", "round"),
-          ],
-          [],
-        ),
-      ],
-    ),
-  ]
-  let content : Array[@vdom.Node[M]] = children.unwrap_or(default_icon)
+  let default_icon = @svg.node(
+    "svg",
+    [
+      @svg.attribute("viewBox", "0 0 24 24"),
+      @svg.attribute("fill", "none"),
+      @svg.attribute("xmlns", "http://www.w3.org/2000/svg"),
+      @svg.attribute("color", "currentColor"),
+      @svg.attribute("class", "h-full w-full"),
+    ],
+    [
+      @svg.node(
+        "path",
+        [
+          @svg.attribute(
+            "d", "M6.75827 17.2426L12.0009 12M17.2435 6.75736L12.0009 12M12.0009 12L6.75827 6.75736M12.0009 12L17.2435 17.2426",
+          ),
+          @svg.attribute("stroke", "currentColor"),
+          @svg.attribute("stroke-linecap", "round"),
+          @svg.attribute("stroke-linejoin", "round"),
+        ],
+        [],
+      ),
+    ],
+  ).inner()
+  let content = children.unwrap_or([default_icon])
   @html.button(class=klass, click~, content)
 }

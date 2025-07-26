@@ -13,19 +13,19 @@ fn get_button_style(variant~ : ButtonVariant, size~ : ButtonSize, color~ : Butto
 
 fn get_card_body_style(className~ : String?) -> String
 
+fn get_card_footer_style(className~ : String?) -> String
+
+fn get_card_header_style(className~ : String?) -> String
+
+fn get_card_style(variant~ : CardVariant, color~ : CardColor, className~ : String?) -> String
+
 fn get_chip_dismiss_trigger_style(size~ : ChipSize, className~ : String?) -> String
 
 fn get_chip_icon_style(size~ : ChipSize, className~ : String?) -> String
 
 fn get_chip_label_style(size~ : ChipSize, className~ : String?) -> String
 
-fn get_chip_style(variant~ : ChipVariant, size~ : ChipSize, color~ : ChipColor, isPill~ : Bool, className~ : String?) -> String
-
-fn get_card_footer_style(className~ : String?) -> String
-
-fn get_card_header_style(className~ : String?) -> String
-
-fn get_card_style(variant~ : CardVariant, color~ : CardColor, className~ : String?) -> String
+fn get_chip_style(variant~ : ChipVariant, size~ : ChipSize, color~ : ChipColor, isPill~ : Bool, class~ : String?) -> String
 
 fn get_slider_classes(String) -> String
 

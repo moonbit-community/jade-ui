@@ -29,7 +29,7 @@ pub fn get_chip_style(
   size~ : ChipSize,
   color~ : ChipColor,
   isPill~ : Bool,
-  class~ : String?
+  class~ : String?,
 ) -> String {
   clsx([
     "relative inline-flex w-max items-center border font-sans font-medium",
@@ -117,10 +117,7 @@ pub fn get_chip_style(
 }
 
 ///|
-pub fn get_chip_label_style(
-  size~ : ChipSize,
-  className~ : String?
-) -> String {
+pub fn get_chip_label_style(size~ : ChipSize, className~ : String?) -> String {
   clsx([
     "font-inherit text-inherit leading-none",
     // Size styles
@@ -138,10 +135,7 @@ pub fn get_chip_label_style(
 }
 
 ///|
-pub fn get_chip_icon_style(
-  size~ : ChipSize,
-  className~ : String?
-) -> String {
+pub fn get_chip_icon_style(size~ : ChipSize, className~ : String?) -> String {
   clsx([
     "grid place-items-center shrink-0 rounded-full",
     // Size styles
@@ -161,7 +155,7 @@ pub fn get_chip_icon_style(
 ///|
 pub fn get_chip_dismiss_trigger_style(
   size~ : ChipSize,
-  className~ : String?
+  className~ : String?,
 ) -> String {
   clsx([
     "grid place-items-center shrink-0 rounded-full p-px cursor-pointer",
