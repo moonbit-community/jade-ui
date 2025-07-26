@@ -49,7 +49,7 @@ pub fn[M] button(
   color~ : @theme.ButtonColor = @theme.Primary,
   fullWidth~ : Bool = false,
   ripple~ : Bool = true,
-  className~ : String? = None
+  className~ : String? = None,
 ) -> @html.Html[M] {
   let klass = @theme.get_button_style(
     variant~,
