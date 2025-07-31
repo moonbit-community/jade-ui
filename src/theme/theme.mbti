@@ -9,7 +9,6 @@ import(
 // Values
 fn clsx(Array[String]) -> String
 
-
 fn get_accordion_content_style(className~ : String?) -> String
 
 fn get_accordion_icon_style(isOpen~ : Bool, className~ : String?) -> String
