@@ -1064,6 +1064,8 @@ fn render_slider_section(model : Model) -> Html[Msg] {
 
 ///| 标签页展示区域
 fn render_tabs_section(model : Model) -> Html[Msg] {
+  let tabs = ["Tab1", "Tab2", "Tab3"]
+  let variants : Array[@theme.TabsVariant] = [Default, Pills, Underline]
   @html.div(class=main_container_class, [
     @jade.card(
       [
@@ -1072,159 +1074,44 @@ fn render_tabs_section(model : Model) -> Html[Msg] {
             text("Tabs Component Styles"),
           ]),
         ]),
-        @jade.card_body([
-          @jade.typography(tag=@theme.H3, color=@theme.Default, class="mb-4", [
-            text("Tab Variants"),
-          ]),
-          @html.div(class="space-y-8", [
-            // Default 变体
-            @jade.card(
-              [
-                @jade.card_header([
-                  @jade.typography(tag=@theme.H4, color=@theme.Default, [
-                    text("Default Variant"),
-                  ]),
-                ]),
-                @jade.card_body([
-                  @jade.tabs([
-                    @jade.tabs_list([
-                      @jade.tabs_trigger(
-                        [text("HTML")],
-                        TabChange("tab1"),
-                        is_active=model.activeTab == "tab1",
-                      ),
-                      @jade.tabs_trigger(
-                        [text("React")],
-                        TabChange("tab2"),
-                        is_active=model.activeTab == "tab2",
-                      ),
-                      @jade.tabs_trigger(
-                        [text("Vue")],
-                        TabChange("tab3"),
-                        is_active=model.activeTab == "tab3",
-                      ),
-                    ]),
-                    @jade.tabs_panel(
-                      [text("HTML content here")],
-                      is_active=model.activeTab == "tab1",
-                    ),
-                    @jade.tabs_panel(
-                      [text("React content here")],
-                      is_active=model.activeTab == "tab2",
-                    ),
-                    @jade.tabs_panel(
-                      [text("Vue content here")],
-                      is_active=model.activeTab == "tab3",
-                    ),
-                  ]),
-                ]),
-              ],
-              variant=@theme.Ghost,
+        @jade.card_body(
+          [
+            @jade.typography(
+              tag=@theme.H3,
               color=@theme.Default,
+              class="mb-4",
+              [text("Tab Variants")],
             ),
-
-            // Pills 变体
-            @jade.card(
-              [
-                @jade.card_header([
-                  @jade.typography(tag=@theme.H4, color=@theme.Default, [
-                    text("Pills Variant"),
-                  ]),
-                ]),
-                @jade.card_body([
-                  @jade.tabs([
-                    @jade.tabs_list(variant=@theme.Pills, [
-                      @jade.tabs_trigger(
-                        [text("HTML")],
-                        TabChange("tab1"),
-                        is_active=model.activeTab == "tab1",
-                        variant=@theme.Pills,
-                      ),
-                      @jade.tabs_trigger(
-                        [text("React")],
-                        TabChange("tab2"),
-                        is_active=model.activeTab == "tab2",
-                        variant=@theme.Pills,
-                      ),
-                      @jade.tabs_trigger(
-                        [text("Vue")],
-                        TabChange("tab3"),
-                        is_active=model.activeTab == "tab3",
-                        variant=@theme.Pills,
-                      ),
-                    ]),
-                    @jade.tabs_panel(
-                      [text("HTML content here")],
-                      is_active=model.activeTab == "tab1",
-                    ),
-                    @jade.tabs_panel(
-                      [text("React content here")],
-                      is_active=model.activeTab == "tab2",
-                    ),
-                    @jade.tabs_panel(
-                      [text("Vue content here")],
-                      is_active=model.activeTab == "tab3",
-                    ),
-                  ]),
-                ]),
-              ],
-              variant=@theme.Ghost,
-              color=@theme.Default,
-            ),
-
-            // Underline 变体
-            @jade.card(
-              [
-                @jade.card_header([
-                  @jade.typography(tag=@theme.H4, color=@theme.Default, [
-                    text("Underline Variant"),
-                  ]),
-                ]),
-                @jade.card_body([
-                  @jade.tabs([
-                    @jade.tabs_list(
+            ..variants.map(variant => @html.div(class="space-y-8", [
+              // Default 变体
+              @jade.card(
+                [
+                  @jade.card_body([
+                    @jade.tabs(
                       [
-                        @jade.tabs_trigger(
-                          [text("HTML")],
-                          TabChange("tab1"),
-                          is_active=model.activeTab == "tab1",
-                          variant=@theme.Underline,
+                        @jade.tabs_list(
+                          variant~,
+                          tabs.map(tab => @jade.tabs_trigger(
+                            [text(tab)],
+                            TabChange(tab),
+                            is_active=model.activeTab == tab,
+                            variant~,
+                          )),
                         ),
-                        @jade.tabs_trigger(
-                          [text("React")],
-                          TabChange("tab2"),
-                          is_active=model.activeTab == "tab2",
-                          variant=@theme.Underline,
-                        ),
-                        @jade.tabs_trigger(
-                          [text("Vue")],
-                          TabChange("tab3"),
-                          is_active=model.activeTab == "tab3",
-                          variant=@theme.Underline,
-                        ),
+                        ..tabs.map(tab => @jade.tabs_panel(
+                          [text("\{tab} content here")],
+                          is_active=model.activeTab == tab,
+                        )),
                       ],
-                      variant=@theme.Underline,
-                    ),
-                    @jade.tabs_panel(
-                      [text("HTML content here")],
-                      is_active=model.activeTab == "tab1",
-                    ),
-                    @jade.tabs_panel(
-                      [text("React content here")],
-                      is_active=model.activeTab == "tab2",
-                    ),
-                    @jade.tabs_panel(
-                      [text("Vue content here")],
-                      is_active=model.activeTab == "tab3",
                     ),
                   ]),
-                ]),
-              ],
-              variant=@theme.Ghost,
-              color=@theme.Default,
-            ),
-          ]),
-        ]),
+                ],
+                variant=Ghost,
+                color=@theme.Default,
+              ),
+            ])),
+          ],
+        ),
       ],
       variant=@theme.Solid,
       color=@theme.Default,
@@ -1399,6 +1286,6 @@ fn view(model : Model) -> Html[Msg] {
 /// see README.md to getting started.
 fn main {
   @theme.light().apply()
-  let model = { count: 0, activeTab: "tab1" }
+  let model = { count: 0, activeTab: "Tab1" }
   @tea.startup(model~, update~, view~)
 }
