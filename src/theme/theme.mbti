@@ -41,6 +41,8 @@ fn get_typography_style(TypographyType, TypographyColor, String) -> String
 
 fn light() -> JadeTheme
 
+// Errors
+
 // Types and methods
 pub(all) enum AccordionColor {
   Default

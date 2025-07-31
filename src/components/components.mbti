@@ -29,6 +29,8 @@ fn[M] slider(value~ : Int = .., min~ : Int = .., max~ : Int = .., on_input~ : (I
 
 fn[M] typography(tag~ : @theme.TypographyType = .., color~ : @theme.TypographyColor = .., class~ : String = .., Array[@html.Html[M]]) -> @html.Html[M]
 
+// Errors
+
 // Types and methods
 
 // Type aliases
