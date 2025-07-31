@@ -9,6 +9,7 @@ import(
 // Values
 fn clsx(Array[String]) -> String
 
+
 fn get_accordion_content_style(className~ : String?) -> String
 
 fn get_accordion_icon_style(isOpen~ : Bool, className~ : String?) -> String
@@ -18,6 +19,8 @@ fn get_accordion_item_style(variant~ : AccordionVariant, disabled~ : Bool, class
 fn get_accordion_style(variant~ : AccordionVariant, color~ : AccordionColor, className~ : String?) -> String
 
 fn get_accordion_trigger_style(color~ : AccordionColor, isOpen~ : Bool, className~ : String?) -> String
+
+fn get_button_group_style(orientation~ : ButtonGroupOrientation, fullWidth~ : Bool, class~ : String?) -> String
 
 fn get_button_style(variant~ : ButtonVariant, size~ : ButtonSize, color~ : ButtonColor, fullWidth~ : Bool, ripple~ : Bool, className~ : String?) -> String
 
@@ -68,6 +71,38 @@ pub(all) enum ButtonColor {
   Success
   Warning
   Error
+}
+
+pub(all) enum ButtonGroupColor {
+  Primary
+  Secondary
+  Accent
+  Neutral
+  Base
+  Info
+  Success
+  Warning
+  Error
+}
+
+pub(all) enum ButtonGroupOrientation {
+  Horizontal
+  Vertical
+}
+
+pub(all) enum ButtonGroupSize {
+  Xs
+  Sm
+  Md
+  Lg
+  Xl
+}
+
+pub(all) enum ButtonGroupVariant {
+  Ghost
+  Outlined
+  Solid
+  Gradient
 }
 
 pub(all) enum ButtonSize {

@@ -58,6 +58,239 @@ fn view(model : Model) -> Html[Msg] {
       ]),
     ]),
 
+    // Button Group showcase
+    div(class="max-w-6xl mx-auto mb-12", [
+      h2(class="text-2xl font-bold mb-6 text-gray-800", [
+        text("Button Group Component"),
+      ]),
+
+      // Horizontal Button Groups
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Horizontal Button Groups"),
+        ]),
+        div(class="space-y-4", [
+          // Solid variant
+          div([
+            h4(class="text-md font-medium mb-2 text-gray-600", [
+              text("Solid Variant"),
+            ]),
+            @jade.button_group(
+              [
+                @jade.button(
+                  [text("First")],
+                  Increment,
+                  variant=@theme.Solid,
+                  color=@theme.Primary,
+                ),
+                @jade.button(
+                  [text("Second")],
+                  Increment,
+                  variant=@theme.Solid,
+                  color=@theme.Primary,
+                ),
+                @jade.button(
+                  [text("Third")],
+                  Increment,
+                  variant=@theme.Solid,
+                  color=@theme.Primary,
+                ),
+              ],
+              orientation=@theme.Horizontal,
+            ),
+          ]),
+          // Outlined variant
+          div([
+            h4(class="text-md font-medium mb-2 text-gray-600", [
+              text("Outlined Variant"),
+            ]),
+            @jade.button_group(
+              [
+                @jade.button(
+                  [text("Left")],
+                  Increment,
+                  variant=@theme.Outlined,
+                  color=@theme.Secondary,
+                ),
+                @jade.button(
+                  [text("Center")],
+                  Increment,
+                  variant=@theme.Outlined,
+                  color=@theme.Secondary,
+                ),
+                @jade.button(
+                  [text("Right")],
+                  Increment,
+                  variant=@theme.Outlined,
+                  color=@theme.Secondary,
+                ),
+              ],
+              orientation=@theme.Horizontal,
+            ),
+          ]),
+          // Ghost variant
+          div([
+            h4(class="text-md font-medium mb-2 text-gray-600", [
+              text("Ghost Variant"),
+            ]),
+            @jade.button_group(
+              [
+                @jade.button(
+                  [text("Option A")],
+                  Increment,
+                  variant=@theme.Ghost,
+                  color=@theme.Info,
+                ),
+                @jade.button(
+                  [text("Option B")],
+                  Increment,
+                  variant=@theme.Ghost,
+                  color=@theme.Info,
+                ),
+                @jade.button(
+                  [text("Option C")],
+                  Increment,
+                  variant=@theme.Ghost,
+                  color=@theme.Info,
+                ),
+              ],
+              orientation=@theme.Horizontal,
+            ),
+          ]),
+        ]),
+      ]),
+
+      // Vertical Button Groups
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Vertical Button Groups"),
+        ]),
+        div(class="flex gap-8", [
+          div([
+            h4(class="text-md font-medium mb-2 text-gray-600", [
+              text("Solid Vertical"),
+            ]),
+            @jade.button_group(
+              [
+                @jade.button(
+                  [text("Top")],
+                  Increment,
+                  variant=@theme.Solid,
+                  color=@theme.Success,
+                ),
+                @jade.button(
+                  [text("Middle")],
+                  Increment,
+                  variant=@theme.Solid,
+                  color=@theme.Success,
+                ),
+                @jade.button(
+                  [text("Bottom")],
+                  Increment,
+                  variant=@theme.Solid,
+                  color=@theme.Success,
+                ),
+              ],
+              orientation=@theme.Vertical,
+            ),
+          ]),
+          div([
+            h4(class="text-md font-medium mb-2 text-gray-600", [
+              text("Outlined Vertical"),
+            ]),
+            @jade.button_group(
+              [
+                @jade.button(
+                  [text("First")],
+                  Increment,
+                  variant=@theme.Outlined,
+                  color=@theme.Warning,
+                ),
+                @jade.button(
+                  [text("Second")],
+                  Increment,
+                  variant=@theme.Outlined,
+                  color=@theme.Warning,
+                ),
+                @jade.button(
+                  [text("Third")],
+                  Increment,
+                  variant=@theme.Outlined,
+                  color=@theme.Warning,
+                ),
+              ],
+              orientation=@theme.Vertical,
+            ),
+          ]),
+        ]),
+      ]),
+
+      // Button Group Sizes
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Button Group Sizes"),
+        ]),
+        div(class="space-y-4", [
+          div([
+            h4(class="text-md font-medium mb-2 text-gray-600", [
+              text("Small Size"),
+            ]),
+            @jade.button_group([
+              @jade.button(
+                [text("Small")],
+                Increment,
+                variant=@theme.Solid,
+                color=@theme.Primary,
+                size=@theme.Sm,
+              ),
+              @jade.button(
+                [text("Button")],
+                Increment,
+                variant=@theme.Solid,
+                color=@theme.Primary,
+                size=@theme.Sm,
+              ),
+              @jade.button(
+                [text("Group")],
+                Increment,
+                variant=@theme.Solid,
+                color=@theme.Primary,
+                size=@theme.Sm,
+              ),
+            ]),
+          ]),
+          div([
+            h4(class="text-md font-medium mb-2 text-gray-600", [
+              text("Large Size"),
+            ]),
+            @jade.button_group([
+              @jade.button(
+                [text("Large")],
+                Increment,
+                variant=@theme.Solid,
+                color=@theme.Primary,
+                size=@theme.Lg,
+              ),
+              @jade.button(
+                [text("Button")],
+                Increment,
+                variant=@theme.Solid,
+                color=@theme.Primary,
+                size=@theme.Lg,
+              ),
+              @jade.button(
+                [text("Group")],
+                Increment,
+                variant=@theme.Solid,
+                color=@theme.Primary,
+                size=@theme.Lg,
+              ),
+            ]),
+          ]),
+        ]),
+      ]),
+    ]),
+
     // Button style showcase
     div(class="max-w-6xl mx-auto mb-12", [
       h2(class="text-2xl font-bold mb-6 text-gray-800", [
