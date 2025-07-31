@@ -21,7 +21,7 @@ pub(all) enum CardColor {
 pub fn get_card_style(
   variant~ : CardVariant,
   color~ : CardColor,
-  className~ : String?,
+  class~ : String = "",
 ) -> String {
   clsx([
     // Base styles
@@ -96,10 +96,7 @@ pub fn get_card_style(
         }
     },
     // Optional custom class name
-    match className {
-      Some(cls) => cls
-      None => ""
-    },
+    class,
   ])
 }
 
