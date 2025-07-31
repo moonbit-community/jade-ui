@@ -3,6 +3,8 @@ package "Yoorkin/jade_ui/example"
 
 // Values
 
+// Errors
+
 // Types and methods
 type Model
 
