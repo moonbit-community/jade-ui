@@ -90,7 +90,7 @@ pub fn get_accordion_trigger_style(
 ) -> String {
   clsx([
     // Base styles
-    "flex items-center justify-between w-full py-4 px-4 text-left font-medium transition-all duration-200 cursor-pointer hover:bg-[var(--color-base-100)]/50",
+    "flex items-center justify-between w-full py-4 px-4 text-left font-medium transition-all duration-300 cursor-pointer hover:bg-[var(--color-base-100)]/50",
     // Color styles
     match color {
       Default => "text-[var(--color-base-content)]"
@@ -120,7 +120,7 @@ pub fn get_accordion_trigger_style(
 pub fn get_accordion_content_style(className~ : String?) -> String {
   clsx([
     // Base styles
-    "px-4 pb-4 text-[var(--color-base-content)]/80 transition-all duration-200 ease-in-out",
+    "px-4 text-[var(--color-base-content)]/80 transition-all duration-200 ease-in-out",
     // Optional custom class name
     match className {
       Some(cls) => cls

@@ -144,7 +144,7 @@ pub fn[M] accordion_trigger(
 }
 
 ///|
-/// Creates accordion content that can be shown or hidden.
+/// Creates accordion content that can be shown or hidden with smooth animation.
 ///
 /// Parameters:
 ///
@@ -153,7 +153,7 @@ pub fn[M] accordion_trigger(
 /// * `variant` : @theme.AccordionVariant - The visual style variant.
 /// * `className` : String? - Additional CSS class name.
 ///
-/// Returns an HTML div element configured as accordion content, or None if closed.
+/// Returns an HTML div element configured as accordion content with animation.
 ///
 pub fn[M] accordion_content(
   children : Array[@html.Html[M]],
@@ -161,18 +161,17 @@ pub fn[M] accordion_content(
   class~ : String? = None,
 ) -> @html.Html[M] {
   let klass = @theme.get_accordion_content_style(className=class)
-  let attrs = [
-    @html.attribute("class", klass),
-    @html.attribute("role", "tabpanel"),
-    @html.attribute("data-open", if isOpen { "true" } else { "false" }),
-    @html.attribute(
-      "style",
-      if isOpen {
-        "display: block;"
-      } else {
-        "display: none;"
-      },
-    ),
-  ]
-  @html.node("div", attrs, children)
+  let animationStyle = if isOpen {
+    "grid-template-rows: 1fr; opacity: 1; padding-bottom: 1rem;"
+  } else {
+    "grid-template-rows: 0fr; opacity: 0; padding-bottom: 0;"
+  }
+  let baseStyle = "display: grid; overflow: hidden;"
+  // 使用grid布局需要包装内容
+  let wrappedChildren = [@html.div(style=["min-height: 0;"], children)]
+  @html.div(
+    class=klass,
+    style=[baseStyle + " " + animationStyle],
+    wrappedChildren,
+  )
 }
