@@ -27,7 +27,7 @@ pub(all) enum TypographyColor {
 pub fn get_typography_style(
   typography_type : TypographyType,
   color : TypographyColor,
-  class : String
+  class : String,
 ) -> String {
   let base_style = "font-sans antialiased"
   let type_style = match typography_type {
