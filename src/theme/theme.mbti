@@ -58,7 +58,7 @@ pub(all) enum AccordionVariant {
   Default
   Bordered
   Shadow
-  Splitted
+  Split
 }
 
 pub(all) enum ButtonColor {

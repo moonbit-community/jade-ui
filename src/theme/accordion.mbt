@@ -3,7 +3,7 @@ pub(all) enum AccordionVariant {
   Default
   Bordered
   Shadow
-  Splitted
+  Split
 }
 
 ///|
@@ -32,7 +32,7 @@ pub fn get_accordion_style(
       Bordered =>
         "border border-[var(--color-base-200)] rounded-lg overflow-hidden"
       Shadow => "shadow-sm rounded-lg overflow-hidden"
-      Splitted => "space-y-2"
+      Split => "space-y-2"
     },
     // Color styles (mainly for bordered variant)
     match (variant, color) {
@@ -66,7 +66,7 @@ pub fn get_accordion_item_style(
       Default => "border-b border-[var(--color-base-200)] last:border-b-0"
       Bordered => "border-b border-[var(--color-base-200)] last:border-b-0"
       Shadow => "border-b border-[var(--color-base-200)] last:border-b-0"
-      Splitted => "border border-[var(--color-base-200)] rounded-lg shadow-sm"
+      Split => "border border-[var(--color-base-200)] rounded-lg shadow-sm"
     },
     // Disabled styles
     if disabled {
