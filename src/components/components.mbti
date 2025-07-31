@@ -11,7 +11,7 @@ fn[M] button(Array[@html.Html[M]], M, variant~ : @theme.ButtonVariant = .., size
 
 fn[M] button_group(Array[@html.Html[M]], orientation~ : @theme.ButtonGroupOrientation = .., fullWidth~ : Bool = .., class~ : String? = ..) -> @html.Html[M]
 
-fn[M] card(Array[@html.Html[M]], variant~ : @theme.CardVariant = .., color~ : @theme.CardColor = .., className~ : String? = ..) -> @html.Html[M]
+fn[M] card(Array[@html.Html[M]], variant~ : @theme.CardVariant = .., color~ : @theme.CardColor = .., class~ : String = ..) -> @html.Html[M]
 
 fn[M] card_body(Array[@html.Html[M]], className~ : String? = ..) -> @html.Html[M]
 
@@ -29,7 +29,17 @@ fn[M] chip_label(Array[@html.Html[M]], size~ : @theme.ChipSize = .., className~ 
 
 fn[M] slider(value~ : Int = .., min~ : Int = .., max~ : Int = .., on_input~ : (Int) -> M, color~ : @theme.SliderColor = .., size~ : @theme.SliderSize = .., class~ : String = .., childrens? : Array[@html.Html[M]]) -> @html.Html[M]
 
+fn[M] tabs(Array[@html.Html[M]], orientation~ : @theme.TabsOrientation = .., class~ : String? = ..) -> @html.Html[M]
+
+fn[M] tabs_list(Array[@html.Html[M]], orientation~ : @theme.TabsOrientation = .., variant~ : @theme.TabsVariant = .., class~ : String? = ..) -> @html.Html[M]
+
+fn[M] tabs_panel(Array[@html.Html[M]], is_active~ : Bool = .., class~ : String? = ..) -> @html.Html[M]
+
+fn[M] tabs_trigger(Array[@html.Html[M]], M, size~ : @theme.TabsSize = .., variant~ : @theme.TabsVariant = .., is_active~ : Bool = .., class~ : String? = ..) -> @html.Html[M]
+
 fn[M] typography(tag~ : @theme.TypographyType = .., color~ : @theme.TypographyColor = .., class~ : String = .., Array[@html.Html[M]]) -> @html.Html[M]
+
+// Errors
 
 // Types and methods
 
