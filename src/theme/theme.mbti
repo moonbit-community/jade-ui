@@ -21,6 +21,14 @@ fn get_card_header_style(className~ : String?) -> String
 
 fn get_card_style(variant~ : CardVariant, color~ : CardColor, className~ : String?) -> String
 
+fn get_chip_dismiss_trigger_style(size~ : ChipSize, className~ : String?) -> String
+
+fn get_chip_icon_style(size~ : ChipSize, className~ : String?) -> String
+
+fn get_chip_label_style(size~ : ChipSize, className~ : String?) -> String
+
+fn get_chip_style(variant~ : ChipVariant, size~ : ChipSize, color~ : ChipColor, isPill~ : Bool, class~ : String?) -> String
+
 fn get_slider_classes(String) -> String
 
 fn get_slider_color_value(SliderColor) -> String
@@ -101,6 +109,28 @@ pub(all) enum CardColor {
 }
 
 pub(all) enum CardVariant {
+  Ghost
+  Solid
+  Outline
+  Gradient
+}
+
+pub(all) enum ChipColor {
+  Primary
+  Secondary
+  Info
+  Success
+  Warning
+  Error
+}
+
+pub(all) enum ChipSize {
+  Sm
+  Md
+  Lg
+}
+
+pub(all) enum ChipVariant {
   Ghost
   Solid
   Outline
