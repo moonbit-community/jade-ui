@@ -7,33 +7,38 @@ import(
 )
 
 // Values
+
 fn[M] badge(Array[@html.Html[M]], content~ : String = .., variant~ : @theme.BadgeVariant = .., size~ : @theme.BadgeSize = .., color~ : @theme.BadgeColor = .., overlap~ : @theme.BadgeOverlap = .., placement~ : @theme.BadgePlacement = .., invisible~ : Bool = .., className~ : String? = ..) -> @html.Html[M]
 
 fn[M] badge_indicator(content~ : String? = .., variant~ : @theme.BadgeVariant = .., size~ : @theme.BadgeSize = .., color~ : @theme.BadgeColor = .., className~ : String? = ..) -> @html.Html[M]
 
 fn[M] button(Array[@html.Html[M]], M, variant~ : @theme.ButtonVariant = .., size~ : @theme.ButtonSize = .., color~ : @theme.ButtonColor = .., fullWidth~ : Bool = .., ripple~ : Bool = .., className~ : String? = ..) -> @html.Html[M]
 
-fn[M] button_group(Array[@html.Html[M]], orientation~ : @theme.ButtonGroupOrientation = .., fullWidth~ : Bool = .., class~ : String? = ..) -> @html.Html[M]
+fn[M] button(Array[@html.Html[M]], M, variant? : @theme.ButtonVariant, size? : @theme.ButtonSize, color? : @theme.ButtonColor, fullWidth? : Bool, ripple? : Bool, className? : String?) -> @html.Html[M]
 
-fn[M] card(Array[@html.Html[M]], variant~ : @theme.CardVariant = .., color~ : @theme.CardColor = .., className~ : String? = ..) -> @html.Html[M]
+fn[M] button_group(Array[@html.Html[M]], orientation? : @theme.ButtonGroupOrientation, fullWidth? : Bool, class? : String?) -> @html.Html[M]
 
-fn[M] card_body(Array[@html.Html[M]], className~ : String? = ..) -> @html.Html[M]
+fn[M] card(Array[@html.Html[M]], variant? : @theme.CardVariant, color? : @theme.CardColor, className? : String?) -> @html.Html[M]
 
-fn[M] card_footer(Array[@html.Html[M]], className~ : String? = ..) -> @html.Html[M]
+fn[M] card_body(Array[@html.Html[M]], className? : String?) -> @html.Html[M]
 
-fn[M] card_header(Array[@html.Html[M]], className~ : String? = ..) -> @html.Html[M]
+fn[M] card_footer(Array[@html.Html[M]], className? : String?) -> @html.Html[M]
 
-fn[M] chip(Array[@html.Html[M]], variant~ : @theme.ChipVariant = .., size~ : @theme.ChipSize = .., color~ : @theme.ChipColor = .., isPill~ : Bool = .., class~ : String? = ..) -> @html.Html[M]
+fn[M] card_header(Array[@html.Html[M]], className? : String?) -> @html.Html[M]
 
-fn[M] chip_dismiss_trigger(M, size~ : @theme.ChipSize = .., class~ : String? = .., children~ : Array[@html.Html[M]]? = ..) -> @html.Html[M]
+fn[M] chip(Array[@html.Html[M]], variant? : @theme.ChipVariant, size? : @theme.ChipSize, color? : @theme.ChipColor, isPill? : Bool, class? : String?) -> @html.Html[M]
 
-fn[M] chip_icon(Array[@html.Html[M]], size~ : @theme.ChipSize = .., className~ : String? = ..) -> @html.Html[M]
+fn[M] chip_dismiss_trigger(M, size? : @theme.ChipSize, class? : String?, children? : Array[@html.Html[M]]?) -> @html.Html[M]
 
-fn[M] chip_label(Array[@html.Html[M]], size~ : @theme.ChipSize = .., className~ : String? = ..) -> @html.Html[M]
+fn[M] chip_icon(Array[@html.Html[M]], size? : @theme.ChipSize, className? : String?) -> @html.Html[M]
 
-fn[M] slider(value~ : Int = .., min~ : Int = .., max~ : Int = .., on_input~ : (Int) -> M, color~ : @theme.SliderColor = .., size~ : @theme.SliderSize = .., class~ : String = .., childrens? : Array[@html.Html[M]]) -> @html.Html[M]
+fn[M] chip_label(Array[@html.Html[M]], size? : @theme.ChipSize, className? : String?) -> @html.Html[M]
 
-fn[M] typography(tag~ : @theme.TypographyType = .., color~ : @theme.TypographyColor = .., class~ : String = .., Array[@html.Html[M]]) -> @html.Html[M]
+fn[M] slider(value? : Int, min? : Int, max? : Int, on_input~ : (Int) -> M, color? : @theme.SliderColor, size? : @theme.SliderSize, class? : String, childrens? : Array[@html.Html[M]]) -> @html.Html[M]
+
+fn[M] typography(tag? : @theme.TypographyType, color? : @theme.TypographyColor, class? : String, Array[@html.Html[M]]) -> @html.Html[M]
+
+// Errors
 
 // Errors
 
