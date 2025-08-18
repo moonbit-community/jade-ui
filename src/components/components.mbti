@@ -29,6 +29,18 @@ fn[M] chip_label(Array[@html.Html[M]], size? : @theme.ChipSize, className? : Str
 
 fn[M] slider(value? : Int, min? : Int, max? : Int, on_input~ : (Int) -> M, color? : @theme.SliderColor, size? : @theme.SliderSize, class? : String, childrens? : Array[@html.Html[M]]) -> @html.Html[M]
 
+fn[M] timeline(Array[@html.Html[M]], orientation? : @theme.TimelineOrientation, mode? : @theme.TimelineMode, color? : @theme.TimelineColor, className? : String?) -> @html.Html[M]
+
+fn[M] timeline_body(Array[@html.Html[M]], orientation? : @theme.TimelineOrientation, className? : String?) -> @html.Html[M]
+
+fn[M] timeline_header(Array[@html.Html[M]], orientation? : @theme.TimelineOrientation, className? : String?) -> @html.Html[M]
+
+fn[M] timeline_icon(Array[@html.Html[M]], color? : @theme.TimelineColor, isActive? : Bool, isCompleted? : Bool, className? : String?) -> @html.Html[M]
+
+fn[M] timeline_item(Array[@html.Html[M]], String, icon? : Array[@html.Html[M]], orientation? : @theme.TimelineOrientation, color? : @theme.TimelineColor, isActive? : Bool, isCompleted? : Bool, showSeparator? : Bool, className? : String?) -> @html.Html[M]
+
+fn[M] timeline_separator(orientation? : @theme.TimelineOrientation, color? : @theme.TimelineColor, isCompleted? : Bool, className? : String?) -> @html.Html[M]
+
 fn[M] typography(tag? : @theme.TypographyType, color? : @theme.TypographyColor, class? : String, Array[@html.Html[M]]) -> @html.Html[M]
 
 // Errors

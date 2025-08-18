@@ -37,6 +37,18 @@ fn get_slider_styles(Int, String, Double) -> Array[String]
 
 fn get_slider_thumb_height(SliderSize) -> Int
 
+fn get_timeline_body_style(orientation~ : TimelineOrientation, className~ : String?) -> String
+
+fn get_timeline_header_style(orientation~ : TimelineOrientation, className~ : String?) -> String
+
+fn get_timeline_icon_style(color~ : TimelineColor, isActive~ : Bool, isCompleted~ : Bool, className~ : String?) -> String
+
+fn get_timeline_item_style(orientation~ : TimelineOrientation, isActive~ : Bool, isCompleted~ : Bool, className~ : String?) -> String
+
+fn get_timeline_separator_style(orientation~ : TimelineOrientation, color~ : TimelineColor, isCompleted~ : Bool, className~ : String?) -> String
+
+fn get_timeline_style(orientation~ : TimelineOrientation, className~ : String?) -> String
+
 fn get_typography_style(TypographyType, TypographyColor, String) -> String
 
 fn light() -> JadeTheme
@@ -190,6 +202,25 @@ pub(all) enum SliderSize {
   Md
   Lg
   Xl
+}
+
+pub(all) enum TimelineColor {
+  Primary
+  Secondary
+  Info
+  Success
+  Warning
+  Error
+}
+
+pub(all) enum TimelineMode {
+  Timeline
+  Stepper
+}
+
+pub(all) enum TimelineOrientation {
+  Horizontal
+  Vertical
 }
 
 pub(all) enum TypographyColor {

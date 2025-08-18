@@ -1678,6 +1678,187 @@ fn view(model : Model) -> Html[Msg] {
         ]),
       ]),
     ]),
+
+    // Timeline Component showcase
+    div(class="max-w-6xl mx-auto mb-12", [
+      h2(class="text-2xl font-bold mb-6 text-gray-800", [
+        text("Timeline Component"),
+      ]),
+      
+      // Vertical Timeline
+      div(class="bg-white rounded-lg p-6 shadow-sm mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Vertical Timeline - Order Process"),
+        ]),
+        @jade.timeline([
+          @jade.timeline_item(
+            [
+              @jade.typography(tag=H4, [text("Order Placed")]),
+              @jade.typography(tag=P, [text("Your order has been successfully placed.")]),
+            ],
+            "order-placed",
+            icon=[text("1")],
+            isCompleted=true,
+            color=Success,
+          ),
+          @jade.timeline_item(
+            [
+              @jade.typography(tag=H4, [text("Payment Confirmed")]),
+              @jade.typography(tag=P, [text("Payment has been processed successfully.")]),
+            ],
+            "payment-confirmed",
+            icon=[text("2")],
+            isCompleted=true,
+            color=Success,
+          ),
+          @jade.timeline_item(
+            [
+              @jade.typography(tag=H4, [text("Processing")]),
+              @jade.typography(tag=P, [text("Your order is being prepared for shipment.")]),
+            ],
+            "processing",
+            icon=[text("3")],
+            isActive=true,
+            color=Primary,
+          ),
+          @jade.timeline_item(
+            [
+              @jade.typography(tag=H4, [text("Shipped")]),
+              @jade.typography(tag=P, [text("Your order has been shipped.")]),
+            ],
+            "shipped",
+            icon=[text("4")],
+            color=Primary,
+          ),
+          @jade.timeline_item(
+            [
+              @jade.typography(tag=H4, [text("Delivered")]),
+              @jade.typography(tag=P, [text("Your order has been delivered.")]),
+            ],
+            "delivered",
+            icon=[text("5")],
+            showSeparator=Some(false),
+            color=Primary,
+          ),
+        ], orientation=Vertical, color=Primary),
+      ]),
+      
+      // Horizontal Timeline
+      div(class="bg-white rounded-lg p-6 shadow-sm mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Horizontal Timeline - Project Milestones"),
+        ]),
+        @jade.timeline([
+          @jade.timeline_item(
+            [
+              @jade.typography(tag=H4, [text("Planning")]),
+              @jade.typography(tag=Small, [text("Q1 2024")]),
+            ],
+            "planning",
+            icon=[text("📋")],
+            isCompleted=true,
+            color=Info,
+          ),
+          @jade.timeline_item(
+            [
+              @jade.typography(tag=H4, [text("Development")]),
+              @jade.typography(tag=Small, [text("Q2 2024")]),
+            ],
+            "development",
+            icon=[text("💻")],
+            isActive=true,
+            color=Info,
+          ),
+          @jade.timeline_item(
+            [
+              @jade.typography(tag=H4, [text("Testing")]),
+              @jade.typography(tag=Small, [text("Q3 2024")]),
+            ],
+            "testing",
+            icon=[text("🧪")],
+            color=Info,
+          ),
+          @jade.timeline_item(
+            [
+              @jade.typography(tag=H4, [text("Launch")]),
+              @jade.typography(tag=Small, [text("Q4 2024")]),
+            ],
+            "launch",
+            icon=[text("🚀")],
+            color=Info,
+          ),
+        ], orientation=Horizontal, color=Info),
+      ]),
+      
+      // Timeline with Different Colors
+      div(class="bg-white rounded-lg p-6 shadow-sm", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Timeline with Different Colors"),
+        ]),
+        div(class="grid grid-cols-1 md:grid-cols-2 gap-6", [
+          // Success Timeline
+          div([
+            h4(class="text-md font-medium mb-3 text-green-600", [
+              text("Success Timeline"),
+            ]),
+            @jade.timeline([
+              @jade.timeline_item(
+                [text("Task Completed")],
+                "task1",
+                icon=[text("✓")],
+                isCompleted=true,
+                color=Success,
+              ),
+              @jade.timeline_item(
+                [text("Review Passed")],
+                "task2",
+                icon=[text("✓")],
+                isCompleted=true,
+                color=Success,
+              ),
+              @jade.timeline_item(
+                [text("Deployed")],
+                "task3",
+                icon=[text("✓")],
+                isCompleted=true,
+                showSeparator=Some(false),
+                color=Success,
+              ),
+            ], orientation=Vertical, color=Success),
+          ]),
+          
+          // Warning Timeline
+          div([
+            h4(class="text-md font-medium mb-3 text-yellow-600", [
+              text("Warning Timeline"),
+            ]),
+            @jade.timeline([
+              @jade.timeline_item(
+                [text("Issue Detected")],
+                "issue1",
+                icon=[text("⚠")],
+                isCompleted=true,
+                color=Warning,
+              ),
+              @jade.timeline_item(
+                [text("Investigation")],
+                "issue2",
+                icon=[text("🔍")],
+                isActive=true,
+                color=Warning,
+              ),
+              @jade.timeline_item(
+                [text("Resolution")],
+                "issue3",
+                icon=[text("🔧")],
+                showSeparator=Some(false),
+                color=Warning,
+              ),
+            ], orientation=Vertical, color=Warning),
+          ]),
+        ]),
+      ]),
+    ]),
   ])
 }
 
