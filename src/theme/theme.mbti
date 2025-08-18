@@ -29,6 +29,8 @@ fn get_chip_label_style(size~ : ChipSize, className~ : String?) -> String
 
 fn get_chip_style(variant~ : ChipVariant, size~ : ChipSize, color~ : ChipColor, isPill~ : Bool, class~ : String?) -> String
 
+fn get_navbar_style(variant~ : NavbarVariant, color~ : NavbarColor, shadow~ : Bool, blurred~ : Bool, fullWidth~ : Bool, class~ : String?) -> String
+
 fn get_slider_classes(String) -> String
 
 fn get_slider_color_value(SliderColor) -> String
@@ -40,6 +42,8 @@ fn get_slider_thumb_height(SliderSize) -> Int
 fn get_typography_style(TypographyType, TypographyColor, String) -> String
 
 fn light() -> JadeTheme
+
+// Errors
 
 // Types and methods
 pub(all) enum ButtonColor {
@@ -172,6 +176,23 @@ impl Eq for JadeTheme
 impl Show for JadeTheme
 impl ToJson for JadeTheme
 impl @json.FromJson for JadeTheme
+
+pub(all) enum NavbarColor {
+  Default
+  Primary
+  Secondary
+  Info
+  Success
+  Warning
+  Error
+}
+
+pub(all) enum NavbarVariant {
+  Ghost
+  Solid
+  Outline
+  Gradient
+}
 
 pub(all) enum SliderColor {
   Primary

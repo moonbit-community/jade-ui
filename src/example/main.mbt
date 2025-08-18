@@ -27,6 +27,404 @@ fn view(model : Model) -> Html[Msg] {
       text("Jade UI Component Style Showcase"),
     ]),
 
+    // Navbar Component Showcase
+    div(class="max-w-6xl mx-auto mb-12", [
+      h2(class="text-2xl font-bold mb-6 text-gray-800", [
+        text("Navbar Component"),
+      ]),
+
+      // Style Navbar Example
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Jade UI Style Navbar"),
+        ]),
+        @jade.navbar(
+          [
+            div(class="flex items-center justify-between w-full", [
+              // Brand section
+              div(class="flex items-center", [
+                @jade.typography(tag=H6, color=Default, class="font-semibold", [
+                  text("Jade UI"),
+                ]),
+                div(class="ml-4 mr-4 hidden h-5 w-px bg-gray-300 lg:block", []),
+                // Navigation links (hidden on mobile)
+                div(class="hidden lg:flex lg:items-center lg:gap-6", [
+                  @jade.typography(
+                    tag=Small,
+                    color=Default,
+                    class="flex items-center gap-2 hover:text-blue-600 cursor-pointer",
+                    [text("📄 Pages")],
+                  ),
+                  @jade.typography(
+                    tag=Small,
+                    color=Default,
+                    class="flex items-center gap-2 hover:text-blue-600 cursor-pointer",
+                    [text("👤 Account")],
+                  ),
+                  @jade.typography(
+                    tag=Small,
+                    color=Default,
+                    class="flex items-center gap-2 hover:text-blue-600 cursor-pointer",
+                    [text("🧩 Blocks")],
+                  ),
+                  @jade.typography(
+                    tag=Small,
+                    color=Default,
+                    class="flex items-center gap-2 hover:text-blue-600 cursor-pointer",
+                    [text("📚 Docs")],
+                  ),
+                ]),
+              ]),
+              // Action buttons
+              div(class="flex items-center gap-2", [
+                @jade.button(
+                  [text("Sign In")],
+                  Increment,
+                  variant=Solid,
+                  color=Primary,
+                  size=Sm,
+                  className=Some("hidden lg:inline-flex"),
+                ),
+                @jade.button(
+                  [text("☰")],
+                  Increment,
+                  variant=Ghost,
+                  color=Secondary,
+                  size=Sm,
+                  className=Some("lg:hidden"),
+                ),
+              ]),
+            ]),
+          ],
+          variant=Solid,
+          color=Default,
+          shadow=true,
+          class=Some("mx-auto max-w-screen-xl"),
+        ),
+      ]),
+
+      // Navbar variants
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Navbar Variants"),
+        ]),
+        div(class="space-y-4", [
+          // Ghost variant
+          @jade.navbar(
+            [
+              div(class="flex items-center", [
+                h3(class="text-lg font-semibold", [text("Ghost Navbar")]),
+              ]),
+              div(class="flex items-center gap-4", [
+                @jade.button(
+                  [text("Home")],
+                  Increment,
+                  variant=Ghost,
+                  color=Primary,
+                  size=Sm,
+                ),
+                @jade.button(
+                  [text("About")],
+                  Increment,
+                  variant=Ghost,
+                  color=Primary,
+                  size=Sm,
+                ),
+                @jade.button(
+                  [text("Contact")],
+                  Increment,
+                  variant=Ghost,
+                  color=Primary,
+                  size=Sm,
+                ),
+              ]),
+            ],
+            variant=Ghost,
+            color=Default,
+          ),
+
+          // Solid variant
+          @jade.navbar(
+            [
+              div(class="flex items-center", [
+                h3(class="text-lg font-semibold", [text("Solid Navbar")]),
+              ]),
+              div(class="flex items-center gap-4", [
+                @jade.button(
+                  [text("Home")],
+                  Increment,
+                  variant=Outlined,
+                  color=Primary,
+                  size=Sm,
+                ),
+                @jade.button(
+                  [text("About")],
+                  Increment,
+                  variant=Outlined,
+                  color=Primary,
+                  size=Sm,
+                ),
+                @jade.button(
+                  [text("Contact")],
+                  Increment,
+                  variant=Solid,
+                  color=Primary,
+                  size=Sm,
+                ),
+              ]),
+            ],
+            variant=Solid,
+            color=Default,
+          ),
+
+          // Outline variant
+          @jade.navbar(
+            [
+              div(class="flex items-center", [
+                h3(class="text-lg font-semibold", [text("Outline Navbar")]),
+              ]),
+              div(class="flex items-center gap-4", [
+                @jade.button(
+                  [text("Home")],
+                  Increment,
+                  variant=Ghost,
+                  color=Primary,
+                  size=Sm,
+                ),
+                @jade.button(
+                  [text("About")],
+                  Increment,
+                  variant=Ghost,
+                  color=Primary,
+                  size=Sm,
+                ),
+                @jade.button(
+                  [text("Contact")],
+                  Increment,
+                  variant=Solid,
+                  color=Primary,
+                  size=Sm,
+                ),
+              ]),
+            ],
+            variant=Outline,
+            color=Primary,
+          ),
+
+          // Gradient variant
+          @jade.navbar(
+            [
+              div(class="flex items-center", [
+                h3(class="text-lg font-semibold text-white", [
+                  text("Gradient Navbar"),
+                ]),
+              ]),
+              div(class="flex items-center gap-4", [
+                @jade.button(
+                  [text("Home")],
+                  Increment,
+                  variant=Ghost,
+                  color=Primary,
+                  size=Sm,
+                ),
+                @jade.button(
+                  [text("About")],
+                  Increment,
+                  variant=Ghost,
+                  color=Primary,
+                  size=Sm,
+                ),
+                @jade.button(
+                  [text("Contact")],
+                  Increment,
+                  variant=Solid,
+                  color=Secondary,
+                  size=Sm,
+                ),
+              ]),
+            ],
+            variant=Gradient,
+            color=Primary,
+          ),
+        ]),
+      ]),
+
+      // Navbar colors
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Navbar Colors (Solid Variant)"),
+        ]),
+        div(class="space-y-4", [
+          @jade.navbar(
+            [
+              div(class="flex items-center", [
+                h4(class="font-semibold", [text("Primary Color")]),
+              ]),
+              div(class="flex items-center gap-2", [
+                @jade.button(
+                  [text("Action")],
+                  Increment,
+                  variant=Outlined,
+                  color=Secondary,
+                  size=Sm,
+                ),
+              ]),
+            ],
+            variant=Solid,
+            color=Primary,
+          ),
+          @jade.navbar(
+            [
+              div(class="flex items-center", [
+                h4(class="font-semibold", [text("Success Color")]),
+              ]),
+              div(class="flex items-center gap-2", [
+                @jade.button(
+                  [text("Action")],
+                  Increment,
+                  variant=Outlined,
+                  color=Primary,
+                  size=Sm,
+                ),
+              ]),
+            ],
+            variant=Solid,
+            color=Success,
+          ),
+          @jade.navbar(
+            [
+              div(class="flex items-center", [
+                h4(class="font-semibold", [text("Warning Color")]),
+              ]),
+              div(class="flex items-center gap-2", [
+                @jade.button(
+                  [text("Action")],
+                  Increment,
+                  variant=Outlined,
+                  color=Primary,
+                  size=Sm,
+                ),
+              ]),
+            ],
+            variant=Solid,
+            color=Warning,
+          ),
+          @jade.navbar(
+            [
+              div(class="flex items-center", [
+                h4(class="font-semibold", [text("Error Color")]),
+              ]),
+              div(class="flex items-center gap-2", [
+                @jade.button(
+                  [text("Action")],
+                  Increment,
+                  variant=Outlined,
+                  color=Primary,
+                  size=Sm,
+                ),
+              ]),
+            ],
+            variant=Solid,
+            color=Error,
+          ),
+        ]),
+      ]),
+
+      // Navbar features
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Navbar Features"),
+        ]),
+        div(class="space-y-4", [
+          // With shadow
+          @jade.navbar(
+            [
+              div(class="flex items-center", [
+                h4(class="font-semibold", [text("With Shadow")]),
+              ]),
+              div(class="flex items-center gap-2", [
+                @jade.button(
+                  [text("Menu")],
+                  Increment,
+                  variant=Ghost,
+                  color=Primary,
+                  size=Sm,
+                ),
+              ]),
+            ],
+            variant=Solid,
+            color=Default,
+            shadow=true,
+          ),
+
+          // Without shadow
+          @jade.navbar(
+            [
+              div(class="flex items-center", [
+                h4(class="font-semibold", [text("Without Shadow")]),
+              ]),
+              div(class="flex items-center gap-2", [
+                @jade.button(
+                  [text("Menu")],
+                  Increment,
+                  variant=Ghost,
+                  color=Primary,
+                  size=Sm,
+                ),
+              ]),
+            ],
+            variant=Solid,
+            color=Default,
+            shadow=false,
+          ),
+
+          // Blurred background
+          @jade.navbar(
+            [
+              div(class="flex items-center", [
+                h4(class="font-semibold", [text("Blurred Background")]),
+              ]),
+              div(class="flex items-center gap-2", [
+                @jade.button(
+                  [text("Menu")],
+                  Increment,
+                  variant=Ghost,
+                  color=Primary,
+                  size=Sm,
+                ),
+              ]),
+            ],
+            variant=Ghost,
+            color=Default,
+            blurred=true,
+          ),
+
+          // Full width
+          @jade.navbar(
+            [
+              div(class="flex items-center", [
+                h4(class="font-semibold", [
+                  text("Full Width (No Border Radius)"),
+                ]),
+              ]),
+              div(class="flex items-center gap-2", [
+                @jade.button(
+                  [text("Menu")],
+                  Increment,
+                  variant=Ghost,
+                  color=Primary,
+                  size=Sm,
+                ),
+              ]),
+            ],
+            variant=Solid,
+            color=Default,
+            fullWidth=true,
+          ),
+        ]),
+      ]),
+    ]),
+
     // Counter section
     div(class="w-[600px] mx-auto mb-12", [
       h2(class="text-xl font-semibold mb-4 text-gray-700", [
