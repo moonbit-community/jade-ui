@@ -19,7 +19,7 @@ fn get_card_footer_style(className~ : String?) -> String
 
 fn get_card_header_style(className~ : String?) -> String
 
-fn get_card_style(variant~ : CardVariant, color~ : CardColor, class~ : String = ..) -> String
+fn get_card_style(variant~ : CardVariant, color~ : CardColor, class? : String) -> String
 
 fn get_chip_dismiss_trigger_style(size~ : ChipSize, className~ : String?) -> String
 
