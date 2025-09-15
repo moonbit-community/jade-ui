@@ -1,12 +1,12 @@
 ///|
 pub fn[M] slider(
-  value~ : Int = 0,
-  min~ : Int = 0,
-  max~ : Int = 100,
+  value? : Int = 0,
+  min? : Int = 0,
+  max? : Int = 100,
   on_input~ : (Int) -> M,
-  color~ : @theme.SliderColor = Primary,
-  size~ : @theme.SliderSize = Md,
-  class~ : String = "",
+  color? : @theme.SliderColor = Primary,
+  size? : @theme.SliderSize = Md,
+  class? : String = "",
   childrens? : Array[Html[M]],
 ) -> Html[M] {
   // ensure value is in range

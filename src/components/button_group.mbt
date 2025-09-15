@@ -51,9 +51,9 @@
 ///
 pub fn[M] button_group(
   children : Array[@html.Html[M]],
-  orientation~ : @theme.ButtonGroupOrientation = @theme.Horizontal,
-  fullWidth~ : Bool = false,
-  class~ : String? = None,
+  orientation? : @theme.ButtonGroupOrientation = @theme.Horizontal,
+  fullWidth? : Bool = false,
+  class? : String? = None,
 ) -> @html.Html[M] {
   let klass = @theme.get_button_group_style(orientation~, fullWidth~, class~)
   // let variant_str = match variant {

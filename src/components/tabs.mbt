@@ -26,8 +26,8 @@
 ///
 pub fn[M] tabs(
   children : Array[@html.Html[M]],
-  orientation~ : @theme.TabsOrientation = @theme.Horizontal,
-  class~ : String? = None,
+  orientation? : @theme.TabsOrientation = @theme.Horizontal,
+  class? : String? = None,
 ) -> @html.Html[M] {
   let klass = @theme.get_tabs_style(orientation~, class~)
   let attrs = [
@@ -59,9 +59,9 @@ pub fn[M] tabs(
 ///
 pub fn[M] tabs_list(
   children : Array[@html.Html[M]],
-  orientation~ : @theme.TabsOrientation = @theme.Horizontal,
-  variant~ : @theme.TabsVariant = @theme.Default,
-  class~ : String? = None,
+  orientation? : @theme.TabsOrientation = @theme.Horizontal,
+  variant? : @theme.TabsVariant = @theme.Default,
+  class? : String? = None,
 ) -> @html.Html[M] {
   let klass = @theme.get_tabs_list_style(orientation~, variant~, class~)
   let attrs = [
@@ -103,10 +103,10 @@ pub fn[M] tabs_list(
 pub fn[M] tabs_trigger(
   children : Array[@html.Html[M]],
   click : M,
-  size~ : @theme.TabsSize = @theme.Md,
-  variant~ : @theme.TabsVariant = @theme.Default,
-  is_active~ : Bool = false,
-  class~ : String? = None,
+  size? : @theme.TabsSize = @theme.Md,
+  variant? : @theme.TabsVariant = @theme.Default,
+  is_active? : Bool = false,
+  class? : String? = None,
 ) -> @html.Html[M] {
   let klass = @theme.get_tabs_trigger_style(
     size~,
@@ -139,8 +139,8 @@ pub fn[M] tabs_trigger(
 ///
 pub fn[M] tabs_panel(
   children : Array[@html.Html[M]],
-  is_active~ : Bool = false,
-  class~ : String? = None,
+  is_active? : Bool = false,
+  class? : String? = None,
 ) -> @html.Html[M] {
   if is_active {
     let klass = @theme.get_tabs_panel_style(class~)

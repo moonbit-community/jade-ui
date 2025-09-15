@@ -12,7 +12,8 @@ struct Model {
   activeTab : String
 }
 
-///| 样式常量定义
+///|
+/// 样式常量定义
 let main_container_class = "max-w-6xl mx-auto mb-12"
 
 ///|
@@ -49,7 +50,8 @@ fn update(msg : Msg, model : Model) -> (Cmd[Msg], Model) {
   }
 }
 
-///| 计数器区域组件
+///|
+/// 计数器区域组件
 fn render_counter_section(model : Model) -> Html[Msg] {
   @html.div(class=main_container_class, [
     @jade.card(
@@ -83,7 +85,8 @@ fn render_counter_section(model : Model) -> Html[Msg] {
   ])
 }
 
-///| 水平按钮组子组件
+///|
+/// 水平按钮组子组件
 fn render_horizontal_button_groups() -> Html[Msg] {
   @html.div(class=section_spacing_class, [
     @jade.typography(tag=@theme.H3, color=@theme.Default, class="mb-4", [
@@ -207,7 +210,8 @@ fn render_horizontal_button_groups() -> Html[Msg] {
   ])
 }
 
-///| 垂直按钮组子组件
+///|
+/// 垂直按钮组子组件
 fn render_vertical_button_groups() -> Html[Msg] {
   @html.div(class=section_spacing_class, [
     @jade.typography(tag=@theme.H3, color=@theme.Default, class="mb-4", [
@@ -290,7 +294,8 @@ fn render_vertical_button_groups() -> Html[Msg] {
   ])
 }
 
-///| 按钮组尺寸子组件
+///|
+/// 按钮组尺寸子组件
 fn render_button_group_sizes() -> Html[Msg] {
   @html.div(class=section_spacing_class, [
     @jade.typography(tag=@theme.H3, color=@theme.Default, class="mb-4", [
@@ -373,7 +378,8 @@ fn render_button_group_sizes() -> Html[Msg] {
   ])
 }
 
-///| 按钮组展示区域
+///|
+/// 按钮组展示区域
 fn render_button_group_section() -> Html[Msg] {
   @html.div(class=main_container_class, [
     @jade.card(
@@ -395,7 +401,8 @@ fn render_button_group_section() -> Html[Msg] {
   ])
 }
 
-///| 按钮变体子组件
+///|
+/// 按钮变体子组件
 fn render_button_variants() -> Html[Msg] {
   @html.div(class=section_spacing_class, [
     @jade.typography(tag=@theme.H3, color=@theme.Default, class="mb-4", [
@@ -617,7 +624,8 @@ fn render_button_variants() -> Html[Msg] {
   ])
 }
 
-///| 按钮尺寸子组件
+///|
+/// 按钮尺寸子组件
 fn render_button_sizes() -> Html[Msg] {
   @html.div(class=section_spacing_class, [
     @jade.typography(tag=@theme.H3, color=@theme.Default, class="mb-4", [
@@ -671,7 +679,8 @@ fn render_button_sizes() -> Html[Msg] {
   ])
 }
 
-///| 全宽按钮子组件
+///|
+/// 全宽按钮子组件
 fn render_full_width_button() -> Html[Msg] {
   @html.div(class=section_spacing_class, [
     @jade.typography(tag=@theme.H3, color=@theme.Default, class="mb-4", [
@@ -695,7 +704,8 @@ fn render_full_width_button() -> Html[Msg] {
   ])
 }
 
-///| 按钮样式展示区域
+///|
+/// 按钮样式展示区域
 fn render_button_styles_section() -> Html[Msg] {
   @html.div(class=main_container_class, [
     @jade.card(
@@ -717,7 +727,8 @@ fn render_button_styles_section() -> Html[Msg] {
   ])
 }
 
-///| 卡片样式展示区域
+///|
+/// 卡片样式展示区域
 fn render_card_styles_section() -> Html[Msg] {
   @html.div(class=main_container_class, [
     @jade.card(
@@ -841,7 +852,8 @@ fn render_card_styles_section() -> Html[Msg] {
   ])
 }
 
-///| 排版展示区域
+///|
+/// 排版展示区域
 fn render_typography_section() -> Html[Msg] {
   @html.div(class=main_container_class, [
     @jade.card(
@@ -957,7 +969,8 @@ fn render_typography_section() -> Html[Msg] {
   ])
 }
 
-///| 滑块展示区域
+///|
+/// 滑块展示区域
 fn render_slider_section(model : Model) -> Html[Msg] {
   @html.div(class=main_container_class, [
     @jade.card(
@@ -1062,7 +1075,8 @@ fn render_slider_section(model : Model) -> Html[Msg] {
   ])
 }
 
-///| 标签页展示区域
+///|
+/// 标签页展示区域
 fn render_tabs_section(model : Model) -> Html[Msg] {
   let tabs = ["Tab1", "Tab2", "Tab3"]
   let variants : Array[@theme.TabsVariant] = [Default, Pills, Underline]
@@ -1119,7 +1133,8 @@ fn render_tabs_section(model : Model) -> Html[Msg] {
   ])
 }
 
-///| 芯片展示区域
+///|
+/// 芯片展示区域
 fn render_chip_section() -> Html[Msg] {
   @html.div(class=main_container_class, [
     @jade.card(
@@ -1259,7 +1274,8 @@ fn render_chip_section() -> Html[Msg] {
   ])
 }
 
-///| 主视图函数 - 重构版本
+///|
+/// 主视图函数 - 重构版本
 fn view(model : Model) -> Html[Msg] {
   @html.div(class="w-full min-h-screen p-8 bg-gray-50", [
     // 主标题
@@ -1282,7 +1298,8 @@ fn view(model : Model) -> Html[Msg] {
   ])
 }
 
-///| NOTE: This program is only available in the js backend, 
+///|
+/// NOTE: This program is only available in the js backend, 
 /// see README.md to getting started.
 fn main {
   @theme.light().apply()
