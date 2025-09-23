@@ -1362,89 +1362,406 @@ fn view(model : Model) -> Html[Msg] {
           ]),
         ]),
       ]),
+    ]),
+    // Switch Component showcase
+    div(class="mb-12", [
+      h2(class="text-2xl font-bold mb-6 text-gray-800", [
+        text("Switch Component"),
+      ]),
 
-      // Switch Component showcase
-      div(class="mb-12", [
-        h2(class="text-2xl font-bold mb-6 text-gray-800", [
-          text("Switch Component"),
+      // Basic Switch
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Basic Switch"),
         ]),
-
-        // Basic Switch
-        div(class="mb-8", [
-          h3(class="text-lg font-semibold mb-4 text-gray-700", [
-            text("Basic Switch"),
+        div(class="bg-white rounded-lg p-6 shadow-sm", [
+          div(class="flex items-center gap-4", [
+            @jade.switch(
+              checked=model.switch_checked,
+              change=SwitchToggle,
+              color=Primary,
+            ),
+            {
+              let status = if model.switch_checked { "ON" } else { "OFF" }
+              text("Switch is " + status)
+            },
           ]),
-          div(class="bg-white rounded-lg p-6 shadow-sm", [
-            div(class="flex items-center gap-4", [
+        ]),
+      ]),
+
+      // Switch Colors
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Switch Colors"),
+        ]),
+        div(class="bg-white rounded-lg p-6 shadow-sm", [
+          div(class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4", [
+            div(class="flex flex-col items-center gap-2", [
               @jade.switch(
                 checked=model.switch_checked,
                 change=SwitchToggle,
                 color=Primary,
               ),
-              {
-                let status = if model.switch_checked { "ON" } else { "OFF" }
-                text("Switch is " + status)
-              },
+              text("Primary"),
+            ]),
+            div(class="flex flex-col items-center gap-2", [
+              @jade.switch(
+                checked=model.switch_checked,
+                change=SwitchToggle,
+                color=Secondary,
+              ),
+              text("Secondary"),
+            ]),
+            div(class="flex flex-col items-center gap-2", [
+              @jade.switch(
+                checked=model.switch_checked,
+                change=SwitchToggle,
+                color=Info,
+              ),
+              text("Info"),
+            ]),
+            div(class="flex flex-col items-center gap-2", [
+              @jade.switch(
+                checked=model.switch_checked,
+                change=SwitchToggle,
+                color=Success,
+              ),
+              text("Success"),
+            ]),
+            div(class="flex flex-col items-center gap-2", [
+              @jade.switch(
+                checked=model.switch_checked,
+                change=SwitchToggle,
+                color=Warning,
+              ),
+              text("Warning"),
+            ]),
+            div(class="flex flex-col items-center gap-2", [
+              @jade.switch(
+                checked=model.switch_checked,
+                change=SwitchToggle,
+                color=Error,
+              ),
+              text("Error"),
             ]),
           ]),
         ]),
+      ]),
 
-        // Switch Colors
-        div(class="mb-8", [
-          h3(class="text-lg font-semibold mb-4 text-gray-700", [
-            text("Switch Colors"),
+      // Chip component showcase
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Chip Component Styles"),
+        ]),
+
+        // Chip variants with all colors
+        div(class="mb-6", [
+          h4(class="text-md font-medium mb-3 text-gray-600", [
+            text("Ghost Variant"),
+          ]),
+          div(class="flex flex-wrap gap-3", [
+            @jade.chip(
+              [@jade.chip_label([text("Primary")])],
+              variant=Ghost,
+              color=Primary,
+            ),
+            @jade.chip(
+              [@jade.chip_label([text("Secondary")])],
+              variant=Ghost,
+              color=Secondary,
+            ),
+            @jade.chip(
+              [@jade.chip_label([text("Info")])],
+              variant=Ghost,
+              color=Info,
+            ),
+            @jade.chip(
+              [@jade.chip_label([text("Success")])],
+              variant=Ghost,
+              color=Success,
+            ),
+            @jade.chip(
+              [@jade.chip_label([text("Warning")])],
+              variant=Ghost,
+              color=Warning,
+            ),
+            @jade.chip(
+              [@jade.chip_label([text("Error")])],
+              variant=Ghost,
+              color=Error,
+            ),
+          ]),
+        ]),
+        div(class="mb-6", [
+          h4(class="text-md font-medium mb-3 text-gray-600", [
+            text("Solid Variant"),
+          ]),
+          div(class="flex flex-wrap gap-3", [
+            @jade.chip(
+              [@jade.chip_label([text("Primary")])],
+              variant=Solid,
+              color=Primary,
+            ),
+            @jade.chip(
+              [@jade.chip_label([text("Secondary")])],
+              variant=Solid,
+              color=Secondary,
+            ),
+            @jade.chip(
+              [@jade.chip_label([text("Info")])],
+              variant=Solid,
+              color=Info,
+            ),
+            @jade.chip(
+              [@jade.chip_label([text("Success")])],
+              variant=Solid,
+              color=Success,
+            ),
+            @jade.chip(
+              [@jade.chip_label([text("Warning")])],
+              variant=Solid,
+              color=Warning,
+            ),
+            @jade.chip(
+              [@jade.chip_label([text("Error")])],
+              variant=Solid,
+              color=Error,
+            ),
+          ]),
+        ]),
+        div(class="mb-6", [
+          h4(class="text-md font-medium mb-3 text-gray-600", [
+            text("Outline Variant"),
+          ]),
+          div(class="flex flex-wrap gap-3", [
+            @jade.chip(
+              [@jade.chip_label([text("Primary")])],
+              variant=Outline,
+              color=Primary,
+            ),
+            @jade.chip(
+              [@jade.chip_label([text("Secondary")])],
+              variant=Outline,
+              color=Secondary,
+            ),
+            @jade.chip(
+              [@jade.chip_label([text("Info")])],
+              variant=Outline,
+              color=Info,
+            ),
+            @jade.chip(
+              [@jade.chip_label([text("Success")])],
+              variant=Outline,
+              color=Success,
+            ),
+            @jade.chip(
+              [@jade.chip_label([text("Warning")])],
+              variant=Outline,
+              color=Warning,
+            ),
+            @jade.chip(
+              [@jade.chip_label([text("Error")])],
+              variant=Outline,
+              color=Error,
+            ),
+          ]),
+        ]),
+        div(class="mb-6", [
+          h4(class="text-md font-medium mb-3 text-gray-600", [
+            text("Gradient Variant"),
+          ]),
+          div(class="flex flex-wrap gap-3", [
+            @jade.chip(
+              [@jade.chip_label([text("Primary")])],
+              variant=Gradient,
+              color=Primary,
+            ),
+            @jade.chip(
+              [@jade.chip_label([text("Secondary")])],
+              variant=Gradient,
+              color=Secondary,
+            ),
+            @jade.chip(
+              [@jade.chip_label([text("Info")])],
+              variant=Gradient,
+              color=Info,
+            ),
+            @jade.chip(
+              [@jade.chip_label([text("Success")])],
+              variant=Gradient,
+              color=Success,
+            ),
+            @jade.chip(
+              [@jade.chip_label([text("Warning")])],
+              variant=Gradient,
+              color=Warning,
+            ),
+            @jade.chip(
+              [@jade.chip_label([text("Error")])],
+              variant=Gradient,
+              color=Error,
+            ),
+          ]),
+        ]),
+      ]),
+
+      // Chip sizes
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Chip Sizes"),
+        ]),
+        div(class="space-y-6", [
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [
+              text("Small (Sm)"),
+            ]),
+            div(class="flex flex-wrap gap-3", [
+              @jade.chip(
+                [@jade.chip_label([text("Small Chip")])],
+                size=Sm,
+                color=Primary,
+              ),
+              @jade.chip(
+                [
+                  @jade.chip_label([text("With Icon")]),
+                  @jade.chip_dismiss_trigger(Increment),
+                ],
+                size=Sm,
+                color=Success,
+              ),
+            ]),
           ]),
           div(class="bg-white rounded-lg p-6 shadow-sm", [
-            div(class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4", [
-              div(class="flex flex-col items-center gap-2", [
-                @jade.switch(
-                  checked=model.switch_checked,
-                  change=SwitchToggle,
-                  color=Primary,
-                ),
-                text("Primary"),
-              ]),
-              div(class="flex flex-col items-center gap-2", [
-                @jade.switch(
-                  checked=model.switch_checked,
-                  change=SwitchToggle,
-                  color=Secondary,
-                ),
-                text("Secondary"),
-              ]),
-              div(class="flex flex-col items-center gap-2", [
-                @jade.switch(
-                  checked=model.switch_checked,
-                  change=SwitchToggle,
-                  color=Info,
-                ),
-                text("Info"),
-              ]),
-              div(class="flex flex-col items-center gap-2", [
-                @jade.switch(
-                  checked=model.switch_checked,
-                  change=SwitchToggle,
-                  color=Success,
-                ),
-                text("Success"),
-              ]),
-              div(class="flex flex-col items-center gap-2", [
-                @jade.switch(
-                  checked=model.switch_checked,
-                  change=SwitchToggle,
-                  color=Warning,
-                ),
-                text("Warning"),
-              ]),
-              div(class="flex flex-col items-center gap-2", [
-                @jade.switch(
-                  checked=model.switch_checked,
-                  change=SwitchToggle,
-                  color=Error,
-                ),
-                text("Error"),
-              ]),
+            h4(class="text-md font-medium mb-3 text-gray-600", [
+              text("Medium (Md)"),
             ]),
+            div(class="flex flex-wrap gap-3", [
+              @jade.chip(
+                [@jade.chip_label([text("Medium Chip")])],
+                size=Md,
+                color=Primary,
+              ),
+              @jade.chip(
+                [
+                  @jade.chip_label([text("With Icon")]),
+                  @jade.chip_dismiss_trigger(Increment),
+                ],
+                size=Md,
+                color=Success,
+              ),
+            ]),
+          ]),
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [
+              text("Large (Lg)"),
+            ]),
+            div(class="flex flex-wrap gap-3", [
+              @jade.chip(
+                [@jade.chip_label([text("Large Chip")])],
+                size=Lg,
+                color=Primary,
+              ),
+              @jade.chip(
+                [
+                  @jade.chip_label([text("With Icon")]),
+                  @jade.chip_dismiss_trigger(Increment),
+                ],
+                size=Lg,
+                color=Success,
+              ),
+            ]),
+          ]),
+        ]),
+      ]),
+
+      // Chip with different shapes
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Chip Shapes"),
+        ]),
+        div(class="space-y-6", [
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [
+              text("Pill Shape (Default)"),
+            ]),
+            div(class="flex flex-wrap gap-3", [
+              @jade.chip(
+                [@jade.chip_label([text("Pill Chip")])],
+                isPill=true,
+                color=Primary,
+              ),
+              @jade.chip(
+                [
+                  @jade.chip_label([text("Success")]),
+                  @jade.chip_dismiss_trigger(Increment),
+                ],
+                isPill=true,
+                color=Success,
+              ),
+            ]),
+          ]),
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [
+              text("Rounded Shape"),
+            ]),
+            div(class="flex flex-wrap gap-3", [
+              @jade.chip(
+                [@jade.chip_label([text("Rounded Chip")])],
+                isPill=false,
+                color=Primary,
+              ),
+              @jade.chip(
+                [
+                  @jade.chip_label([text("Warning")]),
+                  @jade.chip_dismiss_trigger(Increment),
+                ],
+                isPill=false,
+                color=Warning,
+              ),
+            ]),
+          ]),
+        ]),
+      ]),
+
+      // Chip with icons and dismiss triggers
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Chip with Icons and Dismiss Triggers"),
+        ]),
+        div(class="bg-white rounded-lg p-6 shadow-sm", [
+          div(class="flex flex-wrap gap-3", [
+            @jade.chip([@jade.chip_label([text("Simple Chip")])], color=Primary),
+            @jade.chip(
+              [
+                @jade.chip_label([text("With Dismiss")]),
+                @jade.chip_dismiss_trigger(Increment),
+              ],
+              color=Success,
+            ),
+            @jade.chip(
+              [
+                @jade.chip_label([text("Dismissible Info")]),
+                @jade.chip_dismiss_trigger(Increment),
+              ],
+              color=Info,
+              variant=Outline,
+            ),
+            @jade.chip(
+              [
+                @jade.chip_label([text("Warning Chip")]),
+                @jade.chip_dismiss_trigger(Increment),
+              ],
+              color=Warning,
+              variant=Ghost,
+            ),
+            @jade.chip(
+              [
+                @jade.chip_label([text("Error Chip")]),
+                @jade.chip_dismiss_trigger(Increment),
+              ],
+              color=Error,
+              variant=Gradient,
+            ),
           ]),
         ]),
       ]),
@@ -1452,7 +1769,8 @@ fn view(model : Model) -> Html[Msg] {
   ])
 }
 
-///| NOTE: This program is only available in the js backend, 
+///|
+/// NOTE: This program is only available in the js backend, 
 /// see README.md to getting started.
 fn main {
   @theme.light().apply()

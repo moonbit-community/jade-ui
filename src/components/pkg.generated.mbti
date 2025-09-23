@@ -27,9 +27,13 @@ fn[M] chip_icon(Array[@html.Html[M]], size? : @theme.ChipSize, className? : Stri
 
 fn[M] chip_label(Array[@html.Html[M]], size? : @theme.ChipSize, className? : String?) -> @html.Html[M]
 
-fn[M] slider(value~ : Int = .., min~ : Int = .., max~ : Int = .., on_input~ : (Int) -> M, color~ : @theme.SliderColor = .., size~ : @theme.SliderSize = .., class~ : String = .., childrens? : Array[@html.Html[M]]) -> @html.Html[M]
+fn[M] slider(value? : Int, min? : Int, max? : Int, on_input~ : (Int) -> M, color? : @theme.SliderColor, size? : @theme.SliderSize, class? : String, children? : Array[@html.Html[M]]) -> @html.Html[M]
 
-fn[M] typography(tag~ : @theme.TypographyType = .., color~ : @theme.TypographyColor = .., class~ : String = .., Array[@html.Html[M]]) -> @html.Html[M]
+fn[M] switch(checked? : Bool, change~ : M, color? : @theme.SwitchColor, className? : String?, id? : String?) -> @html.Html[M]
+
+fn[M] typography(tag? : @theme.TypographyType, color? : @theme.TypographyColor, class? : String, Array[@html.Html[M]]) -> @html.Html[M]
+
+// Errors
 
 // Types and methods
 

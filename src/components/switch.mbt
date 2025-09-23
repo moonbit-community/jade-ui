@@ -28,11 +28,11 @@
 /// ```
 ///
 pub fn[M] switch(
-  checked~ : Bool = false,
+  checked? : Bool = false,
   change~ : M,
-  color~ : @theme.SwitchColor = @theme.Primary,
-  className~ : String? = None,
-  id~ : String? = None,
+  color? : @theme.SwitchColor = @theme.Primary,
+  className? : String? = None,
+  id? : String? = None,
 ) -> @html.Html[M] {
   let klass = @theme.get_switch_style(color~, className~)
   @html.input(input_type=Checkbox, checked~, class=klass, id?, change=fn(_) {
