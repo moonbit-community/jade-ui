@@ -166,7 +166,7 @@ pub fn[M] chip_dismiss_trigger(
         [],
       ),
     ],
-  ).inner()
+  ).0
   let content = children.unwrap_or([default_icon])
   @html.button(class=klass, click~, content)
 }
