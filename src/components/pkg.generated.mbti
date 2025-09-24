@@ -15,17 +15,19 @@ fn[M] accordion_item(String, @html.Html[M], @html.Html[M], variant? : @theme.Acc
 
 fn[M] accordion_trigger(Array[@html.Html[M]], M, isOpen? : Bool, color? : @theme.AccordionColor, showIcon? : Bool, class? : String?) -> @html.Html[M]
 
-fn[M] button(Array[@html.Html[M]], M, variant? : @theme.ButtonVariant, size? : @theme.ButtonSize, color? : @theme.ButtonColor, fullWidth? : Bool, ripple? : Bool, className? : String?) -> @html.Html[M]
+fn[M] button(Array[@html.Html[M]], M, variant? : @theme.ButtonVariant, size? : @theme.ButtonSize, color? : @theme.ButtonColor, fullWidth? : Bool, ripple? : Bool, class? : String?) -> @html.Html[M]
 
 fn[M] button_group(Array[@html.Html[M]], orientation? : @theme.ButtonGroupOrientation, fullWidth? : Bool, class? : String?) -> @html.Html[M]
 
-fn[M] card(Array[@html.Html[M]], variant? : @theme.CardVariant, color? : @theme.CardColor, className? : String?) -> @html.Html[M]
+fn[M] card(Array[@html.Html[M]], variant? : @theme.CardVariant, color? : @theme.CardColor, class? : String?) -> @html.Html[M]
 
-fn[M] card_body(Array[@html.Html[M]], className? : String?) -> @html.Html[M]
+fn[M] card_body(Array[@html.Html[M]], class? : String?) -> @html.Html[M]
 
-fn[M] card_footer(Array[@html.Html[M]], className? : String?) -> @html.Html[M]
+fn[M] card_footer(Array[@html.Html[M]], class? : String?) -> @html.Html[M]
 
-fn[M] card_header(Array[@html.Html[M]], className? : String?) -> @html.Html[M]
+fn[M] card_header(Array[@html.Html[M]], class? : String?) -> @html.Html[M]
+
+fn[M] checkbox(Bool, M, id? : String, name? : String, label? : String, size? : @theme.CheckboxSize, color? : @theme.CheckboxColor, disabled? : Bool, class? : String) -> @html.Html[M]
 
 fn[M] chip(Array[@html.Html[M]], variant? : @theme.ChipVariant, size? : @theme.ChipSize, color? : @theme.ChipColor, isPill? : Bool, class? : String?) -> @html.Html[M]
 

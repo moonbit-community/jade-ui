@@ -8,6 +8,19 @@ import(
 
 // Values
 <<<<<<< HEAD
+<<<<<<< HEAD
+fn[M] button(Array[@html.Html[M]], M, variant~ : @theme.ButtonVariant = .., size~ : @theme.ButtonSize = .., color~ : @theme.ButtonColor = .., fullWidth~ : Bool = .., ripple~ : Bool = .., class~ : String? = ..) -> @html.Html[M]
+
+fn[M] card(Array[@html.Html[M]], variant~ : @theme.CardVariant = .., color~ : @theme.CardColor = .., class~ : String? = ..) -> @html.Html[M]
+
+fn[M] card_body(Array[@html.Html[M]], class~ : String? = ..) -> @html.Html[M]
+
+fn[M] card_footer(Array[@html.Html[M]], class~ : String? = ..) -> @html.Html[M]
+
+fn[M] card_header(Array[@html.Html[M]], class~ : String? = ..) -> @html.Html[M]
+
+fn[M] checkbox(Bool, M, id? : String, name? : String, label~ : String? = .., size~ : @theme.CheckboxSize = .., color~ : @theme.CheckboxColor = .., disabled~ : Bool = .., class~ : String? = ..) -> @html.Html[M]
+=======
 fn[M] accordion(Array[@html.Html[M]], variant~ : @theme.AccordionVariant = .., color~ : @theme.AccordionColor = .., className~ : String? = ..) -> @html.Html[M]
 
 fn[M] accordion_content(Array[@html.Html[M]], isOpen~ : Bool = .., class~ : String? = ..) -> @html.Html[M]
@@ -17,6 +30,7 @@ fn[M] accordion_item(String, @html.Html[M], @html.Html[M], variant~ : @theme.Acc
 fn[M] accordion_trigger(Array[@html.Html[M]], M, isOpen~ : Bool = .., color~ : @theme.AccordionColor = .., showIcon~ : Bool = .., class~ : String? = ..) -> @html.Html[M]
 
 fn[M] button(Array[@html.Html[M]], M, variant~ : @theme.ButtonVariant = .., size~ : @theme.ButtonSize = .., color~ : @theme.ButtonColor = .., fullWidth~ : Bool = .., ripple~ : Bool = .., className~ : String? = ..) -> @html.Html[M]
+>>>>>>> main
 =======
 fn[M] button(Array[@html.Html[M]], M, variant? : @theme.ButtonVariant, size? : @theme.ButtonSize, color? : @theme.ButtonColor, fullWidth? : Bool, ripple? : Bool, className? : String?) -> @html.Html[M]
 >>>>>>> main
@@ -38,6 +52,7 @@ fn[M] chip_dismiss_trigger(M, size? : @theme.ChipSize, class? : String?, childre
 fn[M] chip_icon(Array[@html.Html[M]], size? : @theme.ChipSize, className? : String?) -> @html.Html[M]
 
 fn[M] chip_label(Array[@html.Html[M]], size? : @theme.ChipSize, className? : String?) -> @html.Html[M]
+>>>>>>> main
 
 fn[M] menu(Array[@html.Html[M]], variant~ : @theme.MenuVariant = .., color~ : @theme.MenuColor = .., className~ : String? = ..) -> @html.Html[M]
 

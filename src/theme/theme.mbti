@@ -10,6 +10,9 @@ import(
 fn clsx(Array[String]) -> String
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+fn get_button_style(variant~ : ButtonVariant, size~ : ButtonSize, color~ : ButtonColor, fullWidth~ : Bool, ripple~ : Bool, class~ : String?) -> String
+=======
 fn get_accordion_content_style(className~ : String?) -> String
 
 fn get_accordion_icon_style(isOpen~ : Bool, className~ : String?) -> String
@@ -19,19 +22,31 @@ fn get_accordion_item_style(variant~ : AccordionVariant, disabled~ : Bool, class
 fn get_accordion_style(variant~ : AccordionVariant, color~ : AccordionColor, className~ : String?) -> String
 
 fn get_accordion_trigger_style(color~ : AccordionColor, isOpen~ : Bool, className~ : String?) -> String
+>>>>>>> main
 =======
 fn get_button_group_style(orientation~ : ButtonGroupOrientation, fullWidth~ : Bool, class~ : String?) -> String
 >>>>>>> main
 
 fn get_button_style(variant~ : ButtonVariant, size~ : ButtonSize, color~ : ButtonColor, fullWidth~ : Bool, ripple~ : Bool, className~ : String?) -> String
+>>>>>>> main
 
-fn get_card_body_style(className~ : String?) -> String
+fn get_card_body_style(class~ : String?) -> String
 
-fn get_card_footer_style(className~ : String?) -> String
+fn get_card_footer_style(class~ : String?) -> String
 
-fn get_card_header_style(className~ : String?) -> String
+fn get_card_header_style(class~ : String?) -> String
 
-fn get_card_style(variant~ : CardVariant, color~ : CardColor, className~ : String?) -> String
+fn get_card_style(variant~ : CardVariant, color~ : CardColor, class~ : String?) -> String
+
+fn get_checkbox_container_style(size~ : CheckboxSize, color~ : CheckboxColor, disabled~ : Bool, class~ : String?) -> String
+
+fn get_checkbox_indicator_style() -> String
+
+fn get_checkbox_input_style(size~ : CheckboxSize, disabled~ : Bool, class~ : String?) -> String
+
+fn get_checkbox_label_style(size~ : CheckboxSize, disabled~ : Bool, class~ : String?) -> String
+
+fn get_checkbox_root_style(class~ : String?) -> String
 
 <<<<<<< HEAD
 fn get_menu_content_style(variant~ : MenuVariant, placement~ : MenuPlacement, className~ : String?) -> String
@@ -162,7 +177,11 @@ pub(all) enum CardVariant {
   Gradient
 }
 
+<<<<<<< HEAD
+pub(all) enum CheckboxColor {
+=======
 pub(all) enum ChipColor {
+>>>>>>> main
   Primary
   Secondary
   Info
@@ -171,12 +190,18 @@ pub(all) enum ChipColor {
   Error
 }
 
+<<<<<<< HEAD
+pub(all) enum CheckboxSize {
+=======
 pub(all) enum ChipSize {
+>>>>>>> main
   Sm
   Md
   Lg
 }
 
+<<<<<<< HEAD
+=======
 pub(all) enum ChipVariant {
   Ghost
   Solid
@@ -184,6 +209,7 @@ pub(all) enum ChipVariant {
   Gradient
 }
 
+>>>>>>> main
 pub(all) struct JadeTheme {
   primary : String
   primaryContent : String
