@@ -21,7 +21,7 @@ pub(all) enum CardColor {
 pub fn get_card_style(
   variant~ : CardVariant,
   color~ : CardColor,
-  class~ : String?,
+  class? : String,
 ) -> String {
   clsx([
     // Base styles
@@ -80,19 +80,19 @@ pub fn get_card_style(
       Gradient =>
         match color {
           Default =>
-            "bg-[var(--color-base-100)] border-[var(--color-base-200)] shadow-black/5"
+            "bg-gradient-to-tr from-[var(--color-base-100)] to-[var(--color-base-100)]/80 border-[var(--color-base-200)] text-[var(--color-base-content)]"
           Primary =>
-            "bg-gradient-to-t from-[var(--color-primary-dark)] to-[var(--color-primary-light)] shadow-[var(--color-primary)]/25 border-[var(--color-primary)]"
+            "bg-gradient-to-tr from-[var(--color-primary)] to-[var(--color-primary)]/80 border-[var(--color-primary)] text-[var(--color-primary-content)]"
           Secondary =>
-            "bg-gradient-to-t from-[var(--color-secondary-dark)] to-[var(--color-secondary-light)] shadow-[var(--color-secondary)]/25 border-[var(--color-secondary)]"
+            "bg-gradient-to-tr from-[var(--color-secondary)] to-[var(--color-secondary)]/80 border-[var(--color-secondary)] text-[var(--color-secondary-content)]"
           Info =>
-            "bg-gradient-to-t from-[var(--color-info-dark)] to-[var(--color-info-light)] shadow-[var(--color-info)]/25 border-[var(--color-info)]"
+            "bg-gradient-to-tr from-[var(--color-info)] to-[var(--color-info)]/80 border-[var(--color-info)] text-[var(--color-info-content)]"
           Success =>
-            "bg-gradient-to-t from-[var(--color-success-dark)] to-[var(--color-success-light)] shadow-[var(--color-success)]/25 border-[var(--color-success)]"
+            "bg-gradient-to-tr from-[var(--color-success)] to-[var(--color-success)]/80 border-[var(--color-success)] text-[var(--color-success-content)]"
           Warning =>
-            "bg-gradient-to-t from-[var(--color-warning-dark)] to-[var(--color-warning-light)] shadow-[var(--color-warning)]/25 border-[var(--color-warning)]"
+            "bg-gradient-to-tr from-[var(--color-warning)] to-[var(--color-warning)]/80 border-[var(--color-warning)] text-[var(--color-warning-content)]"
           Error =>
-            "bg-gradient-to-t from-[var(--color-error-dark)] to-[var(--color-error-light)] shadow-[var(--color-error)]/25 border-[var(--color-error)]"
+            "bg-gradient-to-tr from-[var(--color-error)] to-[var(--color-error)]/80 border-[var(--color-error)] text-[var(--color-error-content)]"
         }
     },
     // Optional custom class name

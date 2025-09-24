@@ -30,9 +30,9 @@ pub fn[M] card(
   children : Array[@html.Html[M]],
   variant? : @theme.CardVariant = Solid,
   color? : @theme.CardColor = Default,
-  class? : String? = None,
+  class? : String,
 ) -> Html[M] {
-  let card_style = @theme.get_card_style(variant~, color~, class~)
+  let card_style = @theme.get_card_style(variant~, color~, class?)
   let attrs = [@html.attribute("class", card_style)]
   @html.node("div", attrs, children)
 }
