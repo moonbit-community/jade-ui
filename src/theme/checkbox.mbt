@@ -54,12 +54,18 @@ pub fn get_checkbox_visual_style(
     "border-gray-300 peer-focus:ring-2 peer-focus:ring-opacity-50",
     // Color styles for checked state
     match color {
-      Primary => "peer-checked:bg-blue-600 peer-checked:border-blue-600 peer-focus:ring-blue-300"
-      Secondary => "peer-checked:bg-gray-600 peer-checked:border-gray-600 peer-focus:ring-gray-300"
-      Info => "peer-checked:bg-cyan-600 peer-checked:border-cyan-600 peer-focus:ring-cyan-300"
-      Success => "peer-checked:bg-green-600 peer-checked:border-green-600 peer-focus:ring-green-300"
-      Warning => "peer-checked:bg-yellow-600 peer-checked:border-yellow-600 peer-focus:ring-yellow-300"
-      Error => "peer-checked:bg-red-600 peer-checked:border-red-600 peer-focus:ring-red-300"
+      Primary =>
+        "peer-checked:bg-blue-600 peer-checked:border-blue-600 peer-focus:ring-blue-300"
+      Secondary =>
+        "peer-checked:bg-gray-600 peer-checked:border-gray-600 peer-focus:ring-gray-300"
+      Info =>
+        "peer-checked:bg-cyan-600 peer-checked:border-cyan-600 peer-focus:ring-cyan-300"
+      Success =>
+        "peer-checked:bg-green-600 peer-checked:border-green-600 peer-focus:ring-green-300"
+      Warning =>
+        "peer-checked:bg-yellow-600 peer-checked:border-yellow-600 peer-focus:ring-yellow-300"
+      Error =>
+        "peer-checked:bg-red-600 peer-checked:border-red-600 peer-focus:ring-red-300"
     },
     // Disabled state
     if disabled {

@@ -19,7 +19,7 @@ fn[M] card_footer(Array[@html.Html[M]], class? : String?) -> @html.Html[M]
 
 fn[M] card_header(Array[@html.Html[M]], class? : String?) -> @html.Html[M]
 
-fn[M] checkbox(Bool, M, id? : String, name? : String, label? : String?, size? : @theme.CheckboxSize, color? : @theme.CheckboxColor, disabled? : Bool, class? : String?) -> @html.Html[M]
+fn[M] checkbox(Bool, M, id? : String, name? : String, label? : String, size? : @theme.CheckboxSize, color? : @theme.CheckboxColor, disabled? : Bool, class? : String) -> @html.Html[M]
 
 fn[M] chip(Array[@html.Html[M]], variant? : @theme.ChipVariant, size? : @theme.ChipSize, color? : @theme.ChipColor, isPill? : Bool, class? : String?) -> @html.Html[M]
 

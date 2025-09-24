@@ -21,15 +21,13 @@ fn get_card_header_style(class~ : String?) -> String
 
 fn get_card_style(variant~ : CardVariant, color~ : CardColor, class~ : String?) -> String
 
-fn get_checkbox_container_style(size~ : CheckboxSize, color~ : CheckboxColor, disabled~ : Bool, class~ : String?) -> String
+fn get_checkbox_container_style(disabled~ : Bool, class~ : String?) -> String
 
-fn get_checkbox_indicator_style() -> String
+fn get_checkbox_icon_style(size~ : CheckboxSize) -> String
 
-fn get_checkbox_input_style(size~ : CheckboxSize, disabled~ : Bool, class~ : String?) -> String
+fn get_checkbox_label_style(size~ : CheckboxSize, disabled~ : Bool) -> String
 
-fn get_checkbox_label_style(size~ : CheckboxSize, disabled~ : Bool, class~ : String?) -> String
-
-fn get_checkbox_root_style(class~ : String?) -> String
+fn get_checkbox_visual_style(size~ : CheckboxSize, color~ : CheckboxColor, disabled~ : Bool) -> String
 
 fn get_chip_dismiss_trigger_style(size~ : ChipSize, className~ : String?) -> String
 
