@@ -5,8 +5,8 @@ enum Msg {
   SliderUpdate(Int)
   ToggleAccordion(String)
   ToggleMenu(String)
-  MenuAction(String)
-  MenuItemClick(String, String) // (action, menuId) - performs action and closes menu
+  MenuItemClick(String) // (action, menuId) - performs action and closes menu
+  SwitchToggle
 }
 
 ///|
@@ -14,6 +14,7 @@ struct Model {
   count : Int
   openAccordions : Array[String]
   openMenus : Array[String]
+  switch_checked : Bool
 }
 
 ///|
@@ -48,15 +49,12 @@ fn update(msg : Msg, model : Model) -> (Cmd[Msg], Model) {
       }
       (none(), { ..model, openMenus: newOpenMenus })
     }
-    MenuAction(action) => {
-      // Handle menu item actions here
-      (none(), model)
-    }
-    MenuItemClick(action, menuId) => {
+    MenuItemClick(menuId) => {
       // Handle menu item action and close the menu
       let newOpenMenus = model.openMenus.filter(fn(item) { item != menuId })
       (none(), { ..model, openMenus: newOpenMenus })
     }
+    SwitchToggle => (none(), { ..model, switch_checked: !model.switch_checked })
   }
 }
 
@@ -80,6 +78,239 @@ fn view(model : Model) -> Html[Msg] {
         div(class="flex justify-center gap-4", [
           @jade.button([text("+")], Increment, variant=Solid, color=Primary),
           @jade.button([text("-")], Decrement, variant=Solid, color=Primary),
+        ]),
+      ]),
+    ]),
+
+    // Button Group showcase
+    div(class="max-w-6xl mx-auto mb-12", [
+      h2(class="text-2xl font-bold mb-6 text-gray-800", [
+        text("Button Group Component"),
+      ]),
+
+      // Horizontal Button Groups
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Horizontal Button Groups"),
+        ]),
+        div(class="space-y-4", [
+          // Solid variant
+          div([
+            h4(class="text-md font-medium mb-2 text-gray-600", [
+              text("Solid Variant"),
+            ]),
+            @jade.button_group(
+              [
+                @jade.button(
+                  [text("First")],
+                  Increment,
+                  variant=@theme.Solid,
+                  color=@theme.Primary,
+                ),
+                @jade.button(
+                  [text("Second")],
+                  Increment,
+                  variant=@theme.Solid,
+                  color=@theme.Primary,
+                ),
+                @jade.button(
+                  [text("Third")],
+                  Increment,
+                  variant=@theme.Solid,
+                  color=@theme.Primary,
+                ),
+              ],
+              orientation=@theme.Horizontal,
+            ),
+          ]),
+          // Outlined variant
+          div([
+            h4(class="text-md font-medium mb-2 text-gray-600", [
+              text("Outlined Variant"),
+            ]),
+            @jade.button_group(
+              [
+                @jade.button(
+                  [text("Left")],
+                  Increment,
+                  variant=@theme.Outlined,
+                  color=@theme.Secondary,
+                ),
+                @jade.button(
+                  [text("Center")],
+                  Increment,
+                  variant=@theme.Outlined,
+                  color=@theme.Secondary,
+                ),
+                @jade.button(
+                  [text("Right")],
+                  Increment,
+                  variant=@theme.Outlined,
+                  color=@theme.Secondary,
+                ),
+              ],
+              orientation=@theme.Horizontal,
+            ),
+          ]),
+          // Ghost variant
+          div([
+            h4(class="text-md font-medium mb-2 text-gray-600", [
+              text("Ghost Variant"),
+            ]),
+            @jade.button_group(
+              [
+                @jade.button(
+                  [text("Option A")],
+                  Increment,
+                  variant=@theme.Ghost,
+                  color=@theme.Info,
+                ),
+                @jade.button(
+                  [text("Option B")],
+                  Increment,
+                  variant=@theme.Ghost,
+                  color=@theme.Info,
+                ),
+                @jade.button(
+                  [text("Option C")],
+                  Increment,
+                  variant=@theme.Ghost,
+                  color=@theme.Info,
+                ),
+              ],
+              orientation=@theme.Horizontal,
+            ),
+          ]),
+        ]),
+      ]),
+
+      // Vertical Button Groups
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Vertical Button Groups"),
+        ]),
+        div(class="flex gap-8", [
+          div([
+            h4(class="text-md font-medium mb-2 text-gray-600", [
+              text("Solid Vertical"),
+            ]),
+            @jade.button_group(
+              [
+                @jade.button(
+                  [text("Top")],
+                  Increment,
+                  variant=@theme.Solid,
+                  color=@theme.Success,
+                ),
+                @jade.button(
+                  [text("Middle")],
+                  Increment,
+                  variant=@theme.Solid,
+                  color=@theme.Success,
+                ),
+                @jade.button(
+                  [text("Bottom")],
+                  Increment,
+                  variant=@theme.Solid,
+                  color=@theme.Success,
+                ),
+              ],
+              orientation=@theme.Vertical,
+            ),
+          ]),
+          div([
+            h4(class="text-md font-medium mb-2 text-gray-600", [
+              text("Outlined Vertical"),
+            ]),
+            @jade.button_group(
+              [
+                @jade.button(
+                  [text("First")],
+                  Increment,
+                  variant=@theme.Outlined,
+                  color=@theme.Warning,
+                ),
+                @jade.button(
+                  [text("Second")],
+                  Increment,
+                  variant=@theme.Outlined,
+                  color=@theme.Warning,
+                ),
+                @jade.button(
+                  [text("Third")],
+                  Increment,
+                  variant=@theme.Outlined,
+                  color=@theme.Warning,
+                ),
+              ],
+              orientation=@theme.Vertical,
+            ),
+          ]),
+        ]),
+      ]),
+
+      // Button Group Sizes
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Button Group Sizes"),
+        ]),
+        div(class="space-y-4", [
+          div([
+            h4(class="text-md font-medium mb-2 text-gray-600", [
+              text("Small Size"),
+            ]),
+            @jade.button_group([
+              @jade.button(
+                [text("Small")],
+                Increment,
+                variant=@theme.Solid,
+                color=@theme.Primary,
+                size=@theme.Sm,
+              ),
+              @jade.button(
+                [text("Button")],
+                Increment,
+                variant=@theme.Solid,
+                color=@theme.Primary,
+                size=@theme.Sm,
+              ),
+              @jade.button(
+                [text("Group")],
+                Increment,
+                variant=@theme.Solid,
+                color=@theme.Primary,
+                size=@theme.Sm,
+              ),
+            ]),
+          ]),
+          div([
+            h4(class="text-md font-medium mb-2 text-gray-600", [
+              text("Large Size"),
+            ]),
+            @jade.button_group([
+              @jade.button(
+                [text("Large")],
+                Increment,
+                variant=@theme.Solid,
+                color=@theme.Primary,
+                size=@theme.Lg,
+              ),
+              @jade.button(
+                [text("Button")],
+                Increment,
+                variant=@theme.Solid,
+                color=@theme.Primary,
+                size=@theme.Lg,
+              ),
+              @jade.button(
+                [text("Group")],
+                Increment,
+                variant=@theme.Solid,
+                color=@theme.Primary,
+                size=@theme.Lg,
+              ),
+            ]),
+          ]),
         ]),
       ]),
     ]),
@@ -1356,10 +1587,10 @@ fn view(model : Model) -> Html[Msg] {
               ),
               @jade.menu_content(
                 [
-                  @jade.menu_item([text("Edit")], MenuItemClick("edit", "menu1")),
-                  @jade.menu_item([text("Copy")], MenuItemClick("copy", "menu1")),
+                  @jade.menu_item([text("Edit")], MenuItemClick("menu1")),
+                  @jade.menu_item([text("Copy")], MenuItemClick("menu1")),
                   @jade.menu_separator(),
-                  @jade.menu_item([text("Delete")], MenuItemClick("delete", "menu1")),
+                  @jade.menu_item([text("Delete")], MenuItemClick("menu1")),
                 ],
                 isOpen=model.openMenus.contains("menu1"),
               ),
@@ -1373,10 +1604,10 @@ fn view(model : Model) -> Html[Msg] {
               ),
               @jade.menu_content(
                 [
-                  @jade.menu_item([text("Save")], MenuItemClick("save", "menu2")),
-                  @jade.menu_item([text("Export")], MenuItemClick("export", "menu2")),
+                  @jade.menu_item([text("Save")], MenuItemClick("menu2")),
+                  @jade.menu_item([text("Export")], MenuItemClick("menu2")),
                   @jade.menu_separator(),
-                  @jade.menu_item([text("Settings")], MenuItemClick("settings", "menu2")),
+                  @jade.menu_item([text("Settings")], MenuItemClick("menu2")),
                 ],
                 isOpen=model.openMenus.contains("menu2"),
               ),
@@ -1402,11 +1633,14 @@ fn view(model : Model) -> Html[Msg] {
                 ),
                 @jade.menu_content(
                   [
-                    @jade.menu_item([text("New File")], MenuItemClick("new", "menu3")),
-                    @jade.menu_item([text("Open")], MenuItemClick("open", "menu3")),
+                    @jade.menu_item([text("New File")], MenuItemClick("menu3")),
+                    @jade.menu_item([text("Open")], MenuItemClick("menu3")),
                     @jade.menu_separator(),
-                    @jade.menu_item([text("Save")], MenuItemClick("save", "menu3")),
-                    @jade.menu_item([text("Save As...")], MenuItemClick("saveas", "menu3")),
+                    @jade.menu_item([text("Save")], MenuItemClick("menu3")),
+                    @jade.menu_item(
+                      [text("Save As...")],
+                      MenuItemClick("menu3"),
+                    ),
                   ],
                   isOpen=model.openMenus.contains("menu3"),
                   variant=Bordered,
@@ -1435,10 +1669,13 @@ fn view(model : Model) -> Html[Msg] {
                 ),
                 @jade.menu_content(
                   [
-                    @jade.menu_item([text("Zoom In")], MenuItemClick("zoomin", "menu4")),
-                    @jade.menu_item([text("Zoom Out")], MenuItemClick("zoomout", "menu4")),
+                    @jade.menu_item([text("Zoom In")], MenuItemClick("menu4")),
+                    @jade.menu_item([text("Zoom Out")], MenuItemClick("menu4")),
                     @jade.menu_separator(),
-                    @jade.menu_item([text("Full Screen")], MenuItemClick("fullscreen", "menu4")),
+                    @jade.menu_item(
+                      [text("Full Screen")],
+                      MenuItemClick("menu4"),
+                    ),
                   ],
                   isOpen=model.openMenus.contains("menu4"),
                   variant=Shadow,
@@ -1450,13 +1687,422 @@ fn view(model : Model) -> Html[Msg] {
         ]),
       ]),
     ]),
+    // Switch Component showcase
+    div(class="mb-12", [
+      h2(class="text-2xl font-bold mb-6 text-gray-800", [
+        text("Switch Component"),
+      ]),
+
+      // Basic Switch
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Basic Switch"),
+        ]),
+        div(class="bg-white rounded-lg p-6 shadow-sm", [
+          div(class="flex items-center gap-4", [
+            @jade.switch(
+              checked=model.switch_checked,
+              change=SwitchToggle,
+              color=Primary,
+            ),
+            {
+              let status = if model.switch_checked { "ON" } else { "OFF" }
+              text("Switch is " + status)
+            },
+          ]),
+        ]),
+      ]),
+
+      // Switch Colors
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Switch Colors"),
+        ]),
+        div(class="bg-white rounded-lg p-6 shadow-sm", [
+          div(class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4", [
+            div(class="flex flex-col items-center gap-2", [
+              @jade.switch(
+                checked=model.switch_checked,
+                change=SwitchToggle,
+                color=Primary,
+              ),
+              text("Primary"),
+            ]),
+            div(class="flex flex-col items-center gap-2", [
+              @jade.switch(
+                checked=model.switch_checked,
+                change=SwitchToggle,
+                color=Secondary,
+              ),
+              text("Secondary"),
+            ]),
+            div(class="flex flex-col items-center gap-2", [
+              @jade.switch(
+                checked=model.switch_checked,
+                change=SwitchToggle,
+                color=Info,
+              ),
+              text("Info"),
+            ]),
+            div(class="flex flex-col items-center gap-2", [
+              @jade.switch(
+                checked=model.switch_checked,
+                change=SwitchToggle,
+                color=Success,
+              ),
+              text("Success"),
+            ]),
+            div(class="flex flex-col items-center gap-2", [
+              @jade.switch(
+                checked=model.switch_checked,
+                change=SwitchToggle,
+                color=Warning,
+              ),
+              text("Warning"),
+            ]),
+            div(class="flex flex-col items-center gap-2", [
+              @jade.switch(
+                checked=model.switch_checked,
+                change=SwitchToggle,
+                color=Error,
+              ),
+              text("Error"),
+            ]),
+          ]),
+        ]),
+      ]),
+
+      // Chip component showcase
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Chip Component Styles"),
+        ]),
+
+        // Chip variants with all colors
+        div(class="mb-6", [
+          h4(class="text-md font-medium mb-3 text-gray-600", [
+            text("Ghost Variant"),
+          ]),
+          div(class="flex flex-wrap gap-3", [
+            @jade.chip(
+              [@jade.chip_label([text("Primary")])],
+              variant=Ghost,
+              color=Primary,
+            ),
+            @jade.chip(
+              [@jade.chip_label([text("Secondary")])],
+              variant=Ghost,
+              color=Secondary,
+            ),
+            @jade.chip(
+              [@jade.chip_label([text("Info")])],
+              variant=Ghost,
+              color=Info,
+            ),
+            @jade.chip(
+              [@jade.chip_label([text("Success")])],
+              variant=Ghost,
+              color=Success,
+            ),
+            @jade.chip(
+              [@jade.chip_label([text("Warning")])],
+              variant=Ghost,
+              color=Warning,
+            ),
+            @jade.chip(
+              [@jade.chip_label([text("Error")])],
+              variant=Ghost,
+              color=Error,
+            ),
+          ]),
+        ]),
+        div(class="mb-6", [
+          h4(class="text-md font-medium mb-3 text-gray-600", [
+            text("Solid Variant"),
+          ]),
+          div(class="flex flex-wrap gap-3", [
+            @jade.chip(
+              [@jade.chip_label([text("Primary")])],
+              variant=Solid,
+              color=Primary,
+            ),
+            @jade.chip(
+              [@jade.chip_label([text("Secondary")])],
+              variant=Solid,
+              color=Secondary,
+            ),
+            @jade.chip(
+              [@jade.chip_label([text("Info")])],
+              variant=Solid,
+              color=Info,
+            ),
+            @jade.chip(
+              [@jade.chip_label([text("Success")])],
+              variant=Solid,
+              color=Success,
+            ),
+            @jade.chip(
+              [@jade.chip_label([text("Warning")])],
+              variant=Solid,
+              color=Warning,
+            ),
+            @jade.chip(
+              [@jade.chip_label([text("Error")])],
+              variant=Solid,
+              color=Error,
+            ),
+          ]),
+        ]),
+        div(class="mb-6", [
+          h4(class="text-md font-medium mb-3 text-gray-600", [
+            text("Outline Variant"),
+          ]),
+          div(class="flex flex-wrap gap-3", [
+            @jade.chip(
+              [@jade.chip_label([text("Primary")])],
+              variant=Outline,
+              color=Primary,
+            ),
+            @jade.chip(
+              [@jade.chip_label([text("Secondary")])],
+              variant=Outline,
+              color=Secondary,
+            ),
+            @jade.chip(
+              [@jade.chip_label([text("Info")])],
+              variant=Outline,
+              color=Info,
+            ),
+            @jade.chip(
+              [@jade.chip_label([text("Success")])],
+              variant=Outline,
+              color=Success,
+            ),
+            @jade.chip(
+              [@jade.chip_label([text("Warning")])],
+              variant=Outline,
+              color=Warning,
+            ),
+            @jade.chip(
+              [@jade.chip_label([text("Error")])],
+              variant=Outline,
+              color=Error,
+            ),
+          ]),
+        ]),
+        div(class="mb-6", [
+          h4(class="text-md font-medium mb-3 text-gray-600", [
+            text("Gradient Variant"),
+          ]),
+          div(class="flex flex-wrap gap-3", [
+            @jade.chip(
+              [@jade.chip_label([text("Primary")])],
+              variant=Gradient,
+              color=Primary,
+            ),
+            @jade.chip(
+              [@jade.chip_label([text("Secondary")])],
+              variant=Gradient,
+              color=Secondary,
+            ),
+            @jade.chip(
+              [@jade.chip_label([text("Info")])],
+              variant=Gradient,
+              color=Info,
+            ),
+            @jade.chip(
+              [@jade.chip_label([text("Success")])],
+              variant=Gradient,
+              color=Success,
+            ),
+            @jade.chip(
+              [@jade.chip_label([text("Warning")])],
+              variant=Gradient,
+              color=Warning,
+            ),
+            @jade.chip(
+              [@jade.chip_label([text("Error")])],
+              variant=Gradient,
+              color=Error,
+            ),
+          ]),
+        ]),
+      ]),
+
+      // Chip sizes
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Chip Sizes"),
+        ]),
+        div(class="space-y-6", [
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [
+              text("Small (Sm)"),
+            ]),
+            div(class="flex flex-wrap gap-3", [
+              @jade.chip(
+                [@jade.chip_label([text("Small Chip")])],
+                size=Sm,
+                color=Primary,
+              ),
+              @jade.chip(
+                [
+                  @jade.chip_label([text("With Icon")]),
+                  @jade.chip_dismiss_trigger(Increment),
+                ],
+                size=Sm,
+                color=Success,
+              ),
+            ]),
+          ]),
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [
+              text("Medium (Md)"),
+            ]),
+            div(class="flex flex-wrap gap-3", [
+              @jade.chip(
+                [@jade.chip_label([text("Medium Chip")])],
+                size=Md,
+                color=Primary,
+              ),
+              @jade.chip(
+                [
+                  @jade.chip_label([text("With Icon")]),
+                  @jade.chip_dismiss_trigger(Increment),
+                ],
+                size=Md,
+                color=Success,
+              ),
+            ]),
+          ]),
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [
+              text("Large (Lg)"),
+            ]),
+            div(class="flex flex-wrap gap-3", [
+              @jade.chip(
+                [@jade.chip_label([text("Large Chip")])],
+                size=Lg,
+                color=Primary,
+              ),
+              @jade.chip(
+                [
+                  @jade.chip_label([text("With Icon")]),
+                  @jade.chip_dismiss_trigger(Increment),
+                ],
+                size=Lg,
+                color=Success,
+              ),
+            ]),
+          ]),
+        ]),
+      ]),
+
+      // Chip with different shapes
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Chip Shapes"),
+        ]),
+        div(class="space-y-6", [
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [
+              text("Pill Shape (Default)"),
+            ]),
+            div(class="flex flex-wrap gap-3", [
+              @jade.chip(
+                [@jade.chip_label([text("Pill Chip")])],
+                isPill=true,
+                color=Primary,
+              ),
+              @jade.chip(
+                [
+                  @jade.chip_label([text("Success")]),
+                  @jade.chip_dismiss_trigger(Increment),
+                ],
+                isPill=true,
+                color=Success,
+              ),
+            ]),
+          ]),
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [
+              text("Rounded Shape"),
+            ]),
+            div(class="flex flex-wrap gap-3", [
+              @jade.chip(
+                [@jade.chip_label([text("Rounded Chip")])],
+                isPill=false,
+                color=Primary,
+              ),
+              @jade.chip(
+                [
+                  @jade.chip_label([text("Warning")]),
+                  @jade.chip_dismiss_trigger(Increment),
+                ],
+                isPill=false,
+                color=Warning,
+              ),
+            ]),
+          ]),
+        ]),
+      ]),
+
+      // Chip with icons and dismiss triggers
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Chip with Icons and Dismiss Triggers"),
+        ]),
+        div(class="bg-white rounded-lg p-6 shadow-sm", [
+          div(class="flex flex-wrap gap-3", [
+            @jade.chip([@jade.chip_label([text("Simple Chip")])], color=Primary),
+            @jade.chip(
+              [
+                @jade.chip_label([text("With Dismiss")]),
+                @jade.chip_dismiss_trigger(Increment),
+              ],
+              color=Success,
+            ),
+            @jade.chip(
+              [
+                @jade.chip_label([text("Dismissible Info")]),
+                @jade.chip_dismiss_trigger(Increment),
+              ],
+              color=Info,
+              variant=Outline,
+            ),
+            @jade.chip(
+              [
+                @jade.chip_label([text("Warning Chip")]),
+                @jade.chip_dismiss_trigger(Increment),
+              ],
+              color=Warning,
+              variant=Ghost,
+            ),
+            @jade.chip(
+              [
+                @jade.chip_label([text("Error Chip")]),
+                @jade.chip_dismiss_trigger(Increment),
+              ],
+              color=Error,
+              variant=Gradient,
+            ),
+          ]),
+        ]),
+      ]),
+    ]),
   ])
 }
 
-///| NOTE: This program is only available in the js backend, 
+///|
+/// NOTE: This program is only available in the js backend, 
 /// see README.md to getting started.
 fn main {
   @theme.light().apply()
-  let model = { count: 0, openAccordions: [], openMenus: [] }
+  let model = {
+    count: 0,
+    openAccordions: [],
+    openMenus: [],
+    switch_checked: false,
+  }
   @tea.startup(model~, update~, view~)
 }

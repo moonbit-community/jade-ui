@@ -28,9 +28,9 @@
 ///
 pub fn[M] accordion(
   children : Array[@html.Html[M]],
-  variant~ : @theme.AccordionVariant = @theme.Default,
-  color~ : @theme.AccordionColor = @theme.Default,
-  className~ : String? = None,
+  variant? : @theme.AccordionVariant = @theme.Default,
+  color? : @theme.AccordionColor = @theme.Default,
+  className? : String? = None,
 ) -> @html.Html[M] {
   let klass = @theme.get_accordion_style(variant~, color~, className~)
   let attrs = [
@@ -59,9 +59,9 @@ pub fn[M] accordion_item(
   value : String,
   trigger : @html.Html[M],
   content : @html.Html[M],
-  variant~ : @theme.AccordionVariant = @theme.Default,
-  disabled~ : Bool = false,
-  class~ : String? = None,
+  variant? : @theme.AccordionVariant = @theme.Default,
+  disabled? : Bool = false,
+  class? : String? = None,
 ) -> @html.Html[M] {
   let klass = @theme.get_accordion_item_style(
     variant~,
@@ -94,10 +94,10 @@ pub fn[M] accordion_item(
 pub fn[M] accordion_trigger(
   children : Array[@html.Html[M]],
   click : M,
-  isOpen~ : Bool = false,
-  color~ : @theme.AccordionColor = @theme.Default,
-  showIcon~ : Bool = true,
-  class~ : String? = None,
+  isOpen? : Bool = false,
+  color? : @theme.AccordionColor = @theme.Default,
+  showIcon? : Bool = true,
+  class? : String? = None,
 ) -> @html.Html[M] {
   let klass = @theme.get_accordion_trigger_style(
     color~,
@@ -121,7 +121,7 @@ pub fn[M] accordion_trigger(
         [
           @svg.node("polyline", [@svg.attribute("points", "6,9 12,15 18,9")], []),
         ],
-      ).inner(),
+      ).0,
     ]
   } else {
     []
@@ -157,8 +157,8 @@ pub fn[M] accordion_trigger(
 ///
 pub fn[M] accordion_content(
   children : Array[@html.Html[M]],
-  isOpen~ : Bool = false,
-  class~ : String? = None,
+  isOpen? : Bool = false,
+  class? : String? = None,
 ) -> @html.Html[M] {
   let klass = @theme.get_accordion_content_style(className=class)
   let attrs = [

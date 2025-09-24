@@ -28,9 +28,9 @@
 ///
 pub fn[M] menu(
   children : Array[@html.Html[M]],
-  variant~ : @theme.MenuVariant = @theme.Default,
-  color~ : @theme.MenuColor = @theme.Default,
-  className~ : String? = None,
+  variant? : @theme.MenuVariant = @theme.Default,
+  color? : @theme.MenuColor = @theme.Default,
+  className? : String? = None,
 ) -> @html.Html[M] {
   let klass = @theme.get_menu_style(variant~, color~, class=className)
   let attrs = [@html.attribute("class", klass), @html.attribute("role", "menu")]
@@ -54,10 +54,10 @@ pub fn[M] menu(
 pub fn[M] menu_trigger(
   children : Array[@html.Html[M]],
   click : M,
-  isOpen~ : Bool = false,
-  color~ : @theme.MenuColor = @theme.Default,
-  showIcon~ : Bool = true,
-  className~ : String? = None,
+  isOpen? : Bool = false,
+  color? : @theme.MenuColor = @theme.Default,
+  showIcon? : Bool = true,
+  className? : String? = None,
 ) -> @html.Html[M] {
   let klass = @theme.get_menu_trigger_style(color~, isOpen~, className~)
   let iconClass = "ml-2 h-4 w-4 transition-transform duration-200 " +
@@ -78,7 +78,7 @@ pub fn[M] menu_trigger(
         [
           @svg.node("polyline", [@svg.attribute("points", "6,9 12,15 18,9")], []),
         ],
-      ).inner(),
+      ).0,
     ]
   } else {
     []
@@ -115,10 +115,10 @@ pub fn[M] menu_trigger(
 ///
 pub fn[M] menu_content(
   children : Array[@html.Html[M]],
-  isOpen~ : Bool = false,
-  variant~ : @theme.MenuVariant = @theme.Default,
-  placement~ : @theme.MenuPlacement = @theme.Bottom,
-  className~ : String? = None,
+  isOpen? : Bool = false,
+  variant? : @theme.MenuVariant = @theme.Default,
+  placement? : @theme.MenuPlacement = @theme.Bottom,
+  className? : String? = None,
 ) -> @html.Html[M] {
   let klass = @theme.get_menu_content_style(variant~, placement~, className~)
   @html.div(
@@ -144,10 +144,10 @@ pub fn[M] menu_content(
 pub fn[M] menu_item(
   children : Array[@html.Html[M]],
   click : M,
-  disabled~ : Bool = false,
-  selected~ : Bool = false,
-  ripple~ : Bool = true,
-  className~ : String? = None,
+  disabled? : Bool = false,
+  selected? : Bool = false,
+  ripple? : Bool = true,
+  className? : String? = None,
 ) -> @html.Html[M] {
   let klass = @theme.get_menu_item_style(
     disabled~,
@@ -186,7 +186,7 @@ pub fn[M] menu_item(
 ///
 /// Returns an HTML hr element configured as a menu separator.
 ///
-pub fn[M] menu_separator(className~ : String? = None) -> @html.Html[M] {
+pub fn[M] menu_separator(className? : String? = None) -> @html.Html[M] {
   let klass = @theme.get_menu_separator_style(class=className)
   let attrs = [
     @html.attribute("class", klass),
