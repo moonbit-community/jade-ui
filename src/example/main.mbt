@@ -3,11 +3,13 @@ enum Msg {
   Increment
   Decrement
   SliderUpdate(Int)
+  SwitchToggle
 }
 
 ///|
 struct Model {
   count : Int
+  switch_checked : Bool
 }
 
 ///|
@@ -16,6 +18,7 @@ fn update(msg : Msg, model : Model) -> (Cmd[Msg], Model) {
     Increment => (none(), { ..model, count: model.count + 1 })
     Decrement => (none(), { ..model, count: @cmp.maximum(0, model.count - 1) })
     SliderUpdate(value) => (none(), { ..model, count: value })
+    SwitchToggle => (none(), { ..model, switch_checked: !model.switch_checked })
   }
 }
 
@@ -1359,6 +1362,91 @@ fn view(model : Model) -> Html[Msg] {
           ]),
         ]),
       ]),
+    ]),
+    // Switch Component showcase
+    div(class="mb-12", [
+      h2(class="text-2xl font-bold mb-6 text-gray-800", [
+        text("Switch Component"),
+      ]),
+
+      // Basic Switch
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Basic Switch"),
+        ]),
+        div(class="bg-white rounded-lg p-6 shadow-sm", [
+          div(class="flex items-center gap-4", [
+            @jade.switch(
+              checked=model.switch_checked,
+              change=SwitchToggle,
+              color=Primary,
+            ),
+            {
+              let status = if model.switch_checked { "ON" } else { "OFF" }
+              text("Switch is " + status)
+            },
+          ]),
+        ]),
+      ]),
+
+      // Switch Colors
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Switch Colors"),
+        ]),
+        div(class="bg-white rounded-lg p-6 shadow-sm", [
+          div(class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4", [
+            div(class="flex flex-col items-center gap-2", [
+              @jade.switch(
+                checked=model.switch_checked,
+                change=SwitchToggle,
+                color=Primary,
+              ),
+              text("Primary"),
+            ]),
+            div(class="flex flex-col items-center gap-2", [
+              @jade.switch(
+                checked=model.switch_checked,
+                change=SwitchToggle,
+                color=Secondary,
+              ),
+              text("Secondary"),
+            ]),
+            div(class="flex flex-col items-center gap-2", [
+              @jade.switch(
+                checked=model.switch_checked,
+                change=SwitchToggle,
+                color=Info,
+              ),
+              text("Info"),
+            ]),
+            div(class="flex flex-col items-center gap-2", [
+              @jade.switch(
+                checked=model.switch_checked,
+                change=SwitchToggle,
+                color=Success,
+              ),
+              text("Success"),
+            ]),
+            div(class="flex flex-col items-center gap-2", [
+              @jade.switch(
+                checked=model.switch_checked,
+                change=SwitchToggle,
+                color=Warning,
+              ),
+              text("Warning"),
+            ]),
+            div(class="flex flex-col items-center gap-2", [
+              @jade.switch(
+                checked=model.switch_checked,
+                change=SwitchToggle,
+                color=Error,
+              ),
+              text("Error"),
+            ]),
+          ]),
+        ]),
+      ]),
 
       // Chip component showcase
       div(class="mb-8", [
@@ -1681,10 +1769,11 @@ fn view(model : Model) -> Html[Msg] {
   ])
 }
 
-///| NOTE: This program is only available in the js backend, 
+///|
+/// NOTE: This program is only available in the js backend, 
 /// see README.md to getting started.
 fn main {
   @theme.light().apply()
-  let model = { count: 0 }
+  let model = { count: 0, switch_checked: false }
   @tea.startup(model~, update~, view~)
 }
