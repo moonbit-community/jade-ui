@@ -39,7 +39,7 @@ fn get_chip_label_style(size~ : ChipSize, className~ : String?) -> String
 
 fn get_chip_style(variant~ : ChipVariant, size~ : ChipSize, color~ : ChipColor, isPill~ : Bool, class~ : String?) -> String
 
-fn get_menu_content_style(variant~ : MenuVariant, placement~ : MenuPlacement, className~ : String?) -> String
+fn get_menu_content_style(variant~ : MenuVariant, placement~ : MenuPlacement, class~ : String?) -> String
 
 fn get_menu_item_style(disabled~ : Bool, selected~ : Bool, ripple~ : Bool, class~ : String?) -> String
 
@@ -47,7 +47,7 @@ fn get_menu_separator_style(class~ : String?) -> String
 
 fn get_menu_style(variant~ : MenuVariant, color~ : MenuColor, class~ : String?) -> String
 
-fn get_menu_trigger_style(color~ : MenuColor, isOpen~ : Bool, className~ : String?) -> String
+fn get_menu_trigger_style(color~ : MenuColor, isOpen~ : Bool, class~ : String?) -> String
 
 fn get_slider_classes(String) -> String
 
