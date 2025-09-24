@@ -34,11 +34,11 @@
 ///
 pub fn[M] chip(
   children : Array[@html.Html[M]],
-  variant~ : @theme.ChipVariant = @theme.Solid,
-  size~ : @theme.ChipSize = @theme.Md,
-  color~ : @theme.ChipColor = @theme.Primary,
-  isPill~ : Bool = true,
-  class~ : String? = None,
+  variant? : @theme.ChipVariant = @theme.Solid,
+  size? : @theme.ChipSize = @theme.Md,
+  color? : @theme.ChipColor = @theme.Primary,
+  isPill? : Bool = true,
+  class? : String? = None,
 ) -> @html.Html[M] {
   let klass = @theme.get_chip_style(variant~, size~, color~, isPill~, class~)
   @html.div(class=klass, children)
@@ -68,8 +68,8 @@ pub fn[M] chip(
 ///
 pub fn[M] chip_label(
   children : Array[@html.Html[M]],
-  size~ : @theme.ChipSize = @theme.Md,
-  className~ : String? = None,
+  size? : @theme.ChipSize = @theme.Md,
+  className? : String? = None,
 ) -> @html.Html[M] {
   let klass = @theme.get_chip_label_style(size~, className~)
   @html.span(class=klass, children)
@@ -99,8 +99,8 @@ pub fn[M] chip_label(
 ///
 pub fn[M] chip_icon(
   children : Array[@html.Html[M]],
-  size~ : @theme.ChipSize = @theme.Md,
-  className~ : String? = None,
+  size? : @theme.ChipSize = @theme.Md,
+  className? : String? = None,
 ) -> @html.Html[M] {
   let klass = @theme.get_chip_icon_style(size~, className~)
   let attrs = [@html.attribute("class", klass)]
@@ -138,35 +138,35 @@ pub fn[M] chip_icon(
 ///
 pub fn[M] chip_dismiss_trigger(
   click : M,
-  size~ : @theme.ChipSize = @theme.Md,
-  class~ : String? = None,
-  children~ : Array[@html.Html[M]]? = None,
+  size? : @theme.ChipSize = @theme.Md,
+  class? : String? = None,
+  children? : Array[@html.Html[M]]? = None,
 ) -> @html.Html[M] {
   let klass = @theme.get_chip_dismiss_trigger_style(size~, className=class)
   let default_icon = @svg.node(
-    "svg",
-    [
-      @svg.attribute("viewBox", "0 0 24 24"),
-      @svg.attribute("fill", "none"),
-      @svg.attribute("xmlns", "http://www.w3.org/2000/svg"),
-      @svg.attribute("color", "currentColor"),
-      @svg.attribute("class", "h-full w-full"),
-    ],
-    [
-      @svg.node(
-        "path",
-        [
-          @svg.attribute(
-            "d", "M6.75827 17.2426L12.0009 12M17.2435 6.75736L12.0009 12M12.0009 12L6.75827 6.75736M12.0009 12L17.2435 17.2426",
-          ),
-          @svg.attribute("stroke", "currentColor"),
-          @svg.attribute("stroke-linecap", "round"),
-          @svg.attribute("stroke-linejoin", "round"),
-        ],
-        [],
-      ),
-    ],
-  ).inner()
+      "svg",
+      [
+        @svg.attribute("viewBox", "0 0 24 24"),
+        @svg.attribute("fill", "none"),
+        @svg.attribute("xmlns", "http://www.w3.org/2000/svg"),
+        @svg.attribute("color", "currentColor"),
+        @svg.attribute("class", "h-full w-full"),
+      ],
+      [
+        @svg.node(
+          "path",
+          [
+            @svg.attribute(
+              "d", "M6.75827 17.2426L12.0009 12M17.2435 6.75736L12.0009 12M12.0009 12L6.75827 6.75736M12.0009 12L17.2435 17.2426",
+            ),
+            @svg.attribute("stroke", "currentColor"),
+            @svg.attribute("stroke-linecap", "round"),
+            @svg.attribute("stroke-linejoin", "round"),
+          ],
+          [],
+        ),
+      ],
+    ).0
   let content = children.unwrap_or([default_icon])
   @html.button(class=klass, click~, content)
 }

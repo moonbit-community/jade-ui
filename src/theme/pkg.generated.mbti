@@ -9,10 +9,6 @@ import(
 // Values
 fn clsx(Array[String]) -> String
 
-fn get_badge_container_style(className~ : String?) -> String
-
-fn get_badge_indicator_style(variant~ : BadgeVariant, size~ : BadgeSize, color~ : BadgeColor, overlap~ : BadgeOverlap, placement~ : BadgePlacement, className~ : String?) -> String
-
 fn get_button_group_style(orientation~ : ButtonGroupOrientation, fullWidth~ : Bool, class~ : String?) -> String
 
 fn get_button_style(variant~ : ButtonVariant, size~ : ButtonSize, color~ : ButtonColor, fullWidth~ : Bool, ripple~ : Bool, className~ : String?) -> String
@@ -52,40 +48,6 @@ fn light() -> JadeTheme
 // Errors
 
 // Types and methods
-pub(all) enum BadgeColor {
-  Primary
-  Secondary
-  Info
-  Success
-  Warning
-  Error
-}
-
-pub(all) enum BadgeOverlap {
-  Circular
-  Square
-}
-
-pub(all) enum BadgePlacement {
-  TopStart
-  TopEnd
-  BottomStart
-  BottomEnd
-}
-
-pub(all) enum BadgeSize {
-  Sm
-  Md
-  Lg
-}
-
-pub(all) enum BadgeVariant {
-  Ghost
-  Solid
-  Outline
-  Gradient
-}
-
 pub(all) enum ButtonColor {
   Primary
   Secondary
