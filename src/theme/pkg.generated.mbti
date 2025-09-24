@@ -9,6 +9,16 @@ import(
 // Values
 fn clsx(Array[String]) -> String
 
+fn get_accordion_content_style(className~ : String?) -> String
+
+fn get_accordion_icon_style(isOpen~ : Bool, className~ : String?) -> String
+
+fn get_accordion_item_style(variant~ : AccordionVariant, disabled~ : Bool, className~ : String?) -> String
+
+fn get_accordion_style(variant~ : AccordionVariant, color~ : AccordionColor, className~ : String?) -> String
+
+fn get_accordion_trigger_style(color~ : AccordionColor, isOpen~ : Bool, className~ : String?) -> String
+
 fn get_button_group_style(orientation~ : ButtonGroupOrientation, fullWidth~ : Bool, class~ : String?) -> String
 
 fn get_button_style(variant~ : ButtonVariant, size~ : ButtonSize, color~ : ButtonColor, fullWidth~ : Bool, ripple~ : Bool, className~ : String?) -> String
@@ -29,6 +39,16 @@ fn get_chip_label_style(size~ : ChipSize, className~ : String?) -> String
 
 fn get_chip_style(variant~ : ChipVariant, size~ : ChipSize, color~ : ChipColor, isPill~ : Bool, class~ : String?) -> String
 
+fn get_menu_content_style(variant~ : MenuVariant, placement~ : MenuPlacement, class~ : String?) -> String
+
+fn get_menu_item_style(disabled~ : Bool, selected~ : Bool, ripple~ : Bool, class~ : String?) -> String
+
+fn get_menu_separator_style(class~ : String?) -> String
+
+fn get_menu_style(variant~ : MenuVariant, color~ : MenuColor, class~ : String?) -> String
+
+fn get_menu_trigger_style(color~ : MenuColor, isOpen~ : Bool, class~ : String?) -> String
+
 fn get_slider_classes(String) -> String
 
 fn get_slider_color_value(SliderColor) -> String
@@ -48,6 +68,23 @@ fn light() -> JadeTheme
 // Errors
 
 // Types and methods
+pub(all) enum AccordionColor {
+  Default
+  Primary
+  Secondary
+  Success
+  Info
+  Warning
+  Error
+}
+
+pub(all) enum AccordionVariant {
+  Default
+  Bordered
+  Shadow
+  Split
+}
+
 pub(all) enum ButtonColor {
   Primary
   Secondary
@@ -178,6 +215,37 @@ impl Eq for JadeTheme
 impl Show for JadeTheme
 impl ToJson for JadeTheme
 impl @json.FromJson for JadeTheme
+
+pub(all) enum MenuColor {
+  Default
+  Primary
+  Secondary
+  Success
+  Info
+  Warning
+  Error
+}
+
+pub(all) enum MenuPlacement {
+  Top
+  TopStart
+  TopEnd
+  Right
+  RightStart
+  RightEnd
+  Bottom
+  BottomStart
+  BottomEnd
+  Left
+  LeftStart
+  LeftEnd
+}
+
+pub(all) enum MenuVariant {
+  Default
+  Bordered
+  Shadow
+}
 
 pub(all) enum SliderColor {
   Primary

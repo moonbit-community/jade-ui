@@ -3,12 +3,17 @@ enum Msg {
   Increment
   Decrement
   SliderUpdate(Int)
+  ToggleAccordion(String)
+  ToggleMenu(String)
+  MenuItemClick(String) // (action, menuId) - performs action and closes menu
   SwitchToggle
 }
 
 ///|
 struct Model {
   count : Int
+  openAccordions : Array[String]
+  openMenus : Array[String]
   switch_checked : Bool
 }
 
@@ -18,6 +23,31 @@ fn update(msg : Msg, model : Model) -> (Cmd[Msg], Model) {
     Increment => (none(), { ..model, count: model.count + 1 })
     Decrement => (none(), { ..model, count: @cmp.maximum(0, model.count - 1) })
     SliderUpdate(value) => (none(), { ..model, count: value })
+    ToggleAccordion(id) => {
+      let newOpenAccordions = if model.openAccordions.contains(id) {
+        model.openAccordions.filter(fn(item) { item != id })
+      } else {
+        let newArray = Array::new()
+        for item in model.openAccordions {
+          newArray.push(item)
+        }
+        newArray.push(id)
+        newArray
+      }
+      (none(), { ..model, openAccordions: newOpenAccordions })
+    }
+    ToggleMenu(id) => {
+      let newOpenMenus = Array::new()
+      if !model.openMenus.contains(id) {
+        newOpenMenus.push(id)
+      }
+      (none(), { ..model, openMenus: newOpenMenus })
+    }
+    MenuItemClick(menuId) => {
+      // Handle menu item action and close the menu
+      let newOpenMenus = model.openMenus.filter(fn(item) { item != menuId })
+      (none(), { ..model, openMenus: newOpenMenus })
+    }
     SwitchToggle => (none(), { ..model, switch_checked: !model.switch_checked })
   }
 }
@@ -1363,6 +1393,294 @@ fn view(model : Model) -> Html[Msg] {
         ]),
       ]),
     ]),
+
+    // Accordion style showcase
+    div(class="max-w-6xl mx-auto mb-12", [
+      h2(class="text-2xl font-bold mb-6 text-gray-800", [
+        text("Accordion Component Styles"),
+      ]),
+
+      // Default accordion
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Default Accordion"),
+        ]),
+        div(class="bg-white rounded-lg p-6 shadow-sm", [
+          @jade.accordion([
+            @jade.accordion_item(
+              "faq1",
+              @jade.accordion_trigger(
+                [text("What is Jade UI?")],
+                ToggleAccordion("faq1"),
+                isOpen=model.openAccordions.contains("faq1"),
+              ),
+              @jade.accordion_content(
+                [
+                  text(
+                    "Jade UI is a modern, customizable UI component library built with MoonBit. It provides a comprehensive set of components for building beautiful web applications.",
+                  ),
+                ],
+                isOpen=model.openAccordions.contains("faq1"),
+              ),
+            ),
+            @jade.accordion_item(
+              "faq2",
+              @jade.accordion_trigger(
+                [text("How do I get started?")],
+                ToggleAccordion("faq2"),
+                isOpen=model.openAccordions.contains("faq2"),
+              ),
+              @jade.accordion_content(
+                [
+                  text(
+                    "Getting started is easy! Simply install the package, import the components you need, and start building. Check out our documentation for detailed examples and API references.",
+                  ),
+                ],
+                isOpen=model.openAccordions.contains("faq2"),
+              ),
+            ),
+            @jade.accordion_item(
+              "faq3",
+              @jade.accordion_trigger(
+                [text("Is it customizable?")],
+                ToggleAccordion("faq3"),
+                isOpen=model.openAccordions.contains("faq3"),
+              ),
+              @jade.accordion_content(
+                [
+                  text(
+                    "Yes! Jade UI is highly customizable. You can customize colors, sizes, variants, and even add your own CSS classes to match your design system.",
+                  ),
+                ],
+                isOpen=model.openAccordions.contains("faq3"),
+              ),
+            ),
+          ]),
+        ]),
+      ]),
+
+      // Bordered accordion
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Bordered Accordion"),
+        ]),
+        div(class="bg-white rounded-lg p-6 shadow-sm", [
+          @jade.accordion(
+            [
+              @jade.accordion_item(
+                "bordered1",
+                @jade.accordion_trigger(
+                  [text("Features")],
+                  ToggleAccordion("bordered1"),
+                  isOpen=model.openAccordions.contains("bordered1"),
+                  color=Primary,
+                ),
+                @jade.accordion_content(
+                  [
+                    text(
+                      "Jade UI includes buttons, cards, sliders, typography, accordions, and many more components. All components are fully responsive and accessible.",
+                    ),
+                  ],
+                  isOpen=model.openAccordions.contains("bordered1"),
+                ),
+                variant=Bordered,
+              ),
+              @jade.accordion_item(
+                "bordered2",
+                @jade.accordion_trigger(
+                  [text("Performance")],
+                  ToggleAccordion("bordered2"),
+                  isOpen=model.openAccordions.contains("bordered2"),
+                  color=Success,
+                ),
+                @jade.accordion_content(
+                  [
+                    text(
+                      "Built with performance in mind, Jade UI components are lightweight and optimized for fast rendering. The library uses modern CSS techniques for smooth animations.",
+                    ),
+                  ],
+                  isOpen=model.openAccordions.contains("bordered2"),
+                ),
+                variant=Bordered,
+              ),
+            ],
+            variant=Bordered,
+          ),
+        ]),
+      ]),
+
+      // Split accordion
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Split Accordion"),
+        ]),
+        div(class="bg-white rounded-lg p-6 shadow-sm", [
+          @jade.accordion(
+            [
+              @jade.accordion_item(
+                "split1",
+                @jade.accordion_trigger(
+                  [text("Documentation")],
+                  ToggleAccordion("split1"),
+                  isOpen=model.openAccordions.contains("split1"),
+                  color=Info,
+                ),
+                @jade.accordion_content(
+                  [
+                    text(
+                      "Comprehensive documentation with examples, API references, and best practices. Learn how to integrate Jade UI into your projects effectively.",
+                    ),
+                  ],
+                  isOpen=model.openAccordions.contains("split1"),
+                ),
+                variant=Split,
+              ),
+              @jade.accordion_item(
+                "split2",
+                @jade.accordion_trigger(
+                  [text("Community")],
+                  ToggleAccordion("split2"),
+                  isOpen=model.openAccordions.contains("split2"),
+                  color=Warning,
+                ),
+                @jade.accordion_content(
+                  [
+                    text(
+                      "Join our growing community of developers. Share your projects, get help, and contribute to making Jade UI even better.",
+                    ),
+                  ],
+                  isOpen=model.openAccordions.contains("split2"),
+                ),
+                variant=Split,
+              ),
+            ],
+            variant=Split,
+          ),
+        ]),
+      ]),
+    ]),
+
+    // Menu style showcase
+    div(class="max-w-6xl mx-auto mb-12", [
+      h2(class="text-2xl font-bold mb-6 text-gray-800", [
+        text("Menu Component Styles"),
+      ]),
+
+      // Default menu
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Default Menu"),
+        ]),
+        div(class="bg-white rounded-lg p-6 shadow-sm", [
+          div(class="flex gap-4 flex-wrap", [
+            @jade.menu([
+              @jade.menu_trigger(
+                [text("Options")],
+                ToggleMenu("menu1"),
+                isOpen=model.openMenus.contains("menu1"),
+              ),
+              @jade.menu_content(
+                [
+                  @jade.menu_item([text("Edit")], MenuItemClick("menu1")),
+                  @jade.menu_item([text("Copy")], MenuItemClick("menu1")),
+                  @jade.menu_separator(),
+                  @jade.menu_item([text("Delete")], MenuItemClick("menu1")),
+                ],
+                isOpen=model.openMenus.contains("menu1"),
+              ),
+            ]),
+            @jade.menu([
+              @jade.menu_trigger(
+                [text("Actions")],
+                ToggleMenu("menu2"),
+                isOpen=model.openMenus.contains("menu2"),
+                color=Primary,
+              ),
+              @jade.menu_content(
+                [
+                  @jade.menu_item([text("Save")], MenuItemClick("menu2")),
+                  @jade.menu_item([text("Export")], MenuItemClick("menu2")),
+                  @jade.menu_separator(),
+                  @jade.menu_item([text("Settings")], MenuItemClick("menu2")),
+                ],
+                isOpen=model.openMenus.contains("menu2"),
+              ),
+            ]),
+          ]),
+        ]),
+      ]),
+
+      // Bordered menu
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Bordered Menu"),
+        ]),
+        div(class="bg-white rounded-lg p-6 shadow-sm", [
+          div(class="flex gap-4 flex-wrap", [
+            @jade.menu(
+              [
+                @jade.menu_trigger(
+                  [text("File")],
+                  ToggleMenu("menu3"),
+                  isOpen=model.openMenus.contains("menu3"),
+                  color=Success,
+                ),
+                @jade.menu_content(
+                  [
+                    @jade.menu_item([text("New File")], MenuItemClick("menu3")),
+                    @jade.menu_item([text("Open")], MenuItemClick("menu3")),
+                    @jade.menu_separator(),
+                    @jade.menu_item([text("Save")], MenuItemClick("menu3")),
+                    @jade.menu_item(
+                      [text("Save As...")],
+                      MenuItemClick("menu3"),
+                    ),
+                  ],
+                  isOpen=model.openMenus.contains("menu3"),
+                  variant=Bordered,
+                ),
+              ],
+              variant=Bordered,
+            ),
+          ]),
+        ]),
+      ]),
+
+      // Shadow menu
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Shadow Menu"),
+        ]),
+        div(class="bg-white rounded-lg p-6 shadow-sm", [
+          div(class="flex gap-4 flex-wrap", [
+            @jade.menu(
+              [
+                @jade.menu_trigger(
+                  [text("View")],
+                  ToggleMenu("menu4"),
+                  isOpen=model.openMenus.contains("menu4"),
+                  color=Info,
+                ),
+                @jade.menu_content(
+                  [
+                    @jade.menu_item([text("Zoom In")], MenuItemClick("menu4")),
+                    @jade.menu_item([text("Zoom Out")], MenuItemClick("menu4")),
+                    @jade.menu_separator(),
+                    @jade.menu_item(
+                      [text("Full Screen")],
+                      MenuItemClick("menu4"),
+                    ),
+                  ],
+                  isOpen=model.openMenus.contains("menu4"),
+                  variant=Shadow,
+                ),
+              ],
+              variant=Shadow,
+            ),
+          ]),
+        ]),
+      ]),
+    ]),
     // Switch Component showcase
     div(class="mb-12", [
       h2(class="text-2xl font-bold mb-6 text-gray-800", [
@@ -1774,6 +2092,11 @@ fn view(model : Model) -> Html[Msg] {
 /// see README.md to getting started.
 fn main {
   @theme.light().apply()
-  let model = { count: 0, switch_checked: false }
+  let model = {
+    count: 0,
+    openAccordions: [],
+    openMenus: [],
+    switch_checked: false,
+  }
   @tea.startup(model~, update~, view~)
 }

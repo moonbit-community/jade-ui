@@ -7,6 +7,14 @@ import(
 )
 
 // Values
+fn[M] accordion(Array[@html.Html[M]], variant? : @theme.AccordionVariant, color? : @theme.AccordionColor, className? : String?) -> @html.Html[M]
+
+fn[M] accordion_content(Array[@html.Html[M]], isOpen? : Bool, class? : String?) -> @html.Html[M]
+
+fn[M] accordion_item(String, @html.Html[M], @html.Html[M], variant? : @theme.AccordionVariant, disabled? : Bool, class? : String?) -> @html.Html[M]
+
+fn[M] accordion_trigger(Array[@html.Html[M]], M, isOpen? : Bool, color? : @theme.AccordionColor, showIcon? : Bool, class? : String?) -> @html.Html[M]
+
 fn[M] button(Array[@html.Html[M]], M, variant? : @theme.ButtonVariant, size? : @theme.ButtonSize, color? : @theme.ButtonColor, fullWidth? : Bool, ripple? : Bool, className? : String?) -> @html.Html[M]
 
 fn[M] button_group(Array[@html.Html[M]], orientation? : @theme.ButtonGroupOrientation, fullWidth? : Bool, class? : String?) -> @html.Html[M]
@@ -26,6 +34,16 @@ fn[M] chip_dismiss_trigger(M, size? : @theme.ChipSize, class? : String?, childre
 fn[M] chip_icon(Array[@html.Html[M]], size? : @theme.ChipSize, className? : String?) -> @html.Html[M]
 
 fn[M] chip_label(Array[@html.Html[M]], size? : @theme.ChipSize, className? : String?) -> @html.Html[M]
+
+fn[M] menu(Array[@html.Html[M]], variant? : @theme.MenuVariant, color? : @theme.MenuColor, class? : String?) -> @html.Html[M]
+
+fn[M] menu_content(Array[@html.Html[M]], isOpen? : Bool, variant? : @theme.MenuVariant, placement? : @theme.MenuPlacement, class? : String?) -> @html.Html[M]
+
+fn[M] menu_item(Array[@html.Html[M]], M, disabled? : Bool, selected? : Bool, ripple? : Bool, class? : String?) -> @html.Html[M]
+
+fn[M] menu_separator(class? : String?) -> @html.Html[M]
+
+fn[M] menu_trigger(Array[@html.Html[M]], M, isOpen? : Bool, color? : @theme.MenuColor, showIcon? : Bool, class? : String?) -> @html.Html[M]
 
 fn[M] slider(value? : Int, min? : Int, max? : Int, on_input~ : (Int) -> M, color? : @theme.SliderColor, size? : @theme.SliderSize, class? : String, children? : Array[@html.Html[M]]) -> @html.Html[M]
 
