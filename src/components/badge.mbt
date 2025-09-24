@@ -31,14 +31,14 @@
 ///
 pub fn[M] badge(
   children : Array[@html.Html[M]],
-  content~ : String = "",
-  variant~ : @theme.BadgeVariant = @theme.Solid,
-  size~ : @theme.BadgeSize = @theme.Md,
-  color~ : @theme.BadgeColor = @theme.Primary,
-  overlap~ : @theme.BadgeOverlap = @theme.Square,
-  placement~ : @theme.BadgePlacement = @theme.TopEnd,
-  invisible~ : Bool = false,
-  className~ : String? = None,
+  content? : String = "",
+  variant? : @theme.BadgeVariant = @theme.Solid,
+  size? : @theme.BadgeSize = @theme.Md,
+  color? : @theme.BadgeColor = @theme.Primary,
+  overlap? : @theme.BadgeOverlap = @theme.Square,
+  placement? : @theme.BadgePlacement = @theme.TopEnd,
+  invisible? : Bool = false,
+  className? : String? = None,
 ) -> @html.Html[M] {
   let container_style = @theme.get_badge_container_style(className~)
   let indicator_style = @theme.get_badge_indicator_style(
@@ -88,11 +88,11 @@ pub fn[M] badge(
 /// ```
 ///
 pub fn[M] badge_indicator(
-  content~ : String? = None,
-  variant~ : @theme.BadgeVariant = @theme.Solid,
-  size~ : @theme.BadgeSize = @theme.Md,
-  color~ : @theme.BadgeColor = @theme.Primary,
-  className~ : String? = None,
+  content? : String? = None,
+  variant? : @theme.BadgeVariant = @theme.Solid,
+  size? : @theme.BadgeSize = @theme.Md,
+  color? : @theme.BadgeColor = @theme.Primary,
+  className? : String? = None,
 ) -> @html.Html[M] {
   let base_style = "inline-flex items-center justify-center px-1 py-0.5 text-xs font-medium leading-none rounded-full border"
   let size_style = match size {
