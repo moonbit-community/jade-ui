@@ -94,7 +94,7 @@ fn view(model : Model) -> Html[Msg] {
           // Solid variant
           div([
             @jade.typography(
-              tag=H3,
+              tag=H6,
               class="text-md font-medium mb-2 text-gray-600",
               [text("Solid Variant")],
             ),
@@ -154,7 +154,7 @@ fn view(model : Model) -> Html[Msg] {
           // Ghost variant
           div([
             @jade.typography(
-              tag=H4,
+              tag=H6,
               class="text-md font-medium mb-2 text-gray-600",
               [text("Ghost Variant")],
             ),
@@ -188,14 +188,14 @@ fn view(model : Model) -> Html[Msg] {
       // Vertical Button Groups
       div(class="mb-8", [
         @jade.typography(
-          tag=H3,
+          tag=H6,
           class="text-lg font-semibold mb-4 text-gray-700",
           [text("Vertical Button Groups")],
         ),
         div(class="flex gap-8", [
           div([
             @jade.typography(
-              tag=H4,
+              tag=H6,
               class="text-md font-medium mb-2 text-gray-600",
               [text("Solid Vertical")],
             ),
@@ -257,14 +257,14 @@ fn view(model : Model) -> Html[Msg] {
       // Button Group Sizes
       div(class="mb-8", [
         @jade.typography(
-          tag=H3,
+          tag=H6,
           class="text-lg font-semibold mb-4 text-gray-700",
           [text("Button Group Sizes")],
         ),
         div(class="space-y-4", [
           div([
             @jade.typography(
-              tag=H4,
+              tag=H6,
               class="text-md font-medium mb-2 text-gray-600",
               [text("Small Size")],
             ),
@@ -294,7 +294,7 @@ fn view(model : Model) -> Html[Msg] {
           ]),
           div([
             @jade.typography(
-              tag=H4,
+              tag=H6,
               class="text-md font-medium mb-2 text-gray-600",
               [text("Large Size")],
             ),
