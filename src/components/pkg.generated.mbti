@@ -7,6 +7,10 @@ import(
 )
 
 // Values
+fn[M] badge(Array[@html.Html[M]], content? : String, variant? : @theme.BadgeVariant, size? : @theme.BadgeSize, color? : @theme.BadgeColor, overlap? : @theme.BadgeOverlap, placement? : @theme.BadgePlacement, invisible? : Bool, className? : String?) -> @html.Html[M]
+
+fn[M] badge_indicator(content? : String?, variant? : @theme.BadgeVariant, size? : @theme.BadgeSize, color? : @theme.BadgeColor, className? : String?) -> @html.Html[M]
+
 fn[M] button(Array[@html.Html[M]], M, variant? : @theme.ButtonVariant, size? : @theme.ButtonSize, color? : @theme.ButtonColor, fullWidth? : Bool, ripple? : Bool, className? : String?) -> @html.Html[M]
 
 fn[M] button_group(Array[@html.Html[M]], orientation? : @theme.ButtonGroupOrientation, fullWidth? : Bool, class? : String?) -> @html.Html[M]
