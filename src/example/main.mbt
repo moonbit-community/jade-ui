@@ -3,12 +3,14 @@ enum Msg {
   Increment
   Decrement
   SliderUpdate(Int)
+  SwitchToggle
   TabChange(String)
 }
 
 ///|
 struct Model {
   count : Int
+  switch_checked : Bool
   activeTab : String
 }
 
@@ -34,18 +36,10 @@ let button_grid_class = "flex items-center gap-3 flex-wrap"
 ///|
 fn update(msg : Msg, model : Model) -> (Cmd[Msg], Model) {
   match msg {
-    Increment => {
-      let new_count = @cmp.minimum(100, model.count + 1)
-      (none(), { ..model, count: new_count })
-    }
-    Decrement => {
-      let new_count = @cmp.maximum(0, model.count - 1)
-      (none(), { ..model, count: new_count })
-    }
-    SliderUpdate(value) => {
-      let validated_value = @cmp.maximum(0, @cmp.minimum(100, value))
-      (none(), { ..model, count: validated_value })
-    }
+    Increment => (none(), { ..model, count: model.count + 1 })
+    Decrement => (none(), { ..model, count: @cmp.maximum(0, model.count - 1) })
+    SliderUpdate(value) => (none(), { ..model, count: value })
+    SwitchToggle => (none(), { ..model, switch_checked: !model.switch_checked })
     TabChange(tab) => (none(), { ..model, activeTab: tab })
   }
 }
@@ -1076,6 +1070,68 @@ fn render_slider_section(model : Model) -> Html[Msg] {
 }
 
 ///|
+fn render_switch_section(model : Model) -> Html[Msg] {
+  // Switch Colors
+  div(class="mb-8", [
+    @jade.typography(tag=H3, class="text-lg font-semibold mb-4 text-gray-700", [
+      text("Switch Colors"),
+    ]),
+    div(class="bg-white rounded-lg p-6 shadow-sm", [
+      div(class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4", [
+        div(class="flex flex-col items-center gap-2", [
+          @jade.switch(
+            checked=model.switch_checked,
+            change=SwitchToggle,
+            color=Primary,
+          ),
+          text("Primary"),
+        ]),
+        div(class="flex flex-col items-center gap-2", [
+          @jade.switch(
+            checked=model.switch_checked,
+            change=SwitchToggle,
+            color=Secondary,
+          ),
+          text("Secondary"),
+        ]),
+        div(class="flex flex-col items-center gap-2", [
+          @jade.switch(
+            checked=model.switch_checked,
+            change=SwitchToggle,
+            color=Info,
+          ),
+          text("Info"),
+        ]),
+        div(class="flex flex-col items-center gap-2", [
+          @jade.switch(
+            checked=model.switch_checked,
+            change=SwitchToggle,
+            color=Success,
+          ),
+          text("Success"),
+        ]),
+        div(class="flex flex-col items-center gap-2", [
+          @jade.switch(
+            checked=model.switch_checked,
+            change=SwitchToggle,
+            color=Warning,
+          ),
+          text("Warning"),
+        ]),
+        div(class="flex flex-col items-center gap-2", [
+          @jade.switch(
+            checked=model.switch_checked,
+            change=SwitchToggle,
+            color=Error,
+          ),
+          text("Error"),
+        ]),
+      ]),
+    ]),
+  ])
+}
+
+///|
 /// 标签页展示区域
 fn render_tabs_section(model : Model) -> Html[Msg] {
   let tabs = ["Tab1", "Tab2", "Tab3"]
@@ -1294,15 +1350,17 @@ fn view(model : Model) -> Html[Msg] {
     render_typography_section(),
     render_slider_section(model),
     render_tabs_section(model),
+    render_switch_section(model),
     render_chip_section(),
   ])
 }
 
 ///|
+///
 /// NOTE: This program is only available in the js backend, 
 /// see README.md to getting started.
 fn main {
   @theme.light().apply()
-  let model = { count: 0, activeTab: "Tab1" }
+  let model = { count: 0, activeTab: "Tab1", switch_checked: false }
   @tea.startup(model~, update~, view~)
 }

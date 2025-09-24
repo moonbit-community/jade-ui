@@ -27,8 +27,9 @@ fn[M] chip_icon(Array[@html.Html[M]], size? : @theme.ChipSize, className? : Stri
 
 fn[M] chip_label(Array[@html.Html[M]], size? : @theme.ChipSize, className? : String?) -> @html.Html[M]
 
-fn[M] slider(value? : Int, min? : Int, max? : Int, on_input~ : (Int) -> M, color? : @theme.SliderColor, size? : @theme.SliderSize, class? : String, childrens? : Array[@html.Html[M]]) -> @html.Html[M]
+fn[M] slider(value~ : Int = .., min~ : Int = .., max~ : Int = .., on_input~ : (Int) -> M, color~ : @theme.SliderColor = .., size~ : @theme.SliderSize = .., class~ : String = .., childrens? : Array[@html.Html[M]]) -> @html.Html[M]
 
+<<<<<<< HEAD
 fn[M] tabs(Array[@html.Html[M]], orientation~ : @theme.TabsOrientation = .., class~ : String? = ..) -> @html.Html[M]
 
 fn[M] tabs_list(Array[@html.Html[M]], orientation~ : @theme.TabsOrientation = .., variant~ : @theme.TabsVariant = .., class~ : String? = ..) -> @html.Html[M]
@@ -40,6 +41,9 @@ fn[M] tabs_trigger(Array[@html.Html[M]], M, size~ : @theme.TabsSize = .., varian
 fn[M] typography(tag~ : @theme.TypographyType = .., color~ : @theme.TypographyColor = .., class~ : String = .., Array[@html.Html[M]]) -> @html.Html[M]
 
 // Errors
+=======
+fn[M] typography(tag~ : @theme.TypographyType = .., color~ : @theme.TypographyColor = .., class~ : String = .., Array[@html.Html[M]]) -> @html.Html[M]
+>>>>>>> main
 
 // Types and methods
 

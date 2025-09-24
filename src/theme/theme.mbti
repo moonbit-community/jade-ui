@@ -37,6 +37,7 @@ fn get_slider_styles(Int, String, Double) -> Array[String]
 
 fn get_slider_thumb_height(SliderSize) -> Int
 
+<<<<<<< HEAD
 fn get_tabs_list_style(orientation~ : TabsOrientation, variant~ : TabsVariant, class~ : String?) -> String
 
 fn get_tabs_panel_style(class~ : String?) -> String
@@ -44,6 +45,11 @@ fn get_tabs_panel_style(class~ : String?) -> String
 fn get_tabs_style(orientation~ : TabsOrientation, class~ : String?) -> String
 
 fn get_tabs_trigger_style(size~ : TabsSize, variant~ : TabsVariant, isActive~ : Bool, class~ : String?) -> String
+=======
+fn get_switch_color_classes(SwitchColor) -> String
+
+fn get_switch_style(color~ : SwitchColor, className~ : String?) -> String
+>>>>>>> main
 
 fn get_typography_style(TypographyType, TypographyColor, String) -> String
 
@@ -200,6 +206,7 @@ pub(all) enum SliderSize {
   Xl
 }
 
+<<<<<<< HEAD
 pub(all) enum TabsOrientation {
   Horizontal
   Vertical
@@ -215,6 +222,15 @@ pub(all) enum TabsVariant {
   Default
   Pills
   Underline
+=======
+pub(all) enum SwitchColor {
+  Primary
+  Secondary
+  Info
+  Success
+  Warning
+  Error
+>>>>>>> main
 }
 
 pub(all) enum TypographyColor {
