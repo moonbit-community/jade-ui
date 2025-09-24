@@ -21,7 +21,7 @@ pub(all) enum CardColor {
 pub fn get_card_style(
   variant~ : CardVariant,
   color~ : CardColor,
-  class? : String = "",
+  class? : String,
 ) -> String {
   clsx([
     // Base styles
@@ -96,15 +96,18 @@ pub fn get_card_style(
         }
     },
     // Optional custom class name
-    class,
+    match class {
+      Some(cls) => cls
+      None => ""
+    },
   ])
 }
 
 ///|
-pub fn get_card_header_style(className~ : String?) -> String {
+pub fn get_card_header_style(class~ : String?) -> String {
   clsx([
     "w-[calc(100%-16px)] h-max rounded m-2",
-    match className {
+    match class {
       Some(cls) => cls
       None => ""
     },
@@ -112,10 +115,10 @@ pub fn get_card_header_style(className~ : String?) -> String {
 }
 
 ///|
-pub fn get_card_body_style(className~ : String?) -> String {
+pub fn get_card_body_style(class~ : String?) -> String {
   clsx([
     "w-full h-max rounded px-3.5 py-2.5",
-    match className {
+    match class {
       Some(cls) => cls
       None => ""
     },
@@ -123,10 +126,10 @@ pub fn get_card_body_style(className~ : String?) -> String {
 }
 
 ///|
-pub fn get_card_footer_style(className~ : String?) -> String {
+pub fn get_card_footer_style(class~ : String?) -> String {
   clsx([
     "w-full px-3.5 pt-2 pb-3.5 rounded",
-    match className {
+    match class {
       Some(cls) => cls
       None => ""
     },
