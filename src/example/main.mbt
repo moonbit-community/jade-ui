@@ -37,15 +37,9 @@ fn update(msg : Msg, model : Model) -> (Cmd[Msg], Model) {
       (none(), { ..model, openAccordions: newOpenAccordions })
     }
     ToggleMenu(id) => {
-      let newOpenMenus = if model.openMenus.contains(id) {
-        model.openMenus.filter(fn(item) { item != id })
-      } else {
-        let newArray = Array::new()
-        for item in model.openMenus {
-          newArray.push(item)
-        }
-        newArray.push(id)
-        newArray
+      let newOpenMenus = Array::new()
+      if !model.openMenus.contains(id) {
+        newOpenMenus.push(id)
       }
       (none(), { ..model, openMenus: newOpenMenus })
     }

@@ -9,7 +9,7 @@
 ///   Defaults to `@theme.Default`.
 /// * `color` : @theme.MenuColor - The color theme of the menu.
 ///   Defaults to `@theme.Default`.
-/// * `className` : String? - Additional CSS class name to apply to the menu.
+/// * `class` : String? - Additional CSS class name to apply to the menu.
 ///   Defaults to `None`.
 ///
 /// Returns an HTML div element configured as a menu container.
@@ -30,9 +30,9 @@ pub fn[M] menu(
   children : Array[@html.Html[M]],
   variant? : @theme.MenuVariant = @theme.Default,
   color? : @theme.MenuColor = @theme.Default,
-  className? : String? = None,
+  class? : String? = None,
 ) -> @html.Html[M] {
-  let klass = @theme.get_menu_style(variant~, color~, class=className)
+  let klass = @theme.get_menu_style(variant~, color~, class~)
   let attrs = [@html.attribute("class", klass), @html.attribute("role", "menu")]
   @html.node("div", attrs, children)
 }
@@ -47,7 +47,7 @@ pub fn[M] menu(
 /// * `isOpen` : Bool - Whether the menu is currently open.
 /// * `color` : @theme.MenuColor - The color theme of the trigger.
 /// * `showIcon` : Bool - Whether to show a dropdown icon.
-/// * `className` : String? - Additional CSS class name.
+/// * `class` : String? - Additional CSS class name.
 ///
 /// Returns an HTML button element configured as a menu trigger.
 ///
@@ -57,9 +57,9 @@ pub fn[M] menu_trigger(
   isOpen? : Bool = false,
   color? : @theme.MenuColor = @theme.Default,
   showIcon? : Bool = true,
-  className? : String? = None,
+  class? : String? = None,
 ) -> @html.Html[M] {
-  let klass = @theme.get_menu_trigger_style(color~, isOpen~, className~)
+  let klass = @theme.get_menu_trigger_style(color~, isOpen~, class~)
   let iconClass = "ml-2 h-4 w-4 transition-transform duration-200 " +
     (if isOpen { "rotate-180" } else { "rotate-0" })
   let icon = if showIcon {
@@ -109,7 +109,7 @@ pub fn[M] menu_trigger(
 /// * `isOpen` : Bool - Whether the menu content is currently visible.
 /// * `variant` : @theme.MenuVariant - The visual style variant.
 /// * `placement` : @theme.MenuPlacement - The position of the menu relative to trigger.
-/// * `className` : String? - Additional CSS class name.
+/// * `class` : String? - Additional CSS class name.
 ///
 /// Returns an HTML div element configured as menu content, or None if closed.
 ///
@@ -118,9 +118,9 @@ pub fn[M] menu_content(
   isOpen? : Bool = false,
   variant? : @theme.MenuVariant = @theme.Default,
   placement? : @theme.MenuPlacement = @theme.Bottom,
-  className? : String? = None,
+  class? : String? = None,
 ) -> @html.Html[M] {
-  let klass = @theme.get_menu_content_style(variant~, placement~, className~)
+  let klass = @theme.get_menu_content_style(variant~, placement~, class~)
   @html.div(
     class=klass,
     style=[if isOpen { "display:block" } else { "display:none" }],
@@ -137,7 +137,7 @@ pub fn[M] menu_content(
 /// * `click` : M - The message to dispatch when clicked.
 /// * `disabled` : Bool - Whether the item is disabled.
 /// * `selected` : Bool - Whether the item is currently selected.
-/// * `className` : String? - Additional CSS class name.
+/// * `class` : String? - Additional CSS class name.
 ///
 /// Returns an HTML button element configured as a menu item.
 ///
@@ -147,14 +147,9 @@ pub fn[M] menu_item(
   disabled? : Bool = false,
   selected? : Bool = false,
   ripple? : Bool = true,
-  className? : String? = None,
+  class? : String? = None,
 ) -> @html.Html[M] {
-  let klass = @theme.get_menu_item_style(
-    disabled~,
-    selected~,
-    ripple~,
-    class=className,
-  )
+  let klass = @theme.get_menu_item_style(disabled~, selected~, ripple~, class~)
   let attrs = [
     @html.attribute("type", "button"),
     @html.attribute("class", klass),
@@ -182,12 +177,12 @@ pub fn[M] menu_item(
 ///
 /// Parameters:
 ///
-/// * `className` : String? - Additional CSS class name.
+/// * `class` : String? - Additional CSS class name.
 ///
 /// Returns an HTML hr element configured as a menu separator.
 ///
-pub fn[M] menu_separator(className? : String? = None) -> @html.Html[M] {
-  let klass = @theme.get_menu_separator_style(class=className)
+pub fn[M] menu_separator(class? : String? = None) -> @html.Html[M] {
+  let klass = @theme.get_menu_separator_style(class~)
   let attrs = [
     @html.attribute("class", klass),
     @html.attribute("role", "separator"),

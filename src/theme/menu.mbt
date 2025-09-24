@@ -69,7 +69,7 @@ pub fn get_menu_style(
 pub fn get_menu_trigger_style(
   color~ : MenuColor,
   isOpen~ : Bool,
-  className~ : String?,
+  class~ : String?,
 ) -> String {
   clsx([
     // Base styles
@@ -98,7 +98,7 @@ pub fn get_menu_trigger_style(
       ""
     },
     // Optional custom class name
-    match className {
+    match class {
       Some(cls) => cls
       None => ""
     },
@@ -109,7 +109,7 @@ pub fn get_menu_trigger_style(
 pub fn get_menu_content_style(
   variant~ : MenuVariant,
   placement~ : MenuPlacement,
-  className~ : String?,
+  class~ : String?,
 ) -> String {
   clsx([
     // Base styles
@@ -136,7 +136,7 @@ pub fn get_menu_content_style(
       LeftEnd => "right-full mr-1 bottom-0"
     },
     // Optional custom class name
-    match className {
+    match class {
       Some(cls) => cls
       None => ""
     },
@@ -165,7 +165,7 @@ pub fn get_menu_item_style(
     } else if selected {
       "bg-[var(--color-primary)]/10 text-[var(--color-primary)] font-medium"
     } else {
-      "text-[var(--color-base-content)] hover:bg-[var(--color-base-100)] hover:text-[var(--color-base-content)]"
+      "text-[var(--color-base-content)] hover:bg-[var(--color-base-300)] hover:text-[var(--color-base-content)]"
     },
     // Optional custom class name
     match class {
