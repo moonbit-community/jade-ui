@@ -1509,10 +1509,10 @@ fn view(model : Model) -> Html[Msg] {
         ]),
       ]),
 
-      // Splitted accordion
+      // Split accordion
       div(class="mb-8", [
         h3(class="text-lg font-semibold mb-4 text-gray-700", [
-          text("Splitted Accordion"),
+          text("Split Accordion"),
         ]),
         div(class="bg-white rounded-lg p-6 shadow-sm", [
           @jade.accordion(
@@ -1533,7 +1533,7 @@ fn view(model : Model) -> Html[Msg] {
                   ],
                   isOpen=model.openAccordions.contains("split1"),
                 ),
-                variant=Splitted,
+                variant=Split,
               ),
               @jade.accordion_item(
                 "split2",
@@ -1551,10 +1551,10 @@ fn view(model : Model) -> Html[Msg] {
                   ],
                   isOpen=model.openAccordions.contains("split2"),
                 ),
-                variant=Splitted,
+                variant=Split,
               ),
             ],
-            variant=Splitted,
+            variant=Split,
           ),
         ]),
       ]),
