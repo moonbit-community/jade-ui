@@ -21,11 +21,11 @@
 ///
 /// Example:
 ///
-/// ```moonbit
+/// ```moonbit skip
 /// let my_checkbox = @jade.checkbox(
 ///   checked=true,
-///   on_change=MyCheckboxMessage,
-///   label=Some("Accept terms"),
+///   change=MyCheckboxMessage,
+///   label="Accept terms",
 ///   size=Lg,
 ///   color=Success
 /// )
