@@ -9,13 +9,9 @@ import(
 // Values
 fn clsx(Array[String]) -> String
 
-<<<<<<< HEAD
-fn get_button_style(variant~ : ButtonVariant, size~ : ButtonSize, color~ : ButtonColor, fullWidth~ : Bool, ripple~ : Bool, class~ : String?) -> String
-=======
 fn get_button_group_style(orientation~ : ButtonGroupOrientation, fullWidth~ : Bool, class~ : String?) -> String
 
-fn get_button_style(variant~ : ButtonVariant, size~ : ButtonSize, color~ : ButtonColor, fullWidth~ : Bool, ripple~ : Bool, className~ : String?) -> String
->>>>>>> main
+fn get_button_style(variant~ : ButtonVariant, size~ : ButtonSize, color~ : ButtonColor, fullWidth~ : Bool, ripple~ : Bool, class~ : String?) -> String
 
 fn get_card_body_style(class~ : String?) -> String
 
@@ -135,11 +131,7 @@ pub(all) enum CardVariant {
   Gradient
 }
 
-<<<<<<< HEAD
 pub(all) enum CheckboxColor {
-=======
-pub(all) enum ChipColor {
->>>>>>> main
   Primary
   Secondary
   Info
@@ -148,18 +140,27 @@ pub(all) enum ChipColor {
   Error
 }
 
-<<<<<<< HEAD
 pub(all) enum CheckboxSize {
-=======
-pub(all) enum ChipSize {
->>>>>>> main
   Sm
   Md
   Lg
 }
 
-<<<<<<< HEAD
-=======
+pub(all) enum ChipColor {
+  Primary
+  Secondary
+  Info
+  Success
+  Warning
+  Error
+}
+
+pub(all) enum ChipSize {
+  Sm
+  Md
+  Lg
+}
+
 pub(all) enum ChipVariant {
   Ghost
   Solid
@@ -167,7 +168,6 @@ pub(all) enum ChipVariant {
   Gradient
 }
 
->>>>>>> main
 pub(all) struct JadeTheme {
   primary : String
   primaryContent : String

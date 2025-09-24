@@ -33,109 +33,51 @@
 ///
 pub fn[M] checkbox(
   checked : Bool,
-  on_change : M,
+  change : M,
   id? : String,
   name? : String,
-  label~ : String? = None,
-  size~ : @theme.CheckboxSize = @theme.Md,
-  color~ : @theme.CheckboxColor = @theme.Primary,
-  disabled~ : Bool = false,
-  class~ : String? = None,
+  label? : String,
+  size? : @theme.CheckboxSize = @theme.Md,
+  color? : @theme.CheckboxColor = @theme.Primary,
+  disabled? : Bool = false,
+  class? : String,
 ) -> @html.Html[M] {
-  let container_style = @theme.get_checkbox_container_style(
-    size~,
-    color~,
-    disabled~,
-    class~,
-  )
-  let indicator_style = @theme.get_checkbox_indicator_style()
-  let checkbox_input = @html.input(
+  let hidden_input = @html.input(
     input_type=Checkbox,
+    class="sr-only peer",
     id?,
     name?,
     checked~,
-    style=["display: none"],
-    change=fn(_) { on_change },
+    change=_ => change,
   )
-  let checkbox_indicator = @html.node(
-    "span",
+
+  // 可视化的方框和勾选图标
+  let visual_box = @html.span(
+    class=@theme.get_checkbox_visual_style(size~, color~, disabled~),
     [
-      @html.attribute("data-checked", if checked { "true" } else { "false" }),
-      @html.attribute("class", indicator_style),
-    ],
-    [
-      @svg.svg(
-        [
-          @svg.attribute("fill", "none"),
-          @svg.attribute("width", "18px"),
-          @svg.attribute("height", "18px"),
-          @svg.attribute("strokeWidth", "2"),
-          @svg.attribute("color", "currentColor"),
-          @svg.attribute("viewBox", "0 0 24 24"),
-          @svg.attribute("xmlns", "http://www.w3.org/2000/svg"),
-        ],
-        [
-          @svg.node(
-            "path",
-            [
-              @svg.attribute("d", "M5 13L9 17L19 7"),
-              @svg.attribute("stroke", "currentColor"),
-              @svg.attribute("strokeWidth", "2"),
-              @svg.attribute("strokeLinecap", "round"),
-              @svg.attribute("strokeLinejoin", "round"),
-            ],
-            [],
-          ),
-        ],
+      @html.span(
+        class="w-1.5 h-3 mb-0.5 ml-0.2 border-r-2 border-b-2 border-white rotate-45 opacity-0 peer-checked:bg-red opacity-100 transition-opacity",
+        [],
       ),
-      // @svg.from_string(
-      //   #|<svg
-      //   #|  fill="none"
-      //   #|  width="18px"
-      //   #|  height="18px"
-      //   #|  strokeWidth="2"
-      //   #|  color="currentColor"
-      //   #|  viewBox="0 0 24 24"
-      //   #|  xmlns="http://www.w3.org/2000/svg"
-      //   #|>
-      //   #|  <path
-      //   #|    d="M5 13L9 17L19 7"
-      //   #|    stroke="currentColor"
-      //   #|    strokeWidth="2"
-      //   #|    strokeLinecap="round"
-      //   #|    strokeLinejoin="round"
-      //   #|  />
-      //   #|</svg>
-      //   ,
-      // ),
     ],
   )
-  let attributes = [
-    @html.attribute("class", container_style),
-    @html.attribute("data-checked", if checked { "true" } else { "false" }),
-  ]
-  let label_attributes = [
-    @html.attribute(
-      "class",
-      @theme.get_checkbox_label_style(size~, disabled~, class~),
-    ),
-  ]
-  if disabled {
-    attributes.push(@html.attribute("aria-disabled", "true"))
-  }
-  if id is Some(id) {
-    attributes.push(@html.attribute("for", id))
-    label_attributes.push(@html.attribute("for", id))
-  }
-  let checkbox_label = @html.node("label", attributes, [
-    checkbox_input, checkbox_indicator,
-  ])
+
+  // 主容器 label
+  let checkbox_container = @html.label(
+    class=@theme.get_checkbox_container_style(disabled~, class~),
+    for_?=id,
+    [hidden_input, visual_box],
+  )
   match label {
     Some(label_text) =>
       @html.div(class="inline-flex items-center gap-2", [
-        checkbox_label,
-        @html.label(class="text-sm font-medium", [@html.text(label_text)]),
+        checkbox_container,
+        @html.label(
+          class=@theme.get_checkbox_label_style(size~, disabled~),
+          for_?=id,
+          [@html.text(label_text)],
+        ),
       ])
-    None => checkbox_label
+    None => checkbox_container
   }
 }

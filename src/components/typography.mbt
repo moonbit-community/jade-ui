@@ -1,9 +1,9 @@
 ///|
 pub fn[M] typography(
-  tag~ : @theme.TypographyType = @theme.P,
-  color~ : @theme.TypographyColor = @theme.Inherit,
-  class~ : String = "",
-  children : Array[@html.Html[M]]
+  tag? : @theme.TypographyType = @theme.P,
+  color? : @theme.TypographyColor = @theme.Inherit,
+  class? : String = "",
+  children : Array[@html.Html[M]],
 ) -> @html.Html[M] {
   let style = @theme.get_typography_style(tag, color, class)
   match tag {

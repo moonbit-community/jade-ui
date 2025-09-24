@@ -17,6 +17,8 @@ fn[M] card_footer(children : Array[@html.Html[M]], class~ : String? = None) -> @
 
 fn[M] checkbox(checked : Bool, on_change : M, label~ : String? = None, size~ : @theme.CheckboxSize = @theme.Md, color~ : @theme.CheckboxColor = @theme.Primary, disabled~ : Bool = false, class~ : String? = None) -> @html.Html[M]
 
+fn[M] switch(checked~ : Bool = false, on_change~ : (Bool) -> M, color~ : @theme.SwitchColor = @theme.Primary, disabled~ : Bool = false, className~ : String? = None, id~ : String? = None) -> @html.Html[M]
+
 // Types and methods
 
 // Type aliases

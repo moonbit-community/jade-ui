@@ -17,62 +17,11 @@ pub(all) enum CheckboxColor {
 
 ///|
 pub fn get_checkbox_container_style(
-  size~ : CheckboxSize,
-  color~ : CheckboxColor,
   disabled~ : Bool,
-  class~ : String?
+  class~ : String?,
 ) -> String {
   clsx([
-    "group shadow-sm shadow-black/5 inline-block relative cursor-pointer rounded bg-transparent border border-[var(--color-base-300)] transition-all duration-200 ease-in",
-    // Size styles
-    match size {
-      Sm => "h-4 w-4"
-      Md => "h-5 w-5"
-      Lg => "h-6 w-6"
-    },
-    // Color styles
-    match color {
-      Primary =>
-        "data-[checked=true]:bg-[var(--color-primary)] data-[checked=true]:border-[var(--color-primary)] text-[var(--color-primary-content)]"
-      Secondary =>
-        "data-[checked=true]:bg-[var(--color-secondary)] data-[checked=true]:border-[var(--color-secondary)] text-[var(--color-secondary-content)]"
-      Info =>
-        "data-[checked=true]:bg-[var(--color-info)] data-[checked=true]:border-[var(--color-info)] text-[var(--color-info-content)]"
-      Success =>
-        "data-[checked=true]:bg-[var(--color-success)] data-[checked=true]:border-[var(--color-success)] text-[var(--color-success-content)]"
-      Warning =>
-        "data-[checked=true]:bg-[var(--color-warning)] data-[checked=true]:border-[var(--color-warning)] text-[var(--color-warning-content)]"
-      Error =>
-        "data-[checked=true]:bg-[var(--color-error)] data-[checked=true]:border-[var(--color-error)] text-[var(--color-error-content)]"
-    },
-    // Disabled state
-    if disabled {
-      "opacity-50 pointer-events-none"
-    } else {
-      "hover:shadow-md"
-    },
-    // Optional custom class name
-    match class {
-      Some(cls) => cls
-      None => ""
-    },
-  ])
-}
-
-///|
-pub fn get_checkbox_input_style(
-  size~ : CheckboxSize,
-  disabled~ : Bool,
-  class~ : String?
-) -> String {
-  clsx([
-    "peer relative appearance-none cursor-pointer transition-all",
-    // Size styles
-    match size {
-      Sm => "h-4 w-4"
-      Md => "h-5 w-5"
-      Lg => "h-6 w-6"
-    },
+    "inline-flex items-center cursor-pointer select-none",
     // Disabled state
     if disabled {
       "opacity-50 cursor-not-allowed"
@@ -88,13 +37,59 @@ pub fn get_checkbox_input_style(
 }
 
 ///|
+pub fn get_checkbox_visual_style(
+  size~ : CheckboxSize,
+  color~ : CheckboxColor,
+  disabled~ : Bool,
+) -> String {
+  clsx([
+    "flex items-center justify-center rounded-md border-2 bg-white transition-all shadow-sm",
+    // Size styles
+    match size {
+      Sm => "w-4 h-4"
+      Md => "w-5 h-5"
+      Lg => "w-6 h-6"
+    },
+    // Base border and focus styles
+    "border-gray-300 peer-focus:ring-2 peer-focus:ring-opacity-50",
+    // Color styles for checked state
+    match color {
+      Primary => "peer-checked:bg-blue-600 peer-checked:border-blue-600 peer-focus:ring-blue-300"
+      Secondary => "peer-checked:bg-gray-600 peer-checked:border-gray-600 peer-focus:ring-gray-300"
+      Info => "peer-checked:bg-cyan-600 peer-checked:border-cyan-600 peer-focus:ring-cyan-300"
+      Success => "peer-checked:bg-green-600 peer-checked:border-green-600 peer-focus:ring-green-300"
+      Warning => "peer-checked:bg-yellow-600 peer-checked:border-yellow-600 peer-focus:ring-yellow-300"
+      Error => "peer-checked:bg-red-600 peer-checked:border-red-600 peer-focus:ring-red-300"
+    },
+    // Disabled state
+    if disabled {
+      "opacity-50"
+    } else {
+      ""
+    },
+  ])
+}
+
+///|
+pub fn get_checkbox_icon_style(size~ : CheckboxSize) -> String {
+  clsx([
+    "text-white scale-0 transition-transform peer-checked:scale-100",
+    // Size styles
+    match size {
+      Sm => "w-3 h-3"
+      Md => "w-4 h-4"
+      Lg => "w-5 h-5"
+    },
+  ])
+}
+
+///|
 pub fn get_checkbox_label_style(
   size~ : CheckboxSize,
   disabled~ : Bool,
-  class~ : String?
 ) -> String {
   clsx([
-    "ml-2 select-none text-[var(--color-base-content)] font-light cursor-pointer mt-px",
+    "text-sm font-medium select-none",
     // Size styles
     match size {
       Sm => "text-sm"
@@ -107,27 +102,5 @@ pub fn get_checkbox_label_style(
     } else {
       "cursor-pointer"
     },
-    // Optional custom class name
-    match class {
-      Some(cls) => cls
-      None => ""
-    },
   ])
-}
-
-///|
-pub fn get_checkbox_root_style(class~ : String?) -> String {
-  clsx([
-    "inline-flex items-center",
-    // Optional custom class name
-    match class {
-      Some(cls) => cls
-      None => ""
-    },
-  ])
-}
-
-///|
-pub fn get_checkbox_indicator_style() -> String {
-  "pointer-events-none absolute left-2/4 top-2/4 text-current -translate-x-2/4 -translate-y-2/4 scale-75 opacity-0 transition-all duration-200 ease-in data-[checked=true]:scale-100 data-[checked=true]:opacity-100"
 }

@@ -44,12 +44,12 @@
 pub fn[M] button(
   children : Array[@html.Html[M]],
   click : M,
-  variant~ : @theme.ButtonVariant = @theme.Solid,
-  size~ : @theme.ButtonSize = @theme.Md,
-  color~ : @theme.ButtonColor = @theme.Primary,
-  fullWidth~ : Bool = false,
-  ripple~ : Bool = true,
-  class~ : String? = None
+  variant? : @theme.ButtonVariant = @theme.Solid,
+  size? : @theme.ButtonSize = @theme.Md,
+  color? : @theme.ButtonColor = @theme.Primary,
+  fullWidth? : Bool = false,
+  ripple? : Bool = true,
+  class? : String? = None,
 ) -> @html.Html[M] {
   let klass = @theme.get_button_style(
     variant~,
