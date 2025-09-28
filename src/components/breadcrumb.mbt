@@ -50,7 +50,7 @@ pub fn[M] breadcrumb(
   variant? : @theme.BreadcrumbVariant = @theme.Default,
   color? : @theme.BreadcrumbColor = @theme.Default,
   size? : @theme.BreadcrumbSize = @theme.Md,
-  class? : String? = None,
+  class? : String,
 ) -> @html.Html[M] {
   let container_style = @theme.get_breadcrumb_style(
     variant~,
@@ -91,18 +91,11 @@ pub fn[M] breadcrumb(
         @html.node("button", attrs, [@html.text(item.text)])
       }
       // Link-only item
-      (Some(href), None, false) => {
-        let attrs = [
-          @html.attribute("href", href),
-          @html.attribute("class", link_style),
-        ]
-        @html.node("a", attrs, [@html.text(item.text)])
-      }
+      (Some(href), None, false) =>
+        @html.a(href~, class=link_style, [@html.text(item.text)])
       // Plain text item
-      (None, None, false) => {
-        let attrs = [@html.attribute("class", link_style)]
-        @html.node("span", attrs, [@html.text(item.text)])
-      }
+      (None, None, false) =>
+        @html.span(class=link_style, [@html.text(item.text)])
     }
     children.push(item_element)
 
@@ -150,7 +143,7 @@ pub fn[M] breadcrumb_simple(
   variant? : @theme.BreadcrumbVariant = @theme.Default,
   color? : @theme.BreadcrumbColor = @theme.Default,
   size? : @theme.BreadcrumbSize = @theme.Md,
-  class? : String? = None,
+  class? : String,
 ) -> @html.Html[M] {
   let breadcrumb_items = Array::new()
   for i, text in items.iter2() {
@@ -162,5 +155,5 @@ pub fn[M] breadcrumb_simple(
       isActive,
     })
   }
-  breadcrumb(breadcrumb_items, separator~, variant~, color~, size~, class~)
+  breadcrumb(breadcrumb_items, separator~, variant~, color~, size~, class?)
 }
