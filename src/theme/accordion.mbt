@@ -130,7 +130,7 @@ pub fn get_accordion_content_style(class~ : String?) -> String {
 }
 
 ///|
-pub fn get_accordion_icon_style(isOpen~ : Bool, class~ : String?) -> String {
+pub fn get_accordion_icon_style(isOpen~ : Bool, class? : String) -> String {
   clsx([
     // Base styles
     "transition-transform duration-200 ease-in-out",

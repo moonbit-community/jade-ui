@@ -93,11 +93,12 @@ pub fn[M] accordion_trigger(
   isOpen? : Bool = false,
   color? : @theme.AccordionColor = @theme.Default,
   showIcon? : Bool = true,
-  class? : String? = None,
+  class? : String,
+  icon_class? : String,
 ) -> @html.Html[M] {
   let klass = @theme.get_accordion_trigger_style(color~, isOpen~, class~)
   let icon = if showIcon {
-    let iconClass = @theme.get_accordion_icon_style(isOpen~, class=None)
+    let iconClass = @theme.get_accordion_icon_style(isOpen~, class?=icon_class)
     [
       @svg.node(
         "svg",
