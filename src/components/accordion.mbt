@@ -9,7 +9,7 @@
 ///   Defaults to `@theme.Default`.
 /// * `color` : @theme.AccordionColor - The color theme of the accordion.
 ///   Defaults to `@theme.Default`.
-/// * `className` : String? - Additional CSS class name to apply to the accordion.
+/// * `class` : String? - Additional CSS class name to apply to the accordion.
 ///   Defaults to `None`.
 ///
 /// Returns an HTML div element configured as an accordion container.
@@ -30,9 +30,9 @@ pub fn[M] accordion(
   children : Array[@html.Html[M]],
   variant? : @theme.AccordionVariant = @theme.Default,
   color? : @theme.AccordionColor = @theme.Default,
-  className? : String? = None,
+  class? : String? = None,
 ) -> @html.Html[M] {
-  let klass = @theme.get_accordion_style(variant~, color~, className~)
+  let klass = @theme.get_accordion_style(variant~, color~, class~)
   let attrs = [
     @html.attribute("class", klass),
     @html.attribute("role", "tablist"),
@@ -51,7 +51,7 @@ pub fn[M] accordion(
 /// * `variant` : @theme.AccordionVariant - The visual style variant.
 /// * `color` : @theme.AccordionColor - The color theme.
 /// * `disabled` : Bool - Whether this item is disabled.
-/// * `className` : String? - Additional CSS class name.
+/// * `class` : String? - Additional CSS class name.
 ///
 /// Returns an HTML div element configured as an accordion item.
 ///
@@ -61,13 +61,9 @@ pub fn[M] accordion_item(
   content : @html.Html[M],
   variant? : @theme.AccordionVariant = @theme.Default,
   disabled? : Bool = false,
-  class? : String? = None,
+  class? : String,
 ) -> @html.Html[M] {
-  let klass = @theme.get_accordion_item_style(
-    variant~,
-    disabled~,
-    className=class,
-  )
+  let klass = @theme.get_accordion_item_style(variant~, disabled~, class?)
   let attrs = [
     @html.attribute("class", klass),
     @html.attribute("data-value", value),
@@ -94,18 +90,18 @@ pub fn[M] accordion_item(
 pub fn[M] accordion_trigger(
   children : Array[@html.Html[M]],
   click : M,
-  isOpen? : Bool = false,
+  is_open? : Bool = false,
   color? : @theme.AccordionColor = @theme.Default,
-  showIcon? : Bool = true,
-  class? : String? = None,
+  show_icon? : Bool = true,
+  class? : String,
+  icon_class? : String,
 ) -> @html.Html[M] {
-  let klass = @theme.get_accordion_trigger_style(
-    color~,
-    isOpen~,
-    className=class,
-  )
-  let icon = if showIcon {
-    let iconClass = @theme.get_accordion_icon_style(isOpen~, className=None)
+  let klass = @theme.get_accordion_trigger_style(color~, is_open~, class?)
+  let icon = if show_icon {
+    let iconClass = @theme.get_accordion_icon_style(
+      isOpen=is_open,
+      class?=icon_class,
+    )
     [
       @svg.node(
         "svg",
@@ -129,7 +125,7 @@ pub fn[M] accordion_trigger(
   let attrs = [
     @html.attribute("type", "button"),
     @html.attribute("class", klass),
-    @html.attribute("aria-expanded", if isOpen { "true" } else { "false" }),
+    @html.attribute("aria-expanded", if is_open { "true" } else { "false" }),
     @html.attribute("role", "tab"),
     @html.on_click(fn(_) { click }),
   ]
@@ -144,35 +140,29 @@ pub fn[M] accordion_trigger(
 }
 
 ///|
-/// Creates accordion content that can be shown or hidden.
+/// Creates accordion content that can be shown or hidden with smooth animation.
 ///
 /// Parameters:
 ///
 /// * `children` : Array\[@html.Html\[M]] - The content to display when expanded.
 /// * `isOpen` : Bool - Whether the content is currently visible.
 /// * `variant` : @theme.AccordionVariant - The visual style variant.
-/// * `className` : String? - Additional CSS class name.
+/// * `class` : String? - Additional CSS class name.
 ///
-/// Returns an HTML div element configured as accordion content, or None if closed.
+/// Returns an HTML div element configured as accordion content with animation.
 ///
 pub fn[M] accordion_content(
   children : Array[@html.Html[M]],
-  isOpen? : Bool = false,
-  class? : String? = None,
+  is_open? : Bool = false,
+  class? : String,
 ) -> @html.Html[M] {
-  let klass = @theme.get_accordion_content_style(className=class)
-  let attrs = [
-    @html.attribute("class", klass),
-    @html.attribute("role", "tabpanel"),
-    @html.attribute("data-open", if isOpen { "true" } else { "false" }),
-    @html.attribute(
-      "style",
-      if isOpen {
-        "display: block;"
-      } else {
-        "display: none;"
-      },
-    ),
-  ]
-  @html.node("div", attrs, children)
+  let klass = @theme.get_accordion_content_style(class?)
+  let combinedStyle = if is_open {
+    "display: grid; overflow: hidden; grid-template-rows: 1fr; opacity: 1; padding-bottom: 1rem;"
+  } else {
+    "display: grid; overflow: hidden; grid-template-rows: 0fr; opacity: 0; padding-bottom: 0;"
+  }
+  // Content needs to be wrapped for grid layout
+  let wrappedChildren = [@html.div(style=["min-height: 0;"], children)]
+  @html.div(class=klass, style=[combinedStyle], wrappedChildren)
 }

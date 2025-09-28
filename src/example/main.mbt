@@ -1588,7 +1588,7 @@ fn view(model : Model) -> Html[Msg] {
               @jade.accordion_trigger(
                 [text("What is Jade UI?")],
                 ToggleAccordion("faq1"),
-                isOpen=model.openAccordions.contains("faq1"),
+                is_open=model.openAccordions.contains("faq1"),
               ),
               @jade.accordion_content(
                 [
@@ -1596,7 +1596,7 @@ fn view(model : Model) -> Html[Msg] {
                     "Jade UI is a modern, customizable UI component library built with MoonBit. It provides a comprehensive set of components for building beautiful web applications.",
                   ),
                 ],
-                isOpen=model.openAccordions.contains("faq1"),
+                is_open=model.openAccordions.contains("faq1"),
               ),
             ),
             @jade.accordion_item(
@@ -1604,7 +1604,7 @@ fn view(model : Model) -> Html[Msg] {
               @jade.accordion_trigger(
                 [text("How do I get started?")],
                 ToggleAccordion("faq2"),
-                isOpen=model.openAccordions.contains("faq2"),
+                is_open=model.openAccordions.contains("faq2"),
               ),
               @jade.accordion_content(
                 [
@@ -1612,7 +1612,7 @@ fn view(model : Model) -> Html[Msg] {
                     "Getting started is easy! Simply install the package, import the components you need, and start building. Check out our documentation for detailed examples and API references.",
                   ),
                 ],
-                isOpen=model.openAccordions.contains("faq2"),
+                is_open=model.openAccordions.contains("faq2"),
               ),
             ),
             @jade.accordion_item(
@@ -1620,7 +1620,7 @@ fn view(model : Model) -> Html[Msg] {
               @jade.accordion_trigger(
                 [text("Is it customizable?")],
                 ToggleAccordion("faq3"),
-                isOpen=model.openAccordions.contains("faq3"),
+                is_open=model.openAccordions.contains("faq3"),
               ),
               @jade.accordion_content(
                 [
@@ -1628,7 +1628,7 @@ fn view(model : Model) -> Html[Msg] {
                     "Yes! Jade UI is highly customizable. You can customize colors, sizes, variants, and even add your own CSS classes to match your design system.",
                   ),
                 ],
-                isOpen=model.openAccordions.contains("faq3"),
+                is_open=model.openAccordions.contains("faq3"),
               ),
             ),
           ]),
@@ -1648,7 +1648,7 @@ fn view(model : Model) -> Html[Msg] {
                 @jade.accordion_trigger(
                   [text("Features")],
                   ToggleAccordion("bordered1"),
-                  isOpen=model.openAccordions.contains("bordered1"),
+                  is_open=model.openAccordions.contains("bordered1"),
                   color=Primary,
                 ),
                 @jade.accordion_content(
@@ -1657,7 +1657,7 @@ fn view(model : Model) -> Html[Msg] {
                       "Jade UI includes buttons, cards, sliders, typography, accordions, and many more components. All components are fully responsive and accessible.",
                     ),
                   ],
-                  isOpen=model.openAccordions.contains("bordered1"),
+                  is_open=model.openAccordions.contains("bordered1"),
                 ),
                 variant=Bordered,
               ),
@@ -1666,7 +1666,7 @@ fn view(model : Model) -> Html[Msg] {
                 @jade.accordion_trigger(
                   [text("Performance")],
                   ToggleAccordion("bordered2"),
-                  isOpen=model.openAccordions.contains("bordered2"),
+                  is_open=model.openAccordions.contains("bordered2"),
                   color=Success,
                 ),
                 @jade.accordion_content(
@@ -1675,7 +1675,7 @@ fn view(model : Model) -> Html[Msg] {
                       "Built with performance in mind, Jade UI components are lightweight and optimized for fast rendering. The library uses modern CSS techniques for smooth animations.",
                     ),
                   ],
-                  isOpen=model.openAccordions.contains("bordered2"),
+                  is_open=model.openAccordions.contains("bordered2"),
                 ),
                 variant=Bordered,
               ),
@@ -1698,7 +1698,7 @@ fn view(model : Model) -> Html[Msg] {
                 @jade.accordion_trigger(
                   [text("Documentation")],
                   ToggleAccordion("split1"),
-                  isOpen=model.openAccordions.contains("split1"),
+                  is_open=model.openAccordions.contains("split1"),
                   color=Info,
                 ),
                 @jade.accordion_content(
@@ -1707,7 +1707,7 @@ fn view(model : Model) -> Html[Msg] {
                       "Comprehensive documentation with examples, API references, and best practices. Learn how to integrate Jade UI into your projects effectively.",
                     ),
                   ],
-                  isOpen=model.openAccordions.contains("split1"),
+                  is_open=model.openAccordions.contains("split1"),
                 ),
                 variant=Split,
               ),
@@ -1716,7 +1716,7 @@ fn view(model : Model) -> Html[Msg] {
                 @jade.accordion_trigger(
                   [text("Community")],
                   ToggleAccordion("split2"),
-                  isOpen=model.openAccordions.contains("split2"),
+                  is_open=model.openAccordions.contains("split2"),
                   color=Warning,
                 ),
                 @jade.accordion_content(
@@ -1725,7 +1725,7 @@ fn view(model : Model) -> Html[Msg] {
                       "Join our growing community of developers. Share your projects, get help, and contribute to making Jade UI even better.",
                     ),
                   ],
-                  isOpen=model.openAccordions.contains("split2"),
+                  is_open=model.openAccordions.contains("split2"),
                 ),
                 variant=Split,
               ),

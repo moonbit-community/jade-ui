@@ -7,7 +7,7 @@
 /// * `on_change` : (Bool) -> M - The message or action to be dispatched when the switch state changes.
 /// * `color` : @theme.SwitchColor - The color theme of the switch. Defaults to `@theme.Primary`.
 /// * `disabled` : Bool - Whether the switch is disabled. Defaults to `false`.
-/// * `className` : String? - Additional CSS class name to apply to the switch. Defaults to `None`.
+/// * `class` : String? - Additional CSS class name to apply to the switch. Defaults to `None`.
 /// * `id` : String? - The HTML id attribute for the switch. Defaults to `None`.
 ///
 /// Returns an HTML input element configured as a switch with the specified properties and styling.
@@ -31,10 +31,10 @@ pub fn[M] switch(
   checked? : Bool = false,
   change~ : M,
   color? : @theme.SwitchColor = @theme.Primary,
-  className? : String? = None,
-  id? : String? = None,
+  class? : String,
+  id? : String,
 ) -> @html.Html[M] {
-  let klass = @theme.get_switch_style(color~, className~)
+  let klass = @theme.get_switch_style(color~, class?)
   @html.input(input_type=Checkbox, checked~, class=klass, id?, change=fn(_) {
     change
   })

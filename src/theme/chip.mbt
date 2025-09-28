@@ -117,7 +117,7 @@ pub fn get_chip_style(
 }
 
 ///|
-pub fn get_chip_label_style(size~ : ChipSize, className~ : String?) -> String {
+pub fn get_chip_label_style(size~ : ChipSize, class~ : String?) -> String {
   clsx([
     "font-inherit text-inherit leading-none",
     // Size styles
@@ -127,7 +127,7 @@ pub fn get_chip_label_style(size~ : ChipSize, className~ : String?) -> String {
       Lg => "my-1.5 mx-3"
     },
     // Optional custom class name
-    match className {
+    match class {
       Some(cls) => cls
       None => ""
     },
@@ -135,7 +135,7 @@ pub fn get_chip_label_style(size~ : ChipSize, className~ : String?) -> String {
 }
 
 ///|
-pub fn get_chip_icon_style(size~ : ChipSize, className~ : String?) -> String {
+pub fn get_chip_icon_style(size~ : ChipSize, class~ : String?) -> String {
   clsx([
     "grid place-items-center shrink-0 rounded-full",
     // Size styles
@@ -145,7 +145,7 @@ pub fn get_chip_icon_style(size~ : ChipSize, className~ : String?) -> String {
       Lg => "translate-x-1.5 w-5 h-5"
     },
     // Optional custom class name
-    match className {
+    match class {
       Some(cls) => cls
       None => ""
     },
@@ -155,7 +155,7 @@ pub fn get_chip_icon_style(size~ : ChipSize, className~ : String?) -> String {
 ///|
 pub fn get_chip_dismiss_trigger_style(
   size~ : ChipSize,
-  className~ : String?,
+  class~ : String?,
 ) -> String {
   clsx([
     "grid place-items-center shrink-0 rounded-full p-px cursor-pointer",
@@ -166,7 +166,7 @@ pub fn get_chip_dismiss_trigger_style(
       Lg => "-translate-x-1.5 ms-1.5 w-6 h-6 stroke-2"
     },
     // Optional custom class name
-    match className {
+    match class {
       Some(cls) => cls
       None => ""
     },
