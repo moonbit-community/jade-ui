@@ -153,17 +153,12 @@ pub fn[M] accordion_content(
   class? : String? = None,
 ) -> @html.Html[M] {
   let klass = @theme.get_accordion_content_style(class~)
-  let animationStyle = if isOpen {
-    "grid-template-rows: 1fr; opacity: 1; padding-bottom: 1rem;"
+  let combinedStyle = if isOpen {
+    "display: grid; overflow: hidden; grid-template-rows: 1fr; opacity: 1; padding-bottom: 1rem;"
   } else {
-    "grid-template-rows: 0fr; opacity: 0; padding-bottom: 0;"
+    "display: grid; overflow: hidden; grid-template-rows: 0fr; opacity: 0; padding-bottom: 0;"
   }
-  let baseStyle = "display: grid; overflow: hidden;"
-  // 使用grid布局需要包装内容
+  // Content needs to be wrapped for grid layout
   let wrappedChildren = [@html.div(style=["min-height: 0;"], children)]
-  @html.div(
-    class=klass,
-    style=[baseStyle + " " + animationStyle],
-    wrappedChildren,
-  )
+  @html.div(class=klass, style=[combinedStyle], wrappedChildren)
 }
