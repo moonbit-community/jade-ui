@@ -1,13 +1,13 @@
 ///|
 pub fn[M] slider(
-  value~ : Int = 0,
-  min~ : Int = 0,
-  max~ : Int = 100,
+  value? : Int = 0,
+  min? : Int = 0,
+  max? : Int = 100,
   on_input~ : (Int) -> M,
-  color~ : @theme.SliderColor = Primary,
-  size~ : @theme.SliderSize = Md,
-  class~ : String = "",
-  childrens? : Array[Html[M]],
+  color? : @theme.SliderColor = Primary,
+  size? : @theme.SliderSize = Md,
+  class? : String = "",
+  children? : Array[Html[M]] = [],
 ) -> Html[M] {
   // ensure value is in range
   let clamped_value = if value < min {
@@ -36,6 +36,6 @@ pub fn[M] slider(
     value=clamped_value.to_string(),
     class=@theme.get_slider_classes(class),
     style=@theme.get_slider_styles(thumb_height, color_value, progress_percent),
-    childrens=childrens.unwrap_or([]),
+    children~,
   )
 }
