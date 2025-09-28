@@ -9,15 +9,15 @@ import(
 // Values
 fn clsx(Array[String]) -> String
 
-fn get_accordion_content_style(class~ : String?) -> String
+fn get_accordion_content_style(class? : String) -> String
 
 fn get_accordion_icon_style(isOpen~ : Bool, class? : String) -> String
 
-fn get_accordion_item_style(variant~ : AccordionVariant, disabled~ : Bool, class~ : String?) -> String
+fn get_accordion_item_style(variant~ : AccordionVariant, disabled~ : Bool, class? : String) -> String
 
 fn get_accordion_style(variant~ : AccordionVariant, color~ : AccordionColor, class~ : String?) -> String
 
-fn get_accordion_trigger_style(color~ : AccordionColor, isOpen~ : Bool, class~ : String?) -> String
+fn get_accordion_trigger_style(color~ : AccordionColor, is_open~ : Bool, class? : String) -> String
 
 fn get_button_group_style(orientation~ : ButtonGroupOrientation, fullWidth~ : Bool, class~ : String?) -> String
 

@@ -61,9 +61,9 @@ pub fn[M] accordion_item(
   content : @html.Html[M],
   variant? : @theme.AccordionVariant = @theme.Default,
   disabled? : Bool = false,
-  class? : String? = None,
+  class? : String,
 ) -> @html.Html[M] {
-  let klass = @theme.get_accordion_item_style(variant~, disabled~, class~)
+  let klass = @theme.get_accordion_item_style(variant~, disabled~, class?)
   let attrs = [
     @html.attribute("class", klass),
     @html.attribute("data-value", value),
@@ -90,15 +90,18 @@ pub fn[M] accordion_item(
 pub fn[M] accordion_trigger(
   children : Array[@html.Html[M]],
   click : M,
-  isOpen? : Bool = false,
+  is_open? : Bool = false,
   color? : @theme.AccordionColor = @theme.Default,
-  showIcon? : Bool = true,
+  show_icon? : Bool = true,
   class? : String,
   icon_class? : String,
 ) -> @html.Html[M] {
-  let klass = @theme.get_accordion_trigger_style(color~, isOpen~, class~)
-  let icon = if showIcon {
-    let iconClass = @theme.get_accordion_icon_style(isOpen~, class?=icon_class)
+  let klass = @theme.get_accordion_trigger_style(color~, is_open~, class?)
+  let icon = if show_icon {
+    let iconClass = @theme.get_accordion_icon_style(
+      isOpen=is_open,
+      class?=icon_class,
+    )
     [
       @svg.node(
         "svg",
@@ -122,7 +125,7 @@ pub fn[M] accordion_trigger(
   let attrs = [
     @html.attribute("type", "button"),
     @html.attribute("class", klass),
-    @html.attribute("aria-expanded", if isOpen { "true" } else { "false" }),
+    @html.attribute("aria-expanded", if is_open { "true" } else { "false" }),
     @html.attribute("role", "tab"),
     @html.on_click(fn(_) { click }),
   ]
@@ -150,11 +153,11 @@ pub fn[M] accordion_trigger(
 ///
 pub fn[M] accordion_content(
   children : Array[@html.Html[M]],
-  isOpen? : Bool = false,
-  class? : String? = None,
+  is_open? : Bool = false,
+  class? : String,
 ) -> @html.Html[M] {
-  let klass = @theme.get_accordion_content_style(class~)
-  let combinedStyle = if isOpen {
+  let klass = @theme.get_accordion_content_style(class?)
+  let combinedStyle = if is_open {
     "display: grid; overflow: hidden; grid-template-rows: 1fr; opacity: 1; padding-bottom: 1rem;"
   } else {
     "display: grid; overflow: hidden; grid-template-rows: 0fr; opacity: 0; padding-bottom: 0;"

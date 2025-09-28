@@ -9,11 +9,11 @@ import(
 // Values
 fn[M] accordion(Array[@html.Html[M]], variant? : @theme.AccordionVariant, color? : @theme.AccordionColor, class? : String?) -> @html.Html[M]
 
-fn[M] accordion_content(Array[@html.Html[M]], isOpen? : Bool, class? : String?) -> @html.Html[M]
+fn[M] accordion_content(Array[@html.Html[M]], is_open? : Bool, class? : String) -> @html.Html[M]
 
-fn[M] accordion_item(String, @html.Html[M], @html.Html[M], variant? : @theme.AccordionVariant, disabled? : Bool, class? : String?) -> @html.Html[M]
+fn[M] accordion_item(String, @html.Html[M], @html.Html[M], variant? : @theme.AccordionVariant, disabled? : Bool, class? : String) -> @html.Html[M]
 
-fn[M] accordion_trigger(Array[@html.Html[M]], M, isOpen? : Bool, color? : @theme.AccordionColor, showIcon? : Bool, class? : String, icon_class? : String) -> @html.Html[M]
+fn[M] accordion_trigger(Array[@html.Html[M]], M, is_open? : Bool, color? : @theme.AccordionColor, show_icon? : Bool, class? : String, icon_class? : String) -> @html.Html[M]
 
 fn[M] button(Array[@html.Html[M]], M, variant? : @theme.ButtonVariant, size? : @theme.ButtonSize, color? : @theme.ButtonColor, fullWidth? : Bool, ripple? : Bool, class? : String?) -> @html.Html[M]
 
