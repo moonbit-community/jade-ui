@@ -14,7 +14,7 @@
 ///   `@theme.Primary`.
 /// * `isPill` : Bool - Whether the chip should have a pill shape (rounded).
 ///   Defaults to `true`.
-/// * `className` : String? - Additional CSS class name to apply to the chip.
+/// * `class` : String? - Additional CSS class name to apply to the chip.
 ///   Defaults to `None`.
 ///
 /// Returns an HTML div element configured with the specified properties and
@@ -52,7 +52,7 @@ pub fn[M] chip(
 /// * `children` : Array\[@html.Html\[M]] - The text content to display.
 /// * `size` : @theme.ChipSize - The size of the chip label. Defaults to
 ///   `@theme.Md`.
-/// * `className` : String? - Additional CSS class name to apply to the label.
+/// * `class` : String? - Additional CSS class name to apply to the label.
 ///   Defaults to `None`.
 ///
 /// Returns an HTML span element with appropriate styling for chip labels.
@@ -69,9 +69,9 @@ pub fn[M] chip(
 pub fn[M] chip_label(
   children : Array[@html.Html[M]],
   size? : @theme.ChipSize = @theme.Md,
-  className? : String? = None,
+  class? : String? = None,
 ) -> @html.Html[M] {
-  let klass = @theme.get_chip_label_style(size~, className~)
+  let klass = @theme.get_chip_label_style(size~, class~)
   @html.span(class=klass, children)
 }
 
@@ -83,7 +83,7 @@ pub fn[M] chip_label(
 /// * `children` : Array\[@html.Html\[M]] - The icon content to display.
 /// * `size` : @theme.ChipSize - The size of the chip icon. Defaults to
 ///   `@theme.Md`.
-/// * `className` : String? - Additional CSS class name to apply to the icon.
+/// * `class` : String? - Additional CSS class name to apply to the icon.
 ///   Defaults to `None`.
 ///
 /// Returns an HTML span element with appropriate styling for chip icons.
@@ -100,9 +100,9 @@ pub fn[M] chip_label(
 pub fn[M] chip_icon(
   children : Array[@html.Html[M]],
   size? : @theme.ChipSize = @theme.Md,
-  className? : String? = None,
+  class? : String? = None,
 ) -> @html.Html[M] {
-  let klass = @theme.get_chip_icon_style(size~, className~)
+  let klass = @theme.get_chip_icon_style(size~, class~)
   let attrs = [@html.attribute("class", klass)]
   @html.node("span", attrs, children)
 }
@@ -116,7 +116,7 @@ pub fn[M] chip_icon(
 ///   trigger is clicked.
 /// * `size` : @theme.ChipSize - The size of the dismiss trigger. Defaults to
 ///   `@theme.Md`.
-/// * `className` : String? - Additional CSS class name to apply to the trigger.
+/// * `class` : String? - Additional CSS class name to apply to the trigger.
 ///   Defaults to `None`.
 /// * `children` : Array\[@html.Html\[M]]? - Optional custom content for the
 ///   dismiss trigger. If not provided, a default X icon will be used.
@@ -142,7 +142,7 @@ pub fn[M] chip_dismiss_trigger(
   class? : String? = None,
   children? : Array[@html.Html[M]]? = None,
 ) -> @html.Html[M] {
-  let klass = @theme.get_chip_dismiss_trigger_style(size~, className=class)
+  let klass = @theme.get_chip_dismiss_trigger_style(size~, class~)
   let default_icon = @svg.node(
       "svg",
       [

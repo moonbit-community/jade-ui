@@ -21,7 +21,7 @@ pub(all) enum AccordionColor {
 pub fn get_accordion_style(
   variant~ : AccordionVariant,
   color~ : AccordionColor,
-  className~ : String?,
+  class~ : String?,
 ) -> String {
   clsx([
     // Base styles
@@ -45,7 +45,7 @@ pub fn get_accordion_style(
       _ => ""
     },
     // Optional custom class name
-    match className {
+    match class {
       Some(cls) => cls
       None => ""
     },
@@ -56,7 +56,7 @@ pub fn get_accordion_style(
 pub fn get_accordion_item_style(
   variant~ : AccordionVariant,
   disabled~ : Bool,
-  className~ : String?,
+  class~ : String?,
 ) -> String {
   clsx([
     // Base styles
@@ -75,7 +75,7 @@ pub fn get_accordion_item_style(
       ""
     },
     // Optional custom class name
-    match className {
+    match class {
       Some(cls) => cls
       None => ""
     },
@@ -86,7 +86,7 @@ pub fn get_accordion_item_style(
 pub fn get_accordion_trigger_style(
   color~ : AccordionColor,
   isOpen~ : Bool,
-  className~ : String?,
+  class~ : String?,
 ) -> String {
   clsx([
     // Base styles
@@ -109,7 +109,7 @@ pub fn get_accordion_trigger_style(
       ""
     },
     // Optional custom class name
-    match className {
+    match class {
       Some(cls) => cls
       None => ""
     },
@@ -117,12 +117,12 @@ pub fn get_accordion_trigger_style(
 }
 
 ///|
-pub fn get_accordion_content_style(className~ : String?) -> String {
+pub fn get_accordion_content_style(class~ : String?) -> String {
   clsx([
     // Base styles
     "px-4 text-[var(--color-base-content)]/80 transition-all duration-200 ease-in-out",
     // Optional custom class name
-    match className {
+    match class {
       Some(cls) => cls
       None => ""
     },
@@ -130,7 +130,7 @@ pub fn get_accordion_content_style(className~ : String?) -> String {
 }
 
 ///|
-pub fn get_accordion_icon_style(isOpen~ : Bool, className~ : String?) -> String {
+pub fn get_accordion_icon_style(isOpen~ : Bool, class~ : String?) -> String {
   clsx([
     // Base styles
     "transition-transform duration-200 ease-in-out",
@@ -141,7 +141,7 @@ pub fn get_accordion_icon_style(isOpen~ : Bool, className~ : String?) -> String 
       "rotate-0"
     },
     // Optional custom class name
-    match className {
+    match class {
       Some(cls) => cls
       None => ""
     },

@@ -9,7 +9,7 @@
 ///   Defaults to `@theme.Default`.
 /// * `color` : @theme.AccordionColor - The color theme of the accordion.
 ///   Defaults to `@theme.Default`.
-/// * `className` : String? - Additional CSS class name to apply to the accordion.
+/// * `class` : String? - Additional CSS class name to apply to the accordion.
 ///   Defaults to `None`.
 ///
 /// Returns an HTML div element configured as an accordion container.
@@ -30,9 +30,9 @@ pub fn[M] accordion(
   children : Array[@html.Html[M]],
   variant? : @theme.AccordionVariant = @theme.Default,
   color? : @theme.AccordionColor = @theme.Default,
-  className? : String? = None,
+  class? : String? = None,
 ) -> @html.Html[M] {
-  let klass = @theme.get_accordion_style(variant~, color~, className~)
+  let klass = @theme.get_accordion_style(variant~, color~, class~)
   let attrs = [
     @html.attribute("class", klass),
     @html.attribute("role", "tablist"),
@@ -51,7 +51,7 @@ pub fn[M] accordion(
 /// * `variant` : @theme.AccordionVariant - The visual style variant.
 /// * `color` : @theme.AccordionColor - The color theme.
 /// * `disabled` : Bool - Whether this item is disabled.
-/// * `className` : String? - Additional CSS class name.
+/// * `class` : String? - Additional CSS class name.
 ///
 /// Returns an HTML div element configured as an accordion item.
 ///
@@ -63,11 +63,7 @@ pub fn[M] accordion_item(
   disabled? : Bool = false,
   class? : String? = None,
 ) -> @html.Html[M] {
-  let klass = @theme.get_accordion_item_style(
-    variant~,
-    disabled~,
-    className=class,
-  )
+  let klass = @theme.get_accordion_item_style(variant~, disabled~, class~)
   let attrs = [
     @html.attribute("class", klass),
     @html.attribute("data-value", value),
@@ -99,13 +95,9 @@ pub fn[M] accordion_trigger(
   showIcon? : Bool = true,
   class? : String? = None,
 ) -> @html.Html[M] {
-  let klass = @theme.get_accordion_trigger_style(
-    color~,
-    isOpen~,
-    className=class,
-  )
+  let klass = @theme.get_accordion_trigger_style(color~, isOpen~, class~)
   let icon = if showIcon {
-    let iconClass = @theme.get_accordion_icon_style(isOpen~, className=None)
+    let iconClass = @theme.get_accordion_icon_style(isOpen~, class=None)
     [
       @svg.node(
         "svg",
@@ -151,7 +143,7 @@ pub fn[M] accordion_trigger(
 /// * `children` : Array\[@html.Html\[M]] - The content to display when expanded.
 /// * `isOpen` : Bool - Whether the content is currently visible.
 /// * `variant` : @theme.AccordionVariant - The visual style variant.
-/// * `className` : String? - Additional CSS class name.
+/// * `class` : String? - Additional CSS class name.
 ///
 /// Returns an HTML div element configured as accordion content with animation.
 ///
@@ -160,7 +152,7 @@ pub fn[M] accordion_content(
   isOpen? : Bool = false,
   class? : String? = None,
 ) -> @html.Html[M] {
-  let klass = @theme.get_accordion_content_style(className=class)
+  let klass = @theme.get_accordion_content_style(class~)
   let animationStyle = if isOpen {
     "grid-template-rows: 1fr; opacity: 1; padding-bottom: 1rem;"
   } else {
