@@ -67,7 +67,7 @@ fn get_slider_thumb_height(SliderSize) -> Int
 
 fn get_switch_color_classes(SwitchColor) -> String
 
-fn get_switch_style(color~ : SwitchColor, class~ : String?) -> String
+fn get_switch_style(color~ : SwitchColor, class? : String) -> String
 
 fn get_typography_style(TypographyType, TypographyColor, String) -> String
 

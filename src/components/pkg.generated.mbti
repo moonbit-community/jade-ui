@@ -49,7 +49,7 @@ fn[M] menu_trigger(Array[@html.Html[M]], M, isOpen? : Bool, color? : @theme.Menu
 
 fn[M] slider(value? : Int, min? : Int, max? : Int, on_input~ : (Int) -> M, color? : @theme.SliderColor, size? : @theme.SliderSize, class? : String, children? : Array[@html.Html[M]]) -> @html.Html[M]
 
-fn[M] switch(checked? : Bool, change~ : M, color? : @theme.SwitchColor, class? : String?, id? : String?) -> @html.Html[M]
+fn[M] switch(checked? : Bool, change~ : M, color? : @theme.SwitchColor, class? : String, id? : String) -> @html.Html[M]
 
 fn[M] typography(tag? : @theme.TypographyType, color? : @theme.TypographyColor, class? : String, Array[@html.Html[M]]) -> @html.Html[M]
 
