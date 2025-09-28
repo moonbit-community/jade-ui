@@ -1234,6 +1234,252 @@ fn view(model : Model) -> Html[Msg] {
         ]),
       ]),
     ]),
+
+    // Breadcrumb style showcase
+    div(class="max-w-6xl mx-auto mb-12", [
+      h2(class="text-2xl font-bold mb-6 text-gray-800", [
+        text("Breadcrumb Component Styles"),
+      ]),
+
+      // Breadcrumb variants
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Breadcrumb Variants"),
+        ]),
+        div(class="space-y-6", [
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [
+              text("Default Variant"),
+            ]),
+            @jade.breadcrumb(
+              [
+                { text: "Home", href: Some("/"), click: None, isActive: false },
+                {
+                  text: "Products",
+                  href: Some("/products"),
+                  click: None,
+                  isActive: false,
+                },
+                {
+                  text: "Electronics",
+                  href: Some("/products/electronics"),
+                  click: None,
+                  isActive: false,
+                },
+                { text: "Smartphones", href: None, click: None, isActive: true },
+              ],
+              variant=Default,
+            ),
+          ]),
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [
+              text("Bordered Variant"),
+            ]),
+            @jade.breadcrumb(
+              [
+                {
+                  text: "Dashboard",
+                  href: Some("/dashboard"),
+                  click: None,
+                  isActive: false,
+                },
+                {
+                  text: "Analytics",
+                  href: Some("/analytics"),
+                  click: None,
+                  isActive: false,
+                },
+                { text: "Reports", href: None, click: None, isActive: true },
+              ],
+              variant=Bordered,
+            ),
+          ]),
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [
+              text("Underlined Variant"),
+            ]),
+            @jade.breadcrumb(
+              [
+                {
+                  text: "Settings",
+                  href: Some("/settings"),
+                  click: None,
+                  isActive: false,
+                },
+                {
+                  text: "Profile",
+                  href: Some("/settings/profile"),
+                  click: None,
+                  isActive: false,
+                },
+                { text: "Security", href: None, click: None, isActive: true },
+              ],
+              variant=Underlined,
+            ),
+          ]),
+        ]),
+      ]),
+
+      // Breadcrumb colors
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Breadcrumb Colors"),
+        ]),
+        div(class="grid grid-cols-1 md:grid-cols-2 gap-6", [
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [
+              text("Primary Color"),
+            ]),
+            @jade.breadcrumb(
+              [
+                { text: "Home", href: Some("/"), click: None, isActive: false },
+                {
+                  text: "Library",
+                  href: Some("/library"),
+                  click: None,
+                  isActive: false,
+                },
+                { text: "Data", href: None, click: None, isActive: true },
+              ],
+              color=Primary,
+            ),
+          ]),
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [
+              text("Secondary Color"),
+            ]),
+            @jade.breadcrumb(
+              [
+                { text: "Home", href: Some("/"), click: None, isActive: false },
+                {
+                  text: "Library",
+                  href: Some("/library"),
+                  click: None,
+                  isActive: false,
+                },
+                { text: "Data", href: None, click: None, isActive: true },
+              ],
+              color=Secondary,
+            ),
+          ]),
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [
+              text("Success Color"),
+            ]),
+            @jade.breadcrumb(
+              [
+                { text: "Home", href: Some("/"), click: None, isActive: false },
+                {
+                  text: "Library",
+                  href: Some("/library"),
+                  click: None,
+                  isActive: false,
+                },
+                { text: "Data", href: None, click: None, isActive: true },
+              ],
+              color=Success,
+            ),
+          ]),
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [
+              text("Error Color"),
+            ]),
+            @jade.breadcrumb(
+              [
+                { text: "Home", href: Some("/"), click: None, isActive: false },
+                {
+                  text: "Library",
+                  href: Some("/library"),
+                  click: None,
+                  isActive: false,
+                },
+                { text: "Data", href: None, click: None, isActive: true },
+              ],
+              color=Error,
+            ),
+          ]),
+        ]),
+      ]),
+
+      // Breadcrumb sizes
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Breadcrumb Sizes"),
+        ]),
+        div(class="space-y-6", [
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [
+              text("Small Size"),
+            ]),
+            @jade.breadcrumb(
+              [
+                { text: "Home", href: Some("/"), click: None, isActive: false },
+                {
+                  text: "Docs",
+                  href: Some("/docs"),
+                  click: None,
+                  isActive: false,
+                },
+                { text: "API", href: None, click: None, isActive: true },
+              ],
+              size=Sm,
+            ),
+          ]),
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [
+              text("Medium Size"),
+            ]),
+            @jade.breadcrumb(
+              [
+                { text: "Home", href: Some("/"), click: None, isActive: false },
+                {
+                  text: "Docs",
+                  href: Some("/docs"),
+                  click: None,
+                  isActive: false,
+                },
+                { text: "API", href: None, click: None, isActive: true },
+              ],
+              size=Md,
+            ),
+          ]),
+          div(class="bg-white rounded-lg p-6 shadow-sm", [
+            h4(class="text-md font-medium mb-3 text-gray-600", [
+              text("Large Size"),
+            ]),
+            @jade.breadcrumb(
+              [
+                { text: "Home", href: Some("/"), click: None, isActive: false },
+                {
+                  text: "Docs",
+                  href: Some("/docs"),
+                  click: None,
+                  isActive: false,
+                },
+                { text: "API", href: None, click: None, isActive: true },
+              ],
+              size=Lg,
+            ),
+          ]),
+        ]),
+      ]),
+
+      // Simple breadcrumb
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Simple Breadcrumb"),
+        ]),
+        div(class="bg-white rounded-lg p-6 shadow-sm", [
+          h4(class="text-md font-medium mb-3 text-gray-600", [
+            text("Auto-generated from strings"),
+          ]),
+          @jade.breadcrumb_simple([
+            "Home", "Products", "Electronics", "Smartphones",
+          ]),
+        ]),
+      ]),
+    ]),
+
     // Slider style showcase
     div(class="max-w-6xl mx-auto", [
       h2(class="text-2xl font-bold mb-6 text-gray-800", [

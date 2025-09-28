@@ -15,6 +15,10 @@ fn[M] accordion_item(String, @html.Html[M], @html.Html[M], variant? : @theme.Acc
 
 fn[M] accordion_trigger(Array[@html.Html[M]], M, isOpen? : Bool, color? : @theme.AccordionColor, showIcon? : Bool, class? : String?) -> @html.Html[M]
 
+fn[M] breadcrumb(Array[BreadcrumbItem[M]], separator? : String, variant? : @theme.BreadcrumbVariant, color? : @theme.BreadcrumbColor, size? : @theme.BreadcrumbSize, class? : String?) -> @html.Html[M]
+
+fn[M] breadcrumb_simple(Array[String], separator? : String, variant? : @theme.BreadcrumbVariant, color? : @theme.BreadcrumbColor, size? : @theme.BreadcrumbSize, class? : String?) -> @html.Html[M]
+
 fn[M] button(Array[@html.Html[M]], M, variant? : @theme.ButtonVariant, size? : @theme.ButtonSize, color? : @theme.ButtonColor, fullWidth? : Bool, ripple? : Bool, class? : String?) -> @html.Html[M]
 
 fn[M] button_group(Array[@html.Html[M]], orientation? : @theme.ButtonGroupOrientation, fullWidth? : Bool, class? : String?) -> @html.Html[M]
@@ -56,6 +60,12 @@ fn[M] typography(tag? : @theme.TypographyType, color? : @theme.TypographyColor, 
 // Errors
 
 // Types and methods
+pub(all) struct BreadcrumbItem[M] {
+  text : String
+  href : String?
+  click : M?
+  isActive : Bool
+}
 
 // Type aliases
 

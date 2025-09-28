@@ -19,6 +19,12 @@ fn get_accordion_style(variant~ : AccordionVariant, color~ : AccordionColor, cla
 
 fn get_accordion_trigger_style(color~ : AccordionColor, isOpen~ : Bool, className~ : String?) -> String
 
+fn get_breadcrumb_link_style(color~ : BreadcrumbColor, isActive~ : Bool, class~ : String?) -> String
+
+fn get_breadcrumb_separator_style(class~ : String?) -> String
+
+fn get_breadcrumb_style(variant~ : BreadcrumbVariant, color~ : BreadcrumbColor, size~ : BreadcrumbSize, class~ : String?) -> String
+
 fn get_button_group_style(orientation~ : ButtonGroupOrientation, fullWidth~ : Bool, class~ : String?) -> String
 
 fn get_button_style(variant~ : ButtonVariant, size~ : ButtonSize, color~ : ButtonColor, fullWidth~ : Bool, ripple~ : Bool, class~ : String?) -> String
@@ -91,6 +97,28 @@ pub(all) enum AccordionVariant {
   Bordered
   Shadow
   Split
+}
+
+pub(all) enum BreadcrumbColor {
+  Default
+  Primary
+  Secondary
+  Success
+  Info
+  Warning
+  Error
+}
+
+pub(all) enum BreadcrumbSize {
+  Sm
+  Md
+  Lg
+}
+
+pub(all) enum BreadcrumbVariant {
+  Default
+  Bordered
+  Underlined
 }
 
 pub(all) enum ButtonColor {
