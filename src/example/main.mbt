@@ -14,6 +14,7 @@ enum Msg {
   MenuItemClick(String) // (action, menuId) - performs action and closes menu
   SwitchToggle
   TabChange(String)
+  RatingChange(Int)
 }
 
 ///|
@@ -29,6 +30,7 @@ struct Model {
   openMenus : Array[String]
   switch_checked : Bool
   activeTab : String
+  rating : Int
 }
 
 ///|
@@ -94,6 +96,7 @@ fn update(msg : Msg, model : Model) -> (Cmd[Msg], Model) {
     }
     SwitchToggle => (none(), { ..model, switch_checked: !model.switch_checked })
     TabChange(tab) => (none(), { ..model, activeTab: tab })
+    RatingChange(value) => (none(), { ..model, rating: value })
   }
 }
 
@@ -2314,6 +2317,118 @@ fn render_tabs_section(model : Model) -> Html[Msg] {
         ]),
       ]),
     ]),
+
+    // Rating Component Styles
+    div(class="max-w-6xl mx-auto mb-12", [
+      h2(class="text-2xl font-bold mb-6 text-gray-800", [
+        text("Rating Component Styles"),
+      ]),
+
+      // Rating Colors
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Rating Colors"),
+        ]),
+        div(class="bg-white rounded-lg p-6 shadow-sm", [
+          div(class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6", [
+            div(class="space-y-2", [
+              @html.p(class="text-sm font-medium text-gray-600", [
+                text("Primary"),
+              ]),
+              @jade.rating(value=model.rating, color=Primary, change=fn(v) {
+                RatingChange(v)
+              }),
+            ]),
+            div(class="space-y-2", [
+              @html.p(class="text-sm font-medium text-gray-600", [
+                text("Success"),
+              ]),
+              @jade.rating(value=4, color=Success),
+            ]),
+            div(class="space-y-2", [
+              @html.p(class="text-sm font-medium text-gray-600", [
+                text("Warning"),
+              ]),
+              @jade.rating(value=2, color=Warning),
+            ]),
+            div(class="space-y-2", [
+              @html.p(class="text-sm font-medium text-gray-600", [text("Error")]),
+              @jade.rating(value=1, color=Error),
+            ]),
+            div(class="space-y-2", [
+              @html.p(class="text-sm font-medium text-gray-600", [text("Info")]),
+              @jade.rating(value=5, color=Info),
+            ]),
+            div(class="space-y-2", [
+              @html.p(class="text-sm font-medium text-gray-600", [
+                text("Secondary"),
+              ]),
+              @jade.rating(value=3, color=Secondary),
+            ]),
+          ]),
+        ]),
+      ]),
+
+      // Rating Sizes
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Rating Sizes"),
+        ]),
+        div(class="bg-white rounded-lg p-6 shadow-sm", [
+          div(
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-center",
+            [
+              div(class="space-y-2", [
+                @html.p(class="text-sm font-medium text-gray-600", [
+                  text("Small"),
+                ]),
+                @jade.rating(value=4, size=Sm, color=Primary),
+              ]),
+              div(class="space-y-2", [
+                @html.p(class="text-sm font-medium text-gray-600", [
+                  text("Medium"),
+                ]),
+                @jade.rating(value=4, size=Md, color=Primary),
+              ]),
+              div(class="space-y-2", [
+                @html.p(class="text-sm font-medium text-gray-600", [
+                  text("Large"),
+                ]),
+                @jade.rating(value=4, size=Lg, color=Primary),
+              ]),
+              div(class="space-y-2", [
+                @html.p(class="text-sm font-medium text-gray-600", [
+                  text("Extra Large"),
+                ]),
+                @jade.rating(value=4, size=Xl, color=Primary),
+              ]),
+            ],
+          ),
+        ]),
+      ]),
+
+      // Interactive Rating
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Interactive Rating"),
+        ]),
+        div(class="bg-white rounded-lg p-6 shadow-sm", [
+          div(class="space-y-4", [
+            @html.p(class="text-sm text-gray-600", [
+              text("Click on the stars to change the rating. Current rating: "),
+              @html.span(class="font-semibold text-blue-600", [
+                text("\{model.rating}"),
+              ]),
+            ]),
+            @jade.rating(value=model.rating, count=5, color=Primary, size=Lg, change=fn(
+              v,
+            ) {
+              RatingChange(v)
+            }),
+          ]),
+        ]),
+      ]),
+    ]),
   ])
 }
 
@@ -2334,6 +2449,7 @@ fn main {
     openAccordions: [],
     openMenus: [],
     switch_checked: false,
+    rating: 3,
   }
   @tea.startup(model~, update~, view~)
 }
