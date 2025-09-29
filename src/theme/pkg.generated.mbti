@@ -21,7 +21,7 @@ fn get_accordion_trigger_style(color~ : AccordionColor, isOpen~ : Bool, classNam
 
 fn get_breadcrumb_link_style(color~ : BreadcrumbColor, isActive~ : Bool, class~ : String?) -> String
 
-fn get_breadcrumb_separator_style(class~ : String?) -> String
+fn get_breadcrumb_separator_style(class? : String) -> String
 
 fn get_breadcrumb_style(variant~ : BreadcrumbVariant, color~ : BreadcrumbColor, size~ : BreadcrumbSize, class~ : String?) -> String
 

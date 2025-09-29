@@ -68,10 +68,7 @@ pub fn[M] breadcrumb(
     )
     let item_element = match (item.href, item.click, item.isActive) {
       // Active item (no link)
-      (_, _, true) => {
-        let attrs = [@html.attribute("class", link_style)]
-        @html.node("span", attrs, [@html.text(item.text)])
-      }
+      (_, _, true) => @html.span(class=link_style, [@html.text(item.text)])
       // Clickable item with href
       (Some(href), Some(click), false) => {
         let attrs = [
@@ -82,14 +79,8 @@ pub fn[M] breadcrumb(
         @html.node("a", attrs, [@html.text(item.text)])
       }
       // Clickable item without href
-      (None, Some(click), false) => {
-        let attrs = [
-          @html.attribute("type", "button"),
-          @html.attribute("class", link_style),
-          @html.on_click(fn(_) { click }),
-        ]
-        @html.node("button", attrs, [@html.text(item.text)])
-      }
+      (None, Some(click), false) =>
+        @html.button(class=link_style, click~, [@html.text(item.text)])
       // Link-only item
       (Some(href), None, false) =>
         @html.a(href~, class=link_style, [@html.text(item.text)])
@@ -101,11 +92,8 @@ pub fn[M] breadcrumb(
 
     // Add separator (except for last item)
     if i < items.length() - 1 {
-      let separator_style = @theme.get_breadcrumb_separator_style(class=None)
-      let separator_attrs = [@html.attribute("class", separator_style)]
-      children.push(
-        @html.node("span", separator_attrs, [@html.text(separator)]),
-      )
+      let separator_style = @theme.get_breadcrumb_separator_style()
+      children.push(@html.span(class=separator_style, [@html.text(separator)]))
     }
   }
   let nav_attrs = [@html.attribute("class", container_style)]

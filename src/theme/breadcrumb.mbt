@@ -118,7 +118,7 @@ pub fn get_breadcrumb_link_style(
 
 ///|
 /// Get breadcrumb separator styles
-pub fn get_breadcrumb_separator_style(class~ : String?) -> String {
+pub fn get_breadcrumb_separator_style(class? : String) -> String {
   clsx([
     // Base styles
     "inline-block select-none pointer-events-none opacity-50 text-[var(--color-base-content)]",
