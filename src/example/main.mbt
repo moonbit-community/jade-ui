@@ -8,6 +8,7 @@ enum Msg {
   ToggleCheckbox4
   ToggleCheckbox5
   ToggleCheckbox6
+  RadioSelect(String)
   SliderUpdate(Int)
   ToggleAccordion(String)
   ToggleMenu(String)
@@ -25,6 +26,7 @@ struct Model {
   checkbox4 : Bool
   checkbox5 : Bool
   checkbox6 : Bool
+  selectedRadio : String
   openAccordions : Array[String]
   openMenus : Array[String]
   switch_checked : Bool
@@ -66,6 +68,7 @@ fn update(msg : Msg, model : Model) -> (Cmd[Msg], Model) {
         none(),
         { ..model, checkbox6: if model.checkbox6 { false } else { true } },
       )
+    RadioSelect(value) => (none(), { ..model, selectedRadio: value })
     SliderUpdate(value) => (none(), { ..model, count: value })
     ToggleAccordion(id) => {
       let newOpenAccordions = if model.openAccordions.contains(id) {
@@ -238,7 +241,150 @@ fn view(model : Model) -> Html[Msg] {
           ]),
         ]),
       ]),
-    ]), // Button Group showcase
+    ]),
+
+    // Radio style showcase
+    div(class="max-w-6xl mx-auto mb-12", [
+      h2(class="text-2xl font-bold mb-6 text-gray-800", [
+        text("Radio Component Styles"),
+      ]),
+
+      // Radio colors
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Radio Colors"),
+        ]),
+        div(class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6", [
+          @jade.radio(
+            model.selectedRadio == "primary",
+            RadioSelect("primary"),
+            id="primary-radio",
+            name="color-demo",
+            value="primary",
+            label="Primary color radio",
+            color=Primary,
+          ),
+          @jade.radio(
+            model.selectedRadio == "secondary",
+            RadioSelect("secondary"),
+            id="secondary-radio",
+            name="color-demo",
+            value="secondary",
+            label="Secondary color radio",
+            color=Secondary,
+          ),
+          @jade.radio(
+            model.selectedRadio == "info",
+            RadioSelect("info"),
+            id="info-radio",
+            name="color-demo",
+            value="info",
+            label="Info color radio",
+            color=Info,
+          ),
+          @jade.radio(
+            model.selectedRadio == "success",
+            RadioSelect("success"),
+            id="success-radio",
+            name="color-demo",
+            value="success",
+            label="Success color radio",
+            color=Success,
+          ),
+          @jade.radio(
+            model.selectedRadio == "warning",
+            RadioSelect("warning"),
+            id="warning-radio",
+            name="color-demo",
+            value="warning",
+            label="Warning color radio",
+            color=Warning,
+          ),
+          @jade.radio(
+            model.selectedRadio == "error",
+            RadioSelect("error"),
+            id="error-radio",
+            name="color-demo",
+            value="error",
+            label="Error color radio",
+            color=Error,
+          ),
+        ]),
+      ]),
+
+      // Radio sizes
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Radio Sizes"),
+        ]),
+        div(class="flex items-center gap-6 flex-wrap", [
+          @jade.radio(
+            model.selectedRadio == "small",
+            RadioSelect("small"),
+            id="small-radio",
+            name="size-demo",
+            value="small",
+            label="Small radio",
+            size=Sm,
+            color=Primary,
+          ),
+          @jade.radio(
+            model.selectedRadio == "medium",
+            RadioSelect("medium"),
+            id="medium-radio",
+            name="size-demo",
+            value="medium",
+            label="Medium radio",
+            size=Md,
+            color=Primary,
+          ),
+          @jade.radio(
+            model.selectedRadio == "large",
+            RadioSelect("large"),
+            id="large-radio",
+            name="size-demo",
+            value="large",
+            label="Large radio",
+            size=Lg,
+            color=Primary,
+          ),
+        ]),
+      ]),
+
+      // Radio states
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Radio States"),
+        ]),
+        div(class="grid grid-cols-1 md:grid-cols-2 gap-6", [
+          div(class="space-y-4", [
+            h4(class="text-md font-medium text-gray-600", [
+              text("Disabled Radios"),
+            ]),
+            @jade.radio(
+              true,
+              RadioSelect("disabled-checked"),
+              name="disabled-demo",
+              value="disabled-checked",
+              label="Disabled checked",
+              color=Primary,
+              disabled=true,
+            ),
+            @jade.radio(
+              false,
+              RadioSelect("disabled-unchecked"),
+              name="disabled-demo",
+              value="disabled-unchecked",
+              label="Disabled unchecked",
+              color=Success,
+              disabled=true,
+            ),
+          ]),
+        ]),
+      ]),
+    ]),
+
+    // Button Group showcase
     div(class="max-w-6xl mx-auto mb-12", [
       h2(class="text-2xl font-bold mb-6 text-gray-800", [
         text("Button Group Component"),
@@ -2331,6 +2477,7 @@ fn main {
     checkbox4: true,
     checkbox5: true,
     checkbox6: true,
+    selectedRadio: "option1",
     openAccordions: [],
     openMenus: [],
     switch_checked: false,
