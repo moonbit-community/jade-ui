@@ -85,6 +85,8 @@ fn[M] popover(content~ : String, children~ : @html.Html[M], placement? : @theme.
 
 fn[M] radio(Bool, M, id? : String, name? : String, value? : String, label? : String, size? : @theme.RadioSize, color? : @theme.RadioColor, disabled? : Bool, class? : String) -> @html.Html[M]
 
+fn[M] rating(value? : Int, count? : Int, color? : @theme.RatingColor, size? : @theme.RatingSize, change? : (Int) -> M, class? : String) -> @html.Html[M]
+
 fn[M] simple_dialog(id~ : String, @html.Html[M], size? : @theme.DialogSize, close~ : M, class? : String) -> @html.Html[M]
 
 fn[M] slider(value? : Int, min? : Int, max? : Int, on_input~ : (Int) -> M, color? : @theme.SliderColor, size? : @theme.SliderSize, class? : String, children? : Array[@html.Html[M]]) -> @html.Html[M]
