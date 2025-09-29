@@ -13,6 +13,7 @@ enum Msg {
   ToggleMenu(String)
   MenuItemClick(String) // (action, menuId) - performs action and closes menu
   SwitchToggle
+  TabChange(String)
 }
 
 ///|
@@ -27,6 +28,7 @@ struct Model {
   openAccordions : Array[String]
   openMenus : Array[String]
   switch_checked : Bool
+  activeTab : String
 }
 
 ///|
@@ -91,6 +93,7 @@ fn update(msg : Msg, model : Model) -> (Cmd[Msg], Model) {
       (none(), { ..model, openMenus: newOpenMenus })
     }
     SwitchToggle => (none(), { ..model, switch_checked: !model.switch_checked })
+    TabChange(tab) => (none(), { ..model, activeTab: tab })
   }
 }
 
@@ -249,9 +252,11 @@ fn view(model : Model) -> Html[Msg] {
         div(class="space-y-4", [
           // Solid variant
           div([
-            h4(class="text-md font-medium mb-2 text-gray-600", [
-              text("Solid Variant"),
-            ]),
+            @jade.typography(
+              tag=H6,
+              class="text-md font-medium mb-2 text-gray-600",
+              [text("Solid Variant")],
+            ),
             @jade.button_group(
               [
                 @jade.button(
@@ -307,9 +312,11 @@ fn view(model : Model) -> Html[Msg] {
           ]),
           // Ghost variant
           div([
-            h4(class="text-md font-medium mb-2 text-gray-600", [
-              text("Ghost Variant"),
-            ]),
+            @jade.typography(
+              tag=H6,
+              class="text-md font-medium mb-2 text-gray-600",
+              [text("Ghost Variant")],
+            ),
             @jade.button_group(
               [
                 @jade.button(
@@ -339,14 +346,18 @@ fn view(model : Model) -> Html[Msg] {
 
       // Vertical Button Groups
       div(class="mb-8", [
-        h3(class="text-lg font-semibold mb-4 text-gray-700", [
-          text("Vertical Button Groups"),
-        ]),
+        @jade.typography(
+          tag=H6,
+          class="text-lg font-semibold mb-4 text-gray-700",
+          [text("Vertical Button Groups")],
+        ),
         div(class="flex gap-8", [
           div([
-            h4(class="text-md font-medium mb-2 text-gray-600", [
-              text("Solid Vertical"),
-            ]),
+            @jade.typography(
+              tag=H6,
+              class="text-md font-medium mb-2 text-gray-600",
+              [text("Solid Vertical")],
+            ),
             @jade.button_group(
               [
                 @jade.button(
@@ -404,14 +415,18 @@ fn view(model : Model) -> Html[Msg] {
 
       // Button Group Sizes
       div(class="mb-8", [
-        h3(class="text-lg font-semibold mb-4 text-gray-700", [
-          text("Button Group Sizes"),
-        ]),
+        @jade.typography(
+          tag=H6,
+          class="text-lg font-semibold mb-4 text-gray-700",
+          [text("Button Group Sizes")],
+        ),
         div(class="space-y-4", [
           div([
-            h4(class="text-md font-medium mb-2 text-gray-600", [
-              text("Small Size"),
-            ]),
+            @jade.typography(
+              tag=H6,
+              class="text-md font-medium mb-2 text-gray-600",
+              [text("Small Size")],
+            ),
             @jade.button_group([
               @jade.button(
                 [text("Small")],
@@ -437,9 +452,11 @@ fn view(model : Model) -> Html[Msg] {
             ]),
           ]),
           div([
-            h4(class="text-md font-medium mb-2 text-gray-600", [
-              text("Large Size"),
-            ]),
+            @jade.typography(
+              tag=H6,
+              class="text-md font-medium mb-2 text-gray-600",
+              [text("Large Size")],
+            ),
             @jade.button_group([
               @jade.button(
                 [text("Large")],
@@ -2394,6 +2411,65 @@ fn view(model : Model) -> Html[Msg] {
         ]),
       ]),
     ]),
+    render_tabs_section(model),
+  ])
+}
+
+///|
+/// 标签页展示区域
+fn render_tabs_section(model : Model) -> Html[Msg] {
+  let tabs = ["Tab1", "Tab2", "Tab3"]
+  let variants : Array[@theme.TabsVariant] = [Default, Pills, Underline]
+  @html.div([
+    @jade.card(
+      [
+        @jade.card_header([
+          @jade.typography(tag=@theme.H2, color=@theme.Default, [
+            text("Tabs Component Styles"),
+          ]),
+        ]),
+        @jade.card_body(
+          [
+            @jade.typography(
+              tag=@theme.H3,
+              color=@theme.Default,
+              class="mb-4",
+              [text("Tab Variants")],
+            ),
+            ..variants.map(variant => @html.div(class="space-y-8", [
+              // Default 变体
+              @jade.card(
+                [
+                  @jade.card_body([
+                    @jade.tabs(
+                      [
+                        @jade.tabs_list(
+                          variant~,
+                          tabs.map(tab => @jade.tabs_trigger(
+                            [text(tab)],
+                            TabChange(tab),
+                            is_active=model.activeTab == tab,
+                            variant~,
+                          )),
+                        ),
+                        ..tabs.map(tab => @jade.tabs_panel(
+                          [text("\{tab} content here")],
+                          is_active=model.activeTab == tab,
+                        )),
+                      ],
+                    ),
+                  ]),
+                ],
+                variant=Ghost,
+                color=@theme.Default,
+              ),
+            ])),
+          ],
+        ),
+      ],
+      variant=@theme.Solid,
+      color=@theme.Default,
+    ),
 
     // Chip with different shapes
     div(class="mb-8", [
@@ -2494,6 +2570,7 @@ fn main {
   @theme.light().apply()
   let model = {
     count: 0,
+    activeTab: "Tab1",
     checkbox1: true,
     checkbox2: true,
     checkbox3: true,

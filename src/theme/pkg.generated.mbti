@@ -35,7 +35,7 @@ fn get_card_footer_style(class~ : String?) -> String
 
 fn get_card_header_style(class~ : String?) -> String
 
-fn get_card_style(variant~ : CardVariant, color~ : CardColor, class~ : String?) -> String
+fn get_card_style(variant~ : CardVariant, color~ : CardColor, class? : String) -> String
 
 fn get_checkbox_container_style(disabled~ : Bool, class~ : String?) -> String
 
@@ -74,6 +74,14 @@ fn get_slider_thumb_height(SliderSize) -> Int
 fn get_switch_color_classes(SwitchColor) -> String
 
 fn get_switch_style(color~ : SwitchColor, className~ : String?) -> String
+
+fn get_tabs_list_style(orientation~ : TabsOrientation, variant~ : TabsVariant, class~ : String?) -> String
+
+fn get_tabs_panel_style(class~ : String?) -> String
+
+fn get_tabs_style(orientation~ : TabsOrientation, class~ : String?) -> String
+
+fn get_tabs_trigger_style(size~ : TabsSize, variant~ : TabsVariant, isActive~ : Bool, class~ : String?) -> String
 
 fn get_typography_style(TypographyType, TypographyColor, String) -> String
 
@@ -322,6 +330,23 @@ pub(all) enum SwitchColor {
   Success
   Warning
   Error
+}
+
+pub(all) enum TabsOrientation {
+  Horizontal
+  Vertical
+}
+
+pub(all) enum TabsSize {
+  Sm
+  Md
+  Lg
+}
+
+pub(all) enum TabsVariant {
+  Default
+  Pills
+  Underline
 }
 
 pub(all) enum TypographyColor {
