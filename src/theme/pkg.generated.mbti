@@ -19,6 +19,14 @@ fn get_accordion_style(variant~ : AccordionVariant, color~ : AccordionColor, cla
 
 fn get_accordion_trigger_style(color~ : AccordionColor, is_open~ : Bool, class? : String) -> String
 
+fn get_alert_content_style() -> String
+
+fn get_alert_dismiss_style() -> String
+
+fn get_alert_icon_style() -> String
+
+fn get_alert_style(variant~ : AlertVariant, color~ : AlertColor, dismissible~ : Bool, class~ : String?) -> String
+
 fn get_avatar_image_style(shape~ : AvatarShape) -> String
 
 fn get_avatar_style(size~ : AvatarSize, shape~ : AvatarShape, color~ : AvatarColor, class? : String) -> String
@@ -141,6 +149,22 @@ pub(all) enum AccordionVariant {
   Bordered
   Shadow
   Split
+}
+
+pub(all) enum AlertColor {
+  Primary
+  Secondary
+  Info
+  Success
+  Warning
+  Error
+}
+
+pub(all) enum AlertVariant {
+  Solid
+  Outlined
+  Ghost
+  Gradient
 }
 
 pub(all) enum AvatarColor {
