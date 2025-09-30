@@ -712,7 +712,7 @@ fn view(model : Model) -> Html[Msg] {
           Increment,
           variant=Solid,
           color=Primary,
-          fullWidth=true,
+          full_width=true,
         ),
       ]),
 
@@ -2310,6 +2310,231 @@ fn render_tabs_section(model : Model) -> Html[Msg] {
             ],
             color=Error,
             variant=Gradient,
+          ),
+        ]),
+      ]),
+    ]),
+
+    // Tooltip component showcase
+    div(class="max-w-6xl mx-auto mb-12", [
+      h2(class="text-2xl font-bold mb-6 text-gray-800", [
+        text("Tooltip Component Styles"),
+      ]),
+
+      // Tooltip placements
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Tooltip Placements"),
+        ]),
+        div(class="grid grid-cols-2 md:grid-cols-4 gap-8 p-8", [
+          @jade.tooltip(
+            content="This tooltip appears on top",
+            placement=Top,
+            children=@jade.button(
+              [text("Top")],
+              Increment,
+              variant=Outlined,
+              color=Primary,
+              full_width=true,
+            ),
+          ),
+          @jade.tooltip(
+            content="This tooltip appears on bottom",
+            placement=Bottom,
+            children=@jade.button(
+              [text("Bottom")],
+              Increment,
+              variant=Outlined,
+              color=Primary,
+              full_width=true,
+            ),
+          ),
+          @jade.tooltip(
+            content="This tooltip appears on left",
+            placement=Left,
+            children=@jade.button(
+              [text("Left")],
+              Increment,
+              variant=Outlined,
+              color=Primary,
+              full_width=true,
+            ),
+          ),
+          @jade.tooltip(
+            content="This tooltip appears on right",
+            placement=Right,
+            children=@jade.button(
+              [text("Right")],
+              Increment,
+              variant=Outlined,
+              color=Primary,
+              full_width=true,
+            ),
+          ),
+        ]),
+      ]),
+
+      // Tooltip colors
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Tooltip Colors"),
+        ]),
+        div(class="grid grid-cols-2 md:grid-cols-4 gap-6", [
+          @jade.tooltip(
+            content="Primary tooltip",
+            color=Primary,
+            children=@jade.button(
+              [text("Primary")],
+              Increment,
+              variant=Solid,
+              color=Primary,
+              full_width=true,
+            ),
+          ),
+          @jade.tooltip(
+            content="Secondary tooltip",
+            color=Secondary,
+            children=@jade.button(
+              [text("Secondary")],
+              Increment,
+              variant=Solid,
+              color=Secondary,
+              full_width=true,
+            ),
+          ),
+          @jade.tooltip(
+            content="Success tooltip",
+            color=Success,
+            children=@jade.button(
+              [text("Success")],
+              Increment,
+              variant=Solid,
+              color=Success,
+              full_width=true,
+            ),
+          ),
+          @jade.tooltip(
+            content="Warning tooltip",
+            color=Warning,
+            children=@jade.button(
+              [text("Warning")],
+              Increment,
+              variant=Solid,
+              color=Warning,
+              full_width=true,
+            ),
+          ),
+          @jade.tooltip(
+            content="Error tooltip",
+            color=Error,
+            children=@jade.button(
+              [text("Error")],
+              Increment,
+              variant=Solid,
+              color=Error,
+              full_width=true,
+            ),
+          ),
+          @jade.tooltip(
+            content="Info tooltip",
+            color=Info,
+            children=@jade.button(
+              [text("Info")],
+              Increment,
+              variant=Solid,
+              color=Info,
+              full_width=true,
+            ),
+          ),
+          @jade.tooltip(
+            content="Dark tooltip",
+            color=Dark,
+            children=@jade.button(
+              [text("Dark")],
+              Increment,
+              variant=Ghost,
+              color=Primary,
+              full_width=true,
+            ),
+          ),
+          @jade.tooltip(
+            content="Light tooltip",
+            color=Light,
+            children=@jade.button(
+              [text("Light")],
+              Increment,
+              variant=Ghost,
+              color=Primary,
+              full_width=true,
+            ),
+          ),
+        ]),
+      ]),
+
+      // Tooltip sizes
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Tooltip Sizes"),
+        ]),
+        div(class="flex items-center gap-6 flex-wrap", [
+          @jade.tooltip(
+            content="Small tooltip",
+            size=Sm,
+            children=@jade.button(
+              [text("Small")],
+              Increment,
+              variant=Outlined,
+              color=Primary,
+            ),
+          ),
+          @jade.tooltip(
+            content="Medium tooltip",
+            size=Md,
+            children=@jade.button(
+              [text("Medium")],
+              Increment,
+              variant=Outlined,
+              color=Primary,
+            ),
+          ),
+          @jade.tooltip(
+            content="Large tooltip",
+            size=Lg,
+            children=@jade.button(
+              [text("Large")],
+              Increment,
+              variant=Outlined,
+              color=Primary,
+            ),
+          ),
+        ]),
+      ]),
+
+      // Tooltip with and without arrow
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Tooltip Arrow Options"),
+        ]),
+        div(class="flex items-center gap-6 flex-wrap", [
+          @jade.tooltip(
+            content="Tooltip with arrow",
+            arrow=true,
+            children=@jade.button(
+              [text("With Arrow")],
+              Increment,
+              variant=Outlined,
+              color=Primary,
+            ),
+          ),
+          @jade.tooltip(
+            content="Tooltip without arrow",
+            arrow=false,
+            children=@jade.button(
+              [text("No Arrow")],
+              Increment,
+              variant=Outlined,
+              color=Primary,
+            ),
           ),
         ]),
       ]),
