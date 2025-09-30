@@ -15,6 +15,16 @@ enum Msg {
   MenuItemClick(String) // (action, menuId) - performs action and closes menu
   SwitchToggle
   TabChange(String)
+  OpenDialog
+  CloseDialog
+  OpenConfirmDialog
+  CloseConfirmDialog
+  ConfirmAction
+  OpenFormDialog
+  CloseFormDialog
+  SubmitForm
+  OpenAlertDialog
+  CloseAlertDialog
 }
 
 ///|
@@ -31,6 +41,10 @@ struct Model {
   openMenus : Array[String]
   switch_checked : Bool
   activeTab : String
+  dialog_open : Bool
+  confirm_dialog_open : Bool
+  form_dialog_open : Bool
+  alert_dialog_open : Bool
 }
 
 ///|
@@ -97,6 +111,16 @@ fn update(msg : Msg, model : Model) -> (Cmd[Msg], Model) {
     }
     SwitchToggle => (none(), { ..model, switch_checked: !model.switch_checked })
     TabChange(tab) => (none(), { ..model, activeTab: tab })
+    OpenDialog => (none(), { ..model, dialog_open: true })
+    CloseDialog => (none(), { ..model, dialog_open: false })
+    OpenConfirmDialog => (none(), { ..model, confirm_dialog_open: true })
+    CloseConfirmDialog => (none(), { ..model, confirm_dialog_open: false })
+    ConfirmAction => (none(), { ..model, confirm_dialog_open: false })
+    OpenFormDialog => (none(), { ..model, form_dialog_open: true })
+    CloseFormDialog => (none(), { ..model, form_dialog_open: false })
+    SubmitForm => (none(), { ..model, form_dialog_open: false })
+    OpenAlertDialog => (none(), { ..model, alert_dialog_open: true })
+    CloseAlertDialog => (none(), { ..model, alert_dialog_open: false })
   }
 }
 
@@ -3068,6 +3092,7 @@ fn view(model : Model) -> Html[Msg] {
     render_avatar_section(model),
     render_alert_section(model),
     render_tabs_section(model),
+    render_dialogs_section(model),
   ])
 }
 
@@ -3909,6 +3934,172 @@ fn[M] render_alert_section(_model : Model) -> @html.Html[M] {
 }
 
 ///|
+fn render_dialogs_section(model : Model) -> Html[Msg] {
+  // Dialog component showcase
+  div(class="max-w-6xl mx-auto mb-12", [
+    h2(class="text-2xl font-bold mb-6 text-gray-800", [text("Dialog Component")]),
+
+    // Basic Dialog
+    div(class="mb-8", [
+      h3(class="text-lg font-semibold mb-4 text-gray-700", [
+        text("Basic Dialog"),
+      ]),
+      div(class="bg-white rounded-lg p-6 shadow-sm", [
+        div(class="flex flex-wrap gap-4", [
+          @jade.button(
+            [text("Open Basic Dialog")],
+            OpenDialog,
+            variant=@theme.Solid,
+            color=@theme.Primary,
+          ),
+          @jade.simple_dialog(
+            div(class="p-4", [
+              text(
+                "This is a simple dialog content. You can put any content here.",
+              ),
+            ]),
+            open=model.dialog_open,
+            onClose=Some(CloseDialog),
+            size=@theme.Md,
+          ),
+        ]),
+      ]),
+    ]),
+
+    // Confirmation Dialog
+    div(class="mb-8", [
+      h3(class="text-lg font-semibold mb-4 text-gray-700", [
+        text("Confirmation Dialog"),
+      ]),
+      div(class="bg-white rounded-lg p-6 shadow-sm", [
+        div(class="flex flex-wrap gap-4", [
+          @jade.button(
+            [text("Open Confirm Dialog")],
+            OpenConfirmDialog,
+            variant=@theme.Solid,
+            color=@theme.Warning,
+          ),
+          @jade.confirm_dialog(
+            div([text("Confirm Action")]),
+            div(class="p-4", [
+              text(
+                "Are you sure you want to perform this action? This cannot be undone.",
+              ),
+            ]),
+            confirmText="Yes, Delete",
+            cancelText="Cancel",
+            ConfirmAction,
+            CloseConfirmDialog,
+            open=model.confirm_dialog_open,
+            confirmColor=@theme.Error,
+            size=@theme.Sm,
+          ),
+        ]),
+      ]),
+    ]),
+
+    // Form Dialog
+    div(class="mb-8", [
+      h3(class="text-lg font-semibold mb-4 text-gray-700", [text("Form Dialog")]),
+      div(class="bg-white rounded-lg p-6 shadow-sm", [
+        div(class="flex flex-wrap gap-4", [
+          @jade.button(
+            [text("Open Form Dialog")],
+            OpenFormDialog,
+            variant=@theme.Solid,
+            color=@theme.Success,
+          ),
+          @jade.form_dialog(
+            div([text("Create New Item")]),
+            div(class="p-4 space-y-4", [
+              div([
+                @html.node(
+                  "label",
+                  [
+                    @html.attribute(
+                      "class", "block text-sm font-medium text-gray-700 mb-1",
+                    ),
+                  ],
+                  [text("Name")],
+                ),
+                @html.node(
+                  "input",
+                  [
+                    @html.attribute(
+                      "class", "w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500",
+                    ),
+                    @html.attribute("type", "text"),
+                    @html.attribute("placeholder", "Enter name"),
+                  ],
+                  [],
+                ),
+              ]),
+              div([
+                @html.node(
+                  "label",
+                  [
+                    @html.attribute(
+                      "class", "block text-sm font-medium text-gray-700 mb-1",
+                    ),
+                  ],
+                  [text("Description")],
+                ),
+                @html.node(
+                  "textarea",
+                  [
+                    @html.attribute(
+                      "class", "w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500",
+                    ),
+                    @html.attribute("rows", "3"),
+                    @html.attribute("placeholder", "Enter description"),
+                  ],
+                  [],
+                ),
+              ]),
+            ]),
+            submitText="Create",
+            cancelText="Cancel",
+            SubmitForm,
+            CloseFormDialog,
+            open=model.form_dialog_open,
+            submitColor=@theme.Success,
+            size=@theme.Md,
+          ),
+        ]),
+      ]),
+    ]),
+
+    // Alert Dialog
+    div(class="mb-8", [
+      h3(class="text-lg font-semibold mb-4 text-gray-700", [
+        text("Alert Dialog"),
+      ]),
+      div(class="bg-white rounded-lg p-6 shadow-sm", [
+        div(class="flex flex-wrap gap-4", [
+          @jade.button(
+            [text("Show Alert")],
+            OpenAlertDialog,
+            variant=@theme.Solid,
+            color=@theme.Info,
+          ),
+          @jade.alert_dialog(
+            div([text("Information")]),
+            div(class="p-4", [
+              text("This is an informational message. Click OK to continue."),
+            ]),
+            buttonText="OK",
+            CloseAlertDialog,
+            open=model.alert_dialog_open,
+            buttonColor=@theme.Info,
+            size=@theme.Sm,
+          ),
+        ]),
+      ]),
+    ]),
+  ])
+}
+
+///|
 /// NOTE: This program is only available in the js backend, 
 /// see README.md to getting started.
 fn main {
@@ -3926,6 +4117,10 @@ fn main {
     openAccordions: [],
     openMenus: [],
     switch_checked: false,
+    dialog_open: false,
+    confirm_dialog_open: false,
+    form_dialog_open: false,
+    alert_dialog_open: false,
   }
   @tea.startup(model~, update~, view~)
 }

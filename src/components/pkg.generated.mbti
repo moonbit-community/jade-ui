@@ -17,6 +17,8 @@ fn[M] accordion_trigger(Array[@html.Html[M]], M, is_open? : Bool, color? : @them
 
 fn[M] alert(Array[@html.Html[M]], variant? : @theme.AlertVariant, color? : @theme.AlertColor, dismissible? : Bool, icon? : @html.Html[M]?, class? : String?) -> @html.Html[M]
 
+fn[M] alert_dialog(@html.Html[M], @html.Html[M], buttonText? : String, M, open? : Bool, buttonColor? : @theme.ButtonColor, size? : @theme.DialogSize, class? : String) -> @html.Html[M]
+
 fn[M] alert_text(String, variant? : @theme.AlertVariant, color? : @theme.AlertColor, dismissible? : Bool, class? : String?) -> @html.Html[M]
 
 fn[M] avatar(src? : String, alt? : String, fallback? : String, size? : @theme.AvatarSize, shape? : @theme.AvatarShape, color? : @theme.AvatarColor, class? : String) -> @html.Html[M]
@@ -51,6 +53,22 @@ fn[M] chip_icon(Array[@html.Html[M]], size? : @theme.ChipSize, class? : String?)
 
 fn[M] chip_label(Array[@html.Html[M]], size? : @theme.ChipSize, class? : String?) -> @html.Html[M]
 
+fn[M] confirm_dialog(@html.Html[M], @html.Html[M], confirmText? : String, cancelText? : String, M, M, open? : Bool, confirmColor? : @theme.ButtonColor, size? : @theme.DialogSize, class? : String) -> @html.Html[M]
+
+fn[M] dialog(title? : @html.Html[M]?, @html.Html[M], footer? : Array[@html.Html[M]]?, size? : @theme.DialogSize, open? : Bool, onClose? : M?, onBackdropClick? : M?, class? : String) -> @html.Html[M]
+
+fn[M] dialog_body(Array[@html.Html[M]], class? : String) -> @html.Html[M]
+
+fn[M] dialog_content(Array[@html.Html[M]], size? : @theme.DialogSize, class? : String) -> @html.Html[M]
+
+fn[M] dialog_footer(Array[@html.Html[M]], class? : String) -> @html.Html[M]
+
+fn[M] dialog_header(@html.Html[M], onClose? : M?, class? : String) -> @html.Html[M]
+
+fn[M] dialog_overlay(Array[@html.Html[M]], open? : Bool, dismiss? : M?, class? : String) -> @html.Html[M]
+
+fn[M] form_dialog(@html.Html[M], @html.Html[M], submitText? : String, cancelText? : String, M, M, open? : Bool, submitColor? : @theme.ButtonColor, size? : @theme.DialogSize, class? : String) -> @html.Html[M]
+
 fn[M] menu(Array[@html.Html[M]], variant? : @theme.MenuVariant, color? : @theme.MenuColor, class? : String?) -> @html.Html[M]
 
 fn[M] menu_content(Array[@html.Html[M]], isOpen? : Bool, variant? : @theme.MenuVariant, placement? : @theme.MenuPlacement, class? : String?) -> @html.Html[M]
@@ -66,6 +84,8 @@ fn[M] navbar(Array[@html.Html[M]], variant? : @theme.NavbarVariant, color? : @th
 fn[M] popover(content~ : String, children~ : @html.Html[M], placement? : @theme.PopoverPlacement, size? : @theme.PopoverSize, color? : @theme.PopoverColor, arrow? : Bool, class? : String) -> @html.Html[M]
 
 fn[M] radio(Bool, M, id? : String, name? : String, value? : String, label? : String, size? : @theme.RadioSize, color? : @theme.RadioColor, disabled? : Bool, class? : String) -> @html.Html[M]
+
+fn[M] simple_dialog(@html.Html[M], size? : @theme.DialogSize, open? : Bool, onClose? : M?, class? : String) -> @html.Html[M]
 
 fn[M] slider(value? : Int, min? : Int, max? : Int, on_input~ : (Int) -> M, color? : @theme.SliderColor, size? : @theme.SliderSize, class? : String, children? : Array[@html.Html[M]]) -> @html.Html[M]
 
