@@ -9,30 +9,25 @@ pub fn[M] tooltip(
   size? : @theme.TooltipSize = Md,
   color? : @theme.TooltipColor = Dark,
   arrow? : Bool = true,
-  class? : String = "",
+  class? : String,
   children~ : @html.Html[M],
 ) -> @html.Html[M] {
-  let trigger_style = @theme.get_tooltip_trigger_style(class~)
+  let trigger_style = @theme.get_tooltip_trigger_style(class?)
   let tooltip_style = @theme.get_tooltip_style(placement~, size~, color~)
   let arrow_style = if arrow {
     @theme.get_tooltip_arrow_style(placement~, color~)
   } else {
     ""
   }
-  let trigger_attrs = [@html.attribute("class", trigger_style)]
-  let tooltip_attrs = [
-    @html.attribute("class", tooltip_style),
-    @html.attribute("role", "tooltip"),
-  ]
-  @html.node("div", trigger_attrs, [
+  @html.div(class=trigger_style, [
     // Trigger element
     children,
     // Tooltip content
-    @html.node("div", tooltip_attrs, [
+    @html.div(class=tooltip_style, [
       @html.text(content),
       // Arrow element
       if arrow {
-        @html.node("div", [@html.attribute("class", arrow_style)], [])
+        @html.div(class=arrow_style, [])
       } else {
         @html.text("")
       },
