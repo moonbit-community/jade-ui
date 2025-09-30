@@ -2178,19 +2178,16 @@ fn render_tabs_section(model : Model) -> Html[Msg] {
     @jade.card(
       [
         @jade.card_header([
-          @jade.typography(tag=@theme.H2, color=@theme.Default, [
+          @jade.typography(tag=H2, color=Default, [
             text("Tabs Component Styles"),
           ]),
         ]),
         @jade.card_body(
           [
-            @jade.typography(
-              tag=@theme.H3,
-              color=@theme.Default,
-              class="mb-4",
-              [text("Tab Variants")],
-            ),
-            ..variants.map(variant => @html.div(class="space-y-8", [
+            @jade.typography(tag=H3, color=Default, class="mb-4", [
+              text("Tab Variants"),
+            ]),
+            ..variants.map(variant => div(class="space-y-8", [
               // Default 变体
               @jade.card(
                 [
@@ -2311,6 +2308,65 @@ fn render_tabs_section(model : Model) -> Html[Msg] {
             color=Error,
             variant=Gradient,
           ),
+        ]),
+      ]),
+    ]),
+    // Spinner component showcase
+    div(class="mb-8", [
+      h3(class="text-lg font-semibold mb-4 text-gray-700", [
+        text("Spinner Component"),
+      ]),
+
+      // Spinner colors
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Spinner Colors"),
+        ]),
+        div(class="flex flex-wrap gap-4", [
+          @jade.spinner(color=Primary),
+          @jade.spinner(color=Secondary),
+          @jade.spinner(color=Info),
+          @jade.spinner(color=Success),
+          @jade.spinner(color=Warning),
+          @jade.spinner(color=Error),
+        ]),
+      ]),
+
+      // Spinner sizes
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Spinner Sizes"),
+        ]),
+        div(class="flex items-center gap-6 flex-wrap", [
+          @jade.spinner(size=Xs),
+          @jade.spinner(size=Sm),
+          @jade.spinner(size=Md),
+          @jade.spinner(size=Lg),
+          @jade.spinner(size=Xl),
+        ]),
+      ]),
+
+      // Spinner in context
+      div(class="mb-6", [
+        h4(class="text-md font-medium mb-3 text-gray-600", [text("In Context")]),
+        div(class="bg-white rounded-lg p-6 shadow-sm", [
+          div(class="flex flex-col gap-4", [
+            // Loading button
+            div(class="flex items-center gap-3", [
+              @jade.spinner(),
+              @html.p(class="text-gray-700", [text("Loading...")]),
+            ]),
+            // Loading card
+            div(
+              class="border rounded-lg p-4 flex items-center justify-center",
+              [
+                div(class="flex flex-col items-center gap-3", [
+                  @jade.spinner(),
+                  @html.p(class="text-gray-600", [text("Fetching data...")]),
+                ]),
+              ],
+            ),
+          ]),
         ]),
       ]),
     ]),

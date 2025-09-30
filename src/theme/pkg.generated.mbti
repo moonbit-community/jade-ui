@@ -65,6 +65,10 @@ fn get_slider_styles(Int, String, Double) -> Array[String]
 
 fn get_slider_thumb_height(SliderSize) -> Int
 
+fn get_spinner_stroke_style(color~ : SpinnerColor) -> String
+
+fn get_spinner_style(size~ : SpinnerSize, color~ : SpinnerColor, class? : String) -> String
+
 fn get_switch_color_classes(SwitchColor) -> String
 
 fn get_switch_style(color~ : SwitchColor, className~ : String?) -> String
@@ -293,6 +297,24 @@ pub(all) enum SliderSize {
   Md
   Lg
   Xl
+}
+
+pub(all) enum SpinnerColor {
+  Primary
+  Secondary
+  Success
+  Warning
+  Error
+  Info
+}
+
+pub(all) enum SpinnerSize {
+  Xs
+  Sm
+  Md
+  Lg
+  Xl
+  Xxl
 }
 
 pub(all) enum SwitchColor {
