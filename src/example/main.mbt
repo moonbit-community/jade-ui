@@ -3066,6 +3066,7 @@ fn view(model : Model) -> Html[Msg] {
       ]),
     ]),
     render_avatar_section(model),
+    render_alert_section(model),
     render_tabs_section(model),
   ])
 }
@@ -3737,6 +3738,173 @@ fn render_avatar_section(_model : Model) -> Html[Msg] {
       variant=@theme.Solid,
       color=@theme.Default,
     ),
+  ])
+}
+
+///|
+/// Renders the alert section showcasing different alert variants, colors, and features
+fn[M] render_alert_section(_model : Model) -> @html.Html[M] {
+  div(class="mb-8", [
+    h2(class="text-2xl font-bold mb-6 text-gray-800", [text("Alert Components")]),
+
+    // Alert Variants
+    div(class="mb-8", [
+      h3(class="text-lg font-semibold mb-4 text-gray-700", [
+        text("Alert Variants"),
+      ]),
+      div(class="grid grid-cols-1 md:grid-cols-2 gap-4", [
+        div(class="bg-white rounded-lg p-6 shadow-sm", [
+          h4(class="text-md font-medium mb-3 text-gray-600", [text("Solid")]),
+          div(class="space-y-3", [
+            @jade.alert_text(
+              "This is a solid alert",
+              variant=@theme.Solid,
+              color=@theme.Info,
+            ),
+            @jade.alert_text(
+              "Success message",
+              variant=@theme.Solid,
+              color=@theme.Success,
+            ),
+          ]),
+        ]),
+        div(class="bg-white rounded-lg p-6 shadow-sm", [
+          h4(class="text-md font-medium mb-3 text-gray-600", [text("Outlined")]),
+          div(class="space-y-3", [
+            @jade.alert_text(
+              "This is an outlined alert",
+              variant=@theme.Outlined,
+              color=@theme.Info,
+            ),
+            @jade.alert_text(
+              "Warning message",
+              variant=@theme.Outlined,
+              color=@theme.Warning,
+            ),
+          ]),
+        ]),
+        div(class="bg-white rounded-lg p-6 shadow-sm", [
+          h4(class="text-md font-medium mb-3 text-gray-600", [text("Ghost")]),
+          div(class="space-y-3", [
+            @jade.alert_text(
+              "This is a ghost alert",
+              variant=@theme.Ghost,
+              color=@theme.Info,
+            ),
+            @jade.alert_text(
+              "Error message",
+              variant=@theme.Ghost,
+              color=@theme.Error,
+            ),
+          ]),
+        ]),
+        div(class="bg-white rounded-lg p-6 shadow-sm", [
+          h4(class="text-md font-medium mb-3 text-gray-600", [text("Gradient")]),
+          div(class="space-y-3", [
+            @jade.alert_text(
+              "This is a gradient alert",
+              variant=@theme.Gradient,
+              color=@theme.Primary,
+            ),
+            @jade.alert_text(
+              "Secondary message",
+              variant=@theme.Gradient,
+              color=@theme.Secondary,
+            ),
+          ]),
+        ]),
+      ]),
+    ]),
+
+    // Alert Colors
+    div(class="mb-8", [
+      h3(class="text-lg font-semibold mb-4 text-gray-700", [
+        text("Alert Colors"),
+      ]),
+      div(class="bg-white rounded-lg p-6 shadow-sm", [
+        div(class="space-y-3", [
+          @jade.alert_text("Primary alert message", color=@theme.Primary),
+          @jade.alert_text("Secondary alert message", color=@theme.Secondary),
+          @jade.alert_text("Info alert message", color=@theme.Info),
+          @jade.alert_text("Success alert message", color=@theme.Success),
+          @jade.alert_text("Warning alert message", color=@theme.Warning),
+          @jade.alert_text("Error alert message", color=@theme.Error),
+        ]),
+      ]),
+    ]),
+
+    // Alert with Icons and Dismissible
+    div(class="mb-8", [
+      h3(class="text-lg font-semibold mb-4 text-gray-700", [
+        text("Alert with Icons and Dismissible"),
+      ]),
+      div(class="bg-white rounded-lg p-6 shadow-sm", [
+        div(class="space-y-3", [
+          @jade.alert(
+            [text("Alert with icon")],
+            variant=@theme.Outlined,
+            color=@theme.Success,
+            icon=Some(text("✓")),
+          ),
+          @jade.alert(
+            [text("Dismissible alert - click X to close")],
+            variant=@theme.Solid,
+            color=@theme.Warning,
+            dismissible=true,
+          ),
+          @jade.alert(
+            [text("Alert with icon and dismissible")],
+            variant=@theme.Ghost,
+            color=@theme.Error,
+            icon=Some(text("⚠")),
+            dismissible=true,
+          ),
+        ]),
+      ]),
+    ]),
+
+    // Complex Alert Content
+    div(class="mb-8", [
+      h3(class="text-lg font-semibold mb-4 text-gray-700", [
+        text("Complex Alert Content"),
+      ]),
+      div(class="bg-white rounded-lg p-6 shadow-sm", [
+        div(class="space-y-3", [
+          @jade.alert(
+            [
+              div(class="", [
+                h4(class="font-semibold mb-1", [text("Success!")]),
+                @html.p(class="text-sm", [
+                  text("Your operation has been completed successfully."),
+                ]),
+              ]),
+            ],
+            variant=@theme.Solid,
+            color=@theme.Success,
+            icon=Some(text("✓")),
+            dismissible=true,
+          ),
+          @jade.alert(
+            [
+              div(class="", [
+                h4(class="font-semibold mb-1", [text("Important Notice")]),
+                @html.p(class="text-sm mb-2", [
+                  text("Please review the following items:"),
+                ]),
+                @html.ul(class="text-sm list-disc list-inside space-y-1", [
+                  @html.li([text("Check your email for confirmation")]),
+                  @html.li([text("Update your profile information")]),
+                  @html.li([text("Review privacy settings")]),
+                ]),
+              ]),
+            ],
+            variant=@theme.Outlined,
+            color=@theme.Info,
+            icon=Some(text("ℹ")),
+          ),
+        ]),
+      ]),
+    ]),
   ])
 }
 
