@@ -69,6 +69,22 @@ fn get_chip_label_style(size~ : ChipSize, class~ : String?) -> String
 
 fn get_chip_style(variant~ : ChipVariant, size~ : ChipSize, color~ : ChipColor, isPill~ : Bool, class~ : String?) -> String
 
+fn get_dialog_backdrop_style(class? : String) -> String
+
+fn get_dialog_body_style(class? : String) -> String
+
+fn get_dialog_close_button_style(class? : String) -> String
+
+fn get_dialog_content_style(size~ : DialogSize, class? : String) -> String
+
+fn get_dialog_footer_style(class? : String) -> String
+
+fn get_dialog_header_style(class? : String) -> String
+
+fn get_dialog_overlay_style(class? : String) -> String
+
+fn get_dialog_trigger_style(class? : String) -> String
+
 fn get_menu_content_style(variant~ : MenuVariant, placement~ : MenuPlacement, class~ : String?) -> String
 
 fn get_menu_item_style(disabled~ : Bool, selected~ : Bool, ripple~ : Bool, class~ : String?) -> String
@@ -355,6 +371,22 @@ pub(all) enum ChipVariant {
   Outline
   Gradient
 }
+
+pub(all) enum DialogSize {
+  Xs
+  Sm
+  Md
+  Lg
+  Xl
+  Screen
+}
+fn DialogSize::equal(Self, Self) -> Bool // from trait `Eq`
+#deprecated
+fn DialogSize::op_equal(Self, Self) -> Bool // from trait `Eq`
+fn DialogSize::output(Self, &Logger) -> Unit // from trait `Show`
+fn DialogSize::to_string(Self) -> String // from trait `Show`
+impl Eq for DialogSize
+impl Show for DialogSize
 
 pub(all) struct JadeTheme {
   primary : String
