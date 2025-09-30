@@ -19,6 +19,14 @@ fn get_accordion_style(variant~ : AccordionVariant, color~ : AccordionColor, cla
 
 fn get_accordion_trigger_style(color~ : AccordionColor, isOpen~ : Bool, className~ : String?) -> String
 
+fn get_alert_content_style() -> String
+
+fn get_alert_dismiss_style() -> String
+
+fn get_alert_icon_style() -> String
+
+fn get_alert_style(variant~ : AlertVariant, color~ : AlertColor, dismissible~ : Bool, class~ : String?) -> String
+
 fn get_button_group_style(orientation~ : ButtonGroupOrientation, fullWidth~ : Bool, class~ : String?) -> String
 
 fn get_button_style(variant~ : ButtonVariant, size~ : ButtonSize, color~ : ButtonColor, fullWidth~ : Bool, ripple~ : Bool, class~ : String?) -> String
@@ -99,6 +107,22 @@ pub(all) enum AccordionVariant {
   Bordered
   Shadow
   Split
+}
+
+pub(all) enum AlertColor {
+  Primary
+  Secondary
+  Info
+  Success
+  Warning
+  Error
+}
+
+pub(all) enum AlertVariant {
+  Solid
+  Outlined
+  Ghost
+  Gradient
 }
 
 pub(all) enum ButtonColor {
