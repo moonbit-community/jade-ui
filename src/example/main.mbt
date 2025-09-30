@@ -2165,6 +2165,7 @@ fn view(model : Model) -> Html[Msg] {
         ]),
       ]),
     ]),
+    render_avatar_section(model),
     render_tabs_section(model),
   ])
 }
@@ -2177,19 +2178,10 @@ fn render_tabs_section(model : Model) -> Html[Msg] {
   @html.div([
     @jade.card(
       [
-        @jade.card_header([
-          @jade.typography(tag=@theme.H2, color=@theme.Default, [
-            text("Tabs Component Styles"),
-          ]),
-        ]),
+        @jade.card_header([@jade.typography([text("Tabs Component Styles")])]),
         @jade.card_body(
           [
-            @jade.typography(
-              tag=@theme.H3,
-              color=@theme.Default,
-              class="mb-4",
-              [text("Tab Variants")],
-            ),
+            @jade.typography(class="mb-4", [text("Tab Variants")]),
             ..variants.map(variant => @html.div(class="space-y-8", [
               // Default 变体
               @jade.card(
@@ -2314,6 +2306,100 @@ fn render_tabs_section(model : Model) -> Html[Msg] {
         ]),
       ]),
     ]),
+  ])
+}
+
+///|
+/// Avatar 组件展示区域
+fn render_avatar_section(_model : Model) -> Html[Msg] {
+  @html.div([
+    @jade.card(
+      [
+        @jade.card_header([@jade.typography([text("Avatar Component Styles")])]),
+        @jade.card_body([
+          // Avatar 尺寸展示
+          @jade.typography(class="mb-4", [text("Avatar Sizes")]),
+          @html.div(class="flex items-center gap-4 mb-8", [
+            @jade.avatar(
+              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150",
+              alt="User Avatar",
+              fallback="U",
+              size=@theme.Xs,
+            ),
+            @jade.avatar(
+              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150",
+              alt="User Avatar",
+              fallback="U",
+              size=@theme.Sm,
+            ),
+            @jade.avatar(
+              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150",
+              alt="User Avatar",
+              fallback="U",
+              size=@theme.Md,
+            ),
+            @jade.avatar(
+              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150",
+              alt="User Avatar",
+              fallback="U",
+              size=@theme.Lg,
+            ),
+            @jade.avatar(
+              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150",
+              alt="User Avatar",
+              fallback="U",
+              size=@theme.Xl,
+            ),
+          ]),
+
+          // Avatar 形状展示
+          @jade.typography(tag=@theme.H3, color=@theme.Default, class="mb-4", [
+            text("Avatar Shapes"),
+          ]),
+          @html.div(class="flex items-center gap-4 mb-8", [
+            @jade.avatar(
+              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150",
+              alt="Round Avatar",
+              fallback="R",
+              size=@theme.Lg,
+              shape=@theme.Circle,
+            ),
+            @jade.avatar(
+              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150",
+              alt="Square Avatar",
+              fallback="S",
+              size=@theme.Lg,
+              shape=@theme.Square,
+            ),
+          ]),
+
+          // Avatar 颜色展示
+          @jade.typography(tag=@theme.H3, color=@theme.Default, class="mb-4", [
+            text("Avatar Colors (Fallback)"),
+          ]),
+          @html.div(class="flex items-center gap-4 mb-8", [
+            @jade.avatar(fallback="P", size=@theme.Lg, color=@theme.Primary),
+            @jade.avatar(fallback="S", size=@theme.Lg, color=@theme.Secondary),
+            @jade.avatar(fallback="I", size=@theme.Lg, color=@theme.Info),
+            @jade.avatar(fallback="S", size=@theme.Lg, color=@theme.Success),
+            @jade.avatar(fallback="W", size=@theme.Lg, color=@theme.Warning),
+            @jade.avatar(fallback="E", size=@theme.Lg, color=@theme.Error),
+          ]),
+
+          // Avatar 回退文本展示
+          @jade.typography(tag=@theme.H3, color=@theme.Default, class="mb-4", [
+            text("Avatar Fallback Examples"),
+          ]),
+          @html.div(class="flex items-center gap-4 mb-8", [
+            @jade.avatar(fallback="JD", size=@theme.Lg, color=@theme.Primary),
+            @jade.avatar(fallback="AB", size=@theme.Lg, color=@theme.Secondary),
+            @jade.avatar(fallback="XY", size=@theme.Lg, color=@theme.Success),
+          ]),
+        ]),
+      ],
+      variant=@theme.Solid,
+      color=@theme.Default,
+    ),
   ])
 }
 
