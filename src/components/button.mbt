@@ -47,7 +47,7 @@ pub fn[M] button(
   variant? : @theme.ButtonVariant = @theme.Solid,
   size? : @theme.ButtonSize = @theme.Md,
   color? : @theme.ButtonColor = @theme.Primary,
-  fullWidth? : Bool = false,
+  full_width? : Bool = false,
   ripple? : Bool = true,
   class? : String? = None,
 ) -> @html.Html[M] {
@@ -55,7 +55,7 @@ pub fn[M] button(
     variant~,
     size~,
     color~,
-    fullWidth~,
+    fullWidth=full_width,
     ripple~,
     class~,
   )
