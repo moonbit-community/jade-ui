@@ -45,33 +45,20 @@ pub fn[M] avatar(
   class? : String,
 ) -> @html.Html[M] {
   let container_style = @theme.get_avatar_style(size~, shape~, color~, class?)
-  match src {
-    Some(_) => {
-      let image_style = @theme.get_avatar_image_style(shape~)
-      @html.div(class=container_style, [
-        @html.img(src?, alt?, class=image_style, []),
-      ])
+  if src is Some(src) {
+    let image_style = @theme.get_avatar_image_style(shape~)
+    @html.div(class=container_style, [
+      @html.img(src~, alt?, class=image_style, []),
+    ])
+  } else {
+    let display_text = if fallback is Some(text) {
+      text
+    } else if alt is Some([first_char, ..]) {
+      // Get first character of alt text, or "?" if empty
+      first_char.to_string().to_upper()
+    } else {
+      "?"
     }
-    None => {
-      let display_text = match fallback {
-        Some(text) => text
-        None =>
-          match alt {
-            Some(alt_text) =>
-              // Get first character of alt text, or "?" if empty
-              if alt_text.length() > 0 {
-                let first_char = alt_text.get(0)
-                match first_char {
-                  Some(c) => c.to_string().to_upper()
-                  None => "?"
-                }
-              } else {
-                "?"
-              }
-            None => "?"
-          }
-      }
-      @html.div(class=container_style, [@html.text(display_text)])
-    }
+    @html.div(class=container_style, [@html.text(display_text)])
   }
 }
