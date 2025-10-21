@@ -19,7 +19,7 @@ pub fn[M] dialog_overlay(
       @html.div(class="relative z-10", children),
     ])
   } else {
-    @html.div(class="hidden", [])
+    @html.dialog(class="hidden", [])
   }
 }
 
