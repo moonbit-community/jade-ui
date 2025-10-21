@@ -15,6 +15,8 @@ fn[M] accordion_item(String, @html.Html[M], @html.Html[M], variant? : @theme.Acc
 
 fn[M] accordion_trigger(Array[@html.Html[M]], M, isOpen? : Bool, color? : @theme.AccordionColor, showIcon? : Bool, class? : String?) -> @html.Html[M]
 
+fn[M] avatar(src? : String, alt? : String, fallback? : String, size? : @theme.AvatarSize, shape? : @theme.AvatarShape, color? : @theme.AvatarColor, class? : String) -> @html.Html[M]
+
 fn[M] button(Array[@html.Html[M]], M, variant? : @theme.ButtonVariant, size? : @theme.ButtonSize, color? : @theme.ButtonColor, full_width? : Bool, ripple? : Bool, class? : String?) -> @html.Html[M]
 
 fn[M] button_group(Array[@html.Html[M]], orientation? : @theme.ButtonGroupOrientation, fullWidth? : Bool, class? : String?) -> @html.Html[M]
@@ -46,6 +48,8 @@ fn[M] menu_item(Array[@html.Html[M]], M, disabled? : Bool, selected? : Bool, rip
 fn[M] menu_separator(class? : String?) -> @html.Html[M]
 
 fn[M] menu_trigger(Array[@html.Html[M]], M, isOpen? : Bool, color? : @theme.MenuColor, showIcon? : Bool, class? : String?) -> @html.Html[M]
+
+fn[M] popover(content~ : String, children~ : @html.Html[M], placement? : @theme.PopoverPlacement, size? : @theme.PopoverSize, color? : @theme.PopoverColor, arrow? : Bool, class? : String) -> @html.Html[M]
 
 fn[M] slider(value? : Int, min? : Int, max? : Int, on_input~ : (Int) -> M, color? : @theme.SliderColor, size? : @theme.SliderSize, class? : String, children? : Array[@html.Html[M]]) -> @html.Html[M]
 

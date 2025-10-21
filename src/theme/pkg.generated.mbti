@@ -19,6 +19,10 @@ fn get_accordion_style(variant~ : AccordionVariant, color~ : AccordionColor, cla
 
 fn get_accordion_trigger_style(color~ : AccordionColor, isOpen~ : Bool, className~ : String?) -> String
 
+fn get_avatar_image_style(shape~ : AvatarShape) -> String
+
+fn get_avatar_style(size~ : AvatarSize, shape~ : AvatarShape, color~ : AvatarColor, class? : String) -> String
+
 fn get_button_group_style(orientation~ : ButtonGroupOrientation, fullWidth~ : Bool, class~ : String?) -> String
 
 fn get_button_style(variant~ : ButtonVariant, size~ : ButtonSize, color~ : ButtonColor, fullWidth~ : Bool, ripple~ : Bool, class~ : String?) -> String
@@ -56,6 +60,14 @@ fn get_menu_separator_style(class~ : String?) -> String
 fn get_menu_style(variant~ : MenuVariant, color~ : MenuColor, class~ : String?) -> String
 
 fn get_menu_trigger_style(color~ : MenuColor, isOpen~ : Bool, class~ : String?) -> String
+
+fn get_popover_arrow_style(placement~ : PopoverPlacement, color~ : PopoverColor, class? : String) -> String
+
+fn get_popover_container_style(show~ : Bool, class? : String) -> String
+
+fn get_popover_content_style(placement~ : PopoverPlacement, size~ : PopoverSize, color~ : PopoverColor, class? : String) -> String
+
+fn get_popover_trigger_style(class? : String) -> String
 
 fn get_slider_classes(String) -> String
 
@@ -105,6 +117,29 @@ pub(all) enum AccordionVariant {
   Bordered
   Shadow
   Split
+}
+
+pub(all) enum AvatarColor {
+  Primary
+  Secondary
+  Info
+  Success
+  Warning
+  Error
+  Neutral
+}
+
+pub(all) enum AvatarShape {
+  Circle
+  Square
+}
+
+pub(all) enum AvatarSize {
+  Xs
+  Sm
+  Md
+  Lg
+  Xl
 }
 
 pub(all) enum ButtonColor {
@@ -246,7 +281,14 @@ pub(all) struct JadeTheme {
   border : String
 }
 fn JadeTheme::apply(Self) -> Unit
+fn JadeTheme::equal(Self, Self) -> Bool // from trait `Eq`
+fn JadeTheme::from_json(Json, @json.JsonPath) -> Self raise @json.JsonDecodeError // from trait `@json.FromJson`
+#deprecated
+fn JadeTheme::op_equal(Self, Self) -> Bool // from trait `Eq`
+fn JadeTheme::output(Self, &Logger) -> Unit // from trait `Show`
 fn[M] JadeTheme::to_attributes(Self) -> Array[@html.Attribute[M]]
+fn JadeTheme::to_json(Self) -> Json // from trait `ToJson`
+fn JadeTheme::to_string(Self) -> String // from trait `Show`
 fn JadeTheme::to_styles(Self) -> Map[String, String]
 impl Eq for JadeTheme
 impl Show for JadeTheme
@@ -282,6 +324,38 @@ pub(all) enum MenuVariant {
   Default
   Bordered
   Shadow
+}
+
+pub(all) enum PopoverColor {
+  Primary
+  Secondary
+  Success
+  Warning
+  Error
+  Info
+  Dark
+  Light
+}
+
+pub(all) enum PopoverPlacement {
+  Top
+  TopStart
+  TopEnd
+  Bottom
+  BottomStart
+  BottomEnd
+  Left
+  LeftStart
+  LeftEnd
+  Right
+  RightStart
+  RightEnd
+}
+
+pub(all) enum PopoverSize {
+  Sm
+  Md
+  Lg
 }
 
 pub(all) enum SliderColor {
