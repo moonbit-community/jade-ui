@@ -15,6 +15,9 @@ enum Msg {
   MenuItemClick(String) // (action, menuId) - performs action and closes menu
   SwitchToggle
   TabChange(String)
+  OpenDialog(String)
+  ConfirmAction(String)
+  CancelAction(String)
 }
 
 ///|
@@ -97,6 +100,9 @@ fn update(msg : Msg, model : Model) -> (Cmd[Msg], Model) {
     }
     SwitchToggle => (none(), { ..model, switch_checked: !model.switch_checked })
     TabChange(tab) => (none(), { ..model, activeTab: tab })
+    ConfirmAction(id) => (@dialog.close(id), model)
+    CancelAction(id) => (@dialog.close(id), model)
+    OpenDialog(id) => (@dialog.show(id), model)
   }
 }
 
@@ -3067,6 +3073,7 @@ fn view(model : Model) -> Html[Msg] {
     ]),
     render_avatar_section(model),
     render_tabs_section(model),
+    render_dialogs_section(model),
   ])
 }
 
@@ -3741,11 +3748,77 @@ fn render_avatar_section(_model : Model) -> Html[Msg] {
 }
 
 ///|
+fn render_dialogs_section(_model : Model) -> Html[Msg] {
+  // Dialog component showcase
+  div(class="max-w-6xl mx-auto mb-12", [
+    h2(class="text-2xl font-bold mb-6 text-gray-800", [text("Dialog Component")]),
+
+    // Confirmation Dialog
+    div(class="mb-8", [
+      h3(class="text-lg font-semibold mb-4 text-gray-700", [
+        text("Confirmation Dialog"),
+      ]),
+      div(class="bg-white rounded-lg p-6 shadow-sm", [
+        div(class="flex flex-wrap gap-4", [
+          @jade.button(
+            [text("Open Confirm Dialog")],
+            OpenDialog("confirm-dialog"),
+            variant=@theme.Solid,
+            color=@theme.Warning,
+          ),
+          @jade.confirm_dialog(
+            id="confirm-dialog",
+            title=text("Confirm Action"),
+            div(class="p-4", [
+              text(
+                "Are you sure you want to perform this action? This cannot be undone.",
+              ),
+            ]),
+            confirm_text="Yes, Delete",
+            cancel_text="Cancel",
+            on_confirm=ConfirmAction("confirm-dialog"),
+            close=CancelAction("confirm-dialog"),
+          ),
+        ]),
+      ]),
+    ]),
+
+    // Alert Dialog
+    div(class="mb-8", [
+      h3(class="text-lg font-semibold mb-4 text-gray-700", [
+        text("Alert Dialog"),
+      ]),
+      div(class="bg-white rounded-lg p-6 shadow-sm", [
+        div(class="flex flex-wrap gap-4", [
+          @jade.button(
+            [text("Show Alert")],
+            OpenDialog("alert-dialog"),
+            variant=@theme.Solid,
+            color=@theme.Info,
+          ),
+          @jade.alert_dialog(
+            id="alert-dialog",
+            title=text("Information"),
+            message=div(class="p-4", [
+              text("This is an informational message. Click OK to continue."),
+            ]),
+            button_text="OK",
+            close=ConfirmAction("alert-dialog"),
+            button_color=@theme.Info,
+            size=@theme.Sm,
+          ),
+        ]),
+      ]),
+    ]),
+  ])
+}
+
+///|
 /// NOTE: This program is only available in the js backend, 
 /// see README.md to getting started.
 fn main {
   @theme.light().apply()
-  let model = {
+  let model : Model = {
     count: 0,
     activeTab: "Tab1",
     checkbox1: true,
