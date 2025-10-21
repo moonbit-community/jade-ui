@@ -55,7 +55,7 @@ pub fn[M] card(
 /// ```moonbit skip
 /// let _ : @html.Html[Unit] = @components.card_header(
 ///   [@html.text("Card Title")],
-///   className=Some("custom-header-style")
+///   class=Some("custom-header-style")
 /// )
 /// ```
 ///
