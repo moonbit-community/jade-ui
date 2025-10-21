@@ -69,6 +69,14 @@ fn get_popover_content_style(placement~ : PopoverPlacement, size~ : PopoverSize,
 
 fn get_popover_trigger_style(class? : String) -> String
 
+fn get_radio_container_style(disabled~ : Bool, class~ : String?) -> String
+
+fn get_radio_dot_style(size~ : RadioSize) -> String
+
+fn get_radio_label_style(size~ : RadioSize, disabled~ : Bool) -> String
+
+fn get_radio_visual_style(size~ : RadioSize, color~ : RadioColor, disabled~ : Bool) -> String
+
 fn get_slider_classes(String) -> String
 
 fn get_slider_color_value(SliderColor) -> String
@@ -357,6 +365,21 @@ pub(all) enum PopoverPlacement {
 }
 
 pub(all) enum PopoverSize {
+  Sm
+  Md
+  Lg
+}
+
+pub(all) enum RadioColor {
+  Primary
+  Secondary
+  Info
+  Success
+  Warning
+  Error
+}
+
+pub(all) enum RadioSize {
   Sm
   Md
   Lg
