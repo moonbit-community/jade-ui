@@ -25,7 +25,7 @@ fn[M] breadcrumb(Array[BreadcrumbItem[M]], separator? : String, variant? : @them
 
 fn[M] breadcrumb_simple(Array[String], separator? : String, variant? : @theme.BreadcrumbVariant, color? : @theme.BreadcrumbColor, size? : @theme.BreadcrumbSize, class? : String) -> @html.Html[M]
 
-fn[M] button(Array[@html.Html[M]], M, variant? : @theme.ButtonVariant, size? : @theme.ButtonSize, color? : @theme.ButtonColor, full_width? : Bool, ripple? : Bool, class? : String?) -> @html.Html[M]
+fn[M] button(Array[@html.Html[M]], M, variant? : @theme.ButtonVariant, size? : @theme.ButtonSize, color? : @theme.ButtonColor, full_width? : Bool, ripple? : Bool, class? : String) -> @html.Html[M]
 
 fn[M] button_group(Array[@html.Html[M]], orientation? : @theme.ButtonGroupOrientation, fullWidth? : Bool, class? : String?) -> @html.Html[M]
 
@@ -56,6 +56,8 @@ fn[M] menu_item(Array[@html.Html[M]], M, disabled? : Bool, selected? : Bool, rip
 fn[M] menu_separator(class? : String?) -> @html.Html[M]
 
 fn[M] menu_trigger(Array[@html.Html[M]], M, isOpen? : Bool, color? : @theme.MenuColor, showIcon? : Bool, class? : String?) -> @html.Html[M]
+
+fn[M] navbar(Array[@html.Html[M]], variant? : @theme.NavbarVariant, color? : @theme.NavbarColor, shadow? : Bool, blurred? : Bool, fullWidth? : Bool, class? : String?) -> @html.Html[M]
 
 fn[M] popover(content~ : String, children~ : @html.Html[M], placement? : @theme.PopoverPlacement, size? : @theme.PopoverSize, color? : @theme.PopoverColor, arrow? : Bool, class? : String) -> @html.Html[M]
 

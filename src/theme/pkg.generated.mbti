@@ -71,6 +71,8 @@ fn get_menu_style(variant~ : MenuVariant, color~ : MenuColor, class~ : String?) 
 
 fn get_menu_trigger_style(color~ : MenuColor, isOpen~ : Bool, class~ : String?) -> String
 
+fn get_navbar_style(variant~ : NavbarVariant, color~ : NavbarColor, shadow~ : Bool, blurred~ : Bool, fullWidth~ : Bool, class~ : String?) -> String
+
 fn get_popover_arrow_style(placement~ : PopoverPlacement, color~ : PopoverColor, class? : String) -> String
 
 fn get_popover_container_style(show~ : Bool, class? : String) -> String
@@ -402,6 +404,23 @@ pub(all) enum MenuVariant {
   Default
   Bordered
   Shadow
+}
+
+pub(all) enum NavbarColor {
+  Default
+  Primary
+  Secondary
+  Info
+  Success
+  Warning
+  Error
+}
+
+pub(all) enum NavbarVariant {
+  Ghost
+  Solid
+  Outline
+  Gradient
 }
 
 pub(all) enum PopoverColor {
