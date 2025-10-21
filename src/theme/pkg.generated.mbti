@@ -89,6 +89,12 @@ fn get_tabs_style(orientation~ : TabsOrientation, class~ : String?) -> String
 
 fn get_tabs_trigger_style(size~ : TabsSize, variant~ : TabsVariant, isActive~ : Bool, class~ : String?) -> String
 
+fn get_tooltip_arrow_style(placement~ : TooltipPlacement, color~ : TooltipColor) -> String
+
+fn get_tooltip_style(placement~ : TooltipPlacement, size~ : TooltipSize, color~ : TooltipColor, class? : String) -> String
+
+fn get_tooltip_trigger_style(class? : String) -> String
+
 fn get_typography_style(TypographyType, TypographyColor, String) -> String
 
 fn light() -> JadeTheme
@@ -393,6 +399,30 @@ pub(all) enum TabsVariant {
   Default
   Pills
   Underline
+}
+
+pub(all) enum TooltipColor {
+  Primary
+  Secondary
+  Success
+  Warning
+  Error
+  Info
+  Dark
+  Light
+}
+
+pub(all) enum TooltipPlacement {
+  Top
+  Bottom
+  Left
+  Right
+}
+
+pub(all) enum TooltipSize {
+  Sm
+  Md
+  Lg
 }
 
 pub(all) enum TypographyColor {
