@@ -23,6 +23,10 @@ fn get_avatar_image_style(shape~ : AvatarShape) -> String
 
 fn get_avatar_style(size~ : AvatarSize, shape~ : AvatarShape, color~ : AvatarColor, class? : String) -> String
 
+fn get_badge_container_style(className~ : String?) -> String
+
+fn get_badge_indicator_style(variant~ : BadgeVariant, size~ : BadgeSize, color~ : BadgeColor, overlap~ : BadgeOverlap, placement~ : BadgePlacement, className~ : String?) -> String
+
 fn get_breadcrumb_link_style(color~ : BreadcrumbColor, isActive~ : Bool, class~ : String?) -> String
 
 fn get_breadcrumb_separator_style(class? : String) -> String
@@ -158,6 +162,40 @@ pub(all) enum AvatarSize {
   Md
   Lg
   Xl
+}
+
+pub(all) enum BadgeColor {
+  Primary
+  Secondary
+  Info
+  Success
+  Warning
+  Error
+}
+
+pub(all) enum BadgeOverlap {
+  Circular
+  Square
+}
+
+pub(all) enum BadgePlacement {
+  TopStart
+  TopEnd
+  BottomStart
+  BottomEnd
+}
+
+pub(all) enum BadgeSize {
+  Sm
+  Md
+  Lg
+}
+
+pub(all) enum BadgeVariant {
+  Ghost
+  Solid
+  Outline
+  Gradient
 }
 
 pub(all) enum BreadcrumbColor {

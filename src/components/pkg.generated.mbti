@@ -17,6 +17,10 @@ fn[M] accordion_trigger(Array[@html.Html[M]], M, isOpen? : Bool, color? : @theme
 
 fn[M] avatar(src? : String, alt? : String, fallback? : String, size? : @theme.AvatarSize, shape? : @theme.AvatarShape, color? : @theme.AvatarColor, class? : String) -> @html.Html[M]
 
+fn[M] badge(Array[@html.Html[M]], content? : String, variant? : @theme.BadgeVariant, size? : @theme.BadgeSize, color? : @theme.BadgeColor, overlap? : @theme.BadgeOverlap, placement? : @theme.BadgePlacement, invisible? : Bool, className? : String?) -> @html.Html[M]
+
+fn[M] badge_indicator(content? : String?, variant? : @theme.BadgeVariant, size? : @theme.BadgeSize, color? : @theme.BadgeColor, className? : String?) -> @html.Html[M]
+
 fn[M] breadcrumb(Array[BreadcrumbItem[M]], separator? : String, variant? : @theme.BreadcrumbVariant, color? : @theme.BreadcrumbColor, size? : @theme.BreadcrumbSize, class? : String) -> @html.Html[M]
 
 fn[M] breadcrumb_simple(Array[String], separator? : String, variant? : @theme.BreadcrumbVariant, color? : @theme.BreadcrumbColor, size? : @theme.BreadcrumbSize, class? : String) -> @html.Html[M]

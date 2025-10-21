@@ -2725,6 +2725,153 @@ fn render_tabs_section(model : Model) -> Html[Msg] {
       color=@theme.Default,
     ),
 
+    // Badge component showcase
+    div(class="max-w-6xl mx-auto mb-12", [
+      h2(class="text-2xl font-bold mb-6 text-gray-800", [
+        text("Badge Component Styles"),
+      ]),
+
+      // Badge variants
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Badge Variants"),
+        ]),
+        div(class="flex flex-wrap gap-4", [
+          @jade.badge(
+            [@jade.button([text("Messages")], Increment, size=@theme.Lg)],
+            content="5",
+            variant=@theme.Solid,
+            color=@theme.Error,
+            placement=@theme.TopEnd,
+          ),
+          @jade.badge(
+            [@jade.button([text("Notifications")], Increment, size=@theme.Lg)],
+            content="99+",
+            variant=@theme.Ghost,
+            color=@theme.Primary,
+            placement=@theme.TopEnd,
+          ),
+          @jade.badge(
+            [@jade.button([text("Updates")], Increment, size=@theme.Lg)],
+            variant=@theme.Outline,
+            color=@theme.Success,
+            placement=@theme.TopEnd,
+          ),
+          @jade.badge(
+            [@jade.button([text("Premium")], Increment, size=@theme.Lg)],
+            content="New",
+            variant=@theme.Gradient,
+            color=@theme.Warning,
+            placement=@theme.TopEnd,
+          ),
+        ]),
+      ]),
+
+      // Badge placements
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Badge Placements"),
+        ]),
+        div(class="flex flex-wrap gap-4", [
+          @jade.badge(
+            [div(class="w-12 h-12 bg-gray-200 rounded-lg", [])],
+            content="1",
+            placement=@theme.TopStart,
+            color=@theme.Error,
+          ),
+          @jade.badge(
+            [div(class="w-12 h-12 bg-gray-200 rounded-lg", [])],
+            content="2",
+            placement=@theme.TopEnd,
+            color=@theme.Success,
+          ),
+          @jade.badge(
+            [div(class="w-12 h-12 bg-gray-200 rounded-lg", [])],
+            content="3",
+            placement=@theme.BottomStart,
+            color=@theme.Warning,
+          ),
+          @jade.badge(
+            [div(class="w-12 h-12 bg-gray-200 rounded-lg", [])],
+            content="4",
+            placement=@theme.BottomEnd,
+            color=@theme.Info,
+          ),
+        ]),
+      ]),
+
+      // Badge sizes and colors
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Badge Sizes and Colors"),
+        ]),
+        div(class="flex flex-wrap gap-4", [
+          @jade.badge(
+            [@jade.button([text("Small")], Increment)],
+            content="S",
+            size=@theme.Sm,
+            color=@theme.Primary,
+          ),
+          @jade.badge(
+            [@jade.button([text("Medium")], Increment)],
+            content="M",
+            size=@theme.Md,
+            color=@theme.Secondary,
+          ),
+          @jade.badge(
+            [@jade.button([text("Large")], Increment)],
+            content="L",
+            size=@theme.Lg,
+            color=@theme.Info,
+          ),
+          @jade.badge(
+            [@jade.button([text("Success")], Increment)],
+            content="✓",
+            color=@theme.Success,
+          ),
+          @jade.badge(
+            [@jade.button([text("Warning")], Increment)],
+            content="!",
+            color=@theme.Warning,
+          ),
+          @jade.badge(
+            [@jade.button([text("Error")], Increment)],
+            content="×",
+            color=@theme.Error,
+          ),
+        ]),
+      ]),
+
+      // Badge indicators only
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Badge Indicators"),
+        ]),
+        div(class="flex flex-wrap gap-4 items-center", [
+          @jade.badge_indicator(
+            content=Some("1"),
+            variant=@theme.Solid,
+            color=@theme.Primary,
+          ),
+          @jade.badge_indicator(
+            content=Some("99+"),
+            variant=@theme.Ghost,
+            color=@theme.Secondary,
+          ),
+          @jade.badge_indicator(
+            content=Some("New"),
+            variant=@theme.Outline,
+            color=@theme.Success,
+          ),
+          @jade.badge_indicator(
+            content=Some("Hot"),
+            variant=@theme.Gradient,
+            color=@theme.Error,
+          ),
+          @jade.badge_indicator(variant=@theme.Solid, color=@theme.Warning),
+        ]),
+      ]),
+    ]),
     // Chip with different shapes
     div(class="mb-8", [
       h3(class="text-lg font-semibold mb-4 text-gray-700", [text("Chip Shapes")]),
