@@ -16,6 +16,7 @@
     {
       "path": "Yoorkin/jade_ui/theme",
       "alias": "theme"
-    }
+    },
+    "Yoorkin/rabbit-tea/dialog"
   ]
 }
