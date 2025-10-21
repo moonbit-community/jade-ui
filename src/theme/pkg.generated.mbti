@@ -19,6 +19,10 @@ fn get_accordion_style(variant~ : AccordionVariant, color~ : AccordionColor, cla
 
 fn get_accordion_trigger_style(color~ : AccordionColor, isOpen~ : Bool, className~ : String?) -> String
 
+fn get_avatar_image_style(shape~ : AvatarShape) -> String
+
+fn get_avatar_style(size~ : AvatarSize, shape~ : AvatarShape, color~ : AvatarColor, class? : String) -> String
+
 fn get_button_group_style(orientation~ : ButtonGroupOrientation, fullWidth~ : Bool, class~ : String?) -> String
 
 fn get_button_style(variant~ : ButtonVariant, size~ : ButtonSize, color~ : ButtonColor, fullWidth~ : Bool, ripple~ : Bool, class~ : String?) -> String
@@ -57,6 +61,14 @@ fn get_menu_style(variant~ : MenuVariant, color~ : MenuColor, class~ : String?) 
 
 fn get_menu_trigger_style(color~ : MenuColor, isOpen~ : Bool, class~ : String?) -> String
 
+fn get_popover_arrow_style(placement~ : PopoverPlacement, color~ : PopoverColor, class? : String) -> String
+
+fn get_popover_container_style(show~ : Bool, class? : String) -> String
+
+fn get_popover_content_style(placement~ : PopoverPlacement, size~ : PopoverSize, color~ : PopoverColor, class? : String) -> String
+
+fn get_popover_trigger_style(class? : String) -> String
+
 fn get_slider_classes(String) -> String
 
 fn get_slider_color_value(SliderColor) -> String
@@ -81,6 +93,12 @@ fn get_tabs_style(orientation~ : TabsOrientation, class~ : String?) -> String
 
 fn get_tabs_trigger_style(size~ : TabsSize, variant~ : TabsVariant, isActive~ : Bool, class~ : String?) -> String
 
+fn get_tooltip_arrow_style(placement~ : TooltipPlacement, color~ : TooltipColor) -> String
+
+fn get_tooltip_style(placement~ : TooltipPlacement, size~ : TooltipSize, color~ : TooltipColor, class? : String) -> String
+
+fn get_tooltip_trigger_style(class? : String) -> String
+
 fn get_typography_style(TypographyType, TypographyColor, String) -> String
 
 fn light() -> JadeTheme
@@ -103,6 +121,29 @@ pub(all) enum AccordionVariant {
   Bordered
   Shadow
   Split
+}
+
+pub(all) enum AvatarColor {
+  Primary
+  Secondary
+  Info
+  Success
+  Warning
+  Error
+  Neutral
+}
+
+pub(all) enum AvatarShape {
+  Circle
+  Square
+}
+
+pub(all) enum AvatarSize {
+  Xs
+  Sm
+  Md
+  Lg
+  Xl
 }
 
 pub(all) enum ButtonColor {
@@ -289,6 +330,38 @@ pub(all) enum MenuVariant {
   Shadow
 }
 
+pub(all) enum PopoverColor {
+  Primary
+  Secondary
+  Success
+  Warning
+  Error
+  Info
+  Dark
+  Light
+}
+
+pub(all) enum PopoverPlacement {
+  Top
+  TopStart
+  TopEnd
+  Bottom
+  BottomStart
+  BottomEnd
+  Left
+  LeftStart
+  LeftEnd
+  Right
+  RightStart
+  RightEnd
+}
+
+pub(all) enum PopoverSize {
+  Sm
+  Md
+  Lg
+}
+
 pub(all) enum SliderColor {
   Primary
   Secondary
@@ -348,6 +421,30 @@ pub(all) enum TabsVariant {
   Default
   Pills
   Underline
+}
+
+pub(all) enum TooltipColor {
+  Primary
+  Secondary
+  Success
+  Warning
+  Error
+  Info
+  Dark
+  Light
+}
+
+pub(all) enum TooltipPlacement {
+  Top
+  Bottom
+  Left
+  Right
+}
+
+pub(all) enum TooltipSize {
+  Sm
+  Md
+  Lg
 }
 
 pub(all) enum TypographyColor {

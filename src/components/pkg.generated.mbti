@@ -15,7 +15,9 @@ fn[M] accordion_item(String, @html.Html[M], @html.Html[M], variant? : @theme.Acc
 
 fn[M] accordion_trigger(Array[@html.Html[M]], M, isOpen? : Bool, color? : @theme.AccordionColor, showIcon? : Bool, class? : String?) -> @html.Html[M]
 
-fn[M] button(Array[@html.Html[M]], M, variant? : @theme.ButtonVariant, size? : @theme.ButtonSize, color? : @theme.ButtonColor, fullWidth? : Bool, ripple? : Bool, class? : String?) -> @html.Html[M]
+fn[M] avatar(src? : String, alt? : String, fallback? : String, size? : @theme.AvatarSize, shape? : @theme.AvatarShape, color? : @theme.AvatarColor, class? : String) -> @html.Html[M]
+
+fn[M] button(Array[@html.Html[M]], M, variant? : @theme.ButtonVariant, size? : @theme.ButtonSize, color? : @theme.ButtonColor, full_width? : Bool, ripple? : Bool, class? : String?) -> @html.Html[M]
 
 fn[M] button_group(Array[@html.Html[M]], orientation? : @theme.ButtonGroupOrientation, fullWidth? : Bool, class? : String?) -> @html.Html[M]
 
@@ -47,6 +49,8 @@ fn[M] menu_separator(class? : String?) -> @html.Html[M]
 
 fn[M] menu_trigger(Array[@html.Html[M]], M, isOpen? : Bool, color? : @theme.MenuColor, showIcon? : Bool, class? : String?) -> @html.Html[M]
 
+fn[M] popover(content~ : String, children~ : @html.Html[M], placement? : @theme.PopoverPlacement, size? : @theme.PopoverSize, color? : @theme.PopoverColor, arrow? : Bool, class? : String) -> @html.Html[M]
+
 fn[M] slider(value? : Int, min? : Int, max? : Int, on_input~ : (Int) -> M, color? : @theme.SliderColor, size? : @theme.SliderSize, class? : String, children? : Array[@html.Html[M]]) -> @html.Html[M]
 
 fn[M] spinner(size? : @theme.SpinnerSize, color? : @theme.SpinnerColor, class? : String) -> @html.Html[M]
@@ -60,6 +64,14 @@ fn[M] tabs_list(Array[@html.Html[M]], orientation? : @theme.TabsOrientation, var
 fn[M] tabs_panel(Array[@html.Html[M]], is_active? : Bool, class? : String?) -> @html.Html[M]
 
 fn[M] tabs_trigger(Array[@html.Html[M]], M, size? : @theme.TabsSize, variant? : @theme.TabsVariant, is_active? : Bool, class? : String?) -> @html.Html[M]
+
+fn[M] tooltip(content~ : String, placement? : @theme.TooltipPlacement, size? : @theme.TooltipSize, color? : @theme.TooltipColor, arrow? : Bool, class? : String, children~ : @html.Html[M]) -> @html.Html[M]
+
+fn[M] tooltip_simple(content~ : String, children~ : @html.Html[M]) -> @html.Html[M]
+
+fn[M] tooltip_with_color(content~ : String, color~ : @theme.TooltipColor, children~ : @html.Html[M]) -> @html.Html[M]
+
+fn[M] tooltip_with_placement(content~ : String, placement~ : @theme.TooltipPlacement, children~ : @html.Html[M]) -> @html.Html[M]
 
 fn[M] typography(tag? : @theme.TypographyType, color? : @theme.TypographyColor, class? : String, Array[@html.Html[M]]) -> @html.Html[M]
 

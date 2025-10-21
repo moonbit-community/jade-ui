@@ -712,7 +712,7 @@ fn view(model : Model) -> Html[Msg] {
           Increment,
           variant=Solid,
           color=Primary,
-          fullWidth=true,
+          full_width=true,
         ),
       ]),
 
@@ -1942,6 +1942,116 @@ fn view(model : Model) -> Html[Msg] {
         ]),
       ]),
     ]),
+
+    // Popover component showcase
+    div(class="mb-8", [
+      h3(class="text-lg font-semibold mb-4 text-gray-700", [
+        text("Popover Component Styles"),
+      ]),
+
+      // Popover placements
+      div(class="mb-6", [
+        h4(class="text-md font-medium mb-3 text-gray-600", [
+          text("Popover Placements"),
+        ]),
+        div(class="grid grid-cols-2 md:grid-cols-4 gap-4", [
+          @jade.popover(
+            content="Click me (Top)",
+            children=text(
+              "This is a top-positioned popover with helpful information.",
+            ),
+            placement=@theme.Top,
+          ),
+          @jade.popover(
+            content="Click me (Bottom)",
+            children=text(
+              "This is a bottom-positioned popover with helpful information.",
+            ),
+            placement=@theme.Bottom,
+          ),
+          @jade.popover(
+            content="Click me (Left)",
+            children=text(
+              "This is a left-positioned popover with helpful information.",
+            ),
+            placement=@theme.Left,
+          ),
+          @jade.popover(
+            content="Click me (Right)",
+            children=text(
+              "This is a right-positioned popover with helpful information.",
+            ),
+            placement=@theme.Right,
+          ),
+        ]),
+      ]),
+
+      // Popover sizes
+      div(class="mb-6", [
+        h4(class="text-md font-medium mb-3 text-gray-600", [
+          text("Popover Sizes"),
+        ]),
+        div(class="flex gap-4 flex-wrap", [
+          @jade.popover(
+            content="Small Popover",
+            children=text("This is a small popover."),
+            size=@theme.Sm,
+          ),
+          @jade.popover(
+            content="Medium Popover",
+            children=text("This is a medium popover with more content."),
+            size=@theme.Md,
+          ),
+          @jade.popover(
+            content="Large Popover",
+            children=text(
+              "This is a large popover with even more content and space for detailed information.",
+            ),
+            size=@theme.Lg,
+          ),
+        ]),
+      ]),
+
+      // Popover colors
+      div(class="mb-6", [
+        h4(class="text-md font-medium mb-3 text-gray-600", [
+          text("Popover Colors"),
+        ]),
+        div(class="grid grid-cols-2 md:grid-cols-3 gap-4", [
+          @jade.popover(
+            content="Primary",
+            children=text("Primary colored popover"),
+            color=@theme.Primary,
+          ),
+          @jade.popover(
+            content="Secondary",
+            children=text("Secondary colored popover"),
+            color=@theme.Secondary,
+          ),
+          @jade.popover(
+            content="Info",
+            children=text("Info colored popover"),
+            color=@theme.Info,
+          ),
+          @jade.popover(
+            content="Success",
+            children=text("Success colored popover"),
+            color=@theme.Success,
+          ),
+          @jade.popover(
+            content="Warning",
+            children=text("Warning colored popover"),
+            color=@theme.Warning,
+          ),
+          @jade.popover(
+            content="Error",
+            children=text("Error colored popover"),
+            color=@theme.Error,
+          ),
+        ]),
+      ]),
+    ]),
+
     // Chip component showcase
     div(class="mb-8", [
       h3(class="text-lg font-semibold mb-4 text-gray-700", [
@@ -2165,6 +2275,7 @@ fn view(model : Model) -> Html[Msg] {
         ]),
       ]),
     ]),
+    render_avatar_section(model),
     render_tabs_section(model),
   ])
 }
@@ -2370,6 +2481,325 @@ fn render_tabs_section(model : Model) -> Html[Msg] {
         ]),
       ]),
     ]),
+
+    // Tooltip component showcase
+    div(class="max-w-6xl mx-auto mb-12", [
+      h2(class="text-2xl font-bold mb-6 text-gray-800", [
+        text("Tooltip Component Styles"),
+      ]),
+
+      // Tooltip placements
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Tooltip Placements"),
+        ]),
+        div(class="grid grid-cols-2 md:grid-cols-4 gap-8 p-8", [
+          @jade.tooltip(
+            content="This tooltip appears on top",
+            placement=Top,
+            children=@jade.button(
+              [text("Top")],
+              Increment,
+              variant=Outlined,
+              color=Primary,
+              full_width=true,
+            ),
+          ),
+          @jade.tooltip(
+            content="This tooltip appears on bottom",
+            placement=Bottom,
+            children=@jade.button(
+              [text("Bottom")],
+              Increment,
+              variant=Outlined,
+              color=Primary,
+              full_width=true,
+            ),
+          ),
+          @jade.tooltip(
+            content="This tooltip appears on left",
+            placement=Left,
+            children=@jade.button(
+              [text("Left")],
+              Increment,
+              variant=Outlined,
+              color=Primary,
+              full_width=true,
+            ),
+          ),
+          @jade.tooltip(
+            content="This tooltip appears on right",
+            placement=Right,
+            children=@jade.button(
+              [text("Right")],
+              Increment,
+              variant=Outlined,
+              color=Primary,
+              full_width=true,
+            ),
+          ),
+        ]),
+      ]),
+
+      // Tooltip colors
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Tooltip Colors"),
+        ]),
+        div(class="grid grid-cols-2 md:grid-cols-4 gap-6", [
+          @jade.tooltip(
+            content="Primary tooltip",
+            color=Primary,
+            children=@jade.button(
+              [text("Primary")],
+              Increment,
+              variant=Solid,
+              color=Primary,
+              full_width=true,
+            ),
+          ),
+          @jade.tooltip(
+            content="Secondary tooltip",
+            color=Secondary,
+            children=@jade.button(
+              [text("Secondary")],
+              Increment,
+              variant=Solid,
+              color=Secondary,
+              full_width=true,
+            ),
+          ),
+          @jade.tooltip(
+            content="Success tooltip",
+            color=Success,
+            children=@jade.button(
+              [text("Success")],
+              Increment,
+              variant=Solid,
+              color=Success,
+              full_width=true,
+            ),
+          ),
+          @jade.tooltip(
+            content="Warning tooltip",
+            color=Warning,
+            children=@jade.button(
+              [text("Warning")],
+              Increment,
+              variant=Solid,
+              color=Warning,
+              full_width=true,
+            ),
+          ),
+          @jade.tooltip(
+            content="Error tooltip",
+            color=Error,
+            children=@jade.button(
+              [text("Error")],
+              Increment,
+              variant=Solid,
+              color=Error,
+              full_width=true,
+            ),
+          ),
+          @jade.tooltip(
+            content="Info tooltip",
+            color=Info,
+            children=@jade.button(
+              [text("Info")],
+              Increment,
+              variant=Solid,
+              color=Info,
+              full_width=true,
+            ),
+          ),
+          @jade.tooltip(
+            content="Dark tooltip",
+            color=Dark,
+            children=@jade.button(
+              [text("Dark")],
+              Increment,
+              variant=Ghost,
+              color=Primary,
+              full_width=true,
+            ),
+          ),
+          @jade.tooltip(
+            content="Light tooltip",
+            color=Light,
+            children=@jade.button(
+              [text("Light")],
+              Increment,
+              variant=Ghost,
+              color=Primary,
+              full_width=true,
+            ),
+          ),
+        ]),
+      ]),
+
+      // Tooltip sizes
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Tooltip Sizes"),
+        ]),
+        div(class="flex items-center gap-6 flex-wrap", [
+          @jade.tooltip(
+            content="Small tooltip",
+            size=Sm,
+            children=@jade.button(
+              [text("Small")],
+              Increment,
+              variant=Outlined,
+              color=Primary,
+            ),
+          ),
+          @jade.tooltip(
+            content="Medium tooltip",
+            size=Md,
+            children=@jade.button(
+              [text("Medium")],
+              Increment,
+              variant=Outlined,
+              color=Primary,
+            ),
+          ),
+          @jade.tooltip(
+            content="Large tooltip",
+            size=Lg,
+            children=@jade.button(
+              [text("Large")],
+              Increment,
+              variant=Outlined,
+              color=Primary,
+            ),
+          ),
+        ]),
+      ]),
+
+      // Tooltip with and without arrow
+      div(class="mb-8", [
+        h3(class="text-lg font-semibold mb-4 text-gray-700", [
+          text("Tooltip Arrow Options"),
+        ]),
+        div(class="flex items-center gap-6 flex-wrap", [
+          @jade.tooltip(
+            content="Tooltip with arrow",
+            arrow=true,
+            children=@jade.button(
+              [text("With Arrow")],
+              Increment,
+              variant=Outlined,
+              color=Primary,
+            ),
+          ),
+          @jade.tooltip(
+            content="Tooltip without arrow",
+            arrow=false,
+            children=@jade.button(
+              [text("No Arrow")],
+              Increment,
+              variant=Outlined,
+              color=Primary,
+            ),
+          ),
+        ]),
+      ]),
+    ]),
+  ])
+}
+
+///|
+/// Avatar 组件展示区域
+fn render_avatar_section(_model : Model) -> Html[Msg] {
+  @html.div([
+    @jade.card(
+      [
+        @jade.card_header([@jade.typography([text("Avatar Component Styles")])]),
+        @jade.card_body([
+          // Avatar 尺寸展示
+          @jade.typography(class="mb-4", [text("Avatar Sizes")]),
+          @html.div(class="flex items-center gap-4 mb-8", [
+            @jade.avatar(
+              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150",
+              alt="User Avatar",
+              fallback="U",
+              size=@theme.Xs,
+            ),
+            @jade.avatar(
+              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150",
+              alt="User Avatar",
+              fallback="U",
+              size=@theme.Sm,
+            ),
+            @jade.avatar(
+              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150",
+              alt="User Avatar",
+              fallback="U",
+              size=@theme.Md,
+            ),
+            @jade.avatar(
+              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150",
+              alt="User Avatar",
+              fallback="U",
+              size=@theme.Lg,
+            ),
+            @jade.avatar(
+              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150",
+              alt="User Avatar",
+              fallback="U",
+              size=@theme.Xl,
+            ),
+          ]),
+
+          // Avatar 形状展示
+          @jade.typography(tag=@theme.H3, color=@theme.Default, class="mb-4", [
+            text("Avatar Shapes"),
+          ]),
+          @html.div(class="flex items-center gap-4 mb-8", [
+            @jade.avatar(
+              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150",
+              alt="Round Avatar",
+              fallback="R",
+              size=@theme.Lg,
+              shape=@theme.Circle,
+            ),
+            @jade.avatar(
+              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150",
+              alt="Square Avatar",
+              fallback="S",
+              size=@theme.Lg,
+              shape=@theme.Square,
+            ),
+          ]),
+
+          // Avatar 颜色展示
+          @jade.typography(tag=@theme.H3, color=@theme.Default, class="mb-4", [
+            text("Avatar Colors (Fallback)"),
+          ]),
+          @html.div(class="flex items-center gap-4 mb-8", [
+            @jade.avatar(fallback="P", size=@theme.Lg, color=@theme.Primary),
+            @jade.avatar(fallback="S", size=@theme.Lg, color=@theme.Secondary),
+            @jade.avatar(fallback="I", size=@theme.Lg, color=@theme.Info),
+            @jade.avatar(fallback="S", size=@theme.Lg, color=@theme.Success),
+            @jade.avatar(fallback="W", size=@theme.Lg, color=@theme.Warning),
+            @jade.avatar(fallback="E", size=@theme.Lg, color=@theme.Error),
+          ]),
+
+          // Avatar 回退文本展示
+          @jade.typography(tag=@theme.H3, color=@theme.Default, class="mb-4", [
+            text("Avatar Fallback Examples"),
+          ]),
+          @html.div(class="flex items-center gap-4 mb-8", [
+            @jade.avatar(fallback="JD", size=@theme.Lg, color=@theme.Primary),
+            @jade.avatar(fallback="AB", size=@theme.Lg, color=@theme.Secondary),
+            @jade.avatar(fallback="XY", size=@theme.Lg, color=@theme.Success),
+          ]),
+        ]),
+      ],
+      variant=@theme.Solid,
+      color=@theme.Default,
+    ),
   ])
 }
 
