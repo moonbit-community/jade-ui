@@ -1,5 +1,5 @@
 ///|
-pub(all) enum ChipVariant {
+pub(all) enum BadgeVariant {
   Ghost
   Solid
   Outline
@@ -7,14 +7,14 @@ pub(all) enum ChipVariant {
 }
 
 ///|
-pub(all) enum ChipSize {
+pub(all) enum BadgeSize {
   Sm
   Md
   Lg
 }
 
 ///|
-pub(all) enum ChipColor {
+pub(all) enum BadgeColor {
   Primary
   Secondary
   Info
@@ -24,26 +24,64 @@ pub(all) enum ChipColor {
 }
 
 ///|
-pub fn get_chip_style(
-  variant~ : ChipVariant,
-  size~ : ChipSize,
-  color~ : ChipColor,
-  isPill~ : Bool,
-  class~ : String?,
+pub(all) enum BadgeOverlap {
+  Circular
+  Square
+}
+
+///|
+pub(all) enum BadgePlacement {
+  TopStart
+  TopEnd
+  BottomStart
+  BottomEnd
+}
+
+///|
+pub fn get_badge_container_style(className~ : String?) -> String {
+  clsx([
+    "relative inline-flex",
+    match className {
+      Some(cls) => cls
+      None => ""
+    },
+  ])
+}
+
+///|
+pub fn get_badge_indicator_style(
+  variant~ : BadgeVariant,
+  size~ : BadgeSize,
+  color~ : BadgeColor,
+  overlap~ : BadgeOverlap,
+  placement~ : BadgePlacement,
+  className~ : String?,
 ) -> String {
   clsx([
-    "relative inline-flex w-max items-center border font-sans font-medium",
-    // Shape styles
-    if isPill {
-      "rounded-full"
-    } else {
-      "rounded-md"
-    },
+    "absolute px-1 py-0.5 text-xs border leading-none grid place-items-center rounded-full min-w-3 min-h-3",
     // Size styles
     match size {
-      Sm => "text-xs p-0.5 shadow-sm"
-      Md => "text-sm p-0.5 shadow-sm"
-      Lg => "text-sm p-1 shadow-sm"
+      Sm => "min-w-2 min-h-2 text-xs px-0.5 py-0"
+      Md => "min-w-3 min-h-3 text-xs px-1 py-0.5"
+      Lg => "min-w-4 min-h-4 text-sm px-1.5 py-1"
+    },
+    // Placement styles
+    match (placement, overlap) {
+      (TopStart, Square) =>
+        "top-[6%] left-[6%] -translate-x-1/2 -translate-y-1/2"
+      (TopStart, Circular) =>
+        "top-[14%] left-[14%] -translate-x-1/2 -translate-y-1/2"
+      (TopEnd, Square) => "top-[6%] right-[6%] translate-x-1/2 -translate-y-1/2"
+      (TopEnd, Circular) =>
+        "top-[14%] right-[14%] translate-x-1/2 -translate-y-1/2"
+      (BottomStart, Square) =>
+        "bottom-[6%] left-[6%] -translate-x-1/2 translate-y-1/2"
+      (BottomStart, Circular) =>
+        "bottom-[14%] left-[14%] -translate-x-1/2 translate-y-1/2"
+      (BottomEnd, Square) =>
+        "bottom-[6%] right-[6%] translate-x-1/2 translate-y-1/2"
+      (BottomEnd, Circular) =>
+        "bottom-[14%] right-[14%] translate-x-1/2 translate-y-1/2"
     },
     // Variant and color combination styles
     match variant {
@@ -108,65 +146,7 @@ pub fn get_chip_style(
             "bg-gradient-to-tr from-[var(--color-error)] to-[var(--color-error)]/80 border-[var(--color-error)] text-[var(--color-error-content)]"
         }
     },
-    // Optional custom class name
-    match class {
-      Some(cls) => cls
-      None => ""
-    },
-  ])
-}
-
-///|
-pub fn get_chip_label_style(size~ : ChipSize, class~ : String?) -> String {
-  clsx([
-    "font-inherit text-inherit leading-none",
-    // Size styles
-    match size {
-      Sm => "my-0.5 mx-1.5"
-      Md => "my-1 mx-2.5"
-      Lg => "my-1.5 mx-3"
-    },
-    // Optional custom class name
-    match class {
-      Some(cls) => cls
-      None => ""
-    },
-  ])
-}
-
-///|
-pub fn get_chip_icon_style(size~ : ChipSize, class~ : String?) -> String {
-  clsx([
-    "grid place-items-center shrink-0 rounded-full",
-    // Size styles
-    match size {
-      Sm => "translate-x-0.5 w-3.5 h-3.5"
-      Md => "translate-x-1 w-4 h-4"
-      Lg => "translate-x-1.5 w-5 h-5"
-    },
-    // Optional custom class name
-    match class {
-      Some(cls) => cls
-      None => ""
-    },
-  ])
-}
-
-///|
-pub fn get_chip_dismiss_trigger_style(
-  size~ : ChipSize,
-  class~ : String?,
-) -> String {
-  clsx([
-    "grid place-items-center shrink-0 rounded-full p-px cursor-pointer",
-    // Size styles
-    match size {
-      Sm => "-translate-x-0.5 ms-0.5 w-4 h-4 stroke-2"
-      Md => "-translate-x-1 ms-1 w-5 h-5 stroke-2"
-      Lg => "-translate-x-1.5 ms-1.5 w-6 h-6 stroke-2"
-    },
-    // Optional custom class name
-    match class {
+    match className {
       Some(cls) => cls
       None => ""
     },

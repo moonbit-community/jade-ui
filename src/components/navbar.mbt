@@ -32,12 +32,12 @@
 ///
 pub fn[M] navbar(
   children : Array[@html.Html[M]],
-  variant~ : @theme.NavbarVariant = Solid,
-  color~ : @theme.NavbarColor = Default,
-  shadow~ : Bool = true,
-  blurred~ : Bool = false,
-  fullWidth~ : Bool = false,
-  class~ : String? = None,
+  variant? : @theme.NavbarVariant = Solid,
+  color? : @theme.NavbarColor = Default,
+  shadow? : Bool = true,
+  blurred? : Bool = false,
+  fullWidth? : Bool = false,
+  class? : String? = None,
 ) -> Html[M] {
   let navbar_style = @theme.get_navbar_style(
     variant~,

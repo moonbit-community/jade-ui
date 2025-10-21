@@ -18,7 +18,7 @@
 ///   container. Defaults to `false`.
 /// * `ripple` : Bool - Whether to enable ripple effect on button interactions.
 ///   Defaults to `true`.
-/// * `className` : String? - Additional CSS class name to apply to the button.
+/// * `class` : String? - Additional CSS class name to apply to the button.
 ///   Defaults to `None`.
 ///
 /// Returns an HTML button element configured with the specified properties and
@@ -44,20 +44,20 @@
 pub fn[M] button(
   children : Array[@html.Html[M]],
   click : M,
-  variant~ : @theme.ButtonVariant = @theme.Solid,
-  size~ : @theme.ButtonSize = @theme.Md,
-  color~ : @theme.ButtonColor = @theme.Primary,
-  fullWidth~ : Bool = false,
-  ripple~ : Bool = true,
-  className~ : String? = None,
+  variant? : @theme.ButtonVariant = @theme.Solid,
+  size? : @theme.ButtonSize = @theme.Md,
+  color? : @theme.ButtonColor = @theme.Primary,
+  full_width? : Bool = false,
+  ripple? : Bool = true,
+  class? : String,
 ) -> @html.Html[M] {
   let klass = @theme.get_button_style(
     variant~,
     size~,
     color~,
-    fullWidth~,
+    fullWidth=full_width,
     ripple~,
-    className~,
+    class~,
   )
   let attrs = [
     @html.attribute("type", "button"),
