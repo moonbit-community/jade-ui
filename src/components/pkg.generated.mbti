@@ -15,9 +15,9 @@ fn[M] accordion_item(String, @html.Html[M], @html.Html[M], variant? : @theme.Acc
 
 fn[M] accordion_trigger(Array[@html.Html[M]], M, isOpen? : Bool, color? : @theme.AccordionColor, showIcon? : Bool, class? : String?) -> @html.Html[M]
 
-fn[M] alert_dialog(@html.Html[M], @html.Html[M], buttonText? : String, M, open? : Bool, buttonColor? : @theme.ButtonColor, size? : @theme.DialogSize, class? : String) -> @html.Html[M]
+fn[M] alert_dialog(id~ : String, title~ : @html.Html[M], message~ : @html.Html[M], button_text? : String, close~ : M, button_color? : @theme.ButtonColor, size? : @theme.DialogSize, class? : String) -> @html.Html[M]
 
-fn[M] button(Array[@html.Html[M]], M, variant? : @theme.ButtonVariant, size? : @theme.ButtonSize, color? : @theme.ButtonColor, fullWidth? : Bool, ripple? : Bool, class? : String?) -> @html.Html[M]
+fn[M] button(Array[@html.Html[M]], M, variant? : @theme.ButtonVariant, size? : @theme.ButtonSize, color? : @theme.ButtonColor, fullWidth? : Bool, ripple? : Bool, class? : String) -> @html.Html[M]
 
 fn[M] button_group(Array[@html.Html[M]], orientation? : @theme.ButtonGroupOrientation, fullWidth? : Bool, class? : String?) -> @html.Html[M]
 
@@ -39,21 +39,21 @@ fn[M] chip_icon(Array[@html.Html[M]], size? : @theme.ChipSize, className? : Stri
 
 fn[M] chip_label(Array[@html.Html[M]], size? : @theme.ChipSize, className? : String?) -> @html.Html[M]
 
-fn[M] confirm_dialog(@html.Html[M], @html.Html[M], confirmText? : String, cancelText? : String, M, M, open? : Bool, confirmColor? : @theme.ButtonColor, size? : @theme.DialogSize, class? : String) -> @html.Html[M]
+fn[M] confirm_dialog(id~ : String, title~ : @html.Html[M], @html.Html[M], confirm_text? : String, cancel_text? : String, on_confirm~ : M, close~ : M, confirm_color? : @theme.ButtonColor, size? : @theme.DialogSize, class? : String) -> @html.Html[M]
 
-fn[M] dialog(title? : @html.Html[M]?, @html.Html[M], footer? : Array[@html.Html[M]]?, size? : @theme.DialogSize, open? : Bool, onClose? : M?, onBackdropClick? : M?, class? : String) -> @html.Html[M]
+fn[M] dialog(id~ : String, title? : @html.Html[M], @html.Html[M], footer? : Array[@html.Html[M]], size? : @theme.DialogSize, close~ : M, class? : String) -> @html.Html[M]
 
 fn[M] dialog_body(Array[@html.Html[M]], class? : String) -> @html.Html[M]
 
-fn[M] dialog_content(Array[@html.Html[M]], size? : @theme.DialogSize, class? : String) -> @html.Html[M]
+fn[M] dialog_box(Array[@html.Html[M]], size? : @theme.DialogSize, class? : String) -> @html.Html[M]
 
 fn[M] dialog_footer(Array[@html.Html[M]], class? : String) -> @html.Html[M]
 
-fn[M] dialog_header(@html.Html[M], onClose? : M?, class? : String) -> @html.Html[M]
+fn[M] dialog_header(@html.Html[M], close~ : M, class? : String) -> @html.Html[M]
 
-fn[M] dialog_overlay(Array[@html.Html[M]], open? : Bool, dismiss? : M?, class? : String) -> @html.Html[M]
+fn[M] dialog_overlay(id~ : String, Array[@html.Html[M]], close~ : M, class? : String) -> @html.Html[M]
 
-fn[M] form_dialog(@html.Html[M], @html.Html[M], submitText? : String, cancelText? : String, M, M, open? : Bool, submitColor? : @theme.ButtonColor, size? : @theme.DialogSize, class? : String) -> @html.Html[M]
+fn[M] form_dialog(id~ : String, @html.Html[M], @html.Html[M], submitText? : String, cancelText? : String, M, M, submitColor? : @theme.ButtonColor, size? : @theme.DialogSize, class? : String) -> @html.Html[M]
 
 fn[M] menu(Array[@html.Html[M]], variant? : @theme.MenuVariant, color? : @theme.MenuColor, class? : String?) -> @html.Html[M]
 
@@ -65,7 +65,7 @@ fn[M] menu_separator(class? : String?) -> @html.Html[M]
 
 fn[M] menu_trigger(Array[@html.Html[M]], M, isOpen? : Bool, color? : @theme.MenuColor, showIcon? : Bool, class? : String?) -> @html.Html[M]
 
-fn[M] simple_dialog(@html.Html[M], size? : @theme.DialogSize, open? : Bool, onClose? : M?, class? : String) -> @html.Html[M]
+fn[M] simple_dialog(id~ : String, @html.Html[M], size? : @theme.DialogSize, close~ : M, class? : String) -> @html.Html[M]
 
 fn[M] slider(value? : Int, min? : Int, max? : Int, on_input~ : (Int) -> M, color? : @theme.SliderColor, size? : @theme.SliderSize, class? : String, children? : Array[@html.Html[M]]) -> @html.Html[M]
 

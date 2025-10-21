@@ -17,7 +17,7 @@ pub(all) enum DialogSize {
 
 ///|
 pub fn get_dialog_overlay_style(class? : String = "") -> String {
-  let base_classes = "fixed inset-0 z-50 flex items-center justify-center"
+  let base_classes = "fixed inset-0 m-0 p-0 z-999 max-w-screen max-h-screen w-screen h-screen bg-[#00000060] overflow-clip grid place-items-center invisible open:visible opacity-0 open:opacity-100 transition-opacity"
   clsx([base_classes, class])
 }
 
@@ -44,7 +44,7 @@ pub fn get_dialog_content_style(
 
 ///|
 pub fn get_dialog_header_style(class? : String = "") -> String {
-  let base_classes = "flex items-center justify-between p-4 border-b border-gray-200"
+  let base_classes = "flex items-center justify-between pl-4 pr-2 py-2 border-b border-gray-200"
   clsx([base_classes, class])
 }
 
@@ -64,26 +64,10 @@ pub fn get_dialog_close_button_style(class? : String = "") -> String {
   clsx([base_classes, class])
 }
 
-// Generate CSS classes for dialog backdrop
-
-///|
-pub fn get_dialog_backdrop_style(class? : String = "") -> String {
-  let base_classes = "absolute inset-0 bg-[#00000060]"
-  clsx([base_classes, class])
-}
-
 // Generate CSS classes for dialog body
 
 ///|
 pub fn get_dialog_body_style(class? : String = "") -> String {
   let base_classes = "flex-1 p-4 overflow-y-auto"
-  clsx([base_classes, class])
-}
-
-// Generate CSS classes for dialog trigger
-
-///|
-pub fn get_dialog_trigger_style(class? : String = "") -> String {
-  let base_classes = "cursor-pointer"
   clsx([base_classes, class])
 }
