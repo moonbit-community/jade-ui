@@ -53,6 +53,8 @@ fn[M] popover(content~ : String, children~ : @html.Html[M], placement? : @theme.
 
 fn[M] slider(value? : Int, min? : Int, max? : Int, on_input~ : (Int) -> M, color? : @theme.SliderColor, size? : @theme.SliderSize, class? : String, children? : Array[@html.Html[M]]) -> @html.Html[M]
 
+fn[M] spinner(size? : @theme.SpinnerSize, color? : @theme.SpinnerColor, class? : String) -> @html.Html[M]
+
 fn[M] switch(checked? : Bool, change~ : M, color? : @theme.SwitchColor, className? : String?, id? : String?) -> @html.Html[M]
 
 fn[M] tabs(Array[@html.Html[M]], orientation? : @theme.TabsOrientation, class? : String?) -> @html.Html[M]
