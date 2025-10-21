@@ -7,13 +7,13 @@ import(
 )
 
 // Values
-fn[M] accordion(Array[@html.Html[M]], variant? : @theme.AccordionVariant, color? : @theme.AccordionColor, className? : String?) -> @html.Html[M]
+fn[M] accordion(Array[@html.Html[M]], variant? : @theme.AccordionVariant, color? : @theme.AccordionColor, class? : String?) -> @html.Html[M]
 
-fn[M] accordion_content(Array[@html.Html[M]], isOpen? : Bool, class? : String?) -> @html.Html[M]
+fn[M] accordion_content(Array[@html.Html[M]], is_open? : Bool, class? : String) -> @html.Html[M]
 
-fn[M] accordion_item(String, @html.Html[M], @html.Html[M], variant? : @theme.AccordionVariant, disabled? : Bool, class? : String?) -> @html.Html[M]
+fn[M] accordion_item(String, @html.Html[M], @html.Html[M], variant? : @theme.AccordionVariant, disabled? : Bool, class? : String) -> @html.Html[M]
 
-fn[M] accordion_trigger(Array[@html.Html[M]], M, isOpen? : Bool, color? : @theme.AccordionColor, showIcon? : Bool, class? : String?) -> @html.Html[M]
+fn[M] accordion_trigger(Array[@html.Html[M]], M, is_open? : Bool, color? : @theme.AccordionColor, show_icon? : Bool, class? : String, icon_class? : String) -> @html.Html[M]
 
 fn[M] avatar(src? : String, alt? : String, fallback? : String, size? : @theme.AvatarSize, shape? : @theme.AvatarShape, color? : @theme.AvatarColor, class? : String) -> @html.Html[M]
 
@@ -43,9 +43,9 @@ fn[M] chip(Array[@html.Html[M]], variant? : @theme.ChipVariant, size? : @theme.C
 
 fn[M] chip_dismiss_trigger(M, size? : @theme.ChipSize, class? : String?, children? : Array[@html.Html[M]]?) -> @html.Html[M]
 
-fn[M] chip_icon(Array[@html.Html[M]], size? : @theme.ChipSize, className? : String?) -> @html.Html[M]
+fn[M] chip_icon(Array[@html.Html[M]], size? : @theme.ChipSize, class? : String?) -> @html.Html[M]
 
-fn[M] chip_label(Array[@html.Html[M]], size? : @theme.ChipSize, className? : String?) -> @html.Html[M]
+fn[M] chip_label(Array[@html.Html[M]], size? : @theme.ChipSize, class? : String?) -> @html.Html[M]
 
 fn[M] menu(Array[@html.Html[M]], variant? : @theme.MenuVariant, color? : @theme.MenuColor, class? : String?) -> @html.Html[M]
 
@@ -65,7 +65,7 @@ fn[M] slider(value? : Int, min? : Int, max? : Int, on_input~ : (Int) -> M, color
 
 fn[M] spinner(size? : @theme.SpinnerSize, color? : @theme.SpinnerColor, class? : String) -> @html.Html[M]
 
-fn[M] switch(checked? : Bool, change~ : M, color? : @theme.SwitchColor, className? : String?, id? : String?) -> @html.Html[M]
+fn[M] switch(checked? : Bool, change~ : M, color? : @theme.SwitchColor, class? : String, id? : String) -> @html.Html[M]
 
 fn[M] tabs(Array[@html.Html[M]], orientation? : @theme.TabsOrientation, class? : String?) -> @html.Html[M]
 

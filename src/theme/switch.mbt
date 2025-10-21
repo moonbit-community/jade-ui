@@ -27,7 +27,7 @@ pub fn get_switch_color_classes(color : SwitchColor) -> String {
 }
 
 ///|
-pub fn get_switch_style(color~ : SwitchColor, className~ : String?) -> String {
+pub fn get_switch_style(color~ : SwitchColor, class? : String) -> String {
   clsx([
     "appearance-none relative inline-block rounded-full w-12 h-6 cursor-pointer",
     "before:inline-block before:absolute before:top-0 before:left-0 before:w-full before:h-full",
@@ -38,7 +38,7 @@ pub fn get_switch_style(color~ : SwitchColor, className~ : String?) -> String {
     "disabled:opacity-50 disabled:cursor-not-allowed",
     "focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--color-primary)]/20",
     get_switch_color_classes(color),
-    match className {
+    match class {
       Some(cls) => cls
       None => ""
     },

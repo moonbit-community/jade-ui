@@ -9,15 +9,15 @@ import(
 // Values
 fn clsx(Array[String]) -> String
 
-fn get_accordion_content_style(className~ : String?) -> String
+fn get_accordion_content_style(class? : String) -> String
 
-fn get_accordion_icon_style(isOpen~ : Bool, className~ : String?) -> String
+fn get_accordion_icon_style(isOpen~ : Bool, class? : String) -> String
 
-fn get_accordion_item_style(variant~ : AccordionVariant, disabled~ : Bool, className~ : String?) -> String
+fn get_accordion_item_style(variant~ : AccordionVariant, disabled~ : Bool, class? : String) -> String
 
-fn get_accordion_style(variant~ : AccordionVariant, color~ : AccordionColor, className~ : String?) -> String
+fn get_accordion_style(variant~ : AccordionVariant, color~ : AccordionColor, class~ : String?) -> String
 
-fn get_accordion_trigger_style(color~ : AccordionColor, isOpen~ : Bool, className~ : String?) -> String
+fn get_accordion_trigger_style(color~ : AccordionColor, is_open~ : Bool, class? : String) -> String
 
 fn get_avatar_image_style(shape~ : AvatarShape) -> String
 
@@ -53,11 +53,11 @@ fn get_checkbox_label_style(size~ : CheckboxSize, disabled~ : Bool) -> String
 
 fn get_checkbox_visual_style(size~ : CheckboxSize, color~ : CheckboxColor, disabled~ : Bool) -> String
 
-fn get_chip_dismiss_trigger_style(size~ : ChipSize, className~ : String?) -> String
+fn get_chip_dismiss_trigger_style(size~ : ChipSize, class~ : String?) -> String
 
-fn get_chip_icon_style(size~ : ChipSize, className~ : String?) -> String
+fn get_chip_icon_style(size~ : ChipSize, class~ : String?) -> String
 
-fn get_chip_label_style(size~ : ChipSize, className~ : String?) -> String
+fn get_chip_label_style(size~ : ChipSize, class~ : String?) -> String
 
 fn get_chip_style(variant~ : ChipVariant, size~ : ChipSize, color~ : ChipColor, isPill~ : Bool, class~ : String?) -> String
 
@@ -101,7 +101,7 @@ fn get_spinner_style(size~ : SpinnerSize, color~ : SpinnerColor, class? : String
 
 fn get_switch_color_classes(SwitchColor) -> String
 
-fn get_switch_style(color~ : SwitchColor, className~ : String?) -> String
+fn get_switch_style(color~ : SwitchColor, class? : String) -> String
 
 fn get_tabs_list_style(orientation~ : TabsOrientation, variant~ : TabsVariant, class~ : String?) -> String
 
