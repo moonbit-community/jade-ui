@@ -244,7 +244,14 @@ pub(all) struct JadeTheme {
   border : String
 }
 fn JadeTheme::apply(Self) -> Unit
+fn JadeTheme::equal(Self, Self) -> Bool // from trait `Eq`
+fn JadeTheme::from_json(Json, @json.JsonPath) -> Self raise @json.JsonDecodeError // from trait `@json.FromJson`
+#deprecated
+fn JadeTheme::op_equal(Self, Self) -> Bool // from trait `Eq`
+fn JadeTheme::output(Self, &Logger) -> Unit // from trait `Show`
 fn[M] JadeTheme::to_attributes(Self) -> Array[@html.Attribute[M]]
+fn JadeTheme::to_json(Self) -> Json // from trait `ToJson`
+fn JadeTheme::to_string(Self) -> String // from trait `Show`
 fn JadeTheme::to_styles(Self) -> Map[String, String]
 impl Eq for JadeTheme
 impl Show for JadeTheme
