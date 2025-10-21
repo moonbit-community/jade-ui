@@ -61,6 +61,14 @@ fn get_menu_style(variant~ : MenuVariant, color~ : MenuColor, class~ : String?) 
 
 fn get_menu_trigger_style(color~ : MenuColor, isOpen~ : Bool, class~ : String?) -> String
 
+fn get_popover_arrow_style(placement~ : PopoverPlacement, color~ : PopoverColor, class? : String) -> String
+
+fn get_popover_container_style(show~ : Bool, class? : String) -> String
+
+fn get_popover_content_style(placement~ : PopoverPlacement, size~ : PopoverSize, color~ : PopoverColor, class? : String) -> String
+
+fn get_popover_trigger_style(class? : String) -> String
+
 fn get_slider_classes(String) -> String
 
 fn get_slider_color_value(SliderColor) -> String
@@ -310,6 +318,38 @@ pub(all) enum MenuVariant {
   Default
   Bordered
   Shadow
+}
+
+pub(all) enum PopoverColor {
+  Primary
+  Secondary
+  Success
+  Warning
+  Error
+  Info
+  Dark
+  Light
+}
+
+pub(all) enum PopoverPlacement {
+  Top
+  TopStart
+  TopEnd
+  Bottom
+  BottomStart
+  BottomEnd
+  Left
+  LeftStart
+  LeftEnd
+  Right
+  RightStart
+  RightEnd
+}
+
+pub(all) enum PopoverSize {
+  Sm
+  Md
+  Lg
 }
 
 pub(all) enum SliderColor {

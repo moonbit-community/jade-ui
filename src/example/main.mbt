@@ -1942,6 +1942,116 @@ fn view(model : Model) -> Html[Msg] {
         ]),
       ]),
     ]),
+
+    // Popover component showcase
+    div(class="mb-8", [
+      h3(class="text-lg font-semibold mb-4 text-gray-700", [
+        text("Popover Component Styles"),
+      ]),
+
+      // Popover placements
+      div(class="mb-6", [
+        h4(class="text-md font-medium mb-3 text-gray-600", [
+          text("Popover Placements"),
+        ]),
+        div(class="grid grid-cols-2 md:grid-cols-4 gap-4", [
+          @jade.popover(
+            content="Click me (Top)",
+            children=text(
+              "This is a top-positioned popover with helpful information.",
+            ),
+            placement=@theme.Top,
+          ),
+          @jade.popover(
+            content="Click me (Bottom)",
+            children=text(
+              "This is a bottom-positioned popover with helpful information.",
+            ),
+            placement=@theme.Bottom,
+          ),
+          @jade.popover(
+            content="Click me (Left)",
+            children=text(
+              "This is a left-positioned popover with helpful information.",
+            ),
+            placement=@theme.Left,
+          ),
+          @jade.popover(
+            content="Click me (Right)",
+            children=text(
+              "This is a right-positioned popover with helpful information.",
+            ),
+            placement=@theme.Right,
+          ),
+        ]),
+      ]),
+
+      // Popover sizes
+      div(class="mb-6", [
+        h4(class="text-md font-medium mb-3 text-gray-600", [
+          text("Popover Sizes"),
+        ]),
+        div(class="flex gap-4 flex-wrap", [
+          @jade.popover(
+            content="Small Popover",
+            children=text("This is a small popover."),
+            size=@theme.Sm,
+          ),
+          @jade.popover(
+            content="Medium Popover",
+            children=text("This is a medium popover with more content."),
+            size=@theme.Md,
+          ),
+          @jade.popover(
+            content="Large Popover",
+            children=text(
+              "This is a large popover with even more content and space for detailed information.",
+            ),
+            size=@theme.Lg,
+          ),
+        ]),
+      ]),
+
+      // Popover colors
+      div(class="mb-6", [
+        h4(class="text-md font-medium mb-3 text-gray-600", [
+          text("Popover Colors"),
+        ]),
+        div(class="grid grid-cols-2 md:grid-cols-3 gap-4", [
+          @jade.popover(
+            content="Primary",
+            children=text("Primary colored popover"),
+            color=@theme.Primary,
+          ),
+          @jade.popover(
+            content="Secondary",
+            children=text("Secondary colored popover"),
+            color=@theme.Secondary,
+          ),
+          @jade.popover(
+            content="Info",
+            children=text("Info colored popover"),
+            color=@theme.Info,
+          ),
+          @jade.popover(
+            content="Success",
+            children=text("Success colored popover"),
+            color=@theme.Success,
+          ),
+          @jade.popover(
+            content="Warning",
+            children=text("Warning colored popover"),
+            color=@theme.Warning,
+          ),
+          @jade.popover(
+            content="Error",
+            children=text("Error colored popover"),
+            color=@theme.Error,
+          ),
+        ]),
+      ]),
+    ]),
+
     // Chip component showcase
     div(class="mb-8", [
       h3(class="text-lg font-semibold mb-4 text-gray-700", [
