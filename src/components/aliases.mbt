@@ -1,2 +1,2 @@
 ///|
-typealias @html.Html
+using @html {type Html}

@@ -17,6 +17,7 @@
       "path": "moonbit-community/jade-ui/theme",
       "alias": "theme"
     },
-    "Yoorkin/rabbit-tea/dialog"
+    "Yoorkin/rabbit-tea/dialog",
+    "moonbitlang/core/cmp"
   ]
 }

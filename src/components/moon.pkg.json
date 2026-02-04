@@ -2,6 +2,7 @@
   "import": [
     "Yoorkin/rabbit-tea/html",
     "moonbit-community/jade-ui/theme",
-    "Yoorkin/rabbit-tea/svg"
+    "Yoorkin/rabbit-tea/svg",
+    "moonbitlang/core/strconv"
   ]
 }

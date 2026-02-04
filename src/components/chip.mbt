@@ -129,7 +129,7 @@ pub fn[M] chip_icon(
 /// enum Msg {
 ///   RemoveChip
 /// }
-/// 
+///
 /// let _ = chip_dismiss_trigger(
 ///   RemoveChip,
 ///   size=Md
