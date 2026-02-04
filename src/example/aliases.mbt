@@ -1,14 +1,5 @@
 ///|
-fnalias @html.text
+using @html {text, div, h1, h2, h3, h4, type Html}
 
 ///|
-fnalias @tea.none
-
-///|
-typealias @html.Html
-
-///|
-fnalias @html.(div, h1, h2, h3, h4)
-
-///|
-typealias @tea.Cmd
+using @tea {none, type Cmd}

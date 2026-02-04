@@ -1,7 +1,8 @@
 {
   "import": [
     "Yoorkin/rabbit-tea/html",
-    "Yoorkin/jade_ui/theme",
-    "Yoorkin/rabbit-tea/svg"
+    "moonbit-community/jade-ui/theme",
+    "Yoorkin/rabbit-tea/svg",
+    "moonbitlang/core/strconv"
   ]
 }

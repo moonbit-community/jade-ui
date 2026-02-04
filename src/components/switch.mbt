@@ -18,7 +18,7 @@
 /// enum Msg {
 ///   ToggleSwitch(Bool)
 /// }
-/// 
+///
 /// let _ = switch(
 ///   checked=true,
 ///   on_change=ToggleSwitch,

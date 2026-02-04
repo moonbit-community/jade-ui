@@ -30,7 +30,7 @@
 /// enum Msg {
 ///   MyClickMsg
 /// }
-/// 
+///
 /// let _ = button(
 ///   [@html.text("Click Me")],
 ///   MyClickMsg,

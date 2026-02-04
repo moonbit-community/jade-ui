@@ -10,13 +10,14 @@
       "alias": "html"
     },
     {
-      "path": "Yoorkin/jade_ui/components",
+      "path": "moonbit-community/jade-ui/components",
       "alias": "jade"
     },
     {
-      "path": "Yoorkin/jade_ui/theme",
+      "path": "moonbit-community/jade-ui/theme",
       "alias": "theme"
     },
-    "Yoorkin/rabbit-tea/dialog"
+    "Yoorkin/rabbit-tea/dialog",
+    "moonbitlang/core/cmp"
   ]
 }

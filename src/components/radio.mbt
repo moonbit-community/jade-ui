@@ -27,7 +27,7 @@
 ///   change=MyRadioMessage,
 ///   label="Option A",
 ///   size=Lg,
-///   color=Success
+///   color=Success,
 /// )
 /// ```
 ///

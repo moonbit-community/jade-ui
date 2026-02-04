@@ -26,7 +26,7 @@
 /// enum Msg {
 ///   RatingChanged(Int)
 /// }
-/// 
+///
 /// let _ = rating(
 ///   value=3,
 ///   count=5,
