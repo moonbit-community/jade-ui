@@ -118,9 +118,10 @@ pub fn[M] card_body(
 ///
 /// ```moonbit skip
 /// let footer_content = [@html.text("© 2024 My Company")]
+///
 /// let my_footer = @components.card_footer(
 ///   footer_content,
-///   class=Some("text-center")
+///   class=Some("text-center"),
 /// )
 /// ```
 ///

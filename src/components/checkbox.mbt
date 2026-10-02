@@ -27,7 +27,7 @@
 ///   change=MyCheckboxMessage,
 ///   label="Accept terms",
 ///   size=Lg,
-///   color=Success
+///   color=Success,
 /// )
 /// ```
 ///
