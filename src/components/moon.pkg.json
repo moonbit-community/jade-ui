@@ -1,7 +1,0 @@
-{
-  "import": [
-    "Yoorkin/rabbit-tea/html",
-    "Yoorkin/jade_ui/theme",
-    "Yoorkin/rabbit-tea/svg"
-  ]
-}

@@ -41,40 +41,40 @@ struct Model {
 ///|
 fn update(msg : Msg, model : Model) -> (Cmd[Msg], Model) {
   match msg {
-    Increment => (none(), { ..model, count: model.count + 1 })
-    Decrement => (none(), { ..model, count: @cmp.maximum(0, model.count - 1) })
+    Increment => (none(), { ..model, count: model.count + 1, })
+    Decrement => (none(), { ..model, count: @cmp.maximum(0, model.count - 1), })
     ToggleCheckbox1 =>
       (
         none(),
-        { ..model, checkbox1: if model.checkbox1 { false } else { true } },
+        { ..model, checkbox1: if model.checkbox1 { false } else { true }, },
       )
     ToggleCheckbox2 =>
       (
         none(),
-        { ..model, checkbox2: if model.checkbox2 { false } else { true } },
+        { ..model, checkbox2: if model.checkbox2 { false } else { true }, },
       )
     ToggleCheckbox3 =>
       (
         none(),
-        { ..model, checkbox3: if model.checkbox3 { false } else { true } },
+        { ..model, checkbox3: if model.checkbox3 { false } else { true }, },
       )
     ToggleCheckbox4 =>
       (
         none(),
-        { ..model, checkbox4: if model.checkbox4 { false } else { true } },
+        { ..model, checkbox4: if model.checkbox4 { false } else { true }, },
       )
     ToggleCheckbox5 =>
       (
         none(),
-        { ..model, checkbox5: if model.checkbox5 { false } else { true } },
+        { ..model, checkbox5: if model.checkbox5 { false } else { true }, },
       )
     ToggleCheckbox6 =>
       (
         none(),
-        { ..model, checkbox6: if model.checkbox6 { false } else { true } },
+        { ..model, checkbox6: if model.checkbox6 { false } else { true }, },
       )
-    RadioSelect(value) => (none(), { ..model, selectedRadio: value })
-    SliderUpdate(value) => (none(), { ..model, count: value })
+    RadioSelect(value) => (none(), { ..model, selectedRadio: value, })
+    SliderUpdate(value) => (none(), { ..model, count: value, })
     ToggleAccordion(id) => {
       let newOpenAccordions = if model.openAccordions.contains(id) {
         model.openAccordions.filter(fn(item) { item != id })
@@ -86,26 +86,27 @@ fn update(msg : Msg, model : Model) -> (Cmd[Msg], Model) {
         newArray.push(id)
         newArray
       }
-      (none(), { ..model, openAccordions: newOpenAccordions })
+      (none(), { ..model, openAccordions: newOpenAccordions, })
     }
     ToggleMenu(id) => {
       let newOpenMenus = Array::new()
       if !model.openMenus.contains(id) {
         newOpenMenus.push(id)
       }
-      (none(), { ..model, openMenus: newOpenMenus })
+      (none(), { ..model, openMenus: newOpenMenus, })
     }
     MenuItemClick(menuId) => {
       // Handle menu item action and close the menu
       let newOpenMenus = model.openMenus.filter(fn(item) { item != menuId })
-      (none(), { ..model, openMenus: newOpenMenus })
+      (none(), { ..model, openMenus: newOpenMenus, })
     }
-    SwitchToggle => (none(), { ..model, switch_checked: !model.switch_checked })
-    TabChange(tab) => (none(), { ..model, activeTab: tab })
+    SwitchToggle =>
+      (none(), { ..model, switch_checked: !model.switch_checked, })
+    TabChange(tab) => (none(), { ..model, activeTab: tab, })
     ConfirmAction(id) => (@dialog.close(id), model)
     CancelAction(id) => (@dialog.close(id), model)
     OpenDialog(id) => (@dialog.show(id), model)
-    RatingChange(value) => (none(), { ..model, rating: value })
+    RatingChange(value) => (none(), { ..model, rating: value, })
   }
 }
 
@@ -1823,7 +1824,7 @@ fn view(model : Model) -> Html[Msg] {
             ]),
             @jade.breadcrumb(
               [
-                { text: "Home", href: Some("/"), click: None, isActive: false },
+                { text: "Home", href: Some("/"), click: None, isActive: false, },
                 {
                   text: "Products",
                   href: Some("/products"),
@@ -1836,7 +1837,12 @@ fn view(model : Model) -> Html[Msg] {
                   click: None,
                   isActive: false,
                 },
-                { text: "Smartphones", href: None, click: None, isActive: true },
+                {
+                  text: "Smartphones",
+                  href: None,
+                  click: None,
+                  isActive: true,
+                },
               ],
               variant=Default,
             ),
@@ -1859,7 +1865,7 @@ fn view(model : Model) -> Html[Msg] {
                   click: None,
                   isActive: false,
                 },
-                { text: "Reports", href: None, click: None, isActive: true },
+                { text: "Reports", href: None, click: None, isActive: true, },
               ],
               variant=Bordered,
             ),
@@ -1882,7 +1888,7 @@ fn view(model : Model) -> Html[Msg] {
                   click: None,
                   isActive: false,
                 },
-                { text: "Security", href: None, click: None, isActive: true },
+                { text: "Security", href: None, click: None, isActive: true, },
               ],
               variant=Underlined,
             ),
@@ -1902,14 +1908,14 @@ fn view(model : Model) -> Html[Msg] {
             ]),
             @jade.breadcrumb(
               [
-                { text: "Home", href: Some("/"), click: None, isActive: false },
+                { text: "Home", href: Some("/"), click: None, isActive: false, },
                 {
                   text: "Library",
                   href: Some("/library"),
                   click: None,
                   isActive: false,
                 },
-                { text: "Data", href: None, click: None, isActive: true },
+                { text: "Data", href: None, click: None, isActive: true, },
               ],
               color=Primary,
             ),
@@ -1920,14 +1926,14 @@ fn view(model : Model) -> Html[Msg] {
             ]),
             @jade.breadcrumb(
               [
-                { text: "Home", href: Some("/"), click: None, isActive: false },
+                { text: "Home", href: Some("/"), click: None, isActive: false, },
                 {
                   text: "Library",
                   href: Some("/library"),
                   click: None,
                   isActive: false,
                 },
-                { text: "Data", href: None, click: None, isActive: true },
+                { text: "Data", href: None, click: None, isActive: true, },
               ],
               color=Secondary,
             ),
@@ -1938,14 +1944,14 @@ fn view(model : Model) -> Html[Msg] {
             ]),
             @jade.breadcrumb(
               [
-                { text: "Home", href: Some("/"), click: None, isActive: false },
+                { text: "Home", href: Some("/"), click: None, isActive: false, },
                 {
                   text: "Library",
                   href: Some("/library"),
                   click: None,
                   isActive: false,
                 },
-                { text: "Data", href: None, click: None, isActive: true },
+                { text: "Data", href: None, click: None, isActive: true, },
               ],
               color=Success,
             ),
@@ -1956,14 +1962,14 @@ fn view(model : Model) -> Html[Msg] {
             ]),
             @jade.breadcrumb(
               [
-                { text: "Home", href: Some("/"), click: None, isActive: false },
+                { text: "Home", href: Some("/"), click: None, isActive: false, },
                 {
                   text: "Library",
                   href: Some("/library"),
                   click: None,
                   isActive: false,
                 },
-                { text: "Data", href: None, click: None, isActive: true },
+                { text: "Data", href: None, click: None, isActive: true, },
               ],
               color=Error,
             ),
@@ -1983,14 +1989,14 @@ fn view(model : Model) -> Html[Msg] {
             ]),
             @jade.breadcrumb(
               [
-                { text: "Home", href: Some("/"), click: None, isActive: false },
+                { text: "Home", href: Some("/"), click: None, isActive: false, },
                 {
                   text: "Docs",
                   href: Some("/docs"),
                   click: None,
                   isActive: false,
                 },
-                { text: "API", href: None, click: None, isActive: true },
+                { text: "API", href: None, click: None, isActive: true, },
               ],
               size=Sm,
             ),
@@ -2001,14 +2007,14 @@ fn view(model : Model) -> Html[Msg] {
             ]),
             @jade.breadcrumb(
               [
-                { text: "Home", href: Some("/"), click: None, isActive: false },
+                { text: "Home", href: Some("/"), click: None, isActive: false, },
                 {
                   text: "Docs",
                   href: Some("/docs"),
                   click: None,
                   isActive: false,
                 },
-                { text: "API", href: None, click: None, isActive: true },
+                { text: "API", href: None, click: None, isActive: true, },
               ],
               size=Md,
             ),
@@ -2019,14 +2025,14 @@ fn view(model : Model) -> Html[Msg] {
             ]),
             @jade.breadcrumb(
               [
-                { text: "Home", href: Some("/"), click: None, isActive: false },
+                { text: "Home", href: Some("/"), click: None, isActive: false, },
                 {
                   text: "Docs",
                   href: Some("/docs"),
                   click: None,
                   isActive: false,
                 },
-                { text: "API", href: None, click: None, isActive: true },
+                { text: "API", href: None, click: None, isActive: true, },
               ],
               size=Lg,
             ),
@@ -3099,34 +3105,40 @@ fn render_tabs_section(model : Model) -> Html[Msg] {
             @jade.typography(tag=H3, color=Default, class="mb-4", [
               text("Tab Variants"),
             ]),
-            ..variants.map(variant => div(class="space-y-8", [
-              // Default 变体
-              @jade.card(
-                [
-                  @jade.card_body([
-                    @jade.tabs(
-                      [
-                        @jade.tabs_list(
-                          variant~,
-                          tabs.map(tab => @jade.tabs_trigger(
-                            [text(tab)],
-                            TabChange(tab),
-                            is_active=model.activeTab == tab,
+            ..variants.map(variant => {
+              div(class="space-y-8", [
+                // Default 变体
+                @jade.card(
+                  [
+                    @jade.card_body([
+                      @jade.tabs(
+                        [
+                          @jade.tabs_list(
                             variant~,
-                          )),
-                        ),
-                        ..tabs.map(tab => @jade.tabs_panel(
-                          [text("\{tab} content here")],
-                          is_active=model.activeTab == tab,
-                        )),
-                      ],
-                    ),
-                  ]),
-                ],
-                variant=Ghost,
-                color=@theme.Default,
-              ),
-            ])),
+                            tabs.map(tab => {
+                              @jade.tabs_trigger(
+                                [text(tab)],
+                                TabChange(tab),
+                                is_active=model.activeTab == tab,
+                                variant~,
+                              )
+                            }),
+                          ),
+                          ..tabs.map(tab => {
+                            @jade.tabs_panel(
+                              [text("\{tab} content here")],
+                              is_active=model.activeTab == tab,
+                            )
+                          }),
+                        ],
+                      ),
+                    ]),
+                  ],
+                  variant=Ghost,
+                  color=@theme.Default,
+                ),
+              ])
+            }),
           ],
         ),
       ],

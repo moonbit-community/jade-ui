@@ -33,13 +33,13 @@
 ///   SecondAction
 ///   ThirdAction
 /// }
-/// 
+///
 /// let buttons = [
 ///   button([text("First")], FirstAction),
 ///   button([text("Second")], SecondAction),
 ///   button([text("Third")], ThirdAction)
 /// ]
-/// 
+///
 /// let _ = button_group(
 ///   buttons,
 ///   variant=Outlined,

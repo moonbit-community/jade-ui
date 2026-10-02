@@ -1,0 +1,9 @@
+import {
+  "Yoorkin/rabbit-tea" @tea,
+  "Yoorkin/rabbit-tea/html",
+  "Yoorkin/jade_ui/components" @jade,
+  "Yoorkin/jade_ui/theme",
+  "Yoorkin/rabbit-tea/dialog",
+}
+
+pkgtype(kind: "executable")

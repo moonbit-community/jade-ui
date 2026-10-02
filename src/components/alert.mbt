@@ -26,7 +26,7 @@
 /// enum Msg {
 ///   DismissAlert
 /// }
-/// 
+///
 /// let _ = alert(
 ///   [@html.text("This is an important message!")],
 ///   variant=Outlined,

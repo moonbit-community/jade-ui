@@ -28,13 +28,13 @@ pub(all) struct BreadcrumbItem[M] {
 ///   NavigateHome
 ///   NavigateProducts
 /// }
-/// 
+///
 /// let items = [
 ///   BreadcrumbItem::{ text: "Home", href: Some("/"), click: Some(NavigateHome), isActive: false },
 ///   BreadcrumbItem::{ text: "Products", href: Some("/products"), click: Some(NavigateProducts), isActive: false },
 ///   BreadcrumbItem::{ text: "Laptops", href: None, click: None, isActive: true }
 /// ]
-/// 
+///
 /// let _ = breadcrumb(
 ///   items,
 ///   separator="›",
